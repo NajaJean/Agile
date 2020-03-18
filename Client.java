@@ -5,5 +5,4 @@ public class Client {
     private String address;
     private int ID;
     
-    "Hello, Mathilde HEREEE!!!"
 }
