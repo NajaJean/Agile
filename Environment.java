@@ -1,8 +1,8 @@
 
 public class Environment {
-	String name;
-	String email;
-	String address;
-	int ID;
+	private String name;
+	private String email;
+	private String address;
+	private int ID;
 
 }
