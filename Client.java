@@ -21,14 +21,14 @@ public class Client {
     public String getAddress() {
     	return address;
     }
-    public void setAddress() {
+    public void setAddress(String address) {
     	this.address = address;
     }
-    public String getID() {
+    public int getID() {
     	return ID;
     }
     
-    public Client(String name, String email, String address, int ID) {
+    public Client(String name, String email, String address) {
 		this.name = name;
 		this.email = email;
 		this.address = address;
