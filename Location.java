@@ -2,11 +2,11 @@
 public class Location {
     private String name;
     private int ID;
-    private int[] GPScoord;
+    private double[] GPScoord;
     
     private static int count = 0;
     
-    public Location(String name, int[] gps) {
+    public Location(String name, double[] gps) {
     	this.name = name;
     	this.GPScoord = gps;
     	this.ID = count++;
@@ -20,7 +20,7 @@ public class Location {
     	return ID;
     }
     
-    public int[] getGPScoord() {
+    public double[] getGPScoord() {
     	return GPScoord;
     }
 }
