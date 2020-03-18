@@ -1,7 +1,7 @@
 
 public class Client {
     String name;
-	  String email;
+	String email;
 	  String address;
 	  int ID;
 }
