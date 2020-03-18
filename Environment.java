@@ -34,9 +34,19 @@ public class Environment {
 		return humidity;
 	}
 	
-	public boolean validEnvironment(Environment requiredEnviro) {
-		boolean valid = false;
+	public boolean validEnvironment(Content content) {
+		boolean valid = true;
+		Environment required = content.getEnvironment();
+		float threshold = content.getThreshold();
 		
+		float tempThresh = threshold*required.temp;
+		
+		if(this.temp < required.temp-tempThresh || this.temp > required.temp+tempThresh) {
+			valid = false;
+		}
+		else if(this.humidity < required.humidity-tempThresh || this.humidity > required.humidity+tempThresh) {
+			valid = false;
+		}
 		//...
 		
 		return valid;
