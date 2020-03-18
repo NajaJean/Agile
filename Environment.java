@@ -36,7 +36,7 @@ public class Environment {
 	
 	public boolean validEnvironment(Content content) {
 		boolean valid = true;
-		Environment required = content.getEnvironment();
+		Environment required = content.getContainerEnvironment();
 		float threshold = content.getThreshold();
 		
 		if(outsideThreshold(this.temp,required.temp,threshold)||
