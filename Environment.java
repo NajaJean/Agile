@@ -1,43 +1,43 @@
 
 public class Environment {
-	private int temp;
-	private int pressure;
-	private int humidity;
+	private double temp;
+	private double pressure;
+	private double humidity;
 	
-	public Environment(int temp, int pressure, int humidity) {
+	public Environment(double temp, double pressure, double humidity) {
 		this.temp = temp;
 		this.pressure = pressure;
 		this.humidity = humidity;
 	}
 	
-	public void setTemp(int temp) {
+	public void setTemp(double temp) {
 		this.temp = temp;
 	}
 	
-	public int getTemp() {
+	public double getTemp() {
 		return temp;
 	}
 	
-	public void setPressure(int pressure) {
+	public void setPressure(double pressure) {
 		this.pressure = pressure;
 	}
 	
-	public int getPressure() {
+	public double getPressure() {
 		return pressure;
 	}
 	
-	public void setHumidity(int humidity) {
+	public void setHumidity(double humidity) {
 		this.humidity = humidity;
 	}
 	
-	public int getHumidity() {
+	public double getHumidity() {
 		return humidity;
 	}
 	
 	public boolean validEnvironment(Content content) {
 		boolean valid = true;
 		Environment required = content.getEnvironment();
-		float threshold = content.getThreshold();
+		double threshold = content.getThreshold();
 		
 		if(outsideThreshold(this.temp,required.temp,threshold)||
 				outsideThreshold(this.humidity,required.humidity,threshold)||
@@ -48,8 +48,8 @@ public class Environment {
 		return valid;
 	}
 	
-	private boolean outsideThreshold(int current, int required, float thresh) {
-		float Thresh = required*thresh;
+	private boolean outsideThreshold(double current, double required, double thresh) {
+		double Thresh = required*thresh;
 		if(current < required - Thresh || current > required + Thresh) {
 			return true;
 		}
