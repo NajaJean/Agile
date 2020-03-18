@@ -17,4 +17,16 @@ public class ContainerJourney {
 	public int getJourneyID() {
 		return journeyID;
 	}
+	
+	public Location getStartLocation() {
+		return start;
+	}
+	
+	public Location getEndLocation() {
+		return end;
+	}
+	
+	public Container getContaineronJourney() {
+		return container;
+	}
 }
