@@ -39,20 +39,22 @@ public class Environment {
 		Environment required = content.getEnvironment();
 		float threshold = content.getThreshold();
 		
-		float tempThresh = threshold*required.temp;
-		float humidThresh = threshold*required.humidity;
-		float pressThresh = threshold*required.pressure;
+		if(outsideThreshold(this.temp,required.temp,threshold)||
+				outsideThreshold(this.humidity,required.humidity,threshold)||
+				outsideThreshold(this.pressure,required.pressure,threshold)) {
+			valid = false;
+		}
 		
-		if(this.temp < required.temp-tempThresh || this.temp > required.temp+tempThresh) {
-			valid = false;
-		}
-		else if(this.humidity < required.humidity-humidThresh || this.humidity > required.humidity+humidThresh) {
-			valid = false;
-		}
-		else if(this.pressure < required.pressure-pressThresh || this.pressure > required.pressure+pressThresh) {
-			valid = false;
-		}
-
 		return valid;
+	}
+	
+	private boolean outsideThreshold(int current, int required, float thresh) {
+		float Thresh = required*thresh;
+		if(current < required - Thresh || current > required + Thresh) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
