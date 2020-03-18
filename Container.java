@@ -1,10 +1,10 @@
 
 public class Container {
-	int length;
-	int height;
-	int width;
-	int size = length*height*width;
+	private int length;
+	private int height;
+	private int width;
+	private int size = length*height*width;
 	
-	String containerID;
+	private String containerID;
 	
 }
