@@ -1,5 +1,5 @@
 
 public class Content {
-	int quantity;
-	String name;
+	private int quantity;
+	private String name;
 }
