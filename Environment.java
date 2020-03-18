@@ -1,8 +1,6 @@
 
 public class Environment {
-	private String name;
-	private String email;
-	private String address;
-	private int ID;
-
+	private int temp;
+	private int pressure;
+	private int humidity;
 }
