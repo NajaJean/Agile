@@ -2,7 +2,7 @@
 public class Content extends Container {
 	private String name;
 	private Environment enviro;
-	private float threshold;
+	private double threshold;
 	
 	public String getName() {
     	return name;
@@ -10,14 +10,13 @@ public class Content extends Container {
 	public Environment getEnvironment() {
     	return enviro;
     }
-	public float getThreshold() {
+	public double getThreshold() {
 		return threshold;
 	}
 	
-	public Content(String name, Environment enviro, float threshold) {
+	public Content(String name, Environment enviro, double threshold) {
 		this.name = name;
 		this.enviro = enviro;
 		this.threshold = threshold;
 	}
-	
 }
