@@ -1,5 +1,5 @@
 
-public class Content extends Container {
+public class Content {
 	private String name;
 	private Environment enviro;
 	private double threshold;
