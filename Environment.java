@@ -40,15 +40,19 @@ public class Environment {
 		float threshold = content.getThreshold();
 		
 		float tempThresh = threshold*required.temp;
+		float humidThresh = threshold*required.humidity;
+		float pressThresh = threshold*required.pressure;
 		
 		if(this.temp < required.temp-tempThresh || this.temp > required.temp+tempThresh) {
 			valid = false;
 		}
-		else if(this.humidity < required.humidity-tempThresh || this.humidity > required.humidity+tempThresh) {
+		else if(this.humidity < required.humidity-humidThresh || this.humidity > required.humidity+humidThresh) {
 			valid = false;
 		}
-		//...
-		
+		else if(this.pressure < required.pressure-pressThresh || this.pressure > required.pressure+pressThresh) {
+			valid = false;
+		}
+
 		return valid;
 	}
 }
