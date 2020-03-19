@@ -50,11 +50,6 @@ public class Environment {
 	
 	private boolean outsideThreshold(double current, double required, double thresh) {
 		double Thresh = required*thresh;
-		if(current < required - Thresh || current > required + Thresh) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return (current < required - Thresh) || (current > required + Thresh);
 	}
 }
