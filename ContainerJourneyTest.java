@@ -29,11 +29,11 @@ public class ContainerJourneyTest {
 		
 		ContainerJourney cj = new ContainerJourney(start, end, c);
 		
-		assertEquals(cj.getJourneyID(),1);
+		assertEquals(0, cj.getJourneyID());
 		
-		assertEquals(cj.getStartLocation(), start);
-		assertEquals(cj.getEndLocation(), end);
+		assertEquals(start, cj.getStartLocation());
+		assertEquals(end, cj.getEndLocation());
 		
-		assertEquals(cj.getContaineronJourney(), c);
+		assertEquals(c, cj.getContaineronJourney());
 	}
 }

@@ -12,12 +12,12 @@ public class ClientTest {
 		Client c1 = new Client("Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		Client c2 = new Client("Naja","najasemail@gmail.com","Rådhuspladsen 100");
 		
-		assertEquals(c1.getName(),"Mathilde");
-		assertEquals(c1.getEmail(),"mathildesemail@gmail.com");
-		assertEquals(c1.getAddress(),"Anker Egelundsvej 1");
-		assertEquals(c1.getID(),1);
+		assertEquals("Mathilde", c1.getName());
+		assertEquals("mathildesemail@gmail.com", c1.getEmail());
+		assertEquals("Anker Egelundsvej 1", c1.getAddress());
+		assertEquals(1, c1.getID());
 		
-		assertEquals(c2.getID(),2);
+		assertEquals(2, c2.getID());
 	}
 	
 	@Test
@@ -25,13 +25,12 @@ public class ClientTest {
 		Client c1 = new Client("Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 
 		c1.setName("Ulla");
-		assertEquals(c1.getName(),"Ulla");
+		assertEquals("Ulla", c1.getName());
 		
 		c1.setEmail("ullasemail@gmail.com");
-		assertEquals(c1.getEmail(),"ullasemail@gmail.com");
+		assertEquals("ullasemail@gmail.com", c1.getEmail());
 		
 		c1.setAddress("Østerkirkevej 18");
-		assertEquals(c1.getAddress(),"Østerkirkevej 18");
+		assertEquals("Østerkirkevej 18", c1.getAddress());
 	}
-
 }
