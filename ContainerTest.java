@@ -12,12 +12,9 @@ import core.Environment;
 
 public class ContainerTest {
 	
-	private Client cl1;
-	private Client cl2;
-	private Environment e1;
-	private Environment e2;
-	private Content con1;
-	private Content con2;
+	private Client cl1, cl2;
+	private Environment e1, e2;
+	private Content con1, con2;
 	
 	@Before 
 	public void createContainers() {
