@@ -16,7 +16,7 @@ public class LocationTest {
 
 		assertEquals("Afrika", l.getLocationName());
 		assertEquals(gpsStart, l.getGPScoord());
-		assertEquals(0, l.getLocationID());		
+		assertEquals(1, l.getLocationID());		
 	}
 
 }
