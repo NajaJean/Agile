@@ -1,3 +1,5 @@
+package core;
+
 
 public class Location {
     private String name;

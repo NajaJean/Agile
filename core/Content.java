@@ -1,3 +1,5 @@
+package core;
+
 
 public class Content {
 	private String name;

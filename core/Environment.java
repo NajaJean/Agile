@@ -1,3 +1,5 @@
+package core;
+
 
 public class Environment {
 	private double temp;

@@ -1,3 +1,5 @@
+package core;
+
 
 public class Client {
     private String name;
