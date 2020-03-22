@@ -7,7 +7,7 @@ import org.junit.Test;
 import core.Location;
 
 public class LocationTest {
-//test
+
 	@Test
 	public void testContent() {
 		double[] gpsStart = {55.67594, 12.56553};
