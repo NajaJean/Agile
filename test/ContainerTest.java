@@ -18,11 +18,11 @@ public class ContainerTest {
 	
 	@Before 
 	public void createContainers() {
-		cl1 = new Client("Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
+		cl1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		e1 = new Environment(5.3,1.1,0.85);
 		con1 = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
 		
-		cl2 = new Client("Naja","najasemail@gmail.com","Rådhuspladsen 100");
+		cl2 = new Client("N", "4321", "Naja","najasemail@gmail.com","Rådhuspladsen 100");
 		e2 = new Environment(2.1,0.9,0.55);
 		con2 = new Content("Apple",new Environment(2.0,0.8,0.5), 0.1);
 	}
@@ -32,8 +32,8 @@ public class ContainerTest {
 		Container c1 = new Container(cl1, e1, con1);
 		Container c2 = new Container(cl2, e2, con2);
 		
-		assertEquals(c1.getContainerID(),1);
-		assertEquals(c2.getContainerID(),2);
+		assertEquals(1, c1.getContainerID());
+		assertEquals(2, c2.getContainerID());
 		
 		assertEquals(cl1,c1.getClientofContainer());
 		assertEquals(e1,c1.getContainerEnvironment());

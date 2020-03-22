@@ -15,7 +15,7 @@ public class ContainerJourneyTest {
 
 	@Test
 	public void testContent() {
-		Client client = new Client("Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
+		Client client = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		Environment environment = new Environment(5.3,1.1,0.85);
 		Content content = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
 		
