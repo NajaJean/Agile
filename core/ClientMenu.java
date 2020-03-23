@@ -5,11 +5,11 @@ import javax.swing.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ClientMenu extends JPanel {
+class ClientMenuFrame extends JPanel {
     private JMenuBar clientMenuBar;
     private JLabel welcomeLabel;
 
-    public ClientMenu() {
+    public ClientMenuFrame() {
         //construct preComponents
         JMenu bookingMenu = new JMenu ("Booking");
         JMenuItem book_containerItem = new JMenuItem ("Book container");
@@ -39,14 +39,55 @@ public class ClientMenu extends JPanel {
         //set component bounds (only needed by Absolute Positioning)
         clientMenuBar.setBounds (0, 0, 400, 30);
         welcomeLabel.setBounds (80, 80, 280, 25);
+        
+        book_containerItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+//                openBookContainerMenu();
+
+            }
+
+        });
+        sign_outItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openLoginMenu();
+            }
+
+        });
+        configure_client_detailsItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                openConfigureClientDetailsMenu();
+            }
+        });
+
     }
 
+    public void openLoginMenu() {
+    	LoginFrame frame = new LoginFrame();
+        frame.setTitle("Login Form");
+        frame.setVisible(true);
+        frame.setBounds(10, 10, 370, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+    }
+    
+    public void openConfigureClientDetailsMenu() {
+    	ConfigureClientFrame frame = new ConfigureClientFrame();
+        frame.setTitle("Configure Client");
+        frame.setVisible(true);
+        frame.setBounds(10, 10, 370, 600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+    }
+}
 
-    public static void main (String[] args) {
-        JFrame frame = new JFrame ("MyPanel");
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add (new ClientMenu());
+public class ClientMenu {
+	public static void main (String[] args) {
+        JFrame frame = new JFrame("Client Menu");
+        frame.setTitle("Client Menu");
+        frame.getContentPane().add (new ClientMenuFrame());
+        frame.setVisible(true);
         frame.pack();
-        frame.setVisible (true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
     }
 }
