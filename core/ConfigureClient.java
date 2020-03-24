@@ -147,24 +147,26 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
             									"New Email: " + TestClient.getEmail() + " \n" +
             									"New Address: " + TestClient.getAddress());
             
-            /*ClientMenuFrame frame = new ClientMenuFrame();
+            JFrame frame = new JFrame("Client Menu");
             frame.setTitle("Client Menu");
+            frame.getContentPane().add (new ClientMenuFrame());
             frame.setVisible(true);
-            frame.setBounds(10, 10, 370, 600);
+            frame.pack();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setResizable(false);*/
+            frame.setResizable(false);
  
         } 
  
-        /*
+        
         if (e.getSource() == returnButton) {
-        	ClientMenuFrame frame1 = new ClientMenuFrame();
-            frame1.setTitle("Login Form");
-            frame1.setVisible(true);
-            frame1.setBounds(10, 10, 370, 600);
-            frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame1.setResizable(false);
-        }*/
+            JFrame frame = new JFrame("Client Menu");
+            frame.setTitle("Client Menu");
+            frame.getContentPane().add (new ClientMenuFrame());
+            frame.setVisible(true);
+            frame.pack();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setResizable(false);
+        }
     }
  
 }
