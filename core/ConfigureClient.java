@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 class ConfigureClientFrame extends JFrame implements ActionListener{
 	
 	java.awt.Container container = getContentPane();
+	
+	//temporary test client
 	Client TestClient = new Client("corona", "1234", "labrat", "@", "asd");
 	String[] TestC = new String[]{"corona", "1234", "labrat", "@", "asd"};
 	
@@ -105,7 +107,7 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
     	returnButton.addActionListener(this);
     }
     
-    //not working properly takes in the empty value for some reason :\
+    //not working properly, takes in the empty value for some reason :\
     public boolean isTheDataChanged(String checkThisData) {
     	return (!(checkThisData.equalsIgnoreCase("")));
     }
@@ -129,21 +131,23 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
             	}
             }
             
-            TestClient.setUserName(input[Data.UserName.num()]);
-            TestClient.setPassword(input[Data.Password.num()]);
-            TestClient.setName(input[Data.Name.num()]);
-            TestClient.setEmail(input[Data.Email.num()]);
-            TestClient.setAddress(input[Data.Address.num()]);
+            TestClient.setUserName(TestC[Data.UserName.num()]);
+            TestClient.setPassword(TestC[Data.Password.num()]);
+            TestClient.setName(TestC[Data.Name.num()]);
+            TestClient.setEmail(TestC[Data.Email.num()]);
+            TestClient.setAddress(TestC[Data.Address.num()]);
              
             
             JOptionPane.showMessageDialog(this, "Changes saved !");
+            
+            // feedback print
             JOptionPane.showMessageDialog(this, TestClient.getUserName() + " " + 
             									TestClient.getPassword() + " " +
             									TestClient.getName() + " " +
             									TestClient.getEmail() + " " +
             									TestClient.getAddress());
-            /*
-            ClientMenuFrame frame = new ClientMenuFrame();
+            
+            /*ClientMenuFrame frame = new ClientMenuFrame();
             frame.setTitle("Client Menu");
             frame.setVisible(true);
             frame.setBounds(10, 10, 370, 600);
@@ -152,14 +156,14 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
  
         } 
  
-        
-        /*if (e.getSource() == returnButton) {
-        	ClientMenuFrame frame = new ClientMenuFrame();
-            frame.setTitle("Login Form");
-            frame.setVisible(true);
-            frame.setBounds(10, 10, 370, 600);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setResizable(false);
+        /*
+        if (e.getSource() == returnButton) {
+        	ClientMenuFrame frame1 = new ClientMenuFrame();
+            frame1.setTitle("Login Form");
+            frame1.setVisible(true);
+            frame1.setBounds(10, 10, 370, 600);
+            frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame1.setResizable(false);
         }*/
     }
  
