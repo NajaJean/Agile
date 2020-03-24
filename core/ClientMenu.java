@@ -1,3 +1,5 @@
+package core;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -74,7 +76,7 @@ class ClientMenuFrame extends JPanel {
     	ConfigureClientFrame frame = new ConfigureClientFrame();
         frame.setTitle("Configure Client");
         frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
+        frame.setBounds(10, 10, 600, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
     }

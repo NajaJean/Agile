@@ -69,7 +69,8 @@ class LoginFrame extends JFrame implements ActionListener {
             pwdText = passwordTextField.getText();
             if (userText.equalsIgnoreCase("corona") && pwdText.equalsIgnoreCase("1234")) {
                 JOptionPane.showMessageDialog(this, "Login Successful");
-            } else {
+            } 
+            else {
                 JOptionPane.showMessageDialog(this, "Invalid Username or Password");
             }
  
