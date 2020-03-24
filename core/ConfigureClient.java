@@ -141,11 +141,11 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
             JOptionPane.showMessageDialog(this, "Changes saved !");
             
             // feedback print
-            JOptionPane.showMessageDialog(this, TestClient.getUserName() + " " + 
-            									TestClient.getPassword() + " " +
-            									TestClient.getName() + " " +
-            									TestClient.getEmail() + " " +
-            									TestClient.getAddress());
+            JOptionPane.showMessageDialog(this, "New User Name: " + TestClient.getUserName() + " \n" + 
+            									"New Password: " + TestClient.getPassword() + " \n" +
+            									"New Name: " + TestClient.getName() + " \n" +
+            									"New Email: " + TestClient.getEmail() + " \n" +
+            									"New Address: " + TestClient.getAddress());
             
             /*ClientMenuFrame frame = new ClientMenuFrame();
             frame.setTitle("Client Menu");
