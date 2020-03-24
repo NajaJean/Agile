@@ -97,7 +97,7 @@ class CreateClient extends JFrame implements ActionListener {
             System.out.println(referenceText);
             System.out.println(emailText);
             
-            Client test = new Client(clientNameText, emailText, addressText);
+            Client test = new Client("asd", "asd", clientNameText, emailText, addressText);
         }
     }
 }
