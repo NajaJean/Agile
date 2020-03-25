@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 class ConfigureClientFrame extends JFrame implements ActionListener {
 	   
     //construct components
-	Container container = getContentPane();
+	java.awt.Container container = getContentPane();
     JLabel confLabel = new JLabel ("Configure Client details:");
     JLabel fstNameLabel = new JLabel ("First name:");
     JTextField fstNameTextField = new JTextField (5);

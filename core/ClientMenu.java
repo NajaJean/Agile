@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//test
+//test for naja
 class ClientMenuFrame extends JPanel {
     private JMenuBar clientMenuBar;
     private JLabel welcomeLabel;
