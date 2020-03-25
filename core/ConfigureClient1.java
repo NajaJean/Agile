@@ -1,8 +1,11 @@
 package core;
 <<<<<<< HEAD:core/ConfigureClient1.java
+<<<<<<< HEAD:core/ConfigureClient1.java
 
 =======
 >>>>>>> ca0ece5598ae99bed77cb2853ca768c6a7bb23df:src/core/ConfigureClient1.java
+=======
+>>>>>>> a01a6b200e6707b3f9412dfaef98a530865bc0ea:src/core/ConfigureClient1.java
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
