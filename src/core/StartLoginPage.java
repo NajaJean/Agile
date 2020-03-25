@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 class StartLoginPageFrame extends JFrame implements ActionListener {
-	Container container = getContentPane();
+	java.awt.Container container = getContentPane();
     JLabel welcomeLabel = new JLabel ("Welcome to ContainerSystem");
     JButton lcLogin = new JButton ("Logistic Company Login");
     JButton cLogin = new JButton ("Client Login");
