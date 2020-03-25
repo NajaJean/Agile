@@ -1,3 +1,8 @@
+package core;
+<<<<<<< HEAD:core/ConfigureClient1.java
+
+=======
+>>>>>>> ca0ece5598ae99bed77cb2853ca768c6a7bb23df:src/core/ConfigureClient1.java
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,7 +13,7 @@ import java.awt.event.ActionListener;
 class ConfigureClientFrame extends JFrame implements ActionListener {
 	   
     //construct components
-	Container container = getContentPane();
+	java.awt.Container container = getContentPane();
     JLabel confLabel = new JLabel ("Configure Client details:");
     JLabel fstNameLabel = new JLabel ("First name:");
     JTextField fstNameTextField = new JTextField (5);
