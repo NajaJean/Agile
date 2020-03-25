@@ -64,8 +64,8 @@ class ClientMenuFrame extends JPanel {
     }
 
     public void openLoginMenu() {
-    	LoginFrame frame = new LoginFrame();
-        frame.setTitle("Login Form");
+    	StartLoginPageFrame frame = new StartLoginPageFrame();
+        frame.setTitle("Choose Login");
         frame.setVisible(true);
         frame.setBounds(10, 10, 370, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
