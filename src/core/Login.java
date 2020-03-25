@@ -94,7 +94,13 @@ class LoginFrame extends JFrame implements ActionListener {
     }
     
     public void openLogisticCompanyMenu() {
-    	
+    	JFrame frame = new JFrame("Logistic Company Menu");
+        frame.setTitle("Logistic Company");
+        frame.getContentPane().add (new LogisticCompanyMenuFrame());
+        frame.setVisible(true);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
     }
 }
  
