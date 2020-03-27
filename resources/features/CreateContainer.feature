@@ -17,13 +17,14 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: LoginFeature
-  This feature deals with the login functionality of the application
+Feature: CreateContainer feature
+  This feature deals with the functionality of creating a container with a client, environment, and content.  
 
   @tag1
-  Scenario: Login with correct username and password
-  Given I navigate to the login page
-  And I enter the username "corona" and password "1234" as client
-  And I click login button 
- 	Then I should see the Client Menu page
-	
+  Scenario: Create a container with a specific client, environment, and content
+    Given a new Container
+    And it has a client with username "corona" and password "1234"
+    And it has an environment with temperature 13.3, pressure , and humidity 0.90
+    And it has a content 
+    Then 
+
