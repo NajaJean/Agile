@@ -26,8 +26,8 @@ public class StepDefs_ClientNotified {
 		clientContainer = new Container(client);
 	}
 	
-	@Given("the container has content {string} which has required evironment and threshold of {double}")
-	public void the_container_has_content_which_has_required_evironment_and_threshold_of(String contentName, Double threshold) {
+	@Given("the container has content {string} which has required environment and threshold of {double}")
+	public void the_container_has_content_which_has_required_environment_and_threshold_of(String contentName, Double threshold) {
 		Environment requiredEnvironment = new Environment(5.0, 1.0, 0.9);
 	    containerContent = new Content(contentName, requiredEnvironment, threshold);
 	    clientContainer.setContainerContent(containerContent);
@@ -46,9 +46,9 @@ public class StepDefs_ClientNotified {
 		assertEquals(notification.getNotifyMessage(), "Client is notified of invalid environment");
 	}
 	
-	/*
-	@Given("the container is starting its journey at {string} with coords {double} and {int}.")
-	public void the_container_is_starting_its_journey_at_with_coords_and(String string, Double double1, Integer int1) {
+	
+	@Given("the container is starting its journey at {string} with coords {double} and {double}")
+	public void the_container_is_starting_its_journey_at_with_coords_and(String string, Double double1, Double double2) {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
@@ -70,5 +70,5 @@ public class StepDefs_ClientNotified {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
-	*/
+
 }
