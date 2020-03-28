@@ -25,39 +25,48 @@ public class Database {
 			result = s.executeQuery("SELECT * FROM "+tableName);
 			while (result.next()) {
 				row++;
-				try {
-					values[row][column] = result.getString(column);
-					column++;
+				while(true) {
+					try {
+						values[row][column] = result.getString(column);
+						column++;
+					}
+					catch(SQLException e){
+						column = 1;
+						break;
+					}
 				}
-				catch(SQLException e){System.out.println(e);}
 			}
 			System.out.println(tableName + "  table imported sucessfully!");
 		} catch (SQLException e){System.out.println(e);}
 		return values;
 	}
 
-	public void queryDatabase(String sql) {  
+	public String queryDatabase(String sql) {  
 		ResultSet result;
+		String query = "";
+		int i = 1;
 		try {
 			result = s.executeQuery(sql);
 			while (result.next()) {
-				int id = result.getInt("ID");
-				String name = result.getString("Name");
-				String email = result.getString("Email");
-				String address = result.getString("Address");
-
-				System.out.println(id + ", " + name + ", " + email + ", " + address);
+				while(true) {
+					try {
+						query = query + result.getString(i) + ", ";
+						i++;
+					}
+					catch (SQLException e){
+						query = query + "\n";
+						i = 1;
+						break;
+					} 
+				}
 			}
-		} catch (SQLException e){System.out.println(e);} 	
+		} catch (SQLException e){System.out.println(e);} 
+		return query;
 	}
 
-	public void addToDatabase(String tableName, String[] values){
-		String addRow = "INSERT INTO " + tableName + " VALUES ( ";
-		for(String value : values)
-		{
-			addRow = addRow + value;
-		}
-		addRow = addRow + "')";
+	public void addToDatabase(String tableName, String values){
+		String addRow = "INSERT INTO " + tableName + " VALUES (";
+		addRow = addRow + values +")"; 
 		try {
 			s.execute(addRow);
 		} catch (SQLException e){System.out.println(e);} 		
