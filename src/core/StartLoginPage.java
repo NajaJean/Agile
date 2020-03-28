@@ -3,6 +3,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+
+import test.Database;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -72,5 +75,11 @@ public class StartLoginPage {
         frame.setBounds(10, 10, 370, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        
+        //Reading data from DB
+        try{  
+			String url="C:\\Users\\user\\Documents\\agileProject.accdb";//Here database exists in the current directory  
+			Database db = new Database(url);
+		}catch(Exception ee){System.out.println(ee);}
     }
 }
