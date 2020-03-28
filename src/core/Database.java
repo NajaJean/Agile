@@ -71,5 +71,21 @@ public class Database {
 			s.execute(addRow);
 		} catch (SQLException e){System.out.println(e);} 		
 	}
+	
+	public boolean checkUser(String user, String pass) {
+		boolean approved = false;
+		try {
+			ResultSet result = s.executeQuery("SELECT Username, password FROM Clients");
+			while (result.next()) {
+				String username = result.getString(1);
+				String password = result.getString(2);
+				if(user.equals(username) && pass.equals(password)) {
+					approved = true;
+					break;
+				}
+			}
+		} catch (SQLException e){System.out.println(e);} 
+		return approved;
+	}
 }
 
