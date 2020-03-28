@@ -6,6 +6,6 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "resources/features", glue = "stepDefinitions", strict = true)
-public class TestRunner_ClientLogin {
+public class TestRunner {
 
 }

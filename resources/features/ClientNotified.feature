@@ -17,14 +17,14 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: CreateContainer feature
-  This feature deals with the functionality of creating a container with a client, environment, and content.  
+Feature: ClientNotified
+  This feature deals with the functionality of notifying the Client when it has a container 
+  with an environment that is outside the contents threshold for environment
 
   @tag1
-  Scenario: Create a container with a specific client, environment, and content
-    Given a new Container
-    And it has a client with username "corona" and password "1234"
-    And it has an environment with temperature 13.3, pressure , and humidity 0.90
-    And it has a content 
-    Then 
+  Scenario: Client is notified when one of its containers environment is outside the contents threshold for environment
+    Given a client with username "corona" and password "1234" has a container
+    And the container has contents "banana" with a threshold of 0.1
+    When The environment in the container is outside the contents threshold 
+    Then system displays message that the client is notified
 

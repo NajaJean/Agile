@@ -37,21 +37,20 @@ public class Environment {
 	}
 	
 	public boolean validEnvironment(Content content) {
-		boolean valid = true;
 		Environment required = content.getEnvironment();
 		double threshold = content.getThreshold();
 		
-		if(outsideThreshold(this.temp,required.temp,threshold)||
-				outsideThreshold(this.humidity,required.humidity,threshold)||
-				outsideThreshold(this.pressure,required.pressure,threshold)) {
-			valid = false;
-		}
-		
-		return valid;
+		return meetsAllRequirements(required, threshold);
+	}
+
+	private boolean meetsAllRequirements(Environment required, double threshold) {
+		return inThreshold(this.temp,required.temp,threshold)||
+				inThreshold(this.humidity,required.humidity,threshold)||
+				inThreshold(this.pressure,required.pressure,threshold);
 	}
 	
-	private boolean outsideThreshold(double current, double required, double thresh) {
+	private boolean inThreshold(double current, double required, double thresh) {
 		double Thresh = required*thresh;
-		return (current < required - Thresh) || (current > required + Thresh);
+		return (current >= required - Thresh) && (current <= required + Thresh);
 	}
 }

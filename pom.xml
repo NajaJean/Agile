@@ -29,5 +29,10 @@
   			<version>5.5.0</version>
   			<scope>test</scope>
   		</dependency>
+ 		<dependency>
+ 			<groupId>io.cucumber</groupId>
+ 			<artifactId>cucumber-picocontainer</artifactId>
+ 			<version>5.5.0</version>
+ 		</dependency>
   	</dependencies>
 </project>
