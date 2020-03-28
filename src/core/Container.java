@@ -10,11 +10,16 @@ public class Container {
 	
 	private static int count = 0;
 	
-	public Container(Client client,Environment enviro,Content content) {
+	public Container(Client client, Environment enviro, Content content) {
 		this.containerID = count++;
 		this.client = client;
 		this.enviro = enviro;
 		this.content = content;
+	}
+	
+	public Container(Client client) {
+		this.containerID = count++;
+		this.client = client;
 	}
 	
 	public int getContainerID() {
