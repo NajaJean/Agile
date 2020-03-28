@@ -44,13 +44,24 @@ public class Environment {
 	}
 
 	private boolean meetsAllRequirements(Environment required, double threshold) {
-		return inThreshold(this.temp,required.temp,threshold)||
-				inThreshold(this.humidity,required.humidity,threshold)||
+		return inThreshold(this.temp,required.temp,threshold)&&
+				inThreshold(this.humidity,required.humidity,threshold)&&
 				inThreshold(this.pressure,required.pressure,threshold);
 	}
 	
 	private boolean inThreshold(double current, double required, double thresh) {
 		double Thresh = required*thresh;
 		return (current >= required - Thresh) && (current <= required + Thresh);
+	}
+	
+	public NotifyObject checkEnvironment(Content content) {
+		NotifyObject notification;
+		if (!validEnvironment(content)) {
+			notification = new NotifyObject(200, "Client is notified of invalid environment");
+			return notification;
+		} else {
+			notification = new NotifyObject(0, "");
+			return notification;
+		}
 	}
 }
