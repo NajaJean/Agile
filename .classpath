@@ -24,13 +24,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/cucumber-core-5.5.0.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/cucumber-java-5.5.0.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/cucumber-junit-5.5.0.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/cucumber-jvm-deps-1.0.6.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/gherkin-11.0.0.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/junit-4.13.jar"/>
-	<classpathentry kind="lib" path="/Users/cartergran/Desktop/newCucJarFiles/mockito-all-1.10.19.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-java-5.5.0.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-junit-5.5.0.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/gherkin-11.0.0.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/junit-4.13.jar"/>
+	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="lib" path="commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="hsqldb-2.5.0.jar"/>
