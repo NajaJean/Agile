@@ -1,2 +1,7 @@
 /bin/
 /target/
+
+# Ignore these files for future commits (Computer specific)
+# Can add more as needed
+.project
+.classpath
