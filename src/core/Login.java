@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  
 class LoginFrame extends JFrame implements ActionListener {
 	String CorL;
-    Container container = getContentPane();
+    java.awt.Container container = getContentPane();
     JLabel userNameLabel = new JLabel ("User Name:");
     JLabel passwordLabel = new JLabel ("Password:");
     JButton loginButton = new JButton ("Login");
