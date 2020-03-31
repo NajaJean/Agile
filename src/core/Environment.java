@@ -58,10 +58,8 @@ public class Environment {
 		NotifyObject notification;
 		if (!validEnvironment(content)) {
 			notification = new NotifyObject(200, "Client is notified of invalid environment");
-			return notification;
 		} else {
-			notification = new NotifyObject(0, "");
-			return notification;
-		}
+			notification = new NotifyObject(0, "Container environment is valid");
+		} return notification;
 	}
 }

@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import core.Client;
 import core.Container;
+import core.ContainerJourney;
 import core.Content;
 import core.Environment;
+import core.Location;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,6 +18,10 @@ public class StepDefs_ClientNotified {
 	Client client;
 	Container clientContainer;
 	Content containerContent;
+	
+	ContainerJourney clientContainerJourney;
+	Location startLocation;
+	Location endLocation;
 	
 	NotifyObject notification;
 	
@@ -48,27 +54,25 @@ public class StepDefs_ClientNotified {
 	
 	
 	@Given("the container is starting its journey at {string} with coords {double} and {double}")
-	public void the_container_is_starting_its_journey_at_with_coords_and(String string, Double double1, Double double2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_container_is_starting_its_journey_at_with_coords_and(String start, double latitude, double longitude) {
+	    startLocation = new Location(start, new double[]{latitude, longitude});
 	}
 
 	@Given("the container has a final destination at {string} with coords {double} and {double}")
-	public void the_container_has_a_final_destination_at_with_coords_and(String string, Double double1, Double double2) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void the_container_has_a_final_destination_at_with_coords_and(String end, double latitude, double longitude) {
+	    endLocation = new Location(end, new double[]{latitude, longitude});
+	    
+	    clientContainerJourney = new ContainerJourney(startLocation, endLocation, clientContainer);
 	}
 
 	@When("the container reaches its final destination")
 	public void the_container_reaches_its_final_destination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		notification = clientContainerJourney.setCurrentLocation(endLocation);
 	}
 
 	@Then("container management system notifies client container arrived")
 	public void container_management_system_notifies_client_container_arrived() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    assertEquals(notification.getNotifyMessage(), "Client is notified of arrival");
 	}
 
 }
