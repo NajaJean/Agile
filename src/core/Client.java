@@ -64,4 +64,9 @@ public class Client {
     public int getID() {
     	return ID;
     }
+    @Override
+    public String toString() {
+    	return "'"+ ID + "', '" + name + "', '" + email + "', '" + 
+    			address + "', '" + username + "', '" + password + "'";
+    }
 }
