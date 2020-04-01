@@ -8,6 +8,7 @@ public class Client {
     private String address;
     private int ID;
     private static int count = 0;
+    private boolean loggedIn;
     
     public Client(String username, String password, String name, String email, String address) {
     	this.username = username;
@@ -16,6 +17,7 @@ public class Client {
 		this.email = email;
 		this.address = address;
 		this.ID = count++;
+		this.loggedIn = false;
 	} 
     
     public Client(String username, String password) {
