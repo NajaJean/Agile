@@ -24,23 +24,15 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-core-5.5.0.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-java-5.5.0.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-junit-5.5.0.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/cucumber-jvm-deps-1.0.6.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/gherkin-11.0.0.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/junit-4.13.jar"/>
-	<classpathentry kind="lib" path="Q:/2020/Semester1/CAB302/Project/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="lib" path="commons-lang3-3.8.1.jar"/>
 	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="hsqldb-2.5.0.jar"/>
 	<classpathentry kind="lib" path="jackcess-3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-core-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-java-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-junit-5.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-jvm-deps-1.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/gherkin-11.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/mockito-all-1.10.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/junit-4.13.jar"/>
+	<classpathentry kind="lib" path="JAARs/cucumber-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JAARs/cucumber-java-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JAARs/cucumber-junit-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JAARs/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="JAARs/gherkin-11.0.0.jar"/>
+	<classpathentry kind="lib" path="JAARs/junit-4.13.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
