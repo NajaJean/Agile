@@ -1,6 +1,5 @@
 package core;
 
-// HEJ
 public class Client {
     private String username;
     private String password;
@@ -52,18 +51,36 @@ public class Client {
     public String getEmail() {
     	return email;
     }
+    
     public void setEmail(String email) {
     	this.email = email;
     }
+    
     public String getAddress() {
     	return address;
     }
+    
     public void setAddress(String address) {
     	this.address = address;
     }
+    
     public int getID() {
     	return ID;
     }
+    
+    public boolean isLoggedIn() {
+    	return this.loggedIn;
+    }
+    
+    public void logIn(boolean b) {
+    	if (b) {
+    		this.loggedIn = true;
+    	}
+    	else {
+    		this.loggedIn = false;
+    	}
+    }
+    
     @Override
     public String toString() {
     	return "'"+ ID + "', '" + name + "', '" + email + "', '" + 
