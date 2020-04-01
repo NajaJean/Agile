@@ -35,5 +35,12 @@
 	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="hsqldb-2.5.0.jar"/>
 	<classpathentry kind="lib" path="jackcess-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-java-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-junit-5.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/gherkin-11.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/mockito-all-1.10.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/-/eclipse-workspace/Agile/junit-4.13.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
