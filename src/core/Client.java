@@ -1,6 +1,6 @@
 package core;
 
-
+// HEJ
 public class Client {
     private String username;
     private String password;
