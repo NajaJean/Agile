@@ -10,7 +10,6 @@ class MapFrame extends JFrame{
 	
 	java.awt.Container map = getContentPane();
 	java.awt.Container container = getContentPane();
-	//ContainerJourney containerJ = new ContainerJourney();
 	String planeright = "src\\planeright.png";
 	String planeleft = "src\\planeleft.png";
 	String ship = "src\\ship.png";
@@ -19,7 +18,6 @@ class MapFrame extends JFrame{
 	JLabel shippingC[] = {new JLabel(new ImageIcon(containerSmall)),
 						  new JLabel(new ImageIcon(containerSmall)),
 						  new JLabel(new ImageIcon(containerSmall))};
-	//JLabel shippingC2 = new JLabel(new ImageIcon("F:\\projects\\java\\Agile\\src\\container.png"));
     JLabel worldmap = new JLabel (new ImageIcon(wMap));
     ContainerJourney[] containerJs;
     boolean isGoingRight = true;
@@ -32,8 +30,7 @@ class MapFrame extends JFrame{
     		shippingC[i].setToolTipText("<html>" +
     				"Container ID: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerID()) + "<br>" +
     				"Container Coordinates: " + String.valueOf(containerJs[i].getCurrentLocX()) + ", " + String.valueOf(containerJs[i].getCurrentLocY()) + "<br>" +
-    				"Client ID: " + String.valueOf(containerJs[i].getContaineronJourney().getClientofContainer().getID()) + "<br>" +
-    				"Client Name: " + String.valueOf(containerJs[i].getContaineronJourney().getClientofContainer().getName()) + "<br>" +
+    				"Content: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
     				"Container Temperature: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
     				"Container Pressure: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
     				"Container Humidity: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
@@ -163,6 +160,11 @@ class MapFrame extends JFrame{
 }
  
 public class Map {
+	
+	public Map(ContainerJourney[] containerJs) {
+		MapFrame frame = new MapFrame(containerJs);
+	}
+	
     public static void main(String[] a) throws InterruptedException {
    
     	//Create test stuff should be given
@@ -199,7 +201,7 @@ public class Map {
     									  };
     	
     	MapFrame frame = new MapFrame(containerJs);
-    	frame.setTitle("Configure Client");
+    	frame.setTitle("World Map");
         frame.setVisible(true);
         frame.setBounds(0, 0, 1810, 950);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
