@@ -20,7 +20,11 @@ public class ContainerJourney {
 		// I do not think we need to pass another parameter for the current location 
 		// because the current location should start at start when the container journey
 		// is initialized
-		this.current = start;
+		
+		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
+		//if you know how to pass the start location easier a deep copy pls change this
+		double[] currentGps = {start.getGPScoord()[0], start.getGPScoord()[1]};
+		this.current = new Location("Current Location", currentGps);
 	}
 	
 	public int getJourneyID() {
@@ -31,8 +35,33 @@ public class ContainerJourney {
 		return start;
 	}
 	
+	public double getStartLocX() {
+		return start.getGPScoord()[0];
+	}
+	public double getStartLocY() {
+		return start.getGPScoord()[1];
+	}
+	
+	public Location getCurrentLocation() {
+		return current;
+	}
+	
+	public double getCurrentLocX() {
+		return current.getGPScoord()[0];
+	}
+	public double getCurrentLocY() {
+		return current.getGPScoord()[1];
+	}
+	
 	public Location getEndLocation() {
 		return end;
+	}
+	
+	public double getEndLocX() {
+		return end.getGPScoord()[0];
+	}
+	public double getEndLocY() {
+		return end.getGPScoord()[1];
 	}
 	
 	public Container getContaineronJourney() {

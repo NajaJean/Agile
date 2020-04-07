@@ -18,11 +18,30 @@ public class Location {
     	return name;
     }
     
+    public void setName(String name) {
+    	this.name = name;
+    }
+    
     public int getLocationID() {
     	return ID;
     }
     
     public double[] getGPScoord() {
     	return GPScoord;
+    }
+    
+    public void setGPSCoordX(double x) {
+    	GPScoord[0] = x;    	
+    }
+    public void setGPSCoordY(double y) {
+    	GPScoord[1] = y;    	
+    }
+    
+    public void setOneGPSCoord(int i, double j) {
+    	GPScoord[i] = j;
+    }
+    
+    public void incrementOneGPSCoord(int axis, double j) {
+    	GPScoord[axis] = GPScoord[axis] + j;
     }
 }
