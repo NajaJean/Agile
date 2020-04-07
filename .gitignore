@@ -4,3 +4,8 @@
 # Ignore these files for future commits (Computer specific)
 # Can add more as needed
 .classpath
+.gitignore
+*.jar
+
+.settings/org.eclipse.jdt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
