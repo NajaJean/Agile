@@ -17,9 +17,10 @@ public class Container {
 		this.content = content;
 	}
 	
-	public Container(Client client) {
+	// Create empty container
+	public Container(Environment enviro) {
 		this.containerID = count++;
-		this.client = client;
+		this.enviro = enviro;
 	}
 	
 	public int getContainerID() {
