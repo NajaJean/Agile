@@ -21,6 +21,7 @@ class MapFrame extends JFrame{
     JLabel worldmap = new JLabel (new ImageIcon(wMap));
     ContainerJourney[] containerJs;
     boolean isGoingRight = true;
+    Climate climate = new Climate();
     
  
     MapFrame(ContainerJourney[] containerJourneys) {
@@ -65,8 +66,11 @@ class MapFrame extends JFrame{
 	    	for (int i = 0; i < shippingC.length; i++) {
 	    		
 	    		moveContainer(i);
+	    		climate.updateWeatherForOneContainerJ(containerJs[i]);
+	    		resetTooltips(i);
 	    		setContainer(i);
 	    	}
+	    	
 	    	Thread.sleep(10);
 	    }
    	}
@@ -80,6 +84,18 @@ class MapFrame extends JFrame{
 		return 0 < (containerJs[index].getEndLocX()-containerJs[index].getStartLocX());
 	}
 	
+	public void resetTooltips(int i) {
+		shippingC[i].setToolTipText("<html>" +
+				"Container ID: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerID()) + "<br>" +
+				"Container Coordinates: " + String.valueOf(containerJs[i].getCurrentLocX()) + ", " + String.valueOf(containerJs[i].getCurrentLocY()) + "<br>" +
+				"Content: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
+				"Container Temperature: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
+				"Container Pressure: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
+				"Container Humidity: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
+				"</html>");
+	}
+	
+	
     public void moveOneContainers(int index) throws InterruptedException {
     	setContainer(index);
     	Thread.sleep(1000);
@@ -89,8 +105,10 @@ class MapFrame extends JFrame{
 	    	ifEnrouteChangeIcon(j, index, "plane", containerSmall);
 
     		moveContainer(index);
+    		climate.updateWeatherForOneContainerJ(containerJs[index]);
+    		resetTooltips(index);
     		setContainer(index);
-
+    		
 	    	Thread.sleep(10);
 	    }
    	}
@@ -104,12 +122,16 @@ class MapFrame extends JFrame{
 	}
     
     public void showOneContainer(int index) throws InterruptedException {
+    	climate.updateWeatherForOneContainerJ(containerJs[index]);
+    	resetTooltips(index);
     	setContainer(index);
     	Thread.sleep(5000);
     }
     
     public void showAllContainers() throws InterruptedException {
     	for (int i = 0; i < shippingC.length; i++) {
+    		climate.updateWeatherForOneContainerJ(containerJs[i]);
+    		resetTooltips(i);
         	setContainer(i);}
     	Thread.sleep(5000);
     }     
@@ -213,6 +235,10 @@ public class Map {
         //frame.showOneContainer(2);
         frame.containerJs[1].getCurrentLocation().setGPSCoordX(420.0);
         frame.containerJs[1].getCurrentLocation().setGPSCoordY(670.0);
+        
+        
+        frame.containerJs[0].getCurrentLocation().setGPSCoordX(1000.0);
+        frame.containerJs[0].getCurrentLocation().setGPSCoordY(550.0);
         //frame.showAllContainers();
     }
 }
