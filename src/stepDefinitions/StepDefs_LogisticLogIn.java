@@ -40,7 +40,7 @@ public class StepDefs_LogisticLogIn {
 
 	@When("the logistic Company tries logs in")
 	public void the_logistic_Company_tries_logs_in() {
-		l.logIn(true);
+		l.logIn(false);
 	}
 	
 	@Then("an error-message prints")
