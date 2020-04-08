@@ -1,9 +1,10 @@
-package core;
+package UI;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

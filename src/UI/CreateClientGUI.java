@@ -1,7 +1,10 @@
-package core;
+package UI;
 
 
 import javax.swing.*;
+
+import core.Client;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

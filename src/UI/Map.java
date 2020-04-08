@@ -1,7 +1,15 @@
 
-package core;
+package UI;
 
 import javax.swing.*;
+
+import core.Client;
+import core.Climate;
+import core.Container;
+import core.ContainerJourney;
+import core.Content;
+import core.Environment;
+import core.Location;
 
 
 class MapFrame extends JFrame{

@@ -2,13 +2,13 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import UI.Map;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
 import core.Content;
 import core.Environment;
 import core.Location;
-import core.Map;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
