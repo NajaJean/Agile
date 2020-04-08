@@ -88,4 +88,15 @@ public class Client {
     	return "'"+ ID + "', '" + name + "', '" + email + "', '" + 
     			address + "', '" + username + "', '" + password + "'";
     }
+    
+	public static Client findClient(int id, Client[] clients) {
+		Client result = null;
+		for(int i = 0; i< clients.length; i++) {
+			if(clients[i].ID == id) {
+				result = clients[i];
+				break;
+			}
+		}
+		return result;
+	}
 }

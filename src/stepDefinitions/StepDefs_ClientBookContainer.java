@@ -6,6 +6,8 @@ import core.Database;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import test.Content;
+import test.Environment;
 
 public class StepDefs_ClientBookContainer {
 	

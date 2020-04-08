@@ -2,14 +2,21 @@ package core;
 
 
 public class Environment {
+	private int enviro_ID;
 	private double temp;
 	private double pressure;
 	private double humidity;
+	private static int count = 0;
 	
 	public Environment(double temp, double pressure, double humidity) {
 		this.temp = temp;
 		this.pressure = pressure;
 		this.humidity = humidity;
+		this.enviro_ID = count++;
+	}
+	
+	public int getEnviro_ID() {
+		return enviro_ID;
 	}
 	
 	public void setTemp(double temp) {
@@ -34,6 +41,17 @@ public class Environment {
 	
 	public double getHumidity() {
 		return humidity;
+	}
+	
+	public static Environment findEnviro(int id, Environment[] enviros) {
+		Environment result = null;
+		for(int i = 0; i< enviros.length; i++) {
+			if(enviros[i].enviro_ID == id) {
+				result = enviros[i];
+				break;
+			}
+		}
+		return result;
 	}
 	
 	public boolean validEnvironment(Content content) {
