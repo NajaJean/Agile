@@ -32,12 +32,16 @@ public class LogisticCompany {
     	return this.loggedIn;
     }
     
-    public void logIn(boolean b) {
+    public NotifyObject logIn(boolean b) {
+    	NotifyObject response;
     	if (b) {
     		this.loggedIn = true;
+    		response = new NotifyObject(100, "Login successful");
     	}
     	else {
     		this.loggedIn = false;
+    		response = new NotifyObject(150, "Incorrect username or password");
     	}
+    	return response;
     }
 }
