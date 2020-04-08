@@ -49,7 +49,7 @@ public class StepDefs_ClientNotified {
 
 	@Then("container management system notifies client of invalid environment")
 	public void container_management_system_notifies_client_of_invalid_environment() {
-		assertEquals(notification.getNotifyMessage(), "Client is notified of invalid environment");
+		assertEquals("Client is notified of invalid environment", notification.getNotifyMessage());
 	}
 	
 	
@@ -72,7 +72,7 @@ public class StepDefs_ClientNotified {
 
 	@Then("container management system notifies client container arrived")
 	public void container_management_system_notifies_client_container_arrived() {
-	    assertEquals(notification.getNotifyMessage(), "Client is notified of arrival");
+	    assertEquals("Client is notified of arrival", notification.getNotifyMessage());
 	}
 
 }
