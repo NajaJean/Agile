@@ -8,7 +8,7 @@ Feature: Client Login
     And the username is correct and password is correct
     And username and password exits in the Database
     When the client logs in
-    Then the client is logged in 
+    Then the client is logged in 	
 
 	Scenario: Client has the wrong password 
 		Given that the client is not logged in 
