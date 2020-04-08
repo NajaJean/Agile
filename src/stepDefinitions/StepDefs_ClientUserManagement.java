@@ -13,15 +13,19 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_ClientUserManagement {
 	
-	Client specificClient;
-	Client randomClient = new Client("randomUsername", "password");
+	Client specificClient = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln");
+	Client randomClient = new Client("alice", "1234", "Alice Harris", "alice.harris@gmail.com","10 Umbrella ct");
 	
+	Environment enviro;
 	Container specificClientContainer;
 	
-	@Given("a client with username {string} and password {string} registers a container")
-	public void a_client_with_username_and_password_registers_a_container(String username, String password) {
-	    specificClient = new Client(username, password);
-	    specificClientContainer = new Container(specificClient);
+	@Given("a client books a container")
+	public void a_client_books_a_container() {
+	    enviro = new Environment(5.3,1.1,0.85);
+
+		// Does not have content yet, just a client that booked an empty container
+	    specificClientContainer = new Container(enviro);
+	    specificClientContainer.setClientofContainer(specificClient);
 	}
 
 	@Given("the client sets the contents of the container")
@@ -43,7 +47,7 @@ public class StepDefs_ClientUserManagement {
 	    assertTrue(specificClient.isLoggedIn());
 	    assertTrue(randomClient.isLoggedIn());
 	    
-	    assertEquals("Corona", specificClientContainer.getClientofContainer().getUserName());
+	    assertEquals("bob", specificClientContainer.getClientofContainer().getUserName());
 	    assertEquals("1234", specificClientContainer.getClientofContainer().getPassword());
 	    
 	    assertTrue(specificClient == specificClientContainer.getClientofContainer());
