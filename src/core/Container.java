@@ -62,4 +62,13 @@ public class Container {
 		}
 		return result;
 	}
+	
+	public NotifyObject checkBookingOfContainer(int id) {
+		NotifyObject notification;
+		if (id != 0) {
+			notification = new NotifyObject(69, "Container is succesfully booked");
+		} else {
+			notification = new NotifyObject(666, "No empty containers available");
+		} return notification;
+	}
 }
