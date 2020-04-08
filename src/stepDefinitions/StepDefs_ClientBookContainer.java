@@ -89,8 +89,8 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client books a container")
 	public void the_Client_books_a_container() {
-		con = Container.findContainer(Integer.toString(idC), ContainersC);
-		con.setClientofContainer(ClientsC[1]);
+		con = Container.findContainer(Integer.toString(idC), ContainersC); // Finds the empty container
+		con.setClientofContainer(ClientsC[1]); // Assign to client
 		response = con.checkBookingOfContainer(idC);
 	}
 
