@@ -1,10 +1,11 @@
 package core;
 
 public class LogisticCompany {
-	private String username = "msk";
+	private String username = "MSK";
     private String password = "1234";
-    private String name = "Mærsk";
+    private String name = "BigDaddyShipping";
 	private int ID = 1;
+	private boolean loggedIn;
 	
 	public String getUsername() {
 		return username;
@@ -27,4 +28,16 @@ public class LogisticCompany {
 	public int getID() {
 		return ID;
 	}
+    public boolean isLoggedIn() {
+    	return this.loggedIn;
+    }
+    
+    public void logIn(boolean b) {
+    	if (b) {
+    		this.loggedIn = true;
+    	}
+    	else {
+    		this.loggedIn = false;
+    	}
+    }
 }
