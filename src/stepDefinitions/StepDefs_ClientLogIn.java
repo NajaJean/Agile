@@ -14,7 +14,7 @@ import io.cucumber.java.en.When;
 public class StepDefs_ClientLogIn {
 	Client Cc = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln"); 
 	Client Ic = new Client("Horona", "1234", "Habrat", "h@", "Hasd");
-	Database d = new Database("agileProject.accdb");
+	Database d = new Database("C:\\Users\\-\\eclipse-workspace\\Agile\\target\\agileProject.accdb");
 
 	@Given("that the client is not logged in")
 	public void that_the_client_is_not_logged_in() {
