@@ -18,6 +18,7 @@ public class StepDefs_ClientNotified {
 	Client client;
 	Container clientContainer;
 	Content containerContent;
+	Environment enviro;
 	
 	ContainerJourney clientContainerJourney;
 	Location startLocation;
@@ -25,11 +26,14 @@ public class StepDefs_ClientNotified {
 	
 	NotifyObject notification;
 	
-	@Given("a client with username {string} and password {string} has a container")
+	@Given("a client has a container with no content")
 	public void a_client_with_username_and_password_has_a_container(String username, String password) {
-		client = new Client(username, password);
-		// Does not have an environment or contents yet, just a client that booked a container
-		clientContainer = new Container(client);
+		client = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln");
+		enviro = new Environment(5.3,1.1,0.85);
+
+		// Does not have content yet, just a client that booked an empty container
+		clientContainer = new Container(enviro);
+		clientContainer.setClientofContainer(client);
 	}
 	
 	@Given("the container has content {string} which has required environment and threshold of {double}")

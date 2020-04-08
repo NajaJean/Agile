@@ -20,15 +20,6 @@ public class Client {
 		this.loggedIn = false;
 	} 
     
-    public Client(String username, String password) {
-    	this.username = username;
-    	this.password = password;
-    	this.name = "noname";
-		this.email = "no email";
-		this.address = "homeless";
-		this.ID = count++;
-	} 
-    
     public String getName() {
     	return name;
     }
