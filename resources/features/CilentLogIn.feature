@@ -9,13 +9,14 @@ Feature: Client Login
     And username and password exits in the Database
     When the client logs in
     Then the client is logged in 	
+    And message is displayed saying "Login successful"
 
 	Scenario: Client has the wrong password 
 		Given that the client is not logged in 
 		And the password or username is incorrect
 		And username or password does not exits in the Database 
 		When the client tries to log in
-		Then an error-message is printed
+		Then an error-message is displayed saying "Incorrect username or password"
 		And the client is not logged in
 	
 
