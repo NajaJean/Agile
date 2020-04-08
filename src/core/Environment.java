@@ -43,10 +43,10 @@ public class Environment {
 		return humidity;
 	}
 	
-	public static Environment findEnviro(int id, Environment[] enviros) {
+	public static Environment findEnviro(String id, Environment[] enviros) {
 		Environment result = null;
 		for(int i = 0; i< enviros.length; i++) {
-			if(enviros[i].enviro_ID == id) {
+			if(enviros[i].enviro_ID == Integer.parseInt(id)) {
 				result = enviros[i];
 				break;
 			}

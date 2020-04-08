@@ -27,10 +27,10 @@ public class Content {
 		this.threshold = threshold;
 		this.content_ID = count++;
 	}
-	public static Content findContent(int id, Content[] contents) {
+	public static Content findContent(String id, Content[] contents) {
 		Content result = null;
 		for(int i = 0; i< contents.length; i++) {
-			if(contents[i].content_ID == id) {
+			if(contents[i].content_ID == Integer.parseInt(id)) {
 				result = contents[i];
 				break;
 			}
