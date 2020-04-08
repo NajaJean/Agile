@@ -89,10 +89,10 @@ public class Client {
     			address + "', '" + username + "', '" + password + "'";
     }
     
-	public static Client findClient(int id, Client[] clients) {
+	public static Client findClient(String id, Client[] clients) {
 		Client result = null;
 		for(int i = 0; i< clients.length; i++) {
-			if(clients[i].ID == id) {
+			if(clients[i].ID == Integer.parseInt(id)) {
 				result = clients[i];
 				break;
 			}

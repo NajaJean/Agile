@@ -51,4 +51,15 @@ public class Container {
 	public void setContainerContent(Content content) {
 		this.content = content;
 	}
+	
+	public static Container findContainer(String id, Container[] containers) {
+		Container result = null;
+		for(int i = 0; i< containers.length; i++) {
+			if(containers[i].containerID == Integer.parseInt(id)) {
+				result = containers[i];
+				break;
+			}
+		}
+		return result;
+	}
 }
