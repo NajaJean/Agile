@@ -13,6 +13,6 @@ Feature: Logistic Company Login
 		Given that the Logistic Company is not logged in 
 		And the username is "wrong username" or the password is "wrong password" 
 		When the logistic Company tries logs in
-		Then an error-message is printed
+		Then an error-message prints
 		And the Logistic Company is not logged in
 

@@ -25,8 +25,7 @@ public class StepDefs_LogisticLogIn {
 
 	@When("the logistic Company logs in")
 	public void the_logistic_Company_logs_in() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+		l.logIn(true);
 	}
 	
 	@Then("the Logistic Company is logged in")
@@ -41,8 +40,12 @@ public class StepDefs_LogisticLogIn {
 
 	@When("the logistic Company tries logs in")
 	public void the_logistic_Company_tries_logs_in() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+		l.logIn(true);
+	}
+	
+	@Then("an error-message prints")
+	public void an_error_message_is_printed() {
+	    System.out.println("Incorrect username or password");
 	}
 	
 	@Then("the Logistic Company is not logged in")

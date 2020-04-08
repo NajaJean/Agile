@@ -3,7 +3,7 @@ package core;
 public class LogisticCompany {
 	private String username = "MSK";
     private String password = "1234";
-    private String name = "BigDaddyShipping";
+    private String name = "LongTimeNoSea";
 	private int ID = 1;
 	private boolean loggedIn;
 	
