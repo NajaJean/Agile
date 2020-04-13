@@ -13,7 +13,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="ucanaccess-5.0.0.jar">
+	<classpathentry kind="lib" path="JARs/ucanaccess-5.0.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
