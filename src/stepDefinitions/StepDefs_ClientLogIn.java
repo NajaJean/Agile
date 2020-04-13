@@ -67,7 +67,7 @@ public class StepDefs_ClientLogIn {
 	}
 
 	@Then("an error-message is displayed saying {string}")
-	public void an_error_message_is_displayed(String s) {
+	public void an_error_message_is_displayed_saying(String s) {
 		assertEquals(s, response.getNotifyMessage());
 	}
 	
