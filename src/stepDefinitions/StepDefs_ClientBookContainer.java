@@ -3,6 +3,8 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.nio.file.Paths;
+
 import core.Client;
 import core.Container;
 import core.Database;
@@ -15,8 +17,8 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_ClientBookContainer {
 	
-	Database dC = new Database("C:\\Users\\-\\eclipse-workspace\\Agile\\target\\DatabaseC.accdb");
-	Database dI = new Database("C:\\Users\\-\\eclipse-workspace\\Agile\\target\\agileProject.accdb");
+//	Database dC = new Database("C:\\Users\\-\\eclipse-workspace\\Agile\\target\\DatabaseC.accdb");
+	Database dI = new Database("agileProject.accdb"); //"C:\\Users\\-\\eclipse-workspace\\Agile\\target\\agileProject.accdb");
 	int idC;
 	int idI;
 	Container con;
