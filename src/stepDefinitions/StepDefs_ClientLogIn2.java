@@ -66,10 +66,10 @@ public class StepDefs_ClientLogIn2 {
 		response = Ic.logIn(d.checkUser(Ic.getUserName(), Ic.getPassword()));
 	}
 	
-	@Then("an error-message is displayed: {string}")
+/*	@Then("an error-message is displayed: {string}")
 	public void an_error_message_is_displayed(String string) {
 		assertEquals(string, response.getNotifyMessage());
-	}
+	} */
 	
 	@Then("the client is not logged in")
 	public void the_client_is_not_logged_in() {

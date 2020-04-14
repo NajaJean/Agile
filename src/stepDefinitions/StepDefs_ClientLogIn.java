@@ -1,5 +1,5 @@
 package stepDefinitions;
-
+/*
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
@@ -76,3 +76,4 @@ public class StepDefs_ClientLogIn {
 		assertTrue(!Ic.isLoggedIn());
 	}	 
 }
+*/

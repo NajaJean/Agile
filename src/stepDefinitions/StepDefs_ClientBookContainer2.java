@@ -4,7 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import core.Client;
+import core.Container;
+import core.Content;
 import core.Database;
+import core.Environment;
+import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +18,6 @@ public class StepDefs_ClientBookContainer2 {
 	Database d = new Database("agileProject.accdb"); 
 	int id;
 	Container con;
-	
 	Client[] Clients;
 	Environment[] Enviros;
 	Content[] Contents;
@@ -116,10 +119,10 @@ public class StepDefs_ClientBookContainer2 {
 		assertEquals(con.getClientofContainer(),Clients[1].getID());
 	}
 
-	@Then("message is displayed saying {string}")
+/*	@Then("message is displayed saying {string}")
 	public void message_is_displayed_saying(String string) {
 		assertEquals(string, response.getNotifyMessage());
-	}
+	} */
 
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
@@ -132,8 +135,8 @@ public class StepDefs_ClientBookContainer2 {
 		response = con.checkBookingOfContainer(id);
 	}
 
-	@Then("an error-message is displayed saying {string}")
+/*	@Then("an error-message is displayed saying {string}")
 	public void an_error_message_is_displayed_saying(String string) {
 		assertEquals(string, response.getNotifyMessage());
-	}
+	} */
 }

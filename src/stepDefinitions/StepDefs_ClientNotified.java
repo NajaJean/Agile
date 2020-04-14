@@ -26,8 +26,8 @@ public class StepDefs_ClientNotified {
 	
 	NotifyObject notification;
 	
-	@Given("a client has a container with no content")
-	public void a_client_with_username_and_password_has_a_container(String username, String password) {
+	@Given("a client has a container")
+	public void a_client_has_a_container() {
 		client = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln");
 		enviro = new Environment(5.3,1.1,0.85);
 
