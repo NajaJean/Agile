@@ -1,5 +1,5 @@
 package stepDefinitions;
-/*
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
@@ -15,7 +15,7 @@ import io.cucumber.java.en.When;
 public class StepDefs_ClientLogIn {
 	Client Cc = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln"); 
 	Client Ic = new Client("Horona", "1234", "Habrat", "h@", "Hasd");
-	Database d = new Database("C:\\Users\\-\\eclipse-workspace\\Agile\\target\\agileProject.accdb");
+	Database d = new Database("agileProject.accdb");
 	
 	NotifyObject response;
 	
@@ -46,10 +46,11 @@ public class StepDefs_ClientLogIn {
 		assertTrue(Cc.isLoggedIn());
 	}
 	
+	/*
 	@Then("message is displayed saying {string}") 
 	public void message_is_displayed_saying(String s){
 		assertEquals(s, response.getNotifyMessage());
-	}
+	} */
 
 	@Given("the password or username is incorrect")
 	public void the_password_or_username_is_incorrect() {
@@ -66,14 +67,14 @@ public class StepDefs_ClientLogIn {
 	    response = Ic.logIn(d.checkUser(Ic.getUserName(), Ic.getPassword()));
 	}
 
+	/*
 	@Then("an error-message is displayed saying {string}")
 	public void an_error_message_is_displayed_saying(String s) {
 		assertEquals(s, response.getNotifyMessage());
-	}
+	} */
 	
 	@Then("the client is not logged in")
 	public void the_client_is_not_logged_in() {
 		assertTrue(!Ic.isLoggedIn());
 	}	 
 }
-*/

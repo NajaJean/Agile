@@ -19,6 +19,7 @@ public class StepDefs_LogisticLogIn {
 	@Given("that the Logistic Company is not logged in")
 	public void that_the_Logistic_Company_is_not_logged_in() {
 		assertTrue(!l.isLoggedIn());
+		System.out.println("test");
 	}
 
 	@Given("the username is {string} and password is {string}")
@@ -37,8 +38,10 @@ public class StepDefs_LogisticLogIn {
 		assertTrue(l.isLoggedIn());
 	}
 	
+	
 	@Then("message is displayed saying {string}") 
 	public void message_is_displayed_saying(String s){
+		System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
 	}
 
@@ -54,10 +57,10 @@ public class StepDefs_LogisticLogIn {
 		response = l.logIn(false);
 	}
 	
-/*	@Then("an error-message is displayed saying {string}")
+	@Then("an error-message is displayed saying {string}")
 	public void an_error_message_is_displayed_saying(String s) {
 		assertEquals(s, response.getNotifyMessage());
-	} */
+	} 
 	
 	@Then("the Logistic Company is not logged in")
 	public void the_Logistic_Company_is_not_logged_in() {
