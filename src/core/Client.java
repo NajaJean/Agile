@@ -20,6 +20,16 @@ public class Client {
 		this.loggedIn = false;
 	} 
     
+    //pls dont remove it yet its in use it can be removed in the final clean up
+    public Client(String username, String password) {
+    	this.username = username;
+    	this.password = password;
+    	this.name = "noname";
+		this.email = "no email";
+		this.address = "homeless";
+		this.ID = count++;
+	} 
+    
     public String getName() {
     	return name;
     }
