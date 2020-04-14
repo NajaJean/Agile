@@ -100,5 +100,18 @@ public class Database {
 		} catch (SQLException e){System.out.println(e);} 
 		return index;
 	}
+	
+	public int clientEmptyContainer(int id) {
+		ResultSet result;
+		String query = "SELECT Container_ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS " + Integer.toString(id);
+		int index = 0;
+		try {
+			result = s.executeQuery(query);
+			while (result.next()) {
+				 index = result.getInt(1);
+			}
+		} catch (SQLException e){System.out.println(e);} 
+		return index;
+	}
 }
 
