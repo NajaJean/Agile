@@ -5,8 +5,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefs_LogisticCompCreateClient {
-	@Given("the logistic company")
-	public void the_logistic_company() {
+	@Given("a logistic company")
+	public void a_logistic_company() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}

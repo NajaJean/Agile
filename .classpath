@@ -7,13 +7,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-13">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="ucanaccess-5.0.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -29,11 +28,12 @@
 	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="hsqldb-2.5.0.jar"/>
 	<classpathentry kind="lib" path="jackcess-3.0.1.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/cucumber-core-5.5.0.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/cucumber-java-5.5.0.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/cucumber-junit-5.5.0.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/cucumber-jvm-deps-1.0.6.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/junit-4.13.jar"/>
-	<classpathentry kind="lib" path="F:/projects/java/Agile/mockito-all-1.10.19.jar"/>
+	<classpathentry kind="lib" path="JARs/cucumber-core-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JARs/cucumber-java-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JARs/cucumber-junit-5.5.0.jar"/>
+	<classpathentry kind="lib" path="JARs/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="JARs/gherkin-11.0.0.jar"/>
+	<classpathentry kind="lib" path="JARs/junit-4.13.jar"/>
+	<classpathentry kind="lib" path="JARs/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
