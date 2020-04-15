@@ -88,6 +88,12 @@ public class Client {
     	return response;
     }
     
+    public NotifyObject configure() {
+    	NotifyObject response;
+    	response = new NotifyObject(101, "Your information is updated!");
+    	return response;
+    }
+    
     @Override
     public String toString() {
     	return "'"+ ID + "', '" + name + "', '" + email + "', '" + 
