@@ -59,7 +59,7 @@ public class StepDefs_LogisticsCompCreateClient{
     
     @Then ("the client is successfully created and given a valid client ID")
         public void the_client_is_successfully_created_and_given_a_valid_client_ID() {
-            d.addToDatabase(tableName, values); // what to insert here again? Is ID # automatically given?
+//            d.addToDatabase(tableName, values); // what to insert here again? Is ID # automatically given?
         }
         
         
