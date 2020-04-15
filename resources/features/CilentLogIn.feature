@@ -16,7 +16,7 @@ Feature: Client Login
 		And the password or username is incorrect
 		And username or password does not exits in the Database 
 		When the client tries to log in
-		Then an error-message is displayed saying "Incorrect username or password"
+		Then message is displayed saying "Incorrect username or password"
 		And the client is not logged in
 	
 

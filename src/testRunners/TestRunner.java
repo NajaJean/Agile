@@ -5,7 +5,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "resources/features/LogisticUpdate.feature", glue = "stepDefinitions", strict = true)
+@CucumberOptions(features = "resources/features", glue = "stepDefinitions", strict = true)
 public class TestRunner { 
 
 }
