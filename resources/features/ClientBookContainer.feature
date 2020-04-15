@@ -12,4 +12,4 @@ Feature: Client, Book Container
 	Scenario: Client is not able to book container 
 		Given that there does not exist an empty container in the database 
 		When the Client tries to book a container
-		Then an error-message is displayed saying "No empty containers available"
+		Then message is displayed saying "No empty containers available"
