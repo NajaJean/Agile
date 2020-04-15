@@ -70,11 +70,21 @@ public class Database {
 	}
 
 	public void addToDatabase(String tableName, String values){
-		String addRow = "INSERT INTO " + tableName + " VALUES (";
-		addRow = addRow + values +")"; 
+		String addRow = "INSERT INTO " + tableName + " VALUES (" + values + ")";
 		try {
 			Statement s = c.createStatement();
 			s.execute(addRow);
+			System.out.println("data added sucessfully");
+			s.close();
+		} catch (SQLException e){System.out.println(e);} 		
+	}
+	
+	public void updateDatabase(String tableName, String column, String value, String condition) {
+		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + value;
+		try {
+			Statement s = c.createStatement();
+			s.execute(updateRow);
+			System.out.println("data updated sucessfully");
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}
