@@ -26,8 +26,8 @@ public class StepDefs_ContainerStatus {
 	
 	Content newContent = new Content("Apples", new Environment(15.0,15.0,15.0),0.1);
 
-	@Given("a client with a container")
-	public void a_client_with_a_container() {
+	@Given("a client with a container and a logistic company")
+	public void a_client_with_a_container_and_a_logistic_company() {
 		//Import database
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
