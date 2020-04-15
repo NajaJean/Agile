@@ -14,6 +14,6 @@ Feature: Logistic Company Login
 		Given that the Logistic Company is not logged in 
 		And the username or the password is wrong 
 		When the logistic Company tries logs in
-		Then an error-message is displayed saying "Incorrect username or password"
+		Then message is displayed saying "Incorrect username or password"
 		And the Logistic Company is not logged in
 
