@@ -79,11 +79,11 @@ public class StepDefs_LogisticUpdate {
 		assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerContent().getEnvironment().getTemp());//assertEquals double double was outdated
 	}
 	
-	@Then("a message is displayed saying {string}") 
-	public void a_message_is_displayed_saying(String s){
+	@Then("a message is displayed saying Content is updated successfully {string}") 
+	public void a_message_is_displayed_saying_Content_is_updated_successfully(String s){
 		System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
-	}
+	} 
 	
 	@Given("that the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
