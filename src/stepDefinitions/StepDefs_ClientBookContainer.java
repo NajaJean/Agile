@@ -23,6 +23,7 @@ public class StepDefs_ClientBookContainer {
 	Content[] Contents;
 	Container[] Containers; 
 	NotifyObject response;
+	ScenarioContext context;
 
 	/*
 	public void import_database() {
@@ -118,6 +119,7 @@ public class StepDefs_ClientBookContainer {
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
 		response = con.checkBookingOfContainer(id);
+		context.setResponse(response);
 	}
 
 	@Then("the first empty container existing in the database should be assigned to the Client")
@@ -140,6 +142,7 @@ public class StepDefs_ClientBookContainer {
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
 		response = con.checkBookingOfContainer(id);
+		context.setResponse(response);
 	}
 
 /*	@Then("an error-message is displayed saying {string}")
