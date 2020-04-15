@@ -8,7 +8,7 @@ public class Container {
 	private Environment enviro;
 	private Content content;
 	
-	private static int count = 0;
+	private static int count = 1;
 	
 	public Container(Client client, Environment enviro, Content content) {
 		this.containerID = count++;
