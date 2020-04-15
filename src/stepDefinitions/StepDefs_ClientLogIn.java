@@ -20,7 +20,7 @@ public class StepDefs_ClientLogIn {
 		this.context = context;
 	}
 	
-	Client Cc = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln"); 
+	Client Cc = new Client("sally", "1234", "Sally Grant", "sally_grant@gmail.com","203 Acorn st"); 
 	Client Ic = new Client("Horona", "1234", "Habrat", "h@", "Hasd");
 	Database d = new Database("agileProject.accdb");
 	
@@ -34,7 +34,7 @@ public class StepDefs_ClientLogIn {
 	
 	@Given("the username is correct and password is correct")
 	public void the_username_is_correct_and_password_is_correct() {
-	    assertEquals(Cc.getUserName(), "bob");
+	    assertEquals(Cc.getUserName(), "sally");
 	    assertEquals(Cc.getPassword(), "1234");
 	}
 	
@@ -61,7 +61,7 @@ public class StepDefs_ClientLogIn {
 
 	@Given("the password or username is incorrect")
 	public void the_password_or_username_is_incorrect() {
-	    assertNotEquals(Ic.getUserName() + Ic.getPassword(), "bob" + "1234");
+	    assertNotEquals(Ic.getUserName() + Ic.getPassword(), "sally" + "1234");
 	}
 	
 	@Given("username or password does not exits in the Database")

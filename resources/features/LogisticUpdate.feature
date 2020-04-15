@@ -12,6 +12,7 @@ Feature: Logistic Company, Update container status
 		Given the company selected a container journey
 		When the company updates the current location
 		Then the current location is updated
+		And the content should be updated in the database
 		And a message is displayed: "The current location update was successful"
 
 	
