@@ -110,7 +110,7 @@ public class Database {
 	
 	public int getEmptyContainer() {
 		ResultSet result;
-		String query = "SELECT Container_ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS NULL";
+		String query = "SELECT ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS NULL";
 		int index = 0;
 		try {
 			Statement s = c.createStatement();
@@ -125,7 +125,7 @@ public class Database {
 	
 	public int clientEmptyContainer(int id) {
 		ResultSet result;
-		String query = "SELECT Container_ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS " + Integer.toString(id);
+		String query = "SELECT ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS " + Integer.toString(id);
 		int index = 0;
 		try {
 			Statement s = c.createStatement();
