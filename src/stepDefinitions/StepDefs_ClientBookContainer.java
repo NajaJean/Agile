@@ -25,32 +25,6 @@ public class StepDefs_ClientBookContainer {
 	NotifyObject response;
 	ScenarioContext context;
 
-	/*
-	public void import_database() {
-		String[][] clients = d.getTable("Clients");
-		Clients = new Client[clients.length];
-		for(int i = 0; i < clients.length; i++) {
-			Clients[i] = new Client(clients[i][4],clients[i][5],clients[i][1],clients[i][2],clients[i][3]);
-		}
-		String[][] environments = d.getTable("Environments");
-		Enviros = new Environment[environments.length];
-		for(int i = 0; i < environments.length; i++) {
-			Enviros[i] = new Environment(Double.parseDouble(environments[i][1]),Double.parseDouble(environments[i][2]),Double.parseDouble(environments[i][3]));
-		}
-		String[][] contents = d.getTable("Contents");
-		Contents = new Content[contents.length];
-		for(int i = 0; i < contents.length; i++) {
-			Contents[i] = new Content(contents[i][1],Environment.findEnviro(contents[i][2],Enviros),Double.parseDouble(contents[i][3]));
-		}
-		
-		String[][] containers = d.getTable("Contatiners");
-		Containers = new Container[containers.length];
-		for(int i = 0; i < containers.length; i++) {
-			Containers[i] = new Container(Client.findClient(containers[i][1],Clients),Environment.findEnviro(contents[i][2],Enviros),Content.findContent(containers[i][3],Contents));
-		}
-	} 
-	*/
-	
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
 		
@@ -119,7 +93,7 @@ public class StepDefs_ClientBookContainer {
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
 		response = con.checkBookingOfContainer(id);
-		context.setResponse(response);
+		//context.setResponse(response);
 	}
 
 	@Then("the first empty container existing in the database should be assigned to the Client")
@@ -127,10 +101,10 @@ public class StepDefs_ClientBookContainer {
 		assertEquals(con.getClientofContainer(),Clients[1]);
 	}
 
-/*	@Then("message is displayed saying {string}")
+	@Then("message is displayed saying {string}")
 	public void message_is_displayed_saying(String string) {
 		assertEquals(string, response.getNotifyMessage());
-	} */
+	} 
 
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
@@ -142,11 +116,11 @@ public class StepDefs_ClientBookContainer {
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
 		response = con.checkBookingOfContainer(id);
-		context.setResponse(response);
+		//context.setResponse(response);
 	}
 
-/*	@Then("an error-message is displayed saying {string}")
+	@Then("an error-message is displayed saying {string}")
 	public void an_error_message_is_displayed_saying(String string) {
 		assertEquals(string, response.getNotifyMessage());
-	} */
+	} 
 }
