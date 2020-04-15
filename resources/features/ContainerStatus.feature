@@ -4,7 +4,6 @@ Feature: Client can see current container status
 	Actor: Client.
 
 	Scenario: Logistic company updates the current status, which is updated for the client as well
-		Given a client with a container
-		And a logistic company
+		Given a client with a container and a logistic company
 		When a logistic company updates the current status of the container
 		Then the updates should be visible for the client

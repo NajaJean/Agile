@@ -87,11 +87,8 @@ public class StepDefs_ContainerStatus {
 	    int containerID = 1;
 	    c = Clients[clientID];
 	    con = Containers[containerID];
-	}
-
-	@Given("a logistic company")
-	public void a_logistic_company() {
-		l = new LogisticCompany();
+	    
+	    l = new LogisticCompany();
 	}
 
 	@When("a logistic company updates the current status of the container")
