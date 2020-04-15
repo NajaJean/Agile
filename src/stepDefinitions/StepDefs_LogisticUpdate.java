@@ -8,6 +8,7 @@ import core.Client;
 import core.Container;
 import core.ContainerJourney;
 import core.Content;
+import core.Database;
 import core.Environment;
 import core.Location;
 import core.NotifyObject;
@@ -26,24 +27,17 @@ public class StepDefs_LogisticUpdate {
 	NotifyObject response;
 	
 	double[] cphgpscoords = {730.0, 128.0};
-	double[] tokyogpscoords = {1423.0, 245.0};
-	double[] sydneygpscoords = {1495.0, 750.0};
 	double[] nygpscoords = {290.0, 225.0};
 	double[] hawaiigpscoords = {1735.0, 265.0};
-	double[] riogpscoords = {420.0, 670.0};
-	
 
 	Location CPH = new Location("Copenhagen", cphgpscoords);
-	Location Tokyo = new Location("Tokyo", tokyogpscoords);
-	Location Sydney = new Location("Sydney", sydneygpscoords);
 	Location NY = new Location("New York", nygpscoords);
 	Location Hawaii = new Location("Hawaii", hawaiigpscoords);
-	Location Rio = new Location("Rio", riogpscoords);
 
 	Environment enviro = new Environment(5.0, 5.0, 5.0);
 	Environment newEnviro = new Environment(15.0, 15.0, 15.0);
 	
-	Client client = new Client("asd", "yoDaddy69");
+	Client client = new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
 	
 	Content stuff = new Content("Stuff", enviro, 1.0);
 	Content newStuff = new Content("NewStuff", newEnviro, 2.0);
@@ -54,22 +48,82 @@ public class StepDefs_LogisticUpdate {
 	ContainerJourney selectedJ = containerJ;
 	
 	
+	Database d = new Database("agileProject.accdb"); 
+	int id = 1;
+	Container con;
+	Client[] Clients;
+	Environment[] Enviros;
+	Content[] Contents;
+	Container[] Containers; 
+
+	
 	@Given("company selected a container")
 	public void company_selected_a_container() {
-		assertEquals(client.getID(), selectedC.getClientofContainer().getID());
+		String[][] clients = d.getTable("Clients");
+		int clientLength = 0;
+		for(int i = 1; i < clients.length; i++) {
+			if (!(clients[i][1] == null)) {
+				clientLength++;
+			}
+		}
+		Clients = new Client[clientLength];
+		for(int i = 0; i < clientLength; i++) {
+			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
+		}
+		
+		String[][] environments = d.getTable("Environments");
+		int enviroLength = 0;
+		for(int i = 1; i < environments.length; i++) {
+			if (!(environments[i][1] == null)) {
+				enviroLength++;
+			}
+		}
+		Enviros = new Environment[enviroLength];
+		for(int i = 0; i < enviroLength; i++) {
+			Enviros[i] = new Environment(Double.parseDouble(environments[i+1][2]),Double.parseDouble(environments[i+1][3]),Double.parseDouble(environments[i+1][4]));	
+		}
+		
+		String[][] contents = d.getTable("Contents");
+		int contentLength = 0;
+		for(int i = 1; i < contents.length; i++) {
+			if (!(contents[i][1] == null)) {
+				contentLength++;
+			}
+		}
+		Contents = new Content[contentLength];
+		for(int i = 0; i < contentLength; i++) {
+			Contents[i] = new Content(contents[i+1][2],Environment.findEnviro(contents[i+1][3],Enviros),Double.parseDouble(contents[i+1][4]));
+		}
+		
+		String[][] containers = d.getTable("Containers");
+		int containerLength = 0;
+		for(int i = 1; i < containers.length; i++) {
+			if (!(containers[i][1] == null)) {
+				containerLength++;
+			}
+		}
+		Containers = new Container[containerLength];
+		for(int i = 0; i < containerLength; i++) {
+			if(containers[i+1][2] == null && containers[i+1][4] == null) {
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros));
+			}
+			else {
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
+			}
+		}
+		
+		selectedC = Containers[id];
 	}
 
 	@When("the company updates the content")
 	public void the_company_updates_the_content() {
 		selectedC.setContainerContent(newStuff);
-		response = selectedC.responseLogisticUpdate(); //I dont know what this is :\
+		response = selectedC.responseLogisticUpdate();
 		//context.setResponse(response);
 	}
-	
 
 	@Then("the content is updated")
 	public void the_content_is_updated() {
-		assertEquals(client.getID(), selectedC.getClientofContainer().getID());
 		assertEquals(newStuff.getContentID(), selectedC.getContainerContent().getContentID());
 		assertEquals(newStuff.getName(), selectedC.getContainerContent().getName());
 		assertTrue(newStuff.getThreshold() == selectedC.getContainerContent().getThreshold());
@@ -79,9 +133,29 @@ public class StepDefs_LogisticUpdate {
 		assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerContent().getEnvironment().getTemp());//assertEquals double double was outdated
 	}
 	
+	//String tableName, String column, String value, String condition
+	@Then("the content should be updated in the database")
+	public void the_content_should_be_updated_in_the_database() {
+		String contentID = String.valueOf(selectedC.getContainerContent().getContentID());
+		d.updateDatabase("Contents", "Content_ID",contentID,Integer.toString(id));
+		String contentName = selectedC.getContainerContent().getName();
+		d.updateDatabase("Contents", "Name",contentName,Integer.toString(id));
+		String contentThreshold = String.valueOf(selectedC.getContainerContent().getThreshold());
+		d.updateDatabase("Contents", "Threshold",contentThreshold,Integer.toString(id));
+		String contentEnvironmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
+		d.updateDatabase("Containers", "Environment",contentEnvironmentID,Integer.toString(id));
+		String contentEnvironmentTemp = String.valueOf(selectedC.getContainerEnvironment().getTemp());
+		d.updateDatabase("Containers", "Temperature",contentEnvironmentTemp,Integer.toString(id));
+		String contentEnvironmentPressure = String.valueOf(selectedC.getContainerEnvironment().getPressure());
+		d.updateDatabase("Containers", "Pressure",contentEnvironmentPressure,Integer.toString(id));
+		String contentEnvironmentHumidity = String.valueOf(selectedC.getContainerEnvironment().getHumidity());
+		d.updateDatabase("Containers", "Humidity",contentEnvironmentHumidity,Integer.toString(id));
+		
+	}
+	
 	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed(String s){
-//		System.out.println(response.getNotifyMessage());
+	//	System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
 	} 
 	
