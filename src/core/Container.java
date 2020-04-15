@@ -72,4 +72,10 @@ public class Container {
 			notification = new NotifyObject(666, "No empty containers available");
 		} return notification;
 	}
+	
+	@Override
+    public String toString() {
+    	return "'"+ containerID + "', '" + client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
+    			content.getContentID() + "'";
+    }
 }

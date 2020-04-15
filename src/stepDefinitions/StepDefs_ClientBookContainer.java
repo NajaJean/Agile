@@ -113,12 +113,10 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client books a container")
 	public void the_Client_books_a_container() {
-		System.out.println("Client: " + Clients.length);
-		System.out.println("Envir: " + Enviros.length);
-		System.out.println("Content: " + Contents.length);
-		System.out.println("Container: " + Containers.length);
 		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
 		con.setClientofContainer(Clients[1]); // Assign to client
+		String s = con.toString();
+		d.addToDatabase("Containers", s);
 		response = con.checkBookingOfContainer(id);
 	}
 
