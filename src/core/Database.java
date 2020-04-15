@@ -40,7 +40,7 @@ public class Database {
 		} catch (SQLException e){System.out.println(e);}
 		return values;
 	}
-
+	
 	public String queryDatabase(String sql) {  
 		ResultSet result;
 		String query = "";
