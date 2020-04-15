@@ -117,8 +117,6 @@ public class StepDefs_ClientBookContainer {
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
-		//String s = con.toString();
-		//d.addToDatabase("Containers", s);
 		response = con.checkBookingOfContainer(id);
 	}
 
@@ -136,6 +134,7 @@ public class StepDefs_ClientBookContainer {
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
 	    assertEquals(0, id);
+	    System.out.println(id);
 	}
 
 	@When("the Client tries to book a container")

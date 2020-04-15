@@ -81,7 +81,7 @@ public class Database {
 	
 	public void updateDatabase(String tableName, String column, String value, String condition) {
 		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + value
-				+ "WHERE ID = " + condition;
+				+ " WHERE ID = " + condition;
 		try {
 			Statement s = c.createStatement();
 			s.execute(updateRow);
