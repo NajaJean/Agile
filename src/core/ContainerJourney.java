@@ -8,7 +8,7 @@ public class ContainerJourney {
 	private Location end;
 	private Container container;
 	
-	private static int count = 0;
+	private static int count = 1;
 	
 	
 	public ContainerJourney(Location start, Location end, Container container) {

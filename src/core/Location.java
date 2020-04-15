@@ -6,7 +6,7 @@ public class Location {
     private int ID;
     private double[] GPScoord;
     
-    private static int count = 0;
+    private static int count = 1;
     
     public Location(String name, double[] gps) {
     	this.name = name;

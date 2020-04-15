@@ -6,7 +6,7 @@ public class Content {
 	private Environment enviro;
 	private double threshold;
 	private int content_ID;
-    private static int count = 0;
+    private static int count = 1;
 	
 	public String getName() {
     	return name;

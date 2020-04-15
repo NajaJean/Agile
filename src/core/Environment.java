@@ -6,7 +6,7 @@ public class Environment {
 	private double temp;
 	private double pressure;
 	private double humidity;
-	private static int count = 0;
+	private static int count = 1;
 	
 	public Environment(double temp, double pressure, double humidity) {
 		this.temp = temp;
