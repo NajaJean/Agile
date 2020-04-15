@@ -30,23 +30,22 @@ public class StepDefs_LogisticUpdate {
 	double[] nygpscoords = {290.0, 225.0};
 	double[] hawaiigpscoords = {1735.0, 265.0};
 
-	Location CPH = new Location("Copenhagen", cphgpscoords);
-	Location NY = new Location("New York", nygpscoords);
-	Location Hawaii = new Location("Hawaii", hawaiigpscoords);
+	Location CPH;
+	Location NY;
+	Location Hawaii;
 
-	Environment enviro = new Environment(5.0, 5.0, 5.0);
-	Environment newEnviro = new Environment(15.0, 15.0, 15.0);
+	Environment enviro;
+	Environment newEnviro;
 	
-	Client client = new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
+	Client client;
 	
-	Content stuff = new Content("Stuff", enviro, 1.0);
-	Content newStuff = new Content("NewStuff", newEnviro, 2.0);
+	Content stuff;
+	Content newStuff;
 	
-	Container selectedC = new Container(client, enviro, stuff);
+	Container selectedC;
 
-	ContainerJourney containerJ = new ContainerJourney(CPH, NY, selectedC);
-	ContainerJourney selectedJ = containerJ;
-	
+	ContainerJourney containerJ;
+	ContainerJourney selectedJ;
 	
 	Database d = new Database("agileProject.accdb"); 
 	int id = 1;
@@ -111,6 +110,22 @@ public class StepDefs_LogisticUpdate {
 				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
 			}
 		}
+		CPH = new Location("Copenhagen", cphgpscoords);
+		NY = new Location("New York", nygpscoords);
+		Hawaii = new Location("Hawaii", hawaiigpscoords);
+
+		enviro = new Environment(5.0, 5.0, 5.0);
+		newEnviro = new Environment(15.0, 15.0, 15.0);
+		
+		client = new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
+		
+		stuff = new Content("Stuff", enviro, 1.0);
+		newStuff = new Content("NewStuff", newEnviro, 2.0);
+		
+		selectedC = new Container(client, enviro, stuff);
+
+		containerJ = new ContainerJourney(CPH, NY, selectedC);
+		selectedJ = containerJ;
 		
 		selectedC = Containers[id];
 	}
