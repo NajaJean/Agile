@@ -26,24 +26,17 @@ public class StepDefs_LogisticUpdate {
 	NotifyObject response;
 	
 	double[] cphgpscoords = {730.0, 128.0};
-	double[] tokyogpscoords = {1423.0, 245.0};
-	double[] sydneygpscoords = {1495.0, 750.0};
 	double[] nygpscoords = {290.0, 225.0};
 	double[] hawaiigpscoords = {1735.0, 265.0};
-	double[] riogpscoords = {420.0, 670.0};
-	
 
 	Location CPH = new Location("Copenhagen", cphgpscoords);
-	Location Tokyo = new Location("Tokyo", tokyogpscoords);
-	Location Sydney = new Location("Sydney", sydneygpscoords);
 	Location NY = new Location("New York", nygpscoords);
 	Location Hawaii = new Location("Hawaii", hawaiigpscoords);
-	Location Rio = new Location("Rio", riogpscoords);
 
 	Environment enviro = new Environment(5.0, 5.0, 5.0);
 	Environment newEnviro = new Environment(15.0, 15.0, 15.0);
 	
-	Client client = new Client("asd", "yoDaddy69");
+	Client client = new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
 	
 	Content stuff = new Content("Stuff", enviro, 1.0);
 	Content newStuff = new Content("NewStuff", newEnviro, 2.0);
@@ -62,7 +55,7 @@ public class StepDefs_LogisticUpdate {
 	@When("the company updates the content")
 	public void the_company_updates_the_content() {
 		selectedC.setContainerContent(newStuff);
-		response = selectedC.responseLogisticUpdate(); //I dont know what this is :\
+		response = selectedC.responseLogisticUpdate();
 		//context.setResponse(response);
 	}
 	
@@ -81,7 +74,7 @@ public class StepDefs_LogisticUpdate {
 	
 	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed(String s){
-//		System.out.println(response.getNotifyMessage());
+		System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
 	} 
 	
