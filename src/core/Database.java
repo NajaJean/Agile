@@ -4,16 +4,16 @@ import java.sql.*;
 
 public class Database {
 	private Connection c;
-	private Statement s;
+	//private Statement s;
 
 	public Database(String url) {
 		try{  
 			this.c = DriverManager.getConnection("jdbc:ucanaccess://"+url); 
 
 		}catch(Exception ee){System.out.println(ee);} 
-		try {
-			this.s=c.createStatement();
-		} catch (SQLException e){System.out.println(e);}  
+		//try {
+		//	this.s=c.createStatement();
+		//} catch (SQLException e){System.out.println(e);}  
 	}
 
 	public String[][] getTable(String tableName) {
@@ -22,6 +22,7 @@ public class Database {
 		int column = 1;
 		int row = 0;
 		try {
+			Statement s = c.createStatement();
 			result = s.executeQuery("SELECT * FROM "+tableName);
 			while (result.next()) {
 				row++;
@@ -37,7 +38,9 @@ public class Database {
 				}
 			}
 			System.out.println(tableName + "  table imported sucessfully!");
+			s.close();
 		} catch (SQLException e){System.out.println(e);}
+
 		return values;
 	}
 	
@@ -46,6 +49,7 @@ public class Database {
 		String query = "";
 		int i = 1;
 		try {
+			Statement s = c.createStatement();
 			result = s.executeQuery(sql);
 			while (result.next()) {
 				while(true) {
@@ -60,6 +64,7 @@ public class Database {
 					} 
 				}
 			}
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		return query;
 	}
@@ -68,13 +73,16 @@ public class Database {
 		String addRow = "INSERT INTO " + tableName + " VALUES (";
 		addRow = addRow + values +")"; 
 		try {
+			Statement s = c.createStatement();
 			s.execute(addRow);
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}
 	
 	public boolean checkUser(String user, String pass) {
 		boolean approved = false;
 		try {
+			Statement s = c.createStatement();
 			ResultSet result = s.executeQuery("SELECT Username, password FROM Clients");
 			while (result.next()) {
 				String username = result.getString(1);
@@ -84,6 +92,7 @@ public class Database {
 					break;
 				}
 			}
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		return approved;
 	}
@@ -93,10 +102,12 @@ public class Database {
 		String query = "SELECT Container_ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS NULL";
 		int index = 0;
 		try {
+			Statement s = c.createStatement();
 			result = s.executeQuery(query);
 			while (result.next()) {
 				 index = result.getInt(1);
 			}
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		return index;
 	}
@@ -106,10 +117,12 @@ public class Database {
 		String query = "SELECT Container_ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS " + Integer.toString(id);
 		int index = 0;
 		try {
+			Statement s = c.createStatement();
 			result = s.executeQuery(query);
 			while (result.next()) {
 				 index = result.getInt(1);
 			}
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		return index;
 	}
