@@ -2,15 +2,12 @@
 Feature: Logistics Company, Register new client
   Logistics companies can register new clients in the system. 
 
-
   
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
+  Scenario: Logistics Company, Register new client
+    Given a logistic company
+    And given a new client
+    When a logistic company wants to create a new client
+    Then the client is created and message displayed says "Client successfully created!"
+    And is found in the database
 
   
