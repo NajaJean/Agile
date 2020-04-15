@@ -115,8 +115,10 @@ public class StepDefs_ClientBookContainer {
 	public void the_Client_books_a_container() {
 		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
 		con.setClientofContainer(Clients[1]); // Assign to client
-		String s = con.toString();
-		d.addToDatabase("Containers", s);
+		String containerClientID = Integer.toString(con.getClientofContainer().getID());
+		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
+		//String s = con.toString();
+		//d.addToDatabase("Containers", s);
 		response = con.checkBookingOfContainer(id);
 	}
 
