@@ -45,12 +45,20 @@ public class Environment {
 	
 	public static Environment findEnviro(String id, Environment[] enviros) {
 		Environment result = null;
-		for(int i = 0; i< enviros.length; i++) {
-			if(enviros[i].enviro_ID == Integer.parseInt(id)) {
-				result = enviros[i];
-				break;
+		try {
+			for(int i = 0; i< enviros.length; i++) {
+				if(enviros[i].enviro_ID == Integer.parseInt(id)) {
+					result = enviros[i];
+					break;
+				}
 			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			result = enviros[0];
 		}
+		
+		assert result != null;
+
 		return result;
 	}
 	
