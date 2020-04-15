@@ -95,7 +95,7 @@ class CreateUserFrame extends JFrame implements ActionListener {
             addressText = addressTextField.getText();
             if (isValidUsernameAndPass(userText, pwdText)) {
                 JOptionPane.showMessageDialog(this, "Successfully created new Client!");
-                LoginFrame frame = new LoginFrame();
+                LoginFrame frame = new LoginFrame("Client");
                 frame.setTitle("Login Form");
                 frame.setVisible(true);
                 frame.setBounds(10, 10, 370, 600);
@@ -110,7 +110,7 @@ class CreateUserFrame extends JFrame implements ActionListener {
  
         }
         if (e.getSource() == returnButton) {
-        	LoginFrame frame = new LoginFrame();
+        	LoginFrame frame = new LoginFrame("Client");
             frame.setTitle("Login Form");
             frame.setVisible(true);
             frame.setBounds(10, 10, 370, 600);
