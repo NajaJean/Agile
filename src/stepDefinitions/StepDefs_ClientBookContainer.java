@@ -24,7 +24,7 @@ public class StepDefs_ClientBookContainer {
 	Container[] Containers; 
 	NotifyObject response;
 
-	/*
+	
 	public void import_database() {
 		String[][] clients = d.getTable("Clients");
 		Clients = new Client[clients.length];
@@ -47,7 +47,7 @@ public class StepDefs_ClientBookContainer {
 		for(int i = 0; i < containers.length; i++) {
 			Containers[i] = new Container(Client.findClient(containers[i][1],Clients),Environment.findEnviro(contents[i][2],Enviros),Content.findContent(containers[i][3],Contents));
 		}
-	} */
+	} 
 	
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
@@ -99,6 +99,7 @@ public class StepDefs_ClientBookContainer {
 		for(int i = 0; i < containerLength; i++) {
 			Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(contents[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
 		}
+		
 		
 		id = d.getEmptyContainer();	
 	    assertNotEquals(id, 0);

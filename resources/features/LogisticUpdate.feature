@@ -6,5 +6,5 @@ Feature: Logistic Company, Update container status
 		Given the company selected a container
 		When the company updates the content
 		Then the content is updated
-		And a message is displayed saying "Update successful"
+		And message is displayed saying "Content update successful"
 

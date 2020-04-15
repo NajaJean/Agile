@@ -15,6 +15,12 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_LogisticUpdate {
 	
+	ScenarioContext context;
+	
+	public StepDefs_LogisticUpdate(ScenarioContext context) {
+		this.context = context;
+	}
+	
 	NotifyObject response;
 	
 	Environment enviro = new Environment(5.0, 5.0, 5.0);
@@ -34,7 +40,8 @@ public class StepDefs_LogisticUpdate {
 
 	@When("the company updates the content")
 	public void the_company_updates_the_content() {
-		selectedC.setContainerContent(newStuff);
+		response = selectedC.setContainerContent(newStuff);
+		context.setResponse(response);
 	}
 	
 
@@ -43,16 +50,15 @@ public class StepDefs_LogisticUpdate {
 		assertEquals(client.getID(), selectedC.getClientofContainer().getID());
 		assertEquals(newStuff.getContentID(), selectedC.getContainerContent().getContentID());
 		assertEquals(newStuff.getName(), selectedC.getContainerContent().getName());
-		assertTrue(/*newStuff.getThreshold()*/ 5.0 == selectedC.getContainerContent().getThreshold());//assertEquals(double double) was outdated
-		assertEquals(newStuff.getEnvironment().getEnviro_ID(), selectedC.getContainerEnvironment().getEnviro_ID());
-		assertTrue(newStuff.getEnvironment().getHumidity() == selectedC.getContainerEnvironment().getHumidity());//assertEquals double double was outdated
-		assertTrue(newStuff.getEnvironment().getPressure() == selectedC.getContainerEnvironment().getPressure());//assertEquals double double was outdated
-		assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerEnvironment().getTemp());//assertEquals double double was outdated
-	}
-	
-	@Then("a message is displayed saying {string}") 
-	public void a_message_is_displayed_saying(String s){
-		System.out.println(response.getNotifyMessage());
-		assertEquals(s, response.getNotifyMessage());
+		assertTrue(newStuff.getThreshold() == selectedC.getContainerContent().getThreshold());
+		
+		// The contents environment requirement do not need to be equal to the environment of the container. 
+		// The container could be outside of the environment threshold of the contents for instance
+		// Should delete 
+		
+		//assertEquals(newStuff.getEnvironment().getEnviro_ID(), selectedC.getContainerEnvironment().getEnviro_ID());
+		//assertTrue(newStuff.getEnvironment().getHumidity() == selectedC.getContainerEnvironment().getHumidity());
+		//assertTrue(newStuff.getEnvironment().getPressure() == selectedC.getContainerEnvironment().getPressure());
+		//assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerEnvironment().getTemp());
 	}
 }

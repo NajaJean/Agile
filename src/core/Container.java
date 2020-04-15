@@ -17,7 +17,6 @@ public class Container {
 		this.content = content;
 	}
 	
-	// Create empty container
 	public Container(Environment enviro) {
 		this.containerID = count++;
 		this.enviro = enviro;
@@ -49,8 +48,9 @@ public class Container {
 		return content;
 	}
 	
-	public void setContainerContent(Content content) {
+	public NotifyObject setContainerContent(Content content) {
 		this.content = content;
+		return new NotifyObject(100, "Content update successful");
 	}
 	
 	public static Container findContainer(String id, Container[] containers) {
