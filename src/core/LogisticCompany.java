@@ -44,4 +44,10 @@ public class LogisticCompany {
     	}
     	return response;
     }
+    
+    public NotifyObject updated() {
+    	NotifyObject response;
+    	response = new NotifyObject(666, "Update successful");
+    	return response;
+    }
 }
