@@ -124,7 +124,7 @@ public class StepDefs_ClientBookContainer {
 
 	@Then("the first empty container existing in the database should be assigned to the Client")
 	public void the_first_empty_container_existing_in_the_database_should_be_assigned_to_the_Client() {
-		assertEquals(con.getClientofContainer(),Clients[1].getID());
+		assertEquals(con.getClientofContainer(),Clients[1]);
 	}
 
 /*	@Then("message is displayed saying {string}")
@@ -135,7 +135,7 @@ public class StepDefs_ClientBookContainer {
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
-	    assertEquals(id, 0);
+	    assertEquals(0, id);
 	}
 
 	@When("the Client tries to book a container")
