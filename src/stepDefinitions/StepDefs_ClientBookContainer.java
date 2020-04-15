@@ -98,7 +98,12 @@ public class StepDefs_ClientBookContainer {
 		}
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
-			Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
+			if(containers[i+1][2] == null && containers[i+1][4] == null) {
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros));
+			}
+			else {
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
+			}
 		}
 		
 		
