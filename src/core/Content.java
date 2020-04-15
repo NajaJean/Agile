@@ -29,12 +29,19 @@ public class Content {
 	}
 	public static Content findContent(String id, Content[] contents) {
 		Content result = null;
-		for(int i = 0; i< contents.length; i++) {
-			if(contents[i].content_ID == Integer.parseInt(id)) {
-				result = contents[i];
-				break;
+		try {
+			for(int i = 0; i< contents.length; i++) {
+				if(contents[i].content_ID == Integer.parseInt(id)) {
+					result = contents[i];
+					break;
+				}
 			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			result = contents[0];
 		}
+		assert result != null;
+
 		return result;
 	}
 }

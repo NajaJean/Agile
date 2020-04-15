@@ -107,7 +107,10 @@ public class StepDefs_LogisticUpdate {
 				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros));
 			}
 			else {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
+				Client cl = Client.findClient(containers[i+1][2],Clients);
+				Environment en = Environment.findEnviro(containers[i+1][3],Enviros);
+				Content co = Content.findContent(containers[i+1][4],Contents);
+				Containers[i] = new Container(cl,en,co);
 			}
 		}
 		CPH = new Location("Copenhagen", cphgpscoords);
