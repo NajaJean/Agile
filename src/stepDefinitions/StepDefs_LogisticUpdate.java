@@ -62,7 +62,7 @@ public class StepDefs_LogisticUpdate {
 	@When("the company updates the content")
 	public void the_company_updates_the_content() {
 		selectedC.setContainerContent(newStuff);
-		//response = selectedC.setContainerContent(newStuff); //I dont know what this is :\
+		response = selectedC.responseLogisticUpdate(); //I dont know what this is :\
 		//context.setResponse(response);
 	}
 	
@@ -79,13 +79,13 @@ public class StepDefs_LogisticUpdate {
 		assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerContent().getEnvironment().getTemp());//assertEquals double double was outdated
 	}
 	
-	@Then("a message is displayed saying Content is updated successfully {string}") 
-	public void a_message_is_displayed_saying_Content_is_updated_successfully(String s){
-		System.out.println(response.getNotifyMessage());
+	@Then("a message is displayed: {string}") 
+	public void a_message_is_displayed(String s){
+//		System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
 	} 
 	
-	@Given("that the company selected a container journey")
+	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
 		assertEquals(containerJ.getJourneyID(), selectedJ.getJourneyID());
 	}
@@ -105,9 +105,9 @@ public class StepDefs_LogisticUpdate {
 		assertTrue(Hawaii.getGPScoord()[1] == selectedJ.getCurrentLocY());
 	}
 	
-	@Then("than a message is displayed saying {string}") 
-	public void than_a_message_is_displayed_saying(String s){
+/*	@Then("a message is displayed: {string}") 
+	public void a_message_is_displayed_saying(String s){
 		System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
-	}
+	} */
 }

@@ -48,9 +48,14 @@ public class Container {
 		return content;
 	}
 	
-	public NotifyObject setContainerContent(Content content) {
+	public NotifyObject responseLogisticUpdate() {
+		NotifyObject response;
+		response = new NotifyObject(101, "Content is updated successfully");
+		return response;
+	}
+	
+	public void setContainerContent(Content content) {
 		this.content = content;
-		return new NotifyObject(100, "Content update successful");
 	}
 	
 	public static Container findContainer(String id, Container[] containers) {
