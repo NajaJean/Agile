@@ -116,11 +116,6 @@ public class StepDefs_ClientBookContainer {
 		assertEquals(con.getClientofContainer(),Clients[1]);
 	}
 
-	@Then("message is displayed saying {string}")
-	public void message_is_displayed_saying(String string) {
-		assertEquals(string, response.getNotifyMessage());
-	} 
-
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
@@ -134,8 +129,4 @@ public class StepDefs_ClientBookContainer {
 		//context.setResponse(response);
 	}
 
-	@Then("an error-message is displayed saying {string}")
-	public void an_error_message_is_displayed_saying(String string) {
-		assertEquals(string, response.getNotifyMessage());
-	} 
 }
