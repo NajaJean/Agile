@@ -1,33 +1,34 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import core.Client;
 import core.Container;
 import core.Content;
 import core.Database;
 import core.Environment;
-import core.NotifyObject;
+import core.LogisticCompany;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDefs_ClientBookContainer {
-
+public class StepDefs_ContainerStatus {
+	
 	Database d = new Database("agileProject.accdb"); 
-	int id;
+	Client c;
+	LogisticCompany l;
 	Container con;
+	
 	Client[] Clients;
 	Environment[] Enviros;
 	Content[] Contents;
 	Container[] Containers; 
-	NotifyObject response;
-	ScenarioContext context;
+	
+	Content newContent = new Content("Apples", new Environment(15.0,15.0,15.0),0.1);
 
-	@Given("that there exists an empty container in the database")
-	public void that_there_exists_an_empty_container_in_the_database() {
-		
+	@Given("a client with a container and a logistic company")
+	public void a_client_with_a_container_and_a_logistic_company() {
+		//Import database
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
 		for(int i = 1; i < clients.length; i++) {
@@ -82,45 +83,21 @@ public class StepDefs_ClientBookContainer {
 		}
 		
 		
-		id = d.getEmptyContainer();	
-	    assertNotEquals(id, 0);
+	    int clientID = 2;
+	    int containerID = 1;
+	    c = Clients[clientID];
+	    con = Containers[containerID];
+	    
+	    l = new LogisticCompany();
 	}
 
-	@When("the Client books a container")
-	public void the_Client_books_a_container() {
-		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
-		con.setClientofContainer(Clients[1]); // Assign to client
-		String containerClientID = Integer.toString(con.getClientofContainer().getID());
-		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
-		response = con.checkBookingOfContainer(id);
-		//context.setResponse(response);
+	@When("a logistic company updates the current status of the container")
+	public void a_logistic_company_updates_the_current_status_of_the_container() {
+	    con.setContainerContent(newContent);
 	}
 
-	@Then("the first empty container existing in the database should be assigned to the Client")
-	public void the_first_empty_container_existing_in_the_database_should_be_assigned_to_the_Client() {
-		assertEquals(con.getClientofContainer(),Clients[1]);
+	@Then("the updates should be visible for the client")
+	public void the_updates_should_be_visible_for_the_client() {
+	    assertEquals(newContent, con.getContainerContent());
 	}
-/*
-	@Then("message is displayed saying {string}")
-	public void message_is_displayed_saying(String string) {
-		assertEquals(string, response.getNotifyMessage());
-	} 
-*/
-	@Given("that there does not exist an empty container in the database")
-	public void that_there_does_not_exist_an_empty_container_in_the_database() {
-		id = d.getEmptyContainer();	
-	    assertEquals(0, id);
-	    System.out.println(id);
-	}
-
-	@When("the Client tries to book a container")
-	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id);
-		//context.setResponse(response);
-	}
-
-	@Then("an error-message is displayed saying {string}")
-	public void an_error_message_is_displayed_saying(String string) {
-		assertEquals(string, response.getNotifyMessage());
-	} 
 }
