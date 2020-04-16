@@ -18,8 +18,10 @@ public class ContainerJourneyTest {
 		Client client = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		Environment environment = new Environment(5.3,1.1,0.85);
 		Content content = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
+		double[] cphgps = {55.1, 12.6};
+		Location loc = new Location("Copenhagen",cphgps);
 		
-		Container c = new Container(client, environment, content);
+		Container c = new Container(client, environment, content,loc);
 		
 		double[] gpsStart = {55.67594, 12.56553};
 		double[] gpsEnd = {52.370216, 4.895168};
