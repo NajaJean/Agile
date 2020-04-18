@@ -54,6 +54,7 @@ public class StepDefs_LogisticUpdate {
 	Environment[] Enviros;
 	Content[] Contents;
 	Container[] Containers; 
+	Location[] Locations;
 
 	
 	@Given("company selected a container")
@@ -68,6 +69,18 @@ public class StepDefs_LogisticUpdate {
 		Clients = new Client[clientLength];
 		for(int i = 0; i < clientLength; i++) {
 			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
+		}
+		String[][] locations = d.getTable("Locations");
+		int locLength = 0;
+		for(int i = 1; i < locations.length; i++) {
+			if (!(locations[i][1] == null)) {
+				locLength++;
+			}
+		}
+		Locations = new Location[locLength];
+		for(int i = 0; i < locLength; i++) {
+			double[] gps = {Double.parseDouble(locations[i+1][2]),Double.parseDouble(locations[i+1][3])};
+			Locations[i] = new Location(locations[i+1][1],gps);
 		}
 		
 		String[][] environments = d.getTable("Environments");
@@ -104,13 +117,10 @@ public class StepDefs_LogisticUpdate {
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			if(containers[i+1][2] == null && containers[i+1][4] == null) {
-				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros));
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(containers[i+1][3], Locations));
 			}
 			else {
-				Client cl = Client.findClient(containers[i+1][2],Clients);
-				Environment en = Environment.findEnviro(containers[i+1][3],Enviros);
-				Content co = Content.findContent(containers[i+1][4],Contents);
-				Containers[i] = new Container(cl,en,co);
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
 			}
 		}
 		CPH = new Location("Copenhagen", cphgpscoords);
@@ -125,7 +135,7 @@ public class StepDefs_LogisticUpdate {
 		stuff = new Content("Stuff", enviro, 1.0);
 		newStuff = new Content("NewStuff", newEnviro, 2.0);
 		
-		selectedC = new Container(client, enviro, stuff);
+		selectedC = new Container(client, enviro, stuff,CPH);
 
 		containerJ = new ContainerJourney(CPH, NY, selectedC);
 		selectedJ = containerJ;
