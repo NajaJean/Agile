@@ -129,7 +129,7 @@ public class StepDefs_ClientBookContainer {
 		con.setContainerContent(content);
 		response = con.checkBookingOfContainer(id,content);
 		
-		d.updateDatabase("Containers", "Content", Integer.toString(content.getContentID()), Integer.toString(con.getContainerID()));
+		d.updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(con.getContainerID()));
 	}
 	
 	@Then("the first empty container existing in the database should be assigned to the client")
