@@ -102,12 +102,13 @@ public class StepDefs_ClientBookContainer {
 		}
 		
 		id = d.getEmptyContainer();	
+		System.out.println(id);
 	    assertNotEquals(id, 0);
 	}
 	
 	@When("the client tries to book a container by filling it with no content")
 	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {		
-		response = con.checkBookingOfContainer(id, content);
+		response = con.checkBookingOfContainer(id);
 	}
 			
 	@Then("the container should not be assigned to the client")
@@ -139,25 +140,9 @@ public class StepDefs_ClientBookContainer {
 
 	@Then("the container should contain the content in the database")
 	public void the_container_should_contain_the_content_in_the_database() {
-		//Reload container table in database
-		String[][] containers = d.getTable("Containers");
-		int containerLength = 0;
-		for(int i = 1; i < containers.length; i++) {
-			if (!(containers[i][1] == null)) {
-				containerLength++;
-			}
-		}
-		Containers = new Container[containerLength];
-		for(int i = 0; i < containerLength; i++) {
-			if(containers[i+1][2] == null && containers[i+1][4] == null) {
-				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(containers[i+1][3], Locations));
-			}
-			else {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
-			}
-		}
+		String s = d.queryDatabase("SELECT Content_ID FROM Containers WHERE ID = "+id);
 		
-		assertEquals(content,Containers[id].getContainerContent());
+		assertEquals(s,Integer.toString(Containers[id].getContainerContent().getContentID()));
 	}
 	
 	
@@ -170,7 +155,7 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id, content);
+		response = con.checkBookingOfContainer(id);
 		//context.setResponse(response);
 	}
 
