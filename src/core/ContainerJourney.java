@@ -80,4 +80,23 @@ public class ContainerJourney {
 			notification = new NotifyObject(0, "Container is in transit");
 		} return notification;
 	}
+	
+	public static ContainerJourney findJourney(String id, ContainerJourney[] cJs) {
+		ContainerJourney result = null;
+		try {
+			for(int i = 0; i< cJs.length; i++) {
+				if(cJs[i].journeyID == Integer.parseInt(id)) {
+					result = cJs[i];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			result = cJs[0];
+		}
+		
+		assert result != null;
+
+		return result;
+	}
 }

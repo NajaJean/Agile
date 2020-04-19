@@ -61,7 +61,7 @@ public class Container {
 	
 	public NotifyObject responseLogisticUpdate() {
 		NotifyObject response;
-		response = new NotifyObject(101, "Content is updated successfully");
+		response = new NotifyObject(101, "Environment is updated successfully");
 		return response;
 	}
 	
