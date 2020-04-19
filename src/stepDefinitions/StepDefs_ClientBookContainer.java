@@ -100,6 +100,7 @@ public class StepDefs_ClientBookContainer {
 			else {
 				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(Integer.parseInt(containers[i+1][4]),Contents),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
 			}
+			System.out.println(Containers[i].toString());
 		}
 		
 		id = d.getEmptyContainer();	

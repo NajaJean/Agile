@@ -104,7 +104,14 @@ public class Container {
 	
 	@Override
     public String toString() {
-    	return "'"+ containerID + "', '" + client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
-    			content.getContentID() + "', '" + location.getLocationID()+"'";
+		String result = "";
+		try {
+			result = "'"+ containerID + "', '" + client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
+	    			content.getContentID() + "', '" + location.getLocationID()+"'";
+		}
+		catch(Exception e) {
+			result = "'"+ containerID + "', '" + enviro.getEnviro_ID() + "', '" + location.getLocationID()+"'";
+		}
+    	return result;
     }
 }
