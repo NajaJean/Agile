@@ -4,10 +4,10 @@ Feature: Logistic Company, Update container status
 
 	Scenario: Logistic Company is able to update the status of container
 		Given company selected a container
-		When the company updates the content
-		Then the content is updated
-		And the content should be updated in the database
-		And a message is displayed: "Content is updated successfully"
+		When the company updates the environment
+		Then the environment is updated
+		And the environment should be updated in the database
+		And a message is displayed: "Environment is updated successfully"
 		
 	Scenario: Logistic Company is able to update the status of container
 		Given the company selected a container journey
