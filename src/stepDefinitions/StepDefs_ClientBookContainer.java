@@ -108,7 +108,7 @@ public class StepDefs_ClientBookContainer {
 	
 	@When("the client tries to book a container by filling it with no content")
 	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {		
-		response = con.checkBookingOfContainer(id, content);
+		response = con.checkBookingOfContainer(id);
 	}
 			
 	@Then("the container should not be assigned to the client")
@@ -155,7 +155,7 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id, content);
+		response = con.checkBookingOfContainer(id);
 		//context.setResponse(response);
 	}
 
