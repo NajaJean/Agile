@@ -37,10 +37,8 @@ public class Content {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
 			result = contents[0];
 		}
-		assert result != null;
 
 		return result;
 	}

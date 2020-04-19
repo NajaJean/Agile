@@ -117,8 +117,9 @@ public class Database {
 			result = s.executeQuery(query);
 			while (result.next()) {
 				 index = result.getInt(1);
+				 return index;
 			}
-			s.close();
+			//s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		//System.out.println(index);
 		return index;
