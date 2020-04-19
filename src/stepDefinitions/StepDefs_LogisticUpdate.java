@@ -79,8 +79,8 @@ public class StepDefs_LogisticUpdate {
 		}
 		Locations = new Location[locLength];
 		for(int i = 0; i < locLength; i++) {
-			double[] gps = {Double.parseDouble(locations[i+1][2]),Double.parseDouble(locations[i+1][3])};
-			Locations[i] = new Location(locations[i+1][1],gps);
+			double[] gps = {Double.parseDouble(locations[i+1][3]),Double.parseDouble(locations[i+1][4])};
+			Locations[i] = new Location(locations[i+1][2],gps);
 		}
 		
 		String[][] environments = d.getTable("Environments");
