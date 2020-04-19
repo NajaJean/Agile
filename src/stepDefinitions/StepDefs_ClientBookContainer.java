@@ -102,6 +102,7 @@ public class StepDefs_ClientBookContainer {
 		}
 		
 		id = d.getEmptyContainer();	
+		System.out.println(id);
 	    assertNotEquals(id, 0);
 	}
 	
@@ -139,25 +140,9 @@ public class StepDefs_ClientBookContainer {
 
 	@Then("the container should contain the content in the database")
 	public void the_container_should_contain_the_content_in_the_database() {
-		//Reload container table in database
-		String[][] containers = d.getTable("Containers");
-		int containerLength = 0;
-		for(int i = 1; i < containers.length; i++) {
-			if (!(containers[i][1] == null)) {
-				containerLength++;
-			}
-		}
-		Containers = new Container[containerLength];
-		for(int i = 0; i < containerLength; i++) {
-			if(containers[i+1][2] == null && containers[i+1][4] == null) {
-				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(containers[i+1][3], Locations));
-			}
-			else {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
-			}
-		}
+		String s = d.queryDatabase("SELECT Content_ID FROM Containers WHERE ID = "+id);
 		
-		assertEquals(content,Containers[id].getContainerContent());
+		assertEquals(s,Integer.toString(Containers[id].getContainerContent().getContentID()));
 	}
 	
 	
