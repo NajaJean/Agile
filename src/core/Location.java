@@ -46,24 +46,34 @@ public class Location {
     }
     
     public static Location findLocation(int id, Location[] locs) {
-		Location result = null;
-		for(int i = 0; i< locs.length; i++) {
-			if(locs[i].ID == id) {
-				result = locs[i];
-				break;
+    	Location result = null;
+		try {
+			for(int i = 0; i< locs.length; i++) {
+				if(locs[i].ID == id) {
+					result = locs[i];
+					break;
+				}
 			}
+		} catch (Exception e) {
+			result = locs[0];
 		}
-		return result;
+
+		return result; 
 	}
     
     public static Location findLocation(String name, Location[] locs) {
-		Location result = null;
-		for(int i = 0; i< locs.length; i++) {
-			if(locs[i].name == name) {
-				result = locs[i];
-				break;
+    	Location result = null;
+		try {
+			for(int i = 0; i< locs.length; i++) {
+				if(locs[i].name == name) {
+					result = locs[i];
+					break;
+				}
 			}
+		} catch (Exception e) {
+			result = locs[0];
 		}
-		return result;
+
+		return result; 
 	}
 }
