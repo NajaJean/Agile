@@ -19,16 +19,21 @@ public class StepDefs_ClientBookContainer {
 	Database d = new Database("agileProject.accdb"); 
 	int id;
 	Container con;
+	Content content;
+	
 	Client[] Clients;
 	Environment[] Enviros;
 	Content[] Contents;
 	Container[] Containers; 
 	Location[] Locations;
+	
 	NotifyObject response;
 	ScenarioContext context;
 
+	//1st scenario
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
+		
 		
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
@@ -96,36 +101,76 @@ public class StepDefs_ClientBookContainer {
 			}
 		}
 		
-		
 		id = d.getEmptyContainer();	
 	    assertNotEquals(id, 0);
 	}
-
-	@When("the Client books a container")
-	public void the_Client_books_a_container() {
+	
+	@When("the client tries to book a container by filling it with no content")
+	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {		
+		response = con.checkBookingOfContainer(id, content);
+	}
+			
+	@Then("the container should not be assigned to the client")
+	public void the_container_should_not_be_assigned_to_the_client() {
+		assertNotEquals(con.getClientofContainer(),Clients[1]);		
+	}
+			
+	//2nd Scenario
+	@When("the client books a container by filling it with a content")
+	public void the_client_books_a_container_by_filling_it_with_a_content() {
 		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
-		response = con.checkBookingOfContainer(id);
 		//context.setResponse(response);
+		
+		//fill container
+		content = Content.findContent("Bananas", Contents);
+		con.setContainerContent(content);
+		response = con.checkBookingOfContainer(id,content);
+		
+		d.updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(con.getContainerID()));
 	}
-
-	@Then("the first empty container existing in the database should be assigned to the Client")
-	public void the_first_empty_container_existing_in_the_database_should_be_assigned_to_the_Client() {
+	
+	@Then("the first empty container existing in the database should be assigned to the client")
+	public void the_first_empty_container_existing_in_the_database_should_be_assigned_to_the_client() {
 		assertEquals(con.getClientofContainer(),Clients[1]);
 	}
 
+	@Then("the container should contain the content in the database")
+	public void the_container_should_contain_the_content_in_the_database() {
+		//Reload container table in database
+		String[][] containers = d.getTable("Containers");
+		int containerLength = 0;
+		for(int i = 1; i < containers.length; i++) {
+			if (!(containers[i][1] == null)) {
+				containerLength++;
+			}
+		}
+		Containers = new Container[containerLength];
+		for(int i = 0; i < containerLength; i++) {
+			if(containers[i+1][2] == null && containers[i+1][4] == null) {
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(containers[i+1][3], Locations));
+			}
+			else {
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
+			}
+		}
+		
+		assertEquals(content,Containers[id].getContainerContent());
+	}
+	
+	
+	//3rd scenario
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
-	    assertEquals(0, id);
-	    System.out.println(id);
+	    assertEquals(id, 0);
 	}
 
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id);
+		response = con.checkBookingOfContainer(id, content);
 		//context.setResponse(response);
 	}
 
