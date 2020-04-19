@@ -24,9 +24,10 @@ public class ContainerJourney {
 		
 		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
 		//if you know how to pass the start location easier a deep copy pls change this
+		double[] temp = start.getGPScoord();
 		
-		currentGps[0] = start.getGPScoord()[0];
-		currentGps[1] = start.getGPScoord()[1];
+		currentGps[0] = temp[0];
+		currentGps[1] = temp[1];
 		
 		
 		this.current = new Location("Current Location", currentGps);
@@ -98,7 +99,8 @@ public class ContainerJourney {
 	}
 	
 	public NotifyObject setCurrentLocation(double[] current) {
-		this.currentGps = current;
+		this.currentGps[0] = current[0];
+		this.currentGps[1] = current[1];
 		
 		NotifyObject notification;
 		if ((current[0] == end.getGPScoord()[0]) && (current[1] == end.getGPScoord()[1])) {

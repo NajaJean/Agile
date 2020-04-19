@@ -29,7 +29,7 @@ public class StepDefs_LogisticUpdate {
 	double[] cphgpscoords = {730.0, 128.0};
 	double[] nygpscoords = {290.0, 225.0};
 	double[] hawaiigpscoords = {1735.0, 265.0};
-	double[] currentgpscoords = {0.0, 0.0};
+	double[] currentgpscoords = {1.0, 1.0};
 
 	Location CPH;
 	Location NY;
@@ -137,7 +137,9 @@ public class StepDefs_LogisticUpdate {
 		}
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
-			Journies[i] = new ContainerJourney(Location.findLocation(journies[i+1][2], Locations), Location.findLocation(journies[i+1][3], Locations), Container.findContainer(journies[i+1][4], Containers));	
+			Journies[i] = new ContainerJourney(Location.findLocation(journies[i+1][2], Locations), 
+					Location.findLocation(journies[i+1][3], Locations), Container.findContainer(journies[i+1][4], Containers));	
+			System.out.println(journies[i+1][2] + " " + journies[i+1][3] + " " + journies[i+1][4]);
 		}
 		//CPH = new Location("Copenhagen", cphgpscoords);
 		//NY = new Location("New York", nygpscoords);
@@ -154,7 +156,7 @@ public class StepDefs_LogisticUpdate {
 		//selectedC = new Container(client, enviro, stuff,CPH);
 		
 		selectedC = Containers[id];
-		selectedJ = Journies[0];  //new ContainerJourney(CPH, NY, selectedC);
+		
 		//selectedJ = containerJ;	
 	}
 
@@ -190,6 +192,7 @@ public class StepDefs_LogisticUpdate {
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
+		selectedJ = Journies[1];  //new ContainerJourney(CPH, NY, selectedC);
 		} 
 
 	@When("the company updates the current location")
