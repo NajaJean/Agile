@@ -65,17 +65,6 @@ public class Container {
 		return response;
 	}
 	
-	public NotifyObject responseFillContainer(Content con) {
-		NotifyObject response;
-		if (con == null) {
-			response = new NotifyObject(55, "All fields has to be filled");
-		}
-		else {
-			response = new NotifyObject(56, "Content is updated successfully");
-		}
-		return response;
-	}
-	
 	public void setContainerContent(Content content) {
 		this.content = content;
 	}
@@ -91,13 +80,18 @@ public class Container {
 		return result;
 	}
 	
-	public NotifyObject checkBookingOfContainer(int id) {
+	public NotifyObject checkBookingOfContainer(int id, Content content) {
 		NotifyObject notification;
-		if (id != 0) {
-			notification = new NotifyObject(69, "Container is succesfully booked");
-		} else {
-			notification = new NotifyObject(666, "No empty containers available");
-		} return notification;
+		if (id != 0 && content!=null) {
+			notification = new NotifyObject(31, "Container is succesfully booked");
+		} 
+		else if (id != 0 && content==null) {
+			notification = new NotifyObject(32, "All fields has to be filled");
+		}
+		else {
+			notification = new NotifyObject(33, "No empty containers available");
+		} 
+		return notification;
 	}
 	
 	@Override
