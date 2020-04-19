@@ -62,12 +62,14 @@ public class StepDefs_ClientNotified {
 	
 	@Given("the container is starting its journey at {string} with coords {double} and {double}")
 	public void the_container_is_starting_its_journey_at_with_coords_and(String start, double latitude, double longitude) {
-	    startLocation = new Location(start, new double[]{latitude, longitude});
+	    double[] gps = {latitude, longitude};
+		startLocation = new Location(start, gps);
 	}
 
 	@Given("the container has a final destination at {string} with coords {double} and {double}")
 	public void the_container_has_a_final_destination_at_with_coords_and(String end, double latitude, double longitude) {
-	    endLocation = new Location(end, new double[]{latitude, longitude});
+		double[] gps2 = {latitude, longitude};
+		endLocation = new Location(end, gps2);
 	    
 	    clientContainerJourney = new ContainerJourney(startLocation, endLocation, clientContainer);
 	}

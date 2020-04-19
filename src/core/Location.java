@@ -30,6 +30,14 @@ public class Location {
     	return GPScoord;
     }
     
+    public double getGPScoordX() {
+    	return GPScoord[0];
+    }
+    
+    public double getGPScoordY() {
+    	return GPScoord[1];
+    }
+    
     public void setGPSCoordX(double x) {
     	GPScoord[0] = x;    	
     }
