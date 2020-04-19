@@ -107,7 +107,7 @@ public class StepDefs_ClientBookContainer {
 	
 	@When("the client tries to book a container by filling it with no content")
 	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {		
-		response = con.responseFillContainer(content);
+		response = con.checkBookingOfContainer(id, content);
 	}
 			
 	@Then("the container should not be assigned to the client")
@@ -122,13 +122,12 @@ public class StepDefs_ClientBookContainer {
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
-		response = con.checkBookingOfContainer(id);
 		//context.setResponse(response);
 		
 		//fill container
 		content = Content.findContent("Bananas", Contents);
 		con.setContainerContent(content);
-		response = con.responseFillContainer(content);
+		response = con.checkBookingOfContainer(id,content);
 		
 		d.updateDatabase("Containers", "Content", Integer.toString(content.getContentID()), Integer.toString(con.getContainerID()));
 	}
@@ -171,7 +170,7 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id);
+		response = con.checkBookingOfContainer(id, content);
 		//context.setResponse(response);
 	}
 
