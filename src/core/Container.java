@@ -85,9 +85,17 @@ public class Container {
 		if (id != 0 && content!=null) {
 			notification = new NotifyObject(31, "Container is succesfully booked");
 		} 
-		else if (id != 0 && content==null) {
+		else {
+			notification = new NotifyObject(33, "No empty containers available");
+		} 
+		return notification;
+	}
+	
+	public NotifyObject checkBookingOfContainer(int id) {
+		NotifyObject notification;
+		if (id != 0) {
 			notification = new NotifyObject(32, "All fields has to be filled");
-		}
+		} 
 		else {
 			notification = new NotifyObject(33, "No empty containers available");
 		} 
