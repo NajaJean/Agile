@@ -7,6 +7,7 @@ public class ContainerJourney {
 	private Location current;
 	private Location end;
 	private Container container;
+	private double[] currentGps;
 	
 	private static int count = 1;
 	
@@ -23,7 +24,11 @@ public class ContainerJourney {
 		
 		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
 		//if you know how to pass the start location easier a deep copy pls change this
-		double[] currentGps = {start.getGPScoord()[0], start.getGPScoord()[1]};
+		
+		currentGps[0] = start.getGPScoord()[0];
+		currentGps[1] = start.getGPScoord()[1];
+		
+		
 		this.current = new Location("Current Location", currentGps);
 	}
 	
@@ -46,11 +51,22 @@ public class ContainerJourney {
 		return current;
 	}
 	
+	public double[] getCurrentLocationDoubleA() {
+		return currentGps;
+	}
+	
 	public double getCurrentLocX() {
 		return current.getGPScoord()[0];
 	}
 	public double getCurrentLocY() {
 		return current.getGPScoord()[1];
+	}
+	
+	public double getCurrentX() {
+		return currentGps[0];
+	}
+	public double getCurrentY() {
+		return currentGps[1];
 	}
 	
 	public Location getEndLocation() {
@@ -80,6 +96,18 @@ public class ContainerJourney {
 			notification = new NotifyObject(0, "Container is in transit");
 		} return notification;
 	}
+	
+	public NotifyObject setCurrentLocation(double[] current) {
+		this.currentGps = current;
+		
+		NotifyObject notification;
+		if ((current[0] == end.getGPScoord()[0]) && (current[1] == end.getGPScoord()[1])) {
+			notification = new NotifyObject(100, "Client is notified of arrival");
+		} else { 
+			notification = new NotifyObject(0, "Container is in transit");
+		} return notification;
+	}
+	
 	
 	public static ContainerJourney findJourney(String id, ContainerJourney[] cJs) {
 		ContainerJourney result = null;

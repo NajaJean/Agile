@@ -29,6 +29,7 @@ public class StepDefs_LogisticUpdate {
 	double[] cphgpscoords = {730.0, 128.0};
 	double[] nygpscoords = {290.0, 225.0};
 	double[] hawaiigpscoords = {1735.0, 265.0};
+	double[] currentgpscoords = {0.0, 0.0};
 
 	Location CPH;
 	Location NY;
@@ -55,10 +56,12 @@ public class StepDefs_LogisticUpdate {
 	Content[] Contents;
 	Container[] Containers; 
 	Location[] Locations;
+	ContainerJourney[] Journies;
 
 	
 	@Given("company selected a container")
 	public void company_selected_a_container() {
+		
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
 		for(int i = 1; i < clients.length; i++) {
@@ -70,6 +73,7 @@ public class StepDefs_LogisticUpdate {
 		for(int i = 0; i < clientLength; i++) {
 			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
 		}
+		
 		String[][] locations = d.getTable("Locations");
 		int locLength = 0;
 		for(int i = 1; i < locations.length; i++) {
@@ -123,61 +127,58 @@ public class StepDefs_LogisticUpdate {
 				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
 			}
 		}
-		CPH = new Location("Copenhagen", cphgpscoords);
-		NY = new Location("New York", nygpscoords);
-		Hawaii = new Location("Hawaii", hawaiigpscoords);
+		
+		String[][] journies = d.getTable("Journies");
+		int journiesLength = 0;
+		for(int i = 1; i < journies.length; i++) {
+			if (!(journies[i][1] == null)) {
+				journiesLength++;
+			}
+		}
+		Journies = new ContainerJourney[journiesLength];
+		for(int i = 0; i < journiesLength; i++) {
+			Journies[i] = new ContainerJourney(Location.findLocation(journies[i+1][2], Locations), Location.findLocation(journies[i+1][3], Locations), Container.findContainer(journies[i+1][4], Containers));	
+		}
+		//CPH = new Location("Copenhagen", cphgpscoords);
+		//NY = new Location("New York", nygpscoords);
+		//Hawaii = new Location("Hawaii", hawaiigpscoords);
 
-		enviro = new Environment(5.0, 5.0, 5.0);
-		newEnviro = new Environment(15.0, 15.0, 15.0);
+		//enviro = Enviros[0];
+		newEnviro = Enviros[4];
 		
-		client = new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
+		client = Clients[0];       //new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
 		
-		stuff = new Content("Stuff", enviro, 1.0);
+		stuff = Contents[0];       //new Content("Stuff", enviro, 1.0);
 		newStuff = new Content("NewStuff", newEnviro, 2.0);
 		
-		selectedC = new Container(client, enviro, stuff,CPH);
-
-		containerJ = new ContainerJourney(CPH, NY, selectedC);
-		selectedJ = containerJ;
+		//selectedC = new Container(client, enviro, stuff,CPH);
 		
 		selectedC = Containers[id];
+		selectedJ = Journies[0];  //new ContainerJourney(CPH, NY, selectedC);
+		//selectedJ = containerJ;	
 	}
 
-	@When("the company updates the content")
-	public void the_company_updates_the_content() {
-		selectedC.setContainerContent(newStuff);
+	@When("the company updates the environment")
+	public void the_company_updates_the_environment() {
+		selectedC.setContainerEnvironment(newEnviro);;
 		response = selectedC.responseLogisticUpdate();
 		//context.setResponse(response);
 	}
 
-	@Then("the content is updated")
-	public void the_content_is_updated() {
-		assertEquals(newStuff.getContentID(), selectedC.getContainerContent().getContentID());
-		assertEquals(newStuff.getName(), selectedC.getContainerContent().getName());
-		assertTrue(newStuff.getThreshold() == selectedC.getContainerContent().getThreshold());
-		assertEquals(newStuff.getEnvironment().getEnviro_ID(), selectedC.getContainerContent().getEnvironment().getEnviro_ID());
-		assertTrue(newStuff.getEnvironment().getHumidity() == selectedC.getContainerContent().getEnvironment().getHumidity());//assertEquals double double was outdated
-		assertTrue(newStuff.getEnvironment().getPressure() == selectedC.getContainerContent().getEnvironment().getPressure());//assertEquals double double was outdated
-		assertTrue(newStuff.getEnvironment().getTemp() == selectedC.getContainerContent().getEnvironment().getTemp());//assertEquals double double was outdated
+	@Then("the environment is updated")
+	public void the_environment_is_updated() {
+		assertEquals(newEnviro.getEnviro_ID(), selectedC.getContainerEnvironment().getEnviro_ID());
+		assertTrue(newEnviro.getHumidity() == selectedC.getContainerEnvironment().getHumidity());//assertEquals double double was outdated
+		assertTrue(newEnviro.getPressure() == selectedC.getContainerEnvironment().getPressure());//assertEquals double double was outdated
+		assertTrue(newEnviro.getTemp() == selectedC.getContainerEnvironment().getTemp());//assertEquals double double was outdated
 	}
 	
 	//String tableName, String column, String value, String condition
-	@Then("the content should be updated in the database")
-	public void the_content_should_be_updated_in_the_database() {
-		String contentID = String.valueOf(selectedC.getContainerContent().getContentID());
-		d.updateDatabase("Contents", "Content_ID",contentID,Integer.toString(id));
-		String contentName = selectedC.getContainerContent().getName();
-		d.updateDatabase("Contents", "Name",contentName,Integer.toString(id));
-		String contentThreshold = String.valueOf(selectedC.getContainerContent().getThreshold());
-		d.updateDatabase("Contents", "Threshold",contentThreshold,Integer.toString(id));
-		String contentEnvironmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
-		d.updateDatabase("Containers", "Environment",contentEnvironmentID,Integer.toString(id));
-		String contentEnvironmentTemp = String.valueOf(selectedC.getContainerEnvironment().getTemp());
-		d.updateDatabase("Containers", "Temperature",contentEnvironmentTemp,Integer.toString(id));
-		String contentEnvironmentPressure = String.valueOf(selectedC.getContainerEnvironment().getPressure());
-		d.updateDatabase("Containers", "Pressure",contentEnvironmentPressure,Integer.toString(id));
-		String contentEnvironmentHumidity = String.valueOf(selectedC.getContainerEnvironment().getHumidity());
-		d.updateDatabase("Containers", "Humidity",contentEnvironmentHumidity,Integer.toString(id));
+	@Then("the environment should be updated in the database")
+	public void the_environment_should_be_updated_in_the_database() {
+		
+		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
+		d.updateDatabase("Containers", "Environment",environmentID,Integer.toString(id));
 		
 	}
 	
@@ -189,24 +190,32 @@ public class StepDefs_LogisticUpdate {
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
-		assertEquals(containerJ.getJourneyID(), selectedJ.getJourneyID());
-	}
+		} 
 
 	@When("the company updates the current location")
 	public void the_company_updates_the_current_location() {
-		selectedJ.setCurrentLocation(Hawaii);
+		selectedJ.setCurrentLocation(currentgpscoords);
 	}
 	
 
 	@Then("the current location is updated")
 	public void the_current_location_is_updated() {
 		
-		assertEquals(Hawaii.getLocationName(), selectedJ.getCurrentLocation().getLocationName());
-		assertEquals(Hawaii.getGPScoord(), selectedJ.getCurrentLocation().getGPScoord());
-		assertTrue(Hawaii.getGPScoord()[0] == selectedJ.getCurrentLocX());
-		assertTrue(Hawaii.getGPScoord()[1] == selectedJ.getCurrentLocY());
+		assertEquals(currentgpscoords, selectedJ.getCurrentLocationDoubleA());
+		assertTrue(currentgpscoords[0] == selectedJ.getCurrentX());
+		assertTrue(currentgpscoords[1] == selectedJ.getCurrentY());
 	}
 	
+	//String tableName, String column, String value, String condition
+		@Then("the current location should be updated in the database")
+		public void the_current_location_should_be_updated_in_the_database() {
+			
+			String currentX = String.valueOf(selectedJ.getCurrentX());
+			d.updateDatabase("Journies", "Current_x", currentX, Integer.toString(id));
+			String currentY = String.valueOf(selectedJ.getCurrentY());
+			d.updateDatabase("Journies", "Current_y", currentY,Integer.toString(id));
+			
+		}
 /*	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed_saying(String s){
 		System.out.println(response.getNotifyMessage());

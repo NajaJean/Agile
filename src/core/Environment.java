@@ -53,12 +53,9 @@ public class Environment {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
 			result = enviros[0];
 		}
 		
-		assert result != null;
-
 		return result;
 	}
 	
