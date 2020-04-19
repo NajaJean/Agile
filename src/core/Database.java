@@ -123,19 +123,5 @@ public class Database {
 		return index;
 	}
 	
-	public int clientEmptyContainer(int id) {
-		ResultSet result;
-		String query = "SELECT ID FROM Containers WHERE Content_ID IS NULL AND Client_ID IS " + Integer.toString(id);
-		int index = 0;
-		try {
-			Statement s = c.createStatement();
-			result = s.executeQuery(query);
-			while (result.next()) {
-				 index = result.getInt(1);
-			}
-			s.close();
-		} catch (SQLException e){System.out.println(e);} 
-		return index;
-	}
 }
 
