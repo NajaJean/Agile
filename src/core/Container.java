@@ -105,6 +105,6 @@ public class Container {
 	@Override
     public String toString() {
     	return "'"+ containerID + "', '" + client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
-    			content.getContentID() + "'";
+    			content.getContentID() + "', '" + location.getLocationID()+"'";
     }
 }
