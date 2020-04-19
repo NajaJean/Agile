@@ -102,26 +102,25 @@ public class StepDefs_ClientBookContainer {
 		}
 		
 		id = d.getEmptyContainer();	
-	    assertNotEquals(id, 0);
+	    assertNotEquals(0,id);
 	}
 	
 	@When("the client tries to book a container by filling it with no content")
-	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {	
-		response = con.checkBookingOfContainer(id);
-	}
-			
-	@Then("the container should not be assigned to the client")
-	public void the_container_should_not_be_assigned_to_the_client() {
-		assertNotEquals(con.getClientofContainer(),Clients[1]);		
-	}
-			
-	//2nd Scenario
-	@When("the client books a container by filling it with a content")
-	public void the_client_books_a_container_by_filling_it_with_a_content() {
+	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {
 		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
+		//response = con.checkBookingOfContainer(id);
+	}
+	@Given("that there exists an empty container in the databasew")
+	public void that_there_exists_an_empty_container_in_the_databasew() {
+		System.out.println("made it!");
+	}			
+	//2nd Scenario
+	@When("the client books a container by filling it with a content")
+	public void the_client_books_a_container_by_filling_it_with_a_content() {
+
 		//context.setResponse(response);
 		
 		//fill container
@@ -149,7 +148,7 @@ public class StepDefs_ClientBookContainer {
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
-	    assertEquals(id, 0);
+	    assertEquals(0,id);
 	}
 
 	@When("the Client tries to book a container")

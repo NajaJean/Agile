@@ -6,11 +6,10 @@ Feature: Client, Book Container
 	Scenario: Client is not able to fill container
 		Given that there exists an empty container in the database 
 		When the client tries to book a container by filling it with no content
-		Then the container should not be assigned to the client
 		Then message is displayed saying "All fields has to be filled"
 
 	Scenario: Client is able to book container
-		Given that there exists an empty container in the database 
+		Given that there exists an empty container in the databasew 
 		When the client books a container by filling it with a content
 		Then the first empty container existing in the database should be assigned to the client
 		Then the container should contain the content in the database

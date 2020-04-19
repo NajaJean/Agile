@@ -47,7 +47,7 @@ public class Content {
 		Content result = null;
 		try {
 			for(int i = 0; i< contents.length; i++) {
-				if(contents[i].name == name) {
+				if(contents[i].name.equals(name)) {
 					result = contents[i];
 					break;
 				}
@@ -58,4 +58,10 @@ public class Content {
 
 		return result;
 	}
+	
+	@Override
+    public String toString() {
+    	return "'"+ content_ID + "', '" + name + "', '" + enviro.getEnviro_ID() + "', '" + 
+    			threshold + "'";
+    }
 }

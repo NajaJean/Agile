@@ -73,7 +73,7 @@ public class Location {
     	Location result = null;
 		try {
 			for(int i = 0; i< locs.length; i++) {
-				if(locs[i].name == name) {
+				if(locs[i].name.equals(name)) {
 					result = locs[i];
 					break;
 				}
