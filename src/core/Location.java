@@ -44,4 +44,15 @@ public class Location {
     public void incrementOneGPSCoord(int axis, double j) {
     	GPScoord[axis] = GPScoord[axis] + j;
     }
+    
+    public static Location findLocation(String id, Location[] locs) {
+		Location result = null;
+		for(int i = 0; i< locs.length; i++) {
+			if(locs[i].ID == Integer.parseInt(id)) {
+				result = locs[i];
+				break;
+			}
+		}
+		return result;
+	}
 }

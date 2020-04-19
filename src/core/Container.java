@@ -7,19 +7,30 @@ public class Container {
 	private Client client;
 	private Environment enviro;
 	private Content content;
+	private Location location;
 	
 	private static int count = 1;
 	
-	public Container(Client client, Environment enviro, Content content) {
+	public Container(Client client, Environment enviro, Content content, Location location) {
 		this.containerID = count++;
 		this.client = client;
 		this.enviro = enviro;
 		this.content = content;
+		this.location = location;
 	}
 	
-	public Container(Environment enviro) {
+	public Container(Environment enviro,Location location) {
 		this.containerID = count++;
 		this.enviro = enviro;
+		this.location = location;
+	}
+	
+	public Location getContainerLocation() {
+		return location;
+	}
+	
+	public void setContainerLocation(Location loc) {
+		this.location = loc;
 	}
 	
 	public int getContainerID() {

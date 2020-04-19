@@ -7,6 +7,7 @@ import core.Container;
 import core.Content;
 import core.Database;
 import core.Environment;
+import core.Location;
 import core.LogisticCompany;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,6 +24,7 @@ public class StepDefs_ContainerStatus {
 	Environment[] Enviros;
 	Content[] Contents;
 	Container[] Containers; 
+	Location[] Locations;
 	
 	Content newContent = new Content("Apples", new Environment(15.0,15.0,15.0),0.1);
 
@@ -39,6 +41,19 @@ public class StepDefs_ContainerStatus {
 		Clients = new Client[clientLength];
 		for(int i = 0; i < clientLength; i++) {
 			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
+		}
+		
+		String[][] locations = d.getTable("Locations");
+		int locLength = 0;
+		for(int i = 1; i < locations.length; i++) {
+			if (!(locations[i][1] == null)) {
+				locLength++;
+			}
+		}
+		Locations = new Location[locLength];
+		for(int i = 0; i < locLength; i++) {
+			double[] gps = {Double.parseDouble(locations[i+1][2]),Double.parseDouble(locations[i+1][3])};
+			Locations[i] = new Location(locations[i+1][1],gps);
 		}
 		
 		String[][] environments = d.getTable("Environments");
@@ -75,10 +90,10 @@ public class StepDefs_ContainerStatus {
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			if(containers[i+1][2] == null && containers[i+1][4] == null) {
-				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros));
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(containers[i+1][3], Locations));
 			}
 			else {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents));
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(containers[i+1][4],Contents),Location.findLocation(containers[i+1][3], Locations));
 			}
 		}
 		

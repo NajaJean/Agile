@@ -7,6 +7,7 @@ import core.Client;
 import core.Container;
 import core.Content;
 import core.Environment;
+import core.Location;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,14 +18,17 @@ public class StepDefs_ClientUserManagement {
 	Client randomClient = new Client("alice", "1234", "Alice Harris", "alice.harris@gmail.com","10 Umbrella ct");
 	
 	Environment enviro;
+	Location loc;
 	Container specificClientContainer;
 	
 	@Given("a client books a container")
 	public void a_client_books_a_container() {
 	    enviro = new Environment(5.3,1.1,0.85);
+	    double[] cphgps = {55.1, 12.6};
+		loc = new Location("Copenhagen",cphgps);
 
 		// Does not have content yet, just a client that booked an empty container
-	    specificClientContainer = new Container(enviro);
+	    specificClientContainer = new Container(enviro,loc);
 	    specificClientContainer.setClientofContainer(specificClient);
 	}
 
