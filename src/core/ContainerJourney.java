@@ -24,10 +24,9 @@ public class ContainerJourney {
 		
 		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
 		//if you know how to pass the start location easier a deep copy pls change this
-		double[] temp = start.getGPScoord();
 		
-		currentGps[0] = temp[0];
-		currentGps[1] = temp[1];
+		currentGps[0] = start.getGPScoordX();
+		currentGps[1] = start.getGPScoordY();
 		
 		
 		this.current = new Location("Current Location", currentGps);

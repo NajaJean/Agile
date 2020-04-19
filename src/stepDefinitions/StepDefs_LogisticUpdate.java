@@ -137,9 +137,10 @@ public class StepDefs_LogisticUpdate {
 		}
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
-			Journies[i] = new ContainerJourney(Location.findLocation(journies[i+1][2], Locations), 
-					Location.findLocation(journies[i+1][3], Locations), Container.findContainer(journies[i+1][4], Containers));	
-			System.out.println(journies[i+1][2] + " " + journies[i+1][3] + " " + journies[i+1][4]);
+			
+			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), 
+					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(journies[i+1][4], Containers));	
+			
 		}
 		//CPH = new Location("Copenhagen", cphgpscoords);
 		//NY = new Location("New York", nygpscoords);
