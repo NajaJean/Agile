@@ -65,6 +65,17 @@ public class Container {
 		return response;
 	}
 	
+	public NotifyObject responseFillContainer(Content con) {
+		NotifyObject response;
+		if (con == null) {
+			response = new NotifyObject(55, "All fields has to be filled");
+		}
+		else {
+			response = new NotifyObject(56, "Content is updated successfully");
+		}
+		return response;
+	}
+	
 	public void setContainerContent(Content content) {
 		this.content = content;
 	}
