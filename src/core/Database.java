@@ -120,6 +120,7 @@ public class Database {
 			}
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 
+		//System.out.println(index);
 		return index;
 	}
 	
