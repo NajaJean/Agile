@@ -38,7 +38,7 @@ public class Database {
 				}
 			}
 			System.out.println(tableName + "  table imported sucessfully!");
-			s.close();
+			//s.close();
 		} catch (SQLException e){System.out.println(e);}
 
 		return values;
@@ -121,7 +121,7 @@ public class Database {
 			}
 			//s.close();
 		} catch (SQLException e){System.out.println(e);} 
-		//System.out.println(index);
+		System.out.println(index);
 		return index;
 	}
 	

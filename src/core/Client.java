@@ -102,12 +102,17 @@ public class Client {
     
 	public static Client findClient(String id, Client[] clients) {
 		Client result = null;
-		for(int i = 0; i< clients.length; i++) {
-			if(clients[i].ID == Integer.parseInt(id)) {
-				result = clients[i];
-				break;
+		try {
+			for(int i = 0; i< clients.length; i++) {
+				if(clients[i].ID == Integer.parseInt(id)) {
+					result = clients[i];
+					break;
+				}
 			}
+		} catch (Exception e) {
+			result = clients[0];
 		}
+
 		return result;
 	}
 }
