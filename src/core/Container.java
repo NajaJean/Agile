@@ -50,19 +50,11 @@ public class Container {
 	}
 	
 	public void setContainerEnvironment(Environment enviro) {
-		this.enviro.setTemp(enviro.getTemp());
-		this.enviro.setHumidity(enviro.getHumidity());
-		this.enviro.setPressure(enviro.getPressure());
+		this.enviro = enviro;
 	}
 	
 	public Content getContainerContent() {
 		return content;
-	}
-	
-	public NotifyObject responseLogisticUpdate() {
-		NotifyObject response;
-		response = new NotifyObject(101, "Environment is updated successfully");
-		return response;
 	}
 	
 	public void setContainerContent(Content content) {

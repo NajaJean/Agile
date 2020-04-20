@@ -4,7 +4,6 @@ package core;
 public class ContainerJourney {
 	private int journeyID;
 	private Location start;
-	private Location current;
 	private Location end;
 	private Container container;
 	private double[] currentGps;
@@ -25,11 +24,10 @@ public class ContainerJourney {
 		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
 		//if you know how to pass the start location easier a deep copy pls change this
 		
-		currentGps[0] = start.getGPScoordX();
-		currentGps[1] = start.getGPScoordY();
-		
-		
-		this.current = new Location("Current Location", currentGps);
+		double[] temp = start.getGPScoord();
+		currentGps = new double[2];
+		currentGps[0] = temp[0];
+		currentGps[1] = temp[1];
 	}
 	
 	public int getJourneyID() {
@@ -47,19 +45,8 @@ public class ContainerJourney {
 		return start.getGPScoord()[1];
 	}
 	
-	public Location getCurrentLocation() {
-		return current;
-	}
-	
 	public double[] getCurrentLocationDoubleA() {
 		return currentGps;
-	}
-	
-	public double getCurrentLocX() {
-		return current.getGPScoord()[0];
-	}
-	public double getCurrentLocY() {
-		return current.getGPScoord()[1];
 	}
 	
 	public double getCurrentX() {
@@ -86,27 +73,17 @@ public class ContainerJourney {
 	
 	// Needed to update the current location of the container
 	// Returns a NotifyObject to notify the client in the case where current == end
-	public NotifyObject setCurrentLocation(Location current) {
-		this.current = current;
-		
-		NotifyObject notification;
-		if (current == end) {
-			notification = new NotifyObject(100, "Client is notified of arrival");
-		} else { 
-			notification = new NotifyObject(0, "Container is in transit");
-		} return notification;
-	}
 	
-	public NotifyObject setCurrentLocation(double[] current) {
+	public void setCurrentLocation(double[] current) {
 		this.currentGps[0] = current[0];
 		this.currentGps[1] = current[1];
 		
-		NotifyObject notification;
+		/*NotifyObject notification;
 		if ((current[0] == end.getGPScoord()[0]) && (current[1] == end.getGPScoord()[1])) {
 			notification = new NotifyObject(100, "Client is notified of arrival");
 		} else { 
 			notification = new NotifyObject(0, "Container is in transit");
-		} return notification;
+		} return notification;*/
 	}
 	
 	

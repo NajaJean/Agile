@@ -34,15 +34,11 @@ public class StepDefs_LogisticUpdate {
 	Location CPH;
 	Location NY;
 	Location Hawaii;
+	Client C;
+	Environment en;
+	Content co;
 
-	Environment enviro;
 	Environment newEnviro;
-	
-	Client client;
-	
-	Content stuff;
-	Content newStuff;
-	
 	Container selectedC;
 
 	ContainerJourney containerJ;
@@ -50,7 +46,6 @@ public class StepDefs_LogisticUpdate {
 	
 	Database d = new Database("agileProject.accdb"); 
 	int id = 1;
-	Container con;
 	Client[] Clients;
 	Environment[] Enviros;
 	Content[] Contents;
@@ -142,30 +137,14 @@ public class StepDefs_LogisticUpdate {
 					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
 			
 		}
-		//CPH = new Location("Copenhagen", cphgpscoords);
-		//NY = new Location("New York", nygpscoords);
-		//Hawaii = new Location("Hawaii", hawaiigpscoords);
-
-		//enviro = Enviros[0];
 		newEnviro = Enviros[4];
-		
-		client = Clients[0];       //new Client("plsShipMyStuff", "yoDaddy69", "name", "email", "address");
-		
-		stuff = Contents[0];       //new Content("Stuff", enviro, 1.0);
-		newStuff = new Content("NewStuff", newEnviro, 2.0);
-		
-		//selectedC = new Container(client, enviro, stuff,CPH);
-		
 		selectedC = Containers[id];
-		
-		//selectedJ = containerJ;	
 	}
 
 	@When("the company updates the environment")
 	public void the_company_updates_the_environment() {
-		selectedC.setContainerEnvironment(newEnviro);;
-		response = selectedC.responseLogisticUpdate();
-		//context.setResponse(response);
+		selectedC.setContainerEnvironment(newEnviro);
+		response = new NotifyObject(101, "Environment is updated successfully");
 	}
 
 	@Then("the environment is updated")
@@ -179,21 +158,26 @@ public class StepDefs_LogisticUpdate {
 	//String tableName, String column, String value, String condition
 	@Then("the environment should be updated in the database")
 	public void the_environment_should_be_updated_in_the_database() {
-		
 		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
-		d.updateDatabase("Containers", "Environment",environmentID,Integer.toString(id));
+		d.updateDatabase("Containers", "Environment_ID",environmentID,Integer.toString(id));
 		
 	}
 	
 	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed(String s){
-	//	System.out.println(response.getNotifyMessage());
 		assertEquals(s, response.getNotifyMessage());
 	} 
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
-		selectedJ = Journies[1];  //new ContainerJourney(CPH, NY, selectedC);
+		CPH = new Location("Copenhagen",cphgpscoords);
+		NY = new Location("New York",nygpscoords);
+		Hawaii = new Location("Hawaii",hawaiigpscoords);
+		C = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
+		co = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
+		en = new Environment(5.3,1.1,0.85);
+		selectedC = new Container(C,en,co,CPH);
+		selectedJ = new ContainerJourney(CPH, NY, selectedC);
 		} 
 
 	@When("the company updates the current location")

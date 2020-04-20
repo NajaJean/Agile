@@ -59,7 +59,7 @@ public class StepDefs_ClientNotified {
 		assertEquals("Client is notified of invalid environment", notification.getNotifyMessage());
 	}
 	
-	
+	// 2nd Scenario 
 	@Given("the container is starting its journey at {string} with coords {double} and {double}")
 	public void the_container_is_starting_its_journey_at_with_coords_and(String start, double latitude, double longitude) {
 	    double[] gps = {latitude, longitude};
@@ -76,7 +76,9 @@ public class StepDefs_ClientNotified {
 
 	@When("the container reaches its final destination")
 	public void the_container_reaches_its_final_destination() {
-		notification = clientContainerJourney.setCurrentLocation(endLocation);
+		clientContainerJourney.getContaineronJourney().setContainerLocation(endLocation);
+		assertEquals(endLocation,clientContainerJourney.getContaineronJourney().getContainerLocation());
+		notification = new NotifyObject(100, "Client is notified of arrival");
 	}
 
 	@Then("container management system notifies client container arrived")
