@@ -54,7 +54,7 @@ public class Location {
     }
     
     public static Location findLocation(int id, Location[] locs) {
-    	Location result = null;
+    	Location result = locs[0];
 		try {
 			for(int i = 0; i< locs.length; i++) {
 				if(locs[i].ID == id) {
@@ -63,14 +63,13 @@ public class Location {
 				}
 			}
 		} catch (Exception e) {
-			result = locs[0];
+			System.out.println(e);
 		}
-
 		return result; 
 	}
     
     public static Location findLocation(String name, Location[] locs) {
-    	Location result = null;
+    	Location result = locs[0];
 		try {
 			for(int i = 0; i< locs.length; i++) {
 				if(locs[i].name.equals(name)) {
@@ -79,9 +78,8 @@ public class Location {
 				}
 			}
 		} catch (Exception e) {
-			result = locs[0];
+			System.out.println(e);
 		}
-
 		return result; 
 	}
 }

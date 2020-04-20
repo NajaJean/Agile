@@ -12,6 +12,7 @@ import core.Database;
 import core.Environment;
 import core.Location;
 import core.NotifyObject;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -57,11 +58,9 @@ public class StepDefs_LogisticUpdate {
 	Container[] Containers; 
 	Location[] Locations;
 	ContainerJourney[] Journies;
-
 	
-	@Given("company selected a container")
-	public void company_selected_a_container() {
-		
+	@Before
+	public void prepareData() {
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
 		for(int i = 1; i < clients.length; i++) {
@@ -137,11 +136,15 @@ public class StepDefs_LogisticUpdate {
 		}
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
-			
 			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), 
 					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
 			
 		}
+	}
+
+	
+	@Given("company selected a container")
+	public void company_selected_a_container() {
 		//CPH = new Location("Copenhagen", cphgpscoords);
 		//NY = new Location("New York", nygpscoords);
 		//Hawaii = new Location("Hawaii", hawaiigpscoords);
@@ -165,7 +168,7 @@ public class StepDefs_LogisticUpdate {
 	public void the_company_updates_the_environment() {
 		selectedC.setContainerEnvironment(newEnviro);;
 		response = selectedC.responseLogisticUpdate();
-		//context.setResponse(response);
+		context.setResponse(response);
 	}
 
 	@Then("the environment is updated")
@@ -179,22 +182,19 @@ public class StepDefs_LogisticUpdate {
 	//String tableName, String column, String value, String condition
 	@Then("the environment should be updated in the database")
 	public void the_environment_should_be_updated_in_the_database() {
-		
 		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
 		d.updateDatabase("Containers", "Environment",environmentID,Integer.toString(id));
-		
 	}
 	
 	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed(String s){
-	//	System.out.println(response.getNotifyMessage());
-		assertEquals(s, response.getNotifyMessage());
+		assertEquals(s, context.getResponse().getNotifyMessage());
 	} 
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
 		selectedJ = Journies[1];  //new ContainerJourney(CPH, NY, selectedC);
-		} 
+	} 
 
 	@When("the company updates the current location")
 	public void the_company_updates_the_current_location() {
@@ -204,25 +204,20 @@ public class StepDefs_LogisticUpdate {
 
 	@Then("the current location is updated")
 	public void the_current_location_is_updated() {
-		
-		assertEquals(currentgpscoords, selectedJ.getCurrentLocationDoubleA());
 		assertTrue(currentgpscoords[0] == selectedJ.getCurrentX());
 		assertTrue(currentgpscoords[1] == selectedJ.getCurrentY());
 	}
 	
 	//String tableName, String column, String value, String condition
-		@Then("the current location should be updated in the database")
-		public void the_current_location_should_be_updated_in_the_database() {
-			
-			String currentX = String.valueOf(selectedJ.getCurrentX());
-			d.updateDatabase("Journies", "Current_x", currentX, Integer.toString(id));
-			String currentY = String.valueOf(selectedJ.getCurrentY());
-			d.updateDatabase("Journies", "Current_y", currentY,Integer.toString(id));
-			
+	@Then("the current location should be updated in the database")
+	public void the_current_location_should_be_updated_in_the_database() {
+		String currentX = String.valueOf(selectedJ.getCurrentX());
+		NotifyObject firstResponse = d.updateDatabase("Journies", "Current_x", currentX, Integer.toString(id));
+		String currentY = String.valueOf(selectedJ.getCurrentY());
+		NotifyObject secondResponse = d.updateDatabase("Journies", "Current_y", currentY,Integer.toString(id));
+		if (firstResponse.getNotifyCode() != 0 && secondResponse.getNotifyCode() != 0) {
+			// They both passed and they have the same response message
+			context.setResponse(firstResponse);
 		}
-/*	@Then("a message is displayed: {string}") 
-	public void a_message_is_displayed_saying(String s){
-		System.out.println(response.getNotifyMessage());
-		assertEquals(s, response.getNotifyMessage());
-	} */
+	}
 }

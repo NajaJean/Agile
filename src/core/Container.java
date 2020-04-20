@@ -50,9 +50,7 @@ public class Container {
 	}
 	
 	public void setContainerEnvironment(Environment enviro) {
-		this.enviro.setTemp(enviro.getTemp());
-		this.enviro.setHumidity(enviro.getHumidity());
-		this.enviro.setPressure(enviro.getPressure());
+		this.enviro = enviro;
 	}
 	
 	public Content getContainerContent() {
