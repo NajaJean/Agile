@@ -135,33 +135,21 @@ public class StepDefs_LogisticUpdate {
 					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
 			
 		}
-<<<<<<< HEAD
-=======
 	}
 
 	
 	@Given("company selected a container")
 	public void company_selected_a_container() {
-		//CPH = new Location("Copenhagen", cphgpscoords);
-		//NY = new Location("New York", nygpscoords);
-		//Hawaii = new Location("Hawaii", hawaiigpscoords);
-
-		//enviro = Enviros[0];
->>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
 		newEnviro = Enviros[4];
 		selectedC = Containers[id];
 	}
 
 	@When("the company updates the environment")
 	public void the_company_updates_the_environment() {
-<<<<<<< HEAD
 		selectedC.setContainerEnvironment(newEnviro);
 		response = new NotifyObject(101, "Environment is updated successfully");
-=======
 		selectedC.setContainerEnvironment(newEnviro);;
-		response = selectedC.responseLogisticUpdate();
 		context.setResponse(response);
->>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
 	}
 
 	@Then("the environment is updated")
@@ -176,26 +164,16 @@ public class StepDefs_LogisticUpdate {
 	@Then("the environment should be updated in the database")
 	public void the_environment_should_be_updated_in_the_database() {
 		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
-<<<<<<< HEAD
 		d.updateDatabase("Containers", "Environment_ID",environmentID,Integer.toString(id));
-		
-=======
-		d.updateDatabase("Containers", "Environment",environmentID,Integer.toString(id));
->>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
 	}
 	
 	@Then("a message is displayed: {string}") 
 	public void a_message_is_displayed(String s){
-<<<<<<< HEAD
 		assertEquals(s, response.getNotifyMessage());
-=======
-		assertEquals(s, context.getResponse().getNotifyMessage());
->>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
 	} 
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
-<<<<<<< HEAD
 		CPH = new Location("Copenhagen",cphgpscoords);
 		NY = new Location("New York",nygpscoords);
 		Hawaii = new Location("Hawaii",hawaiigpscoords);
@@ -205,10 +183,7 @@ public class StepDefs_LogisticUpdate {
 		selectedC = new Container(C,en,co,CPH);
 		selectedJ = new ContainerJourney(CPH, NY, selectedC);
 		} 
-=======
-		selectedJ = Journies[1];  //new ContainerJourney(CPH, NY, selectedC);
-	} 
->>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
+
 
 	@When("the company updates the current location")
 	public void the_company_updates_the_current_location() {
