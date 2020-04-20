@@ -7,7 +7,7 @@ public class ContainerJourney {
 	private Location current;
 	private Location end;
 	private Container container;
-	private double[] currentGps;
+	private double[] currentGps = new double[2];
 	
 	private static int count = 1;
 	
@@ -27,7 +27,6 @@ public class ContainerJourney {
 		
 		currentGps[0] = start.getGPScoordX();
 		currentGps[1] = start.getGPScoordY();
-		
 		
 		this.current = new Location("Current Location", currentGps);
 	}

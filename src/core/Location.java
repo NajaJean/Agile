@@ -4,7 +4,7 @@ package core;
 public class Location {
     private String name;
     private int ID;
-    private double[] GPScoord;
+    private double[] GPScoord = new double[2];
     
     private static int count = 1;
     
