@@ -6,7 +6,7 @@ public class ContainerJourney {
 	private Location start;
 	private Location end;
 	private Container container;
-	private double[] currentGps;
+	private double[] currentGps = new double[2];
 	
 	private static int count = 1;
 	
@@ -24,10 +24,17 @@ public class ContainerJourney {
 		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
 		//if you know how to pass the start location easier a deep copy pls change this
 		
+<<<<<<< HEAD
 		double[] temp = start.getGPScoord();
 		currentGps = new double[2];
 		currentGps[0] = temp[0];
 		currentGps[1] = temp[1];
+=======
+		currentGps[0] = start.getGPScoordX();
+		currentGps[1] = start.getGPScoordY();
+		
+		this.current = new Location("Current Location", currentGps);
+>>>>>>> bf516a6ddbe0ccdbea4213e30e8655b1d1b8b25b
 	}
 	
 	public int getJourneyID() {

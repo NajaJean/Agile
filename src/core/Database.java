@@ -74,7 +74,8 @@ public class Database {
 		} catch (SQLException e){System.out.println(e);} 		
 	}
 	
-	public void updateDatabase(String tableName, String column, String value, String condition) {
+	public NotifyObject updateDatabase(String tableName, String column, String value, String condition) {
+		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + "'"+value+"'"
 				+ " WHERE ID = " + condition;
 		try {
@@ -82,7 +83,13 @@ public class Database {
 			s.execute(updateRow);
 			System.out.println("data updated sucessfully");
 			s.close();
-		} catch (SQLException e){System.out.println(e);} 		
+		} catch (SQLException e){
+			System.out.println(e);
+			response = new NotifyObject(0, "The update failed");
+			return response;
+		}
+		response = new NotifyObject(23, "The update was successful");
+		return response;
 	}
 	
 	public boolean checkUser(String user, String pass) {
