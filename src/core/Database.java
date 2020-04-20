@@ -4,16 +4,12 @@ import java.sql.*;
 
 public class Database {
 	private Connection c;
-	//private Statement s;
 
 	public Database(String url) {
 		try{  
 			this.c = DriverManager.getConnection("jdbc:ucanaccess://"+url); 
 
 		}catch(Exception ee){System.out.println(ee);} 
-		//try {
-		//	this.s=c.createStatement();
-		//} catch (SQLException e){System.out.println(e);}  
 	}
 
 	public String[][] getTable(String tableName) {
@@ -54,11 +50,10 @@ public class Database {
 			while (result.next()) {
 				while(true) {
 					try {
-						query = query + result.getString(i) + ", ";
+						query = query + result.getString(i);
 						i++;
 					}
 					catch (SQLException e){
-						query = query + "\n";
 						i = 1;
 						break;
 					} 
@@ -119,7 +114,7 @@ public class Database {
 				 index = result.getInt(1);
 				 return index;
 			}
-			//s.close();
+			s.close();
 		} catch (SQLException e){System.out.println(e);} 
 		return index;
 	}

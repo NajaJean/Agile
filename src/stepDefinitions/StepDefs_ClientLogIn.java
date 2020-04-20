@@ -15,6 +15,7 @@ import io.cucumber.java.en.When;
 public class StepDefs_ClientLogIn {
 	
 	ScenarioContext context;
+
 	
 	public StepDefs_ClientLogIn(ScenarioContext context) {
 		this.context = context;

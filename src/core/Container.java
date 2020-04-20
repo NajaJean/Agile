@@ -69,10 +69,10 @@ public class Container {
 		this.content = content;
 	}
 	
-	public static Container findContainer(String id, Container[] containers) {
+	public static Container findContainer(int id, Container[] containers) {
 		Container result = null;
 		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].containerID == Integer.parseInt(id)) {
+			if(containers[i].containerID == id) {
 				result = containers[i];
 				break;
 			}
@@ -80,28 +80,7 @@ public class Container {
 		return result;
 	}
 	
-	public NotifyObject checkBookingOfContainer(int id, Content content) {
-		NotifyObject notification;
-		if (id != 0 && content!=null) {
-			notification = new NotifyObject(31, "Container is succesfully booked");
-		} 
-		else {
-			notification = new NotifyObject(33, "No empty containers available");
-		} 
-		return notification;
-	}
-	
-	public NotifyObject checkBookingOfContainer(int id) {
-		NotifyObject notification;
-		if (id != 0) {
-			notification = new NotifyObject(32, "All fields has to be filled");
-		} 
-		else {
-			notification = new NotifyObject(33, "No empty containers available");
-		} 
-		return notification;
-	}
-	
+
 	@Override
     public String toString() {
 		String result = "";

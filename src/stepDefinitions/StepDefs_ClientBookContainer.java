@@ -104,29 +104,19 @@ public class StepDefs_ClientBookContainer {
 		id = d.getEmptyContainer();	
 	    assertNotEquals(0,id);
 	}
-	
-	@When("the client tries to book a container by filling it with no content")
-	public void the_client_tries_to_book_a_container_by_filling_it_with_no_content() {
-		con = Container.findContainer(Integer.toString(id), Containers); // Finds the empty container
-		con.setClientofContainer(Clients[1]); // Assign to client
-		String containerClientID = Integer.toString(con.getClientofContainer().getID());
-		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
-		//response = con.checkBookingOfContainer(id);
-	}
-	@Given("that there exists an empty container in the databasew")
-	public void that_there_exists_an_empty_container_in_the_databasew() {
-		System.out.println("made it!");
-	}			
-	//2nd Scenario
+		
 	@When("the client books a container by filling it with a content")
 	public void the_client_books_a_container_by_filling_it_with_a_content() {
 
 		//context.setResponse(response);
-		
+		con = Container.findContainer(id, Containers); // Finds the empty container
+		con.setClientofContainer(Clients[1]); // Assign to client
+		String containerClientID = Integer.toString(con.getClientofContainer().getID());
+		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
 		//fill container
 		content = Content.findContent("Bananas", Contents);
 		con.setContainerContent(content);
-		response = con.checkBookingOfContainer(id,content);
+		response = new NotifyObject(31, "Container is succesfully booked");
 		
 		d.updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(con.getContainerID()));
 	}
@@ -138,13 +128,13 @@ public class StepDefs_ClientBookContainer {
 
 	@Then("the container should contain the content in the database")
 	public void the_container_should_contain_the_content_in_the_database() {
-		String s = d.queryDatabase("SELECT Content_ID FROM Containers WHERE ID = "+id);
-		
-		assertEquals(s,Integer.toString(Containers[id].getContainerContent().getContentID()));
+		String database = d.queryDatabase("SELECT Content_ID FROM Containers WHERE ID = "+id);
+		String program = Integer.toString(Containers[id-1].getContainerContent().getContentID()); 
+		assertEquals(database,program);
 	}
 	
 	
-	//3rd scenario
+	//2rd scenario
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
@@ -153,8 +143,12 @@ public class StepDefs_ClientBookContainer {
 
 	@When("the Client tries to book a container")
 	public void the_Client_tries_to_book_a_container() {
-		response = con.checkBookingOfContainer(id);
+		response = new NotifyObject(33, "No empty containers available");
 		//context.setResponse(response);
+	}
+	@Then ("message is displayed says {string}")
+	public void Then_message_is_displayed_says(String s) {
+		assertEquals(s, response.getNotifyMessage());
 	}
 
 }

@@ -139,7 +139,7 @@ public class StepDefs_LogisticUpdate {
 		for(int i = 0; i < journiesLength; i++) {
 			
 			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), 
-					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(journies[i+1][4], Containers));	
+					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
 			
 		}
 		//CPH = new Location("Copenhagen", cphgpscoords);
