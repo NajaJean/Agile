@@ -7,13 +7,13 @@ Feature: Logistic Company, Update container status
 		When the company updates the environment
 		Then the environment is updated
 		And the environment should be updated in the database
-		And a message is displayed: "Environment is updated successfully"
+		And message is displayed saying "Environment is updated successfully"
 		
 	Scenario: Logistic Company is able to update the status of container
 		Given the company selected a container journey
 		When the company updates the current location
 		Then the current location is updated
 		And the current location should be updated in the database
-		And a message is displayed: "The update was successful"
+		And message is displayed saying "The update was successful"
 
 	

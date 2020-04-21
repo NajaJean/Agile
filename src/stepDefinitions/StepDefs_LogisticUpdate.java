@@ -167,11 +167,6 @@ public class StepDefs_LogisticUpdate {
 		d.updateDatabase("Containers", "Environment_ID",environmentID,Integer.toString(id));
 	}
 	
-	@Then("a message is displayed: {string}") 
-	public void a_message_is_displayed(String s){
-		assertEquals(s, response.getNotifyMessage());
-	} 
-	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
 		CPH = new Location("Copenhagen",cphgpscoords);
