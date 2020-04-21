@@ -33,8 +33,6 @@ public class StepDefs_ClientBookContainer {
 	//1st scenario
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
-		
-		
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
 		for(int i = 1; i < clients.length; i++) {
@@ -100,7 +98,6 @@ public class StepDefs_ClientBookContainer {
 				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
 			}
 		}
-		
 		id = d.getEmptyContainer();	
 	    assertNotEquals(0,id);
 	}

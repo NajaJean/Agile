@@ -54,8 +54,8 @@ public class StepDefs_LogisticUpdate {
 	Location[] Locations;
 	ContainerJourney[] Journies;
 	
-	@Before
-	public void prepareData() {
+	@Given("company selected a container")
+	public void company_selected_a_container() {
 		String[][] clients = d.getTable("Clients");
 		int clientLength = 0;
 		for(int i = 1; i < clients.length; i++) {
@@ -135,11 +135,6 @@ public class StepDefs_LogisticUpdate {
 					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
 			
 		}
-	}
-
-	
-	@Given("company selected a container")
-	public void company_selected_a_container() {
 		newEnviro = Enviros[4];
 		selectedC = Containers[id];
 	}
