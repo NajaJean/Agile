@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import core.Client;
 
-class ConfigureClientFrame extends JFrame implements ActionListener{
+public class ConfigureClient extends JFrame {
 	
 	java.awt.Container container = getContentPane();
 	
@@ -19,8 +19,7 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
 	Client TestClient = new Client("corona", "1234", "labrat", "@", "asd");
 	String[] TestC = new String[]{"corona", "1234", "labrat", "@", "asd"};
 	
-	enum Data{
-			
+	enum Data{	
 		UserName{ int num() {return 0;}},
 		Password{ int num() {return 1;}},
 		Name{ int num() {return 2;}},
@@ -61,12 +60,17 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
 	JButton doneButton = new JButton ("Done");
 	JButton returnButton = new JButton ("Return to Client Menu");
  
-	ConfigureClientFrame() {
+	public ConfigureClient() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
-        addActionEvent();
- 
+//        addActionEvent();
+        
+        setTitle("Configure Client");
+        setVisible(true);
+        setBounds(10, 10, 600, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     }
  
     public void setLayoutManager() {
@@ -103,11 +107,11 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
     	container.add(doneButton);
     	container.add(returnButton);
     }
- 
+ /*
     public void addActionEvent() {
     	doneButton.addActionListener(this);
     	returnButton.addActionListener(this);
-    }
+    }*/
     
     //not working properly, takes in the empty value for some reason :\
     public boolean isTheDataChanged(String checkThisData) {
@@ -149,26 +153,33 @@ class ConfigureClientFrame extends JFrame implements ActionListener{
             									"New Email: " + TestClient.getEmail() + " \n" +
             									"New Address: " + TestClient.getAddress());
             
-            openClientMenu();
+            //openClientMenu();
         } 
  
         if (e.getSource() == returnButton) {
-        	openClientMenu();
+        	//openClientMenu();
         }
     }
-    
+    /*
     public void openClientMenu() {
     	JFrame frame = new JFrame("Client Menu");
     	frame.setTitle("Client Menu");
-    	frame.getContentPane().add (new ClientMenuFrame());
+    	frame.getContentPane().add (new ClientMenu());
     	frame.setVisible(true);
     	frame.pack();
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setResizable(false);
+    }*/
+    
+    public JButton getDoneButton() {
+    	return doneButton;
+    }
+    public JButton getReturnButton() {
+    	return returnButton;
     }
  
 }
-
+/*
 public class ConfigureClient {
 
     public static void main(String[] a) {
@@ -181,6 +192,6 @@ public class ConfigureClient {
  
     }
  
-}
+}*/
  
 
