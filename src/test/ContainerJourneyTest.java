@@ -38,8 +38,14 @@ public class ContainerJourneyTest {
 		
 		assertEquals(c, cj.getContaineronJourney());
 		
-//		assertEquals(gpsStart[0], cj.getStartLocX());
-//		assertEquals(gpsStart[1], cj.getStartLocY());
+		assertTrue(gpsStart[0] == cj.getStartLocX());
+		assertTrue(gpsStart[1] == cj.getStartLocY());
+		
+		assertTrue(start.getGPScoord()[0] == cj.getCurrentLocationDoubleA()[0]);
+		assertTrue(start.getGPScoord()[1] == cj.getCurrentLocationDoubleA()[1]);
+		
+		assertTrue(gpsEnd[0] == cj.getEndLocX());
+		assertTrue(gpsEnd[1] == cj.getEndLocY());
 	}
 
 }

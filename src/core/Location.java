@@ -18,10 +18,6 @@ public class Location {
     	return name;
     }
     
-    public void setName(String name) {
-    	this.name = name;
-    }
-    
     public int getLocationID() {
     	return ID;
     }
@@ -45,17 +41,14 @@ public class Location {
     	GPScoord[1] = y;    	
     }
     
-    public void setOneGPSCoord(int i, double j) {
-    	GPScoord[i] = j;
-    }
-    
     public void incrementOneGPSCoord(int axis, double j) {
     	GPScoord[axis] = GPScoord[axis] + j;
     }
     
     public static Location findLocation(int id, Location[] locs) {
-    	Location result = locs[0];
+    	Location result = null;
 		try {
+			result = locs[0];
 			for(int i = 0; i< locs.length; i++) {
 				if(locs[i].ID == id) {
 					result = locs[i];
@@ -69,8 +62,9 @@ public class Location {
 	}
     
     public static Location findLocation(String name, Location[] locs) {
-    	Location result = locs[0];
+    	Location result = null;
 		try {
+			result = locs[0];
 			for(int i = 0; i< locs.length; i++) {
 				if(locs[i].name.equals(name)) {
 					result = locs[i];
