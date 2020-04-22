@@ -15,17 +15,23 @@ public class StepDefs_LogisticCompCreateClient {
 	Database d = new Database("agileProject.accdb");
 	Client C;
 	LogisticCompany l; 
-	
+	Client[] Clients;
 	
 	@Given("a logistic company")
 	public void a_logistic_company() {
+		String[][] clients = d.getTable("Clients");
+		int clientLength = Database.lengthTable(clients);
+		Clients = new Client[clientLength];
+		for(int i = 0; i < clientLength; i++) {
+			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
+		}
 	   l = new LogisticCompany();
 	    
 	}
 
 	@Given("given a new client")
 	public void given_a_new_client() {
-		C = new Client("fred", "1234", "Fred Wesley", "freddie45@gmail.com","45 Harrison ct");
+		C = new Client("N", "4321", "Naja","najasemail@gmail.com","Rådhuspladsen 100");
 	    
 	}
 
@@ -45,6 +51,7 @@ public class StepDefs_LogisticCompCreateClient {
 	@Then("is found in the database")
 	public void is_found_in_the_database() {
 		assertTrue(d.checkUser(C.getUserName(), C.getPassword()));
+		d.removeFromDatabase("Clients", C.getID());
 	    
 	}
 }

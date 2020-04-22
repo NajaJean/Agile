@@ -107,7 +107,7 @@ public class StepDefs_LogisticUpdate {
 		}
 		newEnviro = Enviros[4];
 		selectedC = Containers[id];
-		oldEnviro = Containers[id].getContainerEnvironment().getEnviro_ID();
+		//oldEnviro = Containers[id].getContainerEnvironment().getEnviro_ID();
 	}
 
 	@When("the company updates the environment")
@@ -131,7 +131,7 @@ public class StepDefs_LogisticUpdate {
 	public void the_environment_should_be_updated_in_the_database() {
 		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
 		d.updateDatabase("Containers", "Environment_ID",environmentID,Integer.toString(id));
-		d.updateDatabase("Containers", "Environment_ID",Integer.toString(oldEnviro),Integer.toString(id));
+		//d.updateDatabase("Containers", "Environment_ID",Integer.toString(oldEnviro),Integer.toString(id));
 	}
 	
 	@Given("the company selected a container journey")

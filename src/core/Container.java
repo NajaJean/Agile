@@ -77,11 +77,11 @@ public class Container {
     public String toString() {
 		String result = "";
 		try {
-			result = "'"+ containerID + "', '" + client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
+			result = "'"+containerID+"', '"+ client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
 	    			content.getContentID() + "', '" + location.getLocationID()+"'";
 		}
 		catch(Exception e) {
-			result = "'"+ containerID + "', '" + enviro.getEnviro_ID() + "', '" + location.getLocationID()+"'";
+			result = "'"+containerID+"', NULL, '" + enviro.getEnviro_ID() + "', NULL, '" +  location.getLocationID()+"'";
 		}
     	return result;
     }
