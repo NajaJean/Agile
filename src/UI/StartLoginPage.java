@@ -1,33 +1,35 @@
 package UI;
-import java.awt.*;
-import java.awt.event.*;
+//import java.awt.*;
+//import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
+//import javax.swing.event.*;
 
 //import test.Database;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 
-class StartLoginPageFrame extends JFrame implements ActionListener {
+public class StartLoginPage extends JFrame {
 	java.awt.Container container = getContentPane();
     JLabel welcomeLabel = new JLabel ("Welcome to ContainerSystem");
     JButton lcLogin = new JButton ("Logistic Company Login");
     JButton cLogin = new JButton ("Client Login");
-
  
-    StartLoginPageFrame() {
+    public StartLoginPage() {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
-        addActionEvent();
- 
+        setTitle("Choose Login");
+        setVisible(true);
+        setBounds(10, 10, 370, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     }
  
     public void setLayoutManager() {
         container.setLayout(null);
     }
- 
+    
     public void setLocationAndSize() {
     	welcomeLabel.setBounds (45, 5, 195, 25);
         lcLogin.setBounds (35, 35, 200, 25);
@@ -39,13 +41,16 @@ class StartLoginPageFrame extends JFrame implements ActionListener {
     	container.add(lcLogin);
         container.add(cLogin);
     }
- 
-    public void addActionEvent() {
-    	lcLogin.addActionListener(this);
-    	cLogin.addActionListener(this);
+    
+    public JButton getcLoginButton() {
+    	return cLogin;
+    }
+    
+    public JButton getlcLoginButton() {
+    	return lcLogin;
     }
  
- 
+ /*
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -55,18 +60,21 @@ class StartLoginPageFrame extends JFrame implements ActionListener {
         if (e.getSource() == cLogin) {
         	openLoginFor("Client");
         }
-    }
+    }*/
     
     public void openLoginFor(String CorL) {
-    	LoginFrame frame = new LoginFrame(CorL);
+    	Login frame = new Login(CorL);
         frame.setTitle("Login Form");
         frame.setVisible(true);
         frame.setBounds(10, 10, 370, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        dispose();
     }
+
+
 }
- 
+/* 
 public class StartLoginPage {
     public static void main(String[] a) {
     	StartLoginPageFrame frame = new StartLoginPageFrame();
@@ -76,4 +84,4 @@ public class StartLoginPage {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
     }
-}
+}*/

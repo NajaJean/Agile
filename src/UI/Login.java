@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
  
-class LoginFrame extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener{
 	String CorL;
     java.awt.Container container = getContentPane();
     JLabel userNameLabel = new JLabel ("User Name:");
@@ -17,12 +17,28 @@ class LoginFrame extends JFrame implements ActionListener {
     JTextField userTextField = new JTextField (5);
     JPasswordField passwordTextField = new JPasswordField (5);
  
-    LoginFrame(String CorL) {
+    public Login(String CorL) {
     	this.CorL = CorL;
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
-        addActionEvent();
+//        addActionEvent();
+    }
+    
+    public JButton getLoginButton() {
+    	return loginButton;
+    }
+    public JButton getResetButton() {
+    	return resetButton;
+    }
+    public JButton getGoBackButton() {
+    	return goBackButton;
+    }
+    public JTextField getUserTextField() {
+    	return userTextField;
+    }
+    public JPasswordField getPasswordTextField() {
+    	return passwordTextField;
     }
  
     public void setLayoutManager() {
@@ -48,13 +64,13 @@ class LoginFrame extends JFrame implements ActionListener {
     	container.add(userTextField);
         container.add(passwordTextField);
     }
- 
+ /*
     public void addActionEvent() {
         loginButton.addActionListener(this);
         resetButton.addActionListener(this);
         goBackButton.addActionListener(this);
     }
- 
+ */
  
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -111,7 +127,7 @@ class LoginFrame extends JFrame implements ActionListener {
     }
     
     public void openLoginMenu() {
-    	StartLoginPageFrame frame = new StartLoginPageFrame();
+    	StartLoginPage frame = new StartLoginPage();
         frame.setTitle("Choose Login");
         frame.setVisible(true);
         frame.setBounds(10, 10, 370, 600);
@@ -119,7 +135,7 @@ class LoginFrame extends JFrame implements ActionListener {
         frame.setResizable(false);
     }
 }
- 
+ /*
 public class Login {
     public static void main(String[] a) {
         LoginFrame frame = new LoginFrame("");
@@ -129,4 +145,4 @@ public class Login {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
     }
-}
+}*/
