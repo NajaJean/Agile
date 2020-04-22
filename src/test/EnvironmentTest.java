@@ -53,9 +53,9 @@ public class EnvironmentTest {
 		Environment[] enviros = {e1,e2};
 		Environment[] enviros2 = null;
 		
-		assertEquals(e1, Environment.findEnviro("50", enviros)); //50
+		assertEquals(e1, Environment.findEnviro("52", enviros)); //52
 		assertEquals(null, Environment.findEnviro("55", enviros2)); 	
-		assertEquals("'50', '5.3', '1.1', '0.85'" ,e1.toString());
+		assertEquals("'52', '5.3', '1.1', '0.85'" ,e1.toString());
 	}
 	
 	@Test

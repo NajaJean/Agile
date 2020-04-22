@@ -20,4 +20,21 @@ public class ContentTest {
 		assertEquals(0.1, con1.getThreshold(), 0.0001);
 		assertEquals(9, con1.getContentID()); //8
 	}
+	
+	@Test
+	public void testFindContent() {
+		Content con1 = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
+		Content con2 = new Content("Apples",new Environment(6.0,2.0,0.95), 0.2);
+		Content[] cons = {con1, con2};
+		Content[] consEmpty = null;
+		
+		assertEquals(con1, Content.findContent(10, cons));
+		assertEquals(con1, Content.findContent("Banana", cons));
+		assertEquals(null, Content.findContent(1, consEmpty));
+		assertEquals(null, Content.findContent("Banana", consEmpty));
+		assertEquals(null, Content.findContent("Bana", cons));
+		assertEquals("'10', 'Banana', '18', '0.1'", con1.toString());
+		
+		
+	}
 }

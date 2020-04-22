@@ -37,7 +37,8 @@ public class Content {
 				}
 			}
 		} catch (Exception e) {
-			result = contents[0];
+			System.out.println(e);
+//			result = contents[0];
 		}
 
 		return result;
@@ -53,7 +54,8 @@ public class Content {
 				}
 			}
 		} catch (Exception e) {
-			result = contents[0];
+//			result = contents[0];
+			System.out.println(e);
 		}
 
 		return result;
