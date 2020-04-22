@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
  
-public class Login extends JFrame implements ActionListener{
+public class Login extends JFrame {
 	String CorL;
     java.awt.Container container = getContentPane();
     JLabel userNameLabel = new JLabel ("User Name:");
@@ -76,7 +76,7 @@ public class Login extends JFrame implements ActionListener{
         goBackButton.addActionListener(this);
     }
  */
- 
+ /*
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -110,7 +110,7 @@ public class Login extends JFrame implements ActionListener{
         if (e.getSource() == goBackButton) {
         	openLoginMenu();
         }
-    }
+    }*/
     public void openClientMenu() {
     	JFrame frame = new JFrame("Client Menu");
         frame.setTitle("Client Menu");

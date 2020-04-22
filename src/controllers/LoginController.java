@@ -52,7 +52,7 @@ public class LoginController {
 	public void initController() {
 		view.getLoginButton().addActionListener(e -> tryLogin(CorL));
 		view.getResetButton().addActionListener(e -> reset());
-//		view.getGoBackButton().addActionListener(e -> viewBack.openLoginFor("Logistic Company"));
+		view.getGoBackButton().addActionListener(e -> goToStartLoginPage());
 	}
 	
 	public void tryLogin(String CorL) {
@@ -62,7 +62,6 @@ public class LoginController {
 		if (CorL.contentEquals("Client")) {
 			if (d.checkUser(username, password)) {
 				c = Client.findClient(username, password, Clients);
-				System.out.println(c.getName());
 				response = c.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
 				view.dispose();
@@ -71,8 +70,8 @@ public class LoginController {
 				
 			}
 			else {
-				response = c.logIn(false);
-				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+//				response = c.logIn(false);
+				JOptionPane.showMessageDialog(null, "Incorrect username or password");
 			}
 		}
 		else {
@@ -92,10 +91,15 @@ public class LoginController {
 	}
 	
 	private void reset() {
-		Login newView = new Login(CorL);
-		view.dispose();
-		this.view = newView;
-		
+		view.getUserTextField().setText("");
+		view.getPasswordTextField().setText("");
 	}
 
+	private void goToStartLoginPage() {
+		view.dispose();
+		StartLoginPage v = new StartLoginPage();
+		StartLoginPageController w = new StartLoginPageController(v, Clients, Enviros, Contents, Containers, Locations, Journies, d);
+		w.initController();
+	}
+	
 }
