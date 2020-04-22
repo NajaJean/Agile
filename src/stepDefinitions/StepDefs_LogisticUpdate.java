@@ -39,6 +39,7 @@ public class StepDefs_LogisticUpdate {
 	Content co;
 
 	Environment newEnviro;
+	int oldEnviro;
 	Container selectedC;
 
 	ContainerJourney containerJ;
@@ -56,24 +57,14 @@ public class StepDefs_LogisticUpdate {
 	@Given("company selected a container")
 	public void company_selected_a_container() {
 		String[][] clients = d.getTable("Clients");
-		int clientLength = 0;
-		for(int i = 1; i < clients.length; i++) {
-			if (!(clients[i][1] == null)) {
-				clientLength++;
-			}
-		}
+		int clientLength = Database.lengthTable(clients);
 		Clients = new Client[clientLength];
 		for(int i = 0; i < clientLength; i++) {
 			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
 		}
 		
 		String[][] locations = d.getTable("Locations");
-		int locLength = 0;
-		for(int i = 1; i < locations.length; i++) {
-			if (!(locations[i][1] == null)) {
-				locLength++;
-			}
-		}
+		int locLength = Database.lengthTable(locations);
 		Locations = new Location[locLength];
 		for(int i = 0; i < locLength; i++) {
 			double[] gps = {Double.parseDouble(locations[i+1][3]),Double.parseDouble(locations[i+1][4])};
@@ -81,36 +72,21 @@ public class StepDefs_LogisticUpdate {
 		}
 		
 		String[][] environments = d.getTable("Environments");
-		int enviroLength = 0;
-		for(int i = 1; i < environments.length; i++) {
-			if (!(environments[i][1] == null)) {
-				enviroLength++;
-			}
-		}
+		int enviroLength = Database.lengthTable(environments);
 		Enviros = new Environment[enviroLength];
 		for(int i = 0; i < enviroLength; i++) {
 			Enviros[i] = new Environment(Double.parseDouble(environments[i+1][2]),Double.parseDouble(environments[i+1][3]),Double.parseDouble(environments[i+1][4]));	
 		}
 		
 		String[][] contents = d.getTable("Contents");
-		int contentLength = 0;
-		for(int i = 1; i < contents.length; i++) {
-			if (!(contents[i][1] == null)) {
-				contentLength++;
-			}
-		}
+		int contentLength = Database.lengthTable(contents);
 		Contents = new Content[contentLength];
 		for(int i = 0; i < contentLength; i++) {
 			Contents[i] = new Content(contents[i+1][2],Environment.findEnviro(contents[i+1][3],Enviros),Double.parseDouble(contents[i+1][4]));
 		}
 		
 		String[][] containers = d.getTable("Containers");
-		int containerLength = 0;
-		for(int i = 1; i < containers.length; i++) {
-			if (!(containers[i][1] == null)) {
-				containerLength++;
-			}
-		}
+		int containerLength = Database.lengthTable(containers);
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			try {
@@ -122,12 +98,7 @@ public class StepDefs_LogisticUpdate {
 		}
 		
 		String[][] journies = d.getTable("Journies");
-		int journiesLength = 0;
-		for(int i = 1; i < journies.length; i++) {
-			if (!(journies[i][1] == null)) {
-				journiesLength++;
-			}
-		}
+		int journiesLength = Database.lengthTable(journies);
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
 			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), 
@@ -136,6 +107,7 @@ public class StepDefs_LogisticUpdate {
 		}
 		newEnviro = Enviros[4];
 		selectedC = Containers[id];
+		oldEnviro = Containers[id].getContainerEnvironment().getEnviro_ID();
 	}
 
 	@When("the company updates the environment")
@@ -159,6 +131,7 @@ public class StepDefs_LogisticUpdate {
 	public void the_environment_should_be_updated_in_the_database() {
 		String environmentID = String.valueOf(selectedC.getContainerEnvironment().getEnviro_ID());
 		d.updateDatabase("Containers", "Environment_ID",environmentID,Integer.toString(id));
+		d.updateDatabase("Containers", "Environment_ID",Integer.toString(oldEnviro),Integer.toString(id));
 	}
 	
 	@Given("the company selected a container journey")
@@ -197,5 +170,7 @@ public class StepDefs_LogisticUpdate {
 			// They both passed and they have the same response message
 			context.setResponse(firstResponse);
 		}
+		d.updateDatabase("Journies", "Current_y", Integer.toString(id));
+		d.updateDatabase("Journies", "Current_x", Integer.toString(id));
 	}
 }
