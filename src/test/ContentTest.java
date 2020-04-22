@@ -18,6 +18,6 @@ public class ContentTest {
 		assertEquals(1.0, con1.getEnvironment().getPressure(), 0.0001);
 		assertEquals(0.85, con1.getEnvironment().getHumidity(), 0.0001);
 		assertEquals(0.1, con1.getThreshold(), 0.0001);
-		assertEquals(6, con1.getContentID());
+		assertEquals(9, con1.getContentID()); //8
 	}
 }

@@ -53,7 +53,8 @@ public class Environment {
 				}
 			}
 		} catch (Exception e) {
-			result = enviros[0];
+			System.out.println(e);
+//			result = enviros[0];
 		}
 		
 		return result;
@@ -85,4 +86,10 @@ public class Environment {
 			notification = new NotifyObject(0, "Container environment is valid");
 		} return notification;
 	}
+	
+    @Override
+    public String toString() {
+    	return "'"+ enviro_ID + "', '" + temp + "', '" + pressure + "', '" + 
+    			humidity + "'";
+    }
 }

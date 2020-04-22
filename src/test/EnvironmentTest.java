@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import core.Content;
 import core.Environment;
+import core.NotifyObject;
 
 public class EnvironmentTest {
 	
@@ -43,5 +44,25 @@ public class EnvironmentTest {
 		
 		boolean test2 = e.validEnvironment(new Content("Banana",new Environment(2.3,0.2,0.3), 0.1));
 		assertFalse("Should not be valid", test2);
+	}
+	
+	@Test
+	public void testFindEnviro() {
+		Environment e1 = new Environment(5.3,1.1,0.85);
+		Environment e2 = new Environment(5.4,1.1,0.85);
+		Environment[] enviros = {e1,e2};
+		Environment[] enviros2 = null;
+		
+		assertEquals(e1, Environment.findEnviro("50", enviros)); //50
+		assertEquals(null, Environment.findEnviro("55", enviros2)); 	
+		assertEquals("'50', '5.3', '1.1', '0.85'" ,e1.toString());
+	}
+	
+	@Test
+	public void testCheckEnvironment() {
+		Content con1 = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
+		NotifyObject N = new NotifyObject(0, "Container environment is valid");
+		assertEquals(N.getNotifyCode(), e.checkEnvironment(con1).getNotifyCode());
+		assertEquals(N.getNotifyMessage(), e.checkEnvironment(con1).getNotifyMessage());
 	}
 }

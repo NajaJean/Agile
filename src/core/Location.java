@@ -76,4 +76,10 @@ public class Location {
 		}
 		return result; 
 	}
+    
+    @Override
+    public String toString() {
+    	return "'"+ name + "', '" + ID + "', '" + GPScoord[0] + "', '" + 
+    			GPScoord[1] + "'";
+    }
 }

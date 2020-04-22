@@ -98,11 +98,17 @@ public class ContainerJourney {
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			result = cJs[0];
+//			result = cJs[0];
 		}
 		
-		assert result != null;
+//		assert result != null;
 
 		return result;
 	}
+	
+    @Override
+    public String toString() {
+    	return "'"+ journeyID + "', '" + start + "', '" + end + "', '" + 
+    			container + "', '" + currentGps[0] + "', '" + currentGps[1] + "'";
+    }
 }
