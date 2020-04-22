@@ -107,11 +107,11 @@ public class ConfigureClient extends JFrame {
     	container.add(doneButton);
     	container.add(returnButton);
     }
- 
+ /*
     public void addActionEvent() {
     	doneButton.addActionListener(this);
     	returnButton.addActionListener(this);
-    }
+    }*/
     
     //not working properly, takes in the empty value for some reason :\
     public boolean isTheDataChanged(String checkThisData) {
@@ -153,14 +153,14 @@ public class ConfigureClient extends JFrame {
             									"New Email: " + TestClient.getEmail() + " \n" +
             									"New Address: " + TestClient.getAddress());
             
-            openClientMenu();
+            //openClientMenu();
         } 
  
         if (e.getSource() == returnButton) {
-        	openClientMenu();
+        	//openClientMenu();
         }
     }
-    
+    /*
     public void openClientMenu() {
     	JFrame frame = new JFrame("Client Menu");
     	frame.setTitle("Client Menu");
@@ -169,6 +169,13 @@ public class ConfigureClient extends JFrame {
     	frame.pack();
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.setResizable(false);
+    }*/
+    
+    public JButton getDoneButton() {
+    	return doneButton;
+    }
+    public JButton getReturnButton() {
+    	return returnButton;
     }
  
 }
