@@ -40,6 +40,26 @@ public class Database {
 		return values;
 	}
 	
+	public static int lengthTable(String[][] table) {
+		int len = 0;
+		for(int i = 1; i < table.length; i++) {
+			if (!(table[i][1] == null)) {
+				len++;
+			}
+		}
+		return len;
+	}
+	
+	public void removeFromDatabase(String tableName,int id) {
+		String removeRow = "DELETE FROM " + tableName + " WHERE ID = "+id;
+		try {
+			Statement s = c.createStatement();
+			s.execute(removeRow);
+			System.out.println("data removed sucessfully");
+			s.close();
+		} catch (SQLException e){System.out.println(e);}
+	}
+	
 	public String queryDatabase(String sql) {  
 		ResultSet result;
 		String query = "";
@@ -77,6 +97,24 @@ public class Database {
 	public NotifyObject updateDatabase(String tableName, String column, String value, String condition) {
 		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + "'"+value+"'"
+				+ " WHERE ID = " + condition;
+		try {
+			Statement s = c.createStatement();
+			s.execute(updateRow);
+			System.out.println("data updated sucessfully");
+			s.close();
+		} catch (SQLException e){
+			System.out.println(e);
+			response = new NotifyObject(0, "The update failed");
+			return response;
+		}
+		response = new NotifyObject(23, "The update was successful");
+		return response;
+	}
+	
+	public NotifyObject updateDatabase(String tableName, String column, String condition) {
+		NotifyObject response;
+		String updateRow = "UPDATE " + tableName + " SET " + column + "= NULL"
 				+ " WHERE ID = " + condition;
 		try {
 			Statement s = c.createStatement();

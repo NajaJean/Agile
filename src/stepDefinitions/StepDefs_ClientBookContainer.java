@@ -34,24 +34,14 @@ public class StepDefs_ClientBookContainer {
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
 		String[][] clients = d.getTable("Clients");
-		int clientLength = 0;
-		for(int i = 1; i < clients.length; i++) {
-			if (!(clients[i][1] == null)) {
-				clientLength++;
-			}
-		}
+		int clientLength = Database.lengthTable(clients);
 		Clients = new Client[clientLength];
 		for(int i = 0; i < clientLength; i++) {
 			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
 		}
 		
 		String[][] locations = d.getTable("Locations");
-		int locLength = 0;
-		for(int i = 1; i < locations.length; i++) {
-			if (!(locations[i][1] == null)) {
-				locLength++;
-			}
-		}
+		int locLength = Database.lengthTable(locations);
 		Locations = new Location[locLength];
 		for(int i = 0; i < locLength; i++) {
 			double[] gps = {Double.parseDouble(locations[i+1][3]),Double.parseDouble(locations[i+1][4])};
@@ -59,36 +49,21 @@ public class StepDefs_ClientBookContainer {
 		}
 		
 		String[][] environments = d.getTable("Environments");
-		int enviroLength = 0;
-		for(int i = 1; i < environments.length; i++) {
-			if (!(environments[i][1] == null)) {
-				enviroLength++;
-			}
-		}
+		int enviroLength = Database.lengthTable(environments);;
 		Enviros = new Environment[enviroLength];
 		for(int i = 0; i < enviroLength; i++) {
 			Enviros[i] = new Environment(Double.parseDouble(environments[i+1][2]),Double.parseDouble(environments[i+1][3]),Double.parseDouble(environments[i+1][4]));	
 		}
 		
 		String[][] contents = d.getTable("Contents");
-		int contentLength = 0;
-		for(int i = 1; i < contents.length; i++) {
-			if (!(contents[i][1] == null)) {
-				contentLength++;
-			}
-		}
+		int contentLength = Database.lengthTable(contents);;
 		Contents = new Content[contentLength];
 		for(int i = 0; i < contentLength; i++) {
 			Contents[i] = new Content(contents[i+1][2],Environment.findEnviro(contents[i+1][3],Enviros),Double.parseDouble(contents[i+1][4]));
 		}
 		
 		String[][] containers = d.getTable("Containers");
-		int containerLength = 0;
-		for(int i = 1; i < containers.length; i++) {
-			if (!(containers[i][1] == null)) {
-				containerLength++;
-			}
-		}
+		int containerLength = Database.lengthTable(containers);;
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			try {
@@ -128,6 +103,7 @@ public class StepDefs_ClientBookContainer {
 		String database = d.queryDatabase("SELECT Content_ID FROM Containers WHERE ID = "+id);
 		String program = Integer.toString(Containers[id-1].getContainerContent().getContentID()); 
 		assertEquals(database,program);
+		d.updateDatabase("Containers", "Content_ID", Integer.toString(con.getContainerID()));
 	}
 	
 	
@@ -136,6 +112,7 @@ public class StepDefs_ClientBookContainer {
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
 	    assertEquals(0,id);
+	    d.updateDatabase("Containers", "Client_ID", Integer.toString(4));
 	}
 
 	@When("the Client tries to book a container")
