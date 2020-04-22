@@ -23,6 +23,11 @@ public class Login extends JFrame implements ActionListener{
         setLocationAndSize();
         addComponentsToContainer();
 //        addActionEvent();
+        setTitle("Login Form");
+        setVisible(true);
+        setBounds(10, 10, 370, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     }
     
     public JButton getLoginButton() {

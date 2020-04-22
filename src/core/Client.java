@@ -109,7 +109,7 @@ public class Client {
 		Client result = null;
 		try {
 			for(int i = 0; i< clients.length; i++) {
-				if(clients[i].password == pass && clients[i].username == user) {
+				if(pass.equals(clients[i].password) && user.equals(clients[i].username)) {
 					result = clients[i];
 					break;
 				}

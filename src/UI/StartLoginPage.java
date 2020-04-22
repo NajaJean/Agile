@@ -61,7 +61,7 @@ public class StartLoginPage extends JFrame {
         	openLoginFor("Client");
         }
     }*/
-    
+    /*
     public void openLoginFor(String CorL) {
     	Login frame = new Login(CorL);
         frame.setTitle("Login Form");
@@ -70,7 +70,7 @@ public class StartLoginPage extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         dispose();
-    }
+    }*/
 
 
 }
