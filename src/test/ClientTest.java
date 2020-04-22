@@ -17,24 +17,9 @@ public class ClientTest {
 		assertEquals("Mathilde", c1.getName());
 		assertEquals("mathildesemail@gmail.com", c1.getEmail());
 		assertEquals("Anker Egelundsvej 1", c1.getAddress());
-		assertEquals(1, c1.getID());
+		assertEquals(6, c1.getID());
 		
-		assertEquals(2, c2.getID());
-	}
-	
-	@Test
-	public void testClientInfoMinimal() {
-		Client c1 = new Client("X", "1234");
-		Client c2 = new Client("N", "4321");
-		
-		assertEquals("X", c1.getUserName());
-		assertEquals("1234", c1.getPassword());
-		assertEquals("noname", c1.getName());
-		assertEquals("no email", c1.getEmail());
-		assertEquals("homeless", c1.getAddress());
-		assertEquals(3, c1.getID());
-		
-		assertEquals(4, c2.getID());
+		assertEquals(7, c2.getID());
 	}
 	
 	@Test

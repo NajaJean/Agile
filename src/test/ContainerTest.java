@@ -38,8 +38,8 @@ public class ContainerTest {
 		Container c1 = new Container(cl1, e1, con1,loc1);
 		Container c2 = new Container(cl2, e2, con2,loc2);
 		
-		assertEquals(1, c1.getContainerID());
-		assertEquals(2, c2.getContainerID());
+		assertEquals(2, c1.getContainerID());
+		assertEquals(3, c2.getContainerID());
 		
 		assertEquals(cl1,c1.getClientofContainer());
 		assertEquals(e1,c1.getContainerEnvironment());

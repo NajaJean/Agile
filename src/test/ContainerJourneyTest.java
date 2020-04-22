@@ -31,11 +31,15 @@ public class ContainerJourneyTest {
 		
 		ContainerJourney cj = new ContainerJourney(start, end, c);
 		
-		assertEquals(0, cj.getJourneyID());
+		assertEquals(1, cj.getJourneyID());
 		
 		assertEquals(start, cj.getStartLocation());
 		assertEquals(end, cj.getEndLocation());
 		
 		assertEquals(c, cj.getContaineronJourney());
+		
+//		assertEquals(gpsStart[0], cj.getStartLocX());
+//		assertEquals(gpsStart[1], cj.getStartLocY());
 	}
+
 }
