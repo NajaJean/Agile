@@ -105,4 +105,19 @@ public class Client {
 
 		return result;
 	}
+	public static Client findClient(String user,String pass, Client[] clients) {
+		Client result = null;
+		try {
+			for(int i = 0; i< clients.length; i++) {
+				if(clients[i].password == pass && clients[i].username == user) {
+					result = clients[i];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			//result = clients[0];
+		}
+
+		return result;
+	}
 }
