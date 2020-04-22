@@ -4,6 +4,7 @@
 # Ignore these files for future commits (Computer specific)
 # Can add more as needed
 .classpath
+.DS_Store
 .gitignore
 *.jar
 
