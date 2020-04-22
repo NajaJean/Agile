@@ -72,7 +72,7 @@ public class App {
 	
 	public static void main(String[] args) {
 		initDataBase();
-		// Assemble all the pieces of the MVC
+		
 		StartLoginPage v = new StartLoginPage();
 		StartLoginPageController c = new StartLoginPageController(v, Clients, Enviros, Contents, Containers, Locations, Journies, d);
 		c.initController();

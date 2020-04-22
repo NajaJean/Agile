@@ -64,9 +64,11 @@ public class LoginController {
 				c = Client.findClient(username, password, Clients);
 				response = c.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+				
+				ClientMenuController cm = new ClientMenuController(c, Clients,Enviros,Contents,Containers,Locations,Journies,d);
 				view.dispose();
 				
-				//Client menu controller tiiiiime
+				cm.initController();
 				
 			}
 			else {

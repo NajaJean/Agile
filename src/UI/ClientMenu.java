@@ -1,27 +1,23 @@
 package UI;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-class ClientMenuFrame extends JPanel {
+public class ClientMenu extends JFrame {
     private JMenuBar clientMenuBar;
     private JLabel welcomeLabel;
-
-    public ClientMenuFrame() {
+    
+    JMenu bookingMenu = new JMenu ("Booking");
+    JMenuItem book_containerItem = new JMenuItem ("Book container");
+    JMenu my_containersMenu = new JMenu ("My containers");
+    JMenu settingsMenu = new JMenu ("Settings");
+    JMenuItem sign_outItem = new JMenuItem ("Sign out");
+    JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
+    
+    public ClientMenu() {
         //construct preComponents
-        JMenu bookingMenu = new JMenu ("Booking");
-        JMenuItem book_containerItem = new JMenuItem ("Book container");
         bookingMenu.add (book_containerItem);
-        JMenu my_containersMenu = new JMenu ("My containers");
-        JMenu settingsMenu = new JMenu ("Settings");
-        JMenuItem sign_outItem = new JMenuItem ("Sign out");
         settingsMenu.add (sign_outItem);
-        JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
         settingsMenu.add (configure_client_detailsItem);
 
         //construct components
@@ -43,54 +39,22 @@ class ClientMenuFrame extends JPanel {
         clientMenuBar.setBounds (0, 0, 400, 30);
         welcomeLabel.setBounds (80, 80, 280, 25);
         
-        book_containerItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-//                openBookContainerMenu();
-
-            }
-
-        });
-        sign_outItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                openLoginMenu();
-            }
-
-        });
-        configure_client_detailsItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                openConfigureClientDetailsMenu();
-            }
-        });
-
-    }
-
-    public void openLoginMenu() {
-    	StartLoginPageFrame frame = new StartLoginPageFrame();
-        frame.setTitle("Choose Login");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        setTitle("Client Menu");
+        setVisible(true);
+        setBounds(10, 10, 600, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     }
     
-    public void openConfigureClientDetailsMenu() {
-    	ConfigureClientFrame frame = new ConfigureClientFrame();
-        frame.setTitle("Configure Client");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 600, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+    public JMenuItem getBook_containerItem() {
+    	return book_containerItem;
     }
-}
-
-public class ClientMenu {
-	public static void main (String[] args) {
-        JFrame frame = new JFrame("Client Menu");
-        frame.setTitle("Client Menu");
-        frame.getContentPane().add (new ClientMenuFrame());
-        frame.setVisible(true);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+    
+    public JMenuItem getSign_outItem() {
+    	return sign_outItem;
+    }
+    
+    public JMenuItem getConfigure_client_detailsItem() {
+    	return configure_client_detailsItem;
     }
 }

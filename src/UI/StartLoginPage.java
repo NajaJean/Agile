@@ -1,13 +1,5 @@
 package UI;
-//import java.awt.*;
-//import java.awt.event.*;
 import javax.swing.*;
-//import javax.swing.event.*;
-
-//import test.Database;
-
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 
 public class StartLoginPage extends JFrame {
 	java.awt.Container container = getContentPane();
@@ -49,39 +41,4 @@ public class StartLoginPage extends JFrame {
     public JButton getlcLoginButton() {
     	return lcLogin;
     }
- 
- /*
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == lcLogin) {
-        	openLoginFor("Logistic Company");
-        }
-        if (e.getSource() == cLogin) {
-        	openLoginFor("Client");
-        }
-    }*/
-    /*
-    public void openLoginFor(String CorL) {
-    	Login frame = new Login(CorL);
-        frame.setTitle("Login Form");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        dispose();
-    }*/
-
-
 }
-/* 
-public class StartLoginPage {
-    public static void main(String[] a) {
-    	StartLoginPageFrame frame = new StartLoginPageFrame();
-        frame.setTitle("Choose Login");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-    }
-}*/

@@ -1,10 +1,6 @@
 package UI;
 
 import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
  
 public class Login extends JFrame {
 	String CorL;
@@ -22,7 +18,6 @@ public class Login extends JFrame {
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
-//        addActionEvent();
         setTitle("Login Form");
         setVisible(true);
         setBounds(10, 10, 370, 600);
@@ -69,85 +64,5 @@ public class Login extends JFrame {
     	container.add(userTextField);
         container.add(passwordTextField);
     }
- /*
-    public void addActionEvent() {
-        loginButton.addActionListener(this);
-        resetButton.addActionListener(this);
-        goBackButton.addActionListener(this);
-    }
- */
- /*
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == loginButton) {
-            String userText;
-            String pwdText;
-            userText = userTextField.getText();
-            pwdText = passwordTextField.getText();
-            
-            if (CorL=="Client") {
-	            if (userText.equalsIgnoreCase("corona") && pwdText.equalsIgnoreCase("1234")) {
-	                JOptionPane.showMessageDialog(this, "Login Successful");
-	                openClientMenu();
-	            } else {
-	                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-	            }
-            }
-            if (CorL=="Logistic Company") {
-	            if (userText.equalsIgnoreCase("corona") && pwdText.equalsIgnoreCase("1234")) {
-	                JOptionPane.showMessageDialog(this, "Login Successful");
-	                openLogisticCompanyMenu();
-	            } else {
-	                JOptionPane.showMessageDialog(this, "Invalid Username or Password");
-	            }
-            }
-        }
-        if (e.getSource() == resetButton) {
-            userTextField.setText("");
-            passwordTextField.setText("");
-        }
-        if (e.getSource() == goBackButton) {
-        	openLoginMenu();
-        }
-    }*/
-    public void openClientMenu() {
-    	JFrame frame = new JFrame("Client Menu");
-        frame.setTitle("Client Menu");
-        frame.getContentPane().add (new ClientMenuFrame());
-        frame.setVisible(true);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-    }
-    
-    public void openLogisticCompanyMenu() {
-    	JFrame frame = new JFrame("Logistic Company Menu");
-        frame.setTitle("Logistic Company");
-        frame.getContentPane().add (new LogisticCompanyMenuFrame());
-        frame.setVisible(true);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-    }
-    
-    public void openLoginMenu() {
-    	StartLoginPage frame = new StartLoginPage();
-        frame.setTitle("Choose Login");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-    }
 }
- /*
-public class Login {
-    public static void main(String[] a) {
-        LoginFrame frame = new LoginFrame("");
-        frame.setTitle("Login Form");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-    }
-}*/
+
