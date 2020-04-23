@@ -60,9 +60,7 @@ public class LoginController {
 				LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 				view.dispose();
 				
-				lm.initController();
-				//LogisticCompany menu controller tiiiiime
-				
+				lm.initController();				
 			}
 			else {
 				response = l.logIn(false);

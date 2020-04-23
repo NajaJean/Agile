@@ -35,9 +35,9 @@ public class ConfigureClient extends JFrame {
     	new JLabel ("Current Address:")};
     
 	JLabel[] NewData = new JLabel[]{ 
-			new JLabel ("New User Name:"),
+			new JLabel ("New Username:"),
 			new JLabel ("New Password:"),
-			new JLabel ("New Client Name:"),
+			new JLabel ("New Name:"),
 	    	new JLabel ("New Email:"),
 	    	new JLabel ("New Address:")};
     

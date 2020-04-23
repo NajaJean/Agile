@@ -33,6 +33,8 @@ public class LogisticCompanyMenuController {
 	}
 	
 	private void goToCreateClientMenu() {
-		System.out.println("not yet implemented");
+		view.dispose();
+		LogisticCreateClientController w = new LogisticCreateClientController();
+		w.initController();
 	}
 }
