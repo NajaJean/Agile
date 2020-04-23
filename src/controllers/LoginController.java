@@ -5,48 +5,24 @@ import javax.swing.JOptionPane;
 import UI.Login;
 import UI.StartLoginPage;
 import core.Client;
-import core.Container;
-import core.ContainerJourney;
-import core.Content;
-import core.Database;
-import core.Environment;
-import core.Location;
+import core.DatabaseData;
 import core.LogisticCompany;
 import core.NotifyObject;
 
 public class LoginController {
 	private Login view; 
-	private StartLoginPage viewBack;
-	Database d; 
-	Client[] Clients;
-	Environment[] Enviros;
-	Content[] Contents;
-	Container[] Containers; 
-	Location[] Locations;
-	ContainerJourney[] Journies;
 	
-	Client c;
+	Client[] Clients;
+	
+	Client client;
 	LogisticCompany l = new LogisticCompany();
 	NotifyObject response;
 	String CorL;
 	
-	public LoginController(String CorL,
-						   Client[] Clients,
-						   Environment[] Enviros,
-						   Content[] Contents,
-						   Container[] Containers,
-						   Location[] Locations,
-						   ContainerJourney[] Journies,
-						   Database d) {
+	public LoginController(String CorL) {
 		view = new Login(CorL);
 		this.CorL = CorL;
-		this.Clients = Clients;
-		this.Enviros = Enviros;
-		this.Contents = Contents;
-		this.Containers = Containers;
-		this.Locations = Locations;
-		this.Journies = Journies;
-		this.d = d;
+		this.Clients = DatabaseData.Clients;
 	}
 	
 	public void initController() {
@@ -60,19 +36,19 @@ public class LoginController {
 		String password = view.getPasswordTextField().getText();
 		
 		if (CorL.contentEquals("Client")) {
-			if (d.checkUser(username, password)) {
-				c = Client.findClient(username, password, Clients);
-				response = c.logIn(true);
+			if (DatabaseData.d.checkUser(username, password)) {
+				client = Client.findClient(username, password, Clients);
+				response = client.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
 				
-				ClientMenuController cm = new ClientMenuController(c, Clients,Enviros,Contents,Containers,Locations,Journies,d);
+				ClientMenuController cm = new ClientMenuController(client);
 				view.dispose();
 				
 				cm.initController();
 				
 			}
 			else {
-//				response = c.logIn(false);
+				//response = client.logIn(false);
 				JOptionPane.showMessageDialog(null, "Incorrect username or password");
 			}
 		}
@@ -99,9 +75,8 @@ public class LoginController {
 
 	private void goToStartLoginPage() {
 		view.dispose();
-		StartLoginPage v = new StartLoginPage();
-		StartLoginPageController w = new StartLoginPageController(v, Clients, Enviros, Contents, Containers, Locations, Journies, d);
+		StartLoginPage view = new StartLoginPage();
+		StartLoginPageController w = new StartLoginPageController(view);
 		w.initController();
 	}
-	
 }
