@@ -1,14 +1,17 @@
 package controllers;
 
 import UI.ClientMenu;
+import UI.ConfigureClient;
 import UI.StartLoginPage;
 import core.Client;
 
 public class ClientMenuController {
 	private ClientMenu view; 
+	Client client;
 	
 	ClientMenuController(Client client) {
 		view = new ClientMenu();
+		this.client = client;
 	}
 	
 	public void initController() {
@@ -29,6 +32,8 @@ public class ClientMenuController {
 	}
 	
 	private void goToConfigureClientMenu() {
-		
+		view.dispose();
+		ConfigureClientController wConf = new ConfigureClientController(client);
+		wConf.initController();
 	}
 }
