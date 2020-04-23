@@ -56,8 +56,11 @@ public class LoginController {
 			if (username.equals("MSK") && password.equals("1234")) {
 				response = l.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+				
+				LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 				view.dispose();
 				
+				lm.initController();
 				//LogisticCompany menu controller tiiiiime
 				
 			}
