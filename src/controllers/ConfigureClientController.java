@@ -13,6 +13,7 @@ import core.Location;
 public class ConfigureClientController {
 	private ConfigureClient view; 
 	Database d; 
+	Client c;
 	Client[] Clients;
 	Environment[] Enviros;
 	Content[] Contents;
@@ -28,7 +29,8 @@ public class ConfigureClientController {
 						 	  Location[] Locations,
 						 	  ContainerJourney[] Journies,
 						 	  Database d) {
-		view = new ConfigureClient();
+		this.c = c;
+		view = new ConfigureClient(c);
 		this.Clients = Clients;
 		this.Enviros = Enviros;
 		this.Contents = Contents;
@@ -39,15 +41,24 @@ public class ConfigureClientController {
 	}
 	
 	public void initController() {
-		view.getDoneButton().addActionListener(e -> goToClientMenu());
-//		view.getSign_outItem().addActionListener(e -> signOut());
-//		view.getConfigure_client_detailsItem().addActionListener(e -> goToConfigureClientMenu());
+		view.getDoneButton().addActionListener(e -> saveChanges());
+		view.getReturnButton().addActionListener(e -> goToClientMenu());
 	}
 	
 	public void goToClientMenu() {
 		ClientMenuController cm = new ClientMenuController(c, Clients,Enviros,Contents,Containers,Locations,Journies,d);
 		view.dispose();
-		
 		cm.initController();
+	}
+	
+	public void saveChanges() {
+		String NewUsername = view.getNewTextField()[0].getText();
+		String NewPassword = view.getNewTextField()[1].getText();
+		String NewName = view.getNewTextField()[2].getText();
+		String NewEmail = view.getNewTextField()[3].getText();
+		String NewAddress = view.getNewTextField()[4].getText();
+		
+		
+		
 	}
 }

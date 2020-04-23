@@ -15,6 +15,8 @@ public class ConfigureClient extends JFrame {
 	
 	java.awt.Container container = getContentPane();
 	
+	Client c;
+	
 	//temporary test client
 	Client TestClient = new Client("corona", "1234", "labrat", "@", "asd");
 	String[] TestC = new String[]{"corona", "1234", "labrat", "@", "asd"};
@@ -44,11 +46,11 @@ public class ConfigureClient extends JFrame {
 	    	new JLabel ("New Address:")};
     
 	JLabel[] CurrentDataField = new JLabel[]{
-		new JLabel (TestC[Data.UserName.num()]),
-		new JLabel (TestC[Data.Password.num()]),
-		new JLabel (TestC[Data.Name.num()]),
-		new JLabel (TestC[Data.Email.num()]),
-		new JLabel (TestC[Data.Address.num()])};
+		new JLabel (c.getUserName()),
+		new JLabel (c.getPassword()),
+		new JLabel (c.getName()),
+		new JLabel (c.getEmail()),
+		new JLabel (c.getAddress())};
 	
 	JTextField[] NewTextField = new JTextField[]{
 			new JTextField (5),
@@ -60,7 +62,8 @@ public class ConfigureClient extends JFrame {
 	JButton doneButton = new JButton ("Done");
 	JButton returnButton = new JButton ("Return to Client Menu");
  
-	public ConfigureClient() {
+	public ConfigureClient(Client c) {
+		this.c = c;
         setLayoutManager();
         setLocationAndSize();
         addComponentsToContainer();
@@ -176,6 +179,9 @@ public class ConfigureClient extends JFrame {
     }
     public JButton getReturnButton() {
     	return returnButton;
+    }
+    public JTextField[] getNewTextField() {
+    	return NewTextField;
     }
  
 }
