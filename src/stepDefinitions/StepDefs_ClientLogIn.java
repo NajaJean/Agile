@@ -15,17 +15,16 @@ import io.cucumber.java.en.When;
 public class StepDefs_ClientLogIn {
 	
 	ScenarioContext context;
-
-	
-	public StepDefs_ClientLogIn(ScenarioContext context) {
-		this.context = context;
-	}
 	
 	Client Cc = new Client("sally", "1234", "Sally Grant", "sally_grant@gmail.com","203 Acorn st"); 
 	Client Ic = new Client("Horona", "1234", "Habrat", "h@", "Hasd");
 	Database d = new Database("agileProject.accdb");
 	
 	NotifyObject response;
+	
+	public StepDefs_ClientLogIn(ScenarioContext context) {
+		this.context = context;
+	}
 	
 	@Given("that the client is not logged in")
 	public void that_the_client_is_not_logged_in() {

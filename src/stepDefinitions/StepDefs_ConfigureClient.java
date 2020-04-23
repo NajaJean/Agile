@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import core.Client;
 import core.Database;
+import core.DatabaseData;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,17 +15,16 @@ public class StepDefs_ConfigureClient {
 	Client[] Clients;
 	Database d = new Database("agileProject.accdb"); 
 	NotifyObject response;
+	ScenarioContext context;
 	int id = 1;
+	
+	public StepDefs_ConfigureClient(ScenarioContext context) {
+		this.context = context;
+		this.Clients = DatabaseData.getClients();
+	}
 
 	@Given("a client")
-	public void a_client() {
-		String[][] clients = d.getTable("Clients");
-		int clientLength = Database.lengthTable(clients);;
-		Clients = new Client[clientLength];
-		for(int i = 0; i < clientLength; i++) {
-			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
-		}
-		
+	public void a_client() {		
 		oldClient = new String[5];
 		oldClient[0] = Clients[0].getUserName();
 		oldClient[1] = Clients[0].getPassword();
@@ -51,6 +51,7 @@ public class StepDefs_ConfigureClient {
 		assertEquals(Clients[id].getEmail(), "bobby_smith@gmail.com");
 		assertEquals(Clients[id].getAddress(), "135 Candy ln");
 		response = Clients[id].configure();
+		context.setResponse(response);
 	}
 
 	@Then("the details should be updated in the database")
@@ -72,10 +73,5 @@ public class StepDefs_ConfigureClient {
 		d.updateDatabase("Clients", "Name",oldClient[2],Integer.toString(id));
 		d.updateDatabase("Clients", "Email",oldClient[3],Integer.toString(id));
 		d.updateDatabase("Clients", "Address",oldClient[4],Integer.toString(id));
-	}
-
-	@Then("a confirmation-message is displayed: {string}")
-	public void a_confirmation_message_is_displayed(String string) {
-		assertEquals(string, response.getNotifyMessage()); 
 	}
 }

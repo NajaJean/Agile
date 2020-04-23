@@ -7,4 +7,4 @@ Feature: Configure Client  Mathilde
 		When a client configures its details
 		Then the client should have the new configured details
 		And the details should be updated in the database
-		And a confirmation-message is displayed: "Your information is updated!"
+		And message is displayed saying "Your information is updated!"

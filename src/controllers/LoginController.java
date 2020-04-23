@@ -22,7 +22,7 @@ public class LoginController {
 	public LoginController(String CorL) {
 		view = new Login(CorL);
 		this.CorL = CorL;
-		this.Clients = DatabaseData.Clients;
+		this.Clients = DatabaseData.getClients();
 	}
 	
 	public void initController() {

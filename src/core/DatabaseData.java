@@ -3,12 +3,12 @@ package core;
 public class DatabaseData {
 	public static Database d = new Database("agileProject.accdb");
 	
-	public static Client[] Clients;
-	public static Environment[] Enviros;
-	public static Content[] Contents;
-	public static Container[] Containers; 
-	public static Location[] Locations;
-	public static ContainerJourney[] Journies;
+	private static Client[] Clients;
+	private static Environment[] Environments;
+	private static Content[] Contents;
+	private static Container[] Containers; 
+	private static Location[] Locations;
+	private static ContainerJourney[] Journies;
 	
 	static { initDataBase(); }
 	
@@ -21,6 +21,30 @@ public class DatabaseData {
 		initJournies();
 	}
 	
+	public static Client[] getClients() {
+		return Clients;
+	}
+	
+	public static Environment[] getEnvironments() {
+		return Environments;
+	}
+	
+	public static Content[] getContents() {
+		return Contents;
+	}
+	
+	public static Container[] getContainers() {
+		return Containers;
+	}
+	
+	public static Location[] getLocations() {
+		return Locations;
+	}
+	
+	public static ContainerJourney[] getJournies() {
+		return Journies;
+	}
+
 	private static void initClients() {
 		String[][] clients = d.getTable("Clients");
 		int clientLength = Database.lengthTable(clients);
@@ -46,9 +70,9 @@ public class DatabaseData {
 		String[][] environments = d.getTable("Environments");
 		int enviroLength = Database.lengthTable(environments);
 		
-		Enviros = new Environment[enviroLength];
+		Environments = new Environment[enviroLength];
 		for(int i = 0; i < enviroLength; i++) {
-			Enviros[i] = new Environment(Double.parseDouble(environments[i+1][2]),Double.parseDouble(environments[i+1][3]),Double.parseDouble(environments[i+1][4]));	
+			Environments[i] = new Environment(Double.parseDouble(environments[i+1][2]),Double.parseDouble(environments[i+1][3]),Double.parseDouble(environments[i+1][4]));	
 		}
 	}
 	
@@ -58,7 +82,7 @@ public class DatabaseData {
 		
 		Contents = new Content[contentLength];
 		for(int i = 0; i < contentLength; i++) {
-			Contents[i] = new Content(contents[i+1][2],Environment.findEnviro(contents[i+1][3],Enviros),Double.parseDouble(contents[i+1][4]));
+			Contents[i] = new Content(contents[i+1][2],Environment.findEnviro(contents[i+1][3],Environments),Double.parseDouble(contents[i+1][4]));
 		}
 	}
 	
@@ -69,10 +93,10 @@ public class DatabaseData {
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			try {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Enviros),Content.findContent(Integer.parseInt(containers[i+1][4]),Contents),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
+				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients),Environment.findEnviro(containers[i+1][3],Environments),Content.findContent(Integer.parseInt(containers[i+1][4]),Contents),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
 			}
 			catch(Exception e) {
-				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Enviros),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
+				Containers[i] = new Container(Environment.findEnviro(containers[i+1][3],Environments),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
 			}
 		}
 	}
@@ -88,5 +112,4 @@ public class DatabaseData {
 			
 		}
 	}
-
 }
