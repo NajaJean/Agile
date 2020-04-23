@@ -61,10 +61,6 @@ public class StepDefs_ClientUserManagement {
 	    int randomID = randomClient.getID();
 	    
 	    assertTrue(specificID != randomID);
-	    
-	    // When database is completely implemented, can add another assert statement to assert that the list 
-	    // of containers associated with the "randomClient" does not include specificClientContainer and that 
-	    // it belongs to the "specificClient"
 	}
 	
 }

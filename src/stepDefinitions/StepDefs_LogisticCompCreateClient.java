@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import core.Client;
 import core.Database;
+import core.DatabaseData;
 import core.LogisticCompany;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -17,16 +18,13 @@ public class StepDefs_LogisticCompCreateClient {
 	LogisticCompany l; 
 	Client[] Clients;
 	
+	public StepDefs_LogisticCompCreateClient() {
+		this.Clients = DatabaseData.getClients();
+	}
+	
 	@Given("a logistic company")
 	public void a_logistic_company() {
-		String[][] clients = d.getTable("Clients");
-		int clientLength = Database.lengthTable(clients);
-		Clients = new Client[clientLength];
-		for(int i = 0; i < clientLength; i++) {
-			Clients[i] = new Client(clients[i+1][5],clients[i+1][6],clients[i+1][2],clients[i+1][3],clients[i+1][4]);
-		}
-	   l = new LogisticCompany();
-	    
+	   l = new LogisticCompany();    
 	}
 
 	@Given("given a new client")
@@ -45,13 +43,11 @@ public class StepDefs_LogisticCompCreateClient {
 	public void the_client_is_created_and_message_displayed_says(String string) {
 		// need notify
 	    System.out.print("Client successfully created!");
-	    
 	}
 	
 	@Then("is found in the database")
 	public void is_found_in_the_database() {
 		assertTrue(d.checkUser(C.getUserName(), C.getPassword()));
-		d.removeFromDatabase("Clients", C.getID());
-	    
+		d.removeFromDatabase("Clients", C.getID()); 
 	}
 }

@@ -1,5 +1,8 @@
 package UI;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.*;
  
 public class Login extends JFrame {
@@ -10,17 +13,25 @@ public class Login extends JFrame {
     JButton loginButton = new JButton ("Login");
     JButton resetButton = new JButton ("Reset");
     JButton goBackButton = new JButton ("Go back");
-    JTextField userTextField = new JTextField (5);
-    JPasswordField passwordTextField = new JPasswordField (5);
+    JTextField userTextField = new JTextField ();
+    JPasswordField passwordTextField = new JPasswordField ();
+    
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int frameWidth = 400;
+    private int frameHeight = 200;
  
     public Login(String CorL) {
     	this.CorL = CorL;
-        setLayoutManager();
+        setLayout(null);
         setLocationAndSize();
         addComponentsToContainer();
         setTitle("Login Form");
         setVisible(true);
-        setBounds(10, 10, 370, 600);
+        
+        // Center JFrame in the middle of screen when it is initialized
+        setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
+        setLocationRelativeTo(null);
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
     }
@@ -41,18 +52,14 @@ public class Login extends JFrame {
     	return passwordTextField;
     }
  
-    public void setLayoutManager() {
-        container.setLayout(null);
-    }
- 
     public void setLocationAndSize() {
-        userNameLabel.setBounds (15, 10, 100, 25);
-        passwordLabel.setBounds (15, 35, 100, 25);
-        loginButton.setBounds (10, 70, 100, 25);
-        resetButton.setBounds (105, 70, 100, 25);
-        goBackButton.setBounds (57, 100, 100, 25);
-        userTextField.setBounds (100, 10, 100, 25);
-        passwordTextField.setBounds (100, 35, 100, 25);
+        userNameLabel.setBounds (frameWidth/6, 10, 100, 25);
+        passwordLabel.setBounds (frameWidth/6, 35, 100, 25);
+        loginButton.setBounds ((frameWidth/2) - (100/2)- (100/2), 70, 100, 25);
+        resetButton.setBounds ((frameWidth/2) - (100/2) + (100/2), 70, 100, 25);
+        goBackButton.setBounds ((frameWidth/2) - (100/2), 100, 100, 25);
+        userTextField.setBounds ((frameWidth/2) - (100/2), 10, 100, 25);
+        passwordTextField.setBounds ((frameWidth/2) - (100/2), 35, 100, 25);
     }
  
     public void addComponentsToContainer() {
