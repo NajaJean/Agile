@@ -3,13 +3,17 @@ package controllers;
 import java.awt.List;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import UI.ClientMenu;
 import UI.ConfigureClient;
 import UI.Map;
 import UI.StartLoginPage;
 import core.Client;
+import core.Container;
 import core.ContainerJourney;
 import core.DatabaseData;
+import core.NotifyObject;
 
 public class ClientMenuController {
 	private ClientMenu view; 
