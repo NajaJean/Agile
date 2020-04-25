@@ -86,17 +86,14 @@ public class LogisticUpdateController {
 			 if (!(gpsLatitudeText.equals("")|gpsLongitudeText.equals(""))) {
 					ContainerJourney containerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(chosenContainer.getContainerID()), cJs );
 					containerJourney.setCurrentLocation(new double [] {gpsLatitude, gpsLongitude});
-					DatabaseData.getDatabase(); // method coming
-								
-
+					DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));
+					DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
+					DatabaseData.updateJourney(containerJourney);
 					
-					//Don't think that this is how we add to database anymore.... Idk...
-					//d.addToDatabase("Clients", c.toString());
 					JOptionPane.showMessageDialog(null, "Container successfully updated!");
 					
 					LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 					view.dispose();
-					
 					lm.initController();
 				}
 				else {
