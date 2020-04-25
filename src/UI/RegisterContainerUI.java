@@ -1,13 +1,11 @@
 package UI;
 
 import java.awt.Dimension;
-import java.awt.TextField;
 import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class RegisterContainerUI extends JFrame {
 	String loc;
@@ -31,8 +29,7 @@ public class RegisterContainerUI extends JFrame {
         addComponentsToContainer();
         setTitle("Register Container Form");
         setVisible(true);
-        
-        // Center JFrame in the middle of screen when it is initialized
+
         setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
         setLocationRelativeTo(null);
         
@@ -59,7 +56,6 @@ public class RegisterContainerUI extends JFrame {
     	humInfoLabel.setBounds(frameWidth/8, 75, 200, 50);
         regContainerButton.setBounds ((frameWidth/2) - (100/2), 120, 150, 25);
         goBackButton.setBounds ((frameWidth/2) - (100/2), 145, 150, 25);
-
     }
     
     public void addComponentsToContainer() {
@@ -70,9 +66,9 @@ public class RegisterContainerUI extends JFrame {
     	container.add(presInfoLabel);
     	container.add(humInfoLabel);
     	container.add(regContainerButton);
-    	container.add(goBackButton);
-    	
+    	container.add(goBackButton);	
     }
+    
     public void changeString(String selected, double temp, double pres, double hum) {
     	container.add(locationContainerJComboBox);
 		enviroInfoLabel.setText("The Climate in " + selected + " today is");

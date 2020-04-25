@@ -28,7 +28,6 @@ public class LogisticCompanyMenuController {
 		view.dispose();
 		LogisticUpdateController w = new LogisticUpdateController();
 		w.initController();
-		
 	}
 	
 	private void openRegisterNewContainerMenu() {
