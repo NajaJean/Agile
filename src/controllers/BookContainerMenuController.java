@@ -1,6 +1,11 @@
 package controllers;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -18,46 +23,57 @@ public class BookContainerMenuController {
 	Client client;
 	Container container;
 	BookContainerMenu view;
+	Content[] Contents;
+	Location[] Locations;
+	
+	String selectedContent;
+	String selectedStart;
+	String selectedEnd;
 	
 	public BookContainerMenuController(Client client, Container container) {
 		this.client = client;
 		this.container = container;
 		this.view = new BookContainerMenu();
+		Contents = DatabaseData.getContents();
+		Locations = DatabaseData.getLocations();
+		selectedContent = "";
+		selectedStart = "";
+		selectedEnd = "";
 	}
 	
 	public void initController() {
-		view.getbookButton().addActionListener(e -> bookContainer());
-		view.getcancelButton().addActionListener(e -> cancel());
+		JComboBox contentBox = view.getcontentBox();
+		JComboBox startBox = view.getstartBox();
+		JComboBox endBox = view.getendBox();
+		
+		view.getBookButton().addActionListener(e -> bookContainer(e));
+		view.getCancelButton().addActionListener(e -> cancel());
+		contentBox.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selectedContent = (String) contentBox.getSelectedItem();   
+		    }
+		});
+		startBox.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selectedStart = (String) startBox.getSelectedItem();   
+		    }
+		});
+		endBox.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selectedEnd = (String) endBox.getSelectedItem();   
+		    }
+		});
 	}
 	
-	private void bookContainer() {
-		String contentName = view.getcontentNameTextField().getText();
-		String locStartName = view.getlocStartNameTextField().getText();
-		String locEndName = view.getlocEndNameTextField().getText();
-		
-		String reqTempText = view.getreqTempTextField().getText(); 
-		String pressureText = view.getpressureTextField().getText();
-		String humidityText = view.gethumidityTextField().getText();
-		String thresholdText = view.getthresholdTextField().getText();
-		String gpsXStartText = view.getgpsXStartTextField().getText();
-		String gpsYStartText = view.getgpsYStartTextField().getText();
-		String gpsXEndText = view.getgpsXEndTextField().getText();
-		String gpsYEndText = view.getgpsYEndTextField().getText();
-		try {
-			  double reqTemp = Double.parseDouble(reqTempText);
-			  double pressure = Double.parseDouble(pressureText);
-			  double humidity = Double.parseDouble(humidityText);
-			  double threshold = Double.parseDouble(thresholdText);
-			  double gpsXStart = Double.parseDouble(gpsXStartText);
-			  double gpsYStart = Double.parseDouble(gpsYStartText);
-			  double gpsXEnd = Double.parseDouble(gpsXEndText);
-			  double gpsYEnd = Double.parseDouble(gpsYEndText);
+	private void bookContainer(ActionEvent e) {
+		if (!(selectedStart.equals(selectedEnd.equals("")))) {
+			  Content content = Content.findContent(selectedContent, Contents);
 			  
-			  Environment reqEnviro = new Environment(reqTemp,pressure,humidity);
-			  Content content = new Content(contentName,reqEnviro,threshold);
-			  
-			  Location locStart = new Location(locStartName, new double[]{gpsXStart, gpsYStart});
-			  Location locEnd = new Location(locEndName, new double[]{gpsXEnd, gpsYEnd});
+			  Location locStart = Location.findLocation(selectedStart, Locations);
+			  Location locEnd = Location.findLocation(selectedEnd, Locations);
 			  
 			  container.setContainerContent(content);
 			  
@@ -78,12 +94,9 @@ public class BookContainerMenuController {
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");
 			  JOptionPane.showMessageDialog(null, response.getNotifyMessage());
-			  
-			}
-		catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Error: temperature, pressure, humidity, "
-											  + "     \nthreshold and GPS coordinates must"
-											  + "     \nbe given as decimal numbers.");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Start and end can not be the same location");
 		}
 	}
 	
