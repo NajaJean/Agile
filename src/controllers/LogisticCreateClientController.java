@@ -48,7 +48,7 @@ public class LogisticCreateClientController {
 			lm.initController();
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "All fields has to be filled");
+			JOptionPane.showMessageDialog(null, "All fields have to be filled");
 		}
 		
 	}	

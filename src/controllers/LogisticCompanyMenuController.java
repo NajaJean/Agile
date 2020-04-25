@@ -25,7 +25,11 @@ public class LogisticCompanyMenuController {
 	}
 	
 	private void openUpdateContainerStatusMenu() {
-		System.out.println("not yet implemented");
+		view.dispose();
+		LogisticUpdateController l = new LogisticUpdateController();
+		l.initController();
+		// Is this how i implement my container update to the system?
+		//System.out.println("not yet implemented");
 	}
 	
 	private void openRegisterNewContainerMenu() {
