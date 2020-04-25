@@ -3,7 +3,7 @@ package controllers;
 import javax.swing.JOptionPane;
 
 import UI.ConfigureClient;
-
+import core.DatabaseData;
 import core.Client;
 import core.NotifyObject;
 
