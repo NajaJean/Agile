@@ -147,7 +147,7 @@ public class Map extends JFrame{
     
    public static void main(String[] args) throws InterruptedException {
 	   
-	double[] cphgpscoords = {210.0, 580.0};
+	double[] cphgpscoords = {730.0, 188.0};
    	double[] tokyogpscoords = {1423.0, 245.0};
    	double[] sydneygpscoords = {1495.0, 750.0};
    	double[] nygpscoords = {290.0, 225.0};
