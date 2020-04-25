@@ -28,14 +28,14 @@ public class Container {
 	public Container(Client client, Content content, Location location) {
 		this.containerID = count++;
 		this.client = client;
-		this.enviro = Location.getEnvironment();
+		this.enviro = location.getEnvironment();
 		this.content = content;
 		this.location = location;
 	}
 	
 	public Container(Location location) {
 		this.containerID = count++;
-		this.enviro = Location.getEnvironment();
+		this.enviro = location.getEnvironment();
 		this.location = location;
 	}
 	
