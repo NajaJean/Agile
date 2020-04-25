@@ -29,7 +29,9 @@ public class LogisticCompanyMenuController {
 	}
 	
 	private void openRegisterNewContainerMenu() {
-		System.out.println("not yet implemented");
+		view.dispose();
+		RegisterContainerController w = new RegisterContainerController();
+		w.initController();
 	}
 	
 	private void goToCreateClientMenu() {
