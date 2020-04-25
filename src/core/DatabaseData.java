@@ -21,6 +21,10 @@ public class DatabaseData {
 		initJournies();
 	}
 	
+	public static Database getDatabase() {
+		return d;
+	}
+	
 	public static Client[] getClients() {
 		return Clients;
 	}
@@ -154,5 +158,10 @@ public class DatabaseData {
 	public static void updateClient(Client c) {
 		int id = c.getID();
 		Clients[id+1] = c;
+	}
+	
+	public static void updateJourney(ContainerJourney c) {
+		int id = c.getJourneyID();
+		Journies[id+1] = c;
 	}
 }

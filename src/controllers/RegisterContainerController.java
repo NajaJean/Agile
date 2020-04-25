@@ -2,7 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import UI.LogisticCompanyMenu;
 import UI.RegisterContainerUI;
+import UI.StartLoginPage;
 import core.Container;
 import core.DatabaseData;
 import core.Environment;
@@ -18,8 +20,8 @@ public class RegisterContainerController {
 	Location[] Locations;
 	
 	public RegisterContainerController() {
-		Locations = DatabaseData.getLocations();
-		view = new RegisterContainerUI(Locations);
+		view = new RegisterContainerUI();
+		this.Locations = DatabaseData.getLocations();
 	}
 	
 	public void initController() {
@@ -38,19 +40,14 @@ public class RegisterContainerController {
 		double enviroPres = chosenLocation.getEnvironment().getPressure();
 		double enviroHum = chosenLocation.getEnvironment().getHumidity();
 		view.changeString(selected, enviroTemp, enviroPres, enviroHum);
-		
-/*		String temp = view.getTempTextField().getText();
-		String pres = view.getPresTextField().getText();
-		String hum = view.getHumTextField().getText(); */
+
 	}
-	
 	
 	private void goToLogisticCompanyMenu() {
 		view.dispose();
 		LogisticCompanyMenuController w = new LogisticCompanyMenuController();
 		w.initController();
 	}
-	
 	
 
 }

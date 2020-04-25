@@ -25,7 +25,10 @@ public class LogisticCompanyMenuController {
 	}
 	
 	private void openUpdateContainerStatusMenu() {
-		System.out.println("not yet implemented");
+		view.dispose();
+		LogisticUpdateController w = new LogisticUpdateController();
+		w.initController();
+		
 	}
 	
 	private void openRegisterNewContainerMenu() {
