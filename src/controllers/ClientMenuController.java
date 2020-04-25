@@ -1,6 +1,7 @@
 package controllers;
 
 import java.awt.List;
+import java.util.ArrayList;
 
 import UI.ClientMenu;
 import UI.ConfigureClient;
@@ -49,12 +50,24 @@ public class ClientMenuController {
 	
 	private void gotoShowMyContainersItem() {
 		
-		ContainerJourney[] ClientsCJs = new ContainerJourney[];
-		List<ContainerJourney> ListOfClientContainers = new List<ContainerJourney>();
+		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
 		for (int i = 0; i < cJs.length; i++) {
+			System.out.println(cJs[i].getStartLocX());
+			clientContainersList.add(cJs[i]);
+			System.out.println(cJs[i]);
 			
 		}
-		Map map = new Map(cJs);
+		
+		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
+		clientConts = clientContainersList.toArray(clientConts);
+		
+		for (int i = 0; i < clientConts.length; i++) {
+			
+			System.out.println(clientConts[i]);
+			
+		}
+		
+		Map map = new Map(clientConts);
 		map.showAllContainers();
 		
 	}
