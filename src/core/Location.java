@@ -4,7 +4,7 @@ package core;
 public class Location {
     private String name;
     private int ID;
-    private static double[] GPScoord = new double[2];
+    private double[] GPScoord = new double[2];
     
     private static int count = 1;
     
@@ -26,11 +26,11 @@ public class Location {
     	return GPScoord;
     }
     
-    public static double getGPScoordX() {
+    public double getGPScoordX() {
     	return GPScoord[0];
     }
     
-    public static double getGPScoordY() {
+    public double getGPScoordY() {
     	return GPScoord[1];
     }
     
