@@ -3,7 +3,7 @@ package controllers;
 import javax.swing.JOptionPane;
 
 import UI.ConfigureClient;
-
+import core.DatabaseData;
 import core.Client;
 import core.NotifyObject;
 
@@ -72,7 +72,14 @@ public class ConfigureClientController {
 											"New Email: " + c.getEmail() + " \n" +
 											"New Address: " + c.getAddress());
 		
-		//UPDATE DATABASE!!!
+		//Update database
+		DatabaseData.getDatabase().updateDatabase("Clients", "Username",c.getUserName(),Integer.toString(c.getID()));
+		DatabaseData.getDatabase().updateDatabase("Clients", "Password",c.getPassword(),Integer.toString(c.getID()));
+		DatabaseData.getDatabase().updateDatabase("Clients", "Name",c.getName(),Integer.toString(c.getID()));
+		DatabaseData.getDatabase().updateDatabase("Clients", "Email",c.getEmail(),Integer.toString(c.getID()));
+		DatabaseData.getDatabase().updateDatabase("Clients", "Address",c.getAddress(),Integer.toString(c.getID()));
+		//Update client array
+		DatabaseData.updateClient(c);
 		
 		ClientMenuController cm = new ClientMenuController(c);
 		view.dispose();

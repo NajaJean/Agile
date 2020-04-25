@@ -4,16 +4,13 @@ import javax.swing.JOptionPane;
 
 import UI.LogisticCreateClient;
 import core.Client;
-import core.Database;
 import core.DatabaseData;
 
 public class LogisticCreateClientController {
 	private LogisticCreateClient view;
-//	Database d;
 	
 	public LogisticCreateClientController() {
 		view = new LogisticCreateClient();
-//		this.d = DatabaseData.getDatabase();
 	}
 	
 	public void initController() {
@@ -38,8 +35,9 @@ public class LogisticCreateClientController {
 		if (!(userText.equals("")|pwdText.equals("")|nameText.equals("")|emailText.equals("")|addressText.equals(""))) {
 			Client c = new Client(userText, pwdText, nameText, emailText, addressText);
 			
-			//Don't think that this is how we add to database anymore.... Idk...
-			//d.addToDatabase("Clients", c.toString());
+			DatabaseData.getDatabase().addToDatabase("Clients", c.toString());
+			DatabaseData.addClient(c);
+			
 			JOptionPane.showMessageDialog(null, "Client successfully created!");
 			
 			LogisticCompanyMenuController lm = new LogisticCompanyMenuController();

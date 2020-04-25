@@ -4,10 +4,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import UI.BookContainerMenu;
 import core.Client;
@@ -15,7 +13,6 @@ import core.Container;
 import core.ContainerJourney;
 import core.Content;
 import core.DatabaseData;
-import core.Environment;
 import core.Location;
 import core.NotifyObject;
 
@@ -25,6 +22,7 @@ public class BookContainerMenuController {
 	BookContainerMenu view;
 	Content[] Contents;
 	Location[] Locations;
+	ContainerJourney[] Journies;
 	
 	String selectedContent;
 	String selectedStart;
@@ -36,6 +34,7 @@ public class BookContainerMenuController {
 		this.view = new BookContainerMenu();
 		Contents = DatabaseData.getContents();
 		Locations = DatabaseData.getLocations();
+		Journies = DatabaseData.getJournies();
 		selectedContent = "";
 		selectedStart = "";
 		selectedEnd = "";
@@ -69,7 +68,10 @@ public class BookContainerMenuController {
 	}
 	
 	private void bookContainer(ActionEvent e) {
-		if (!(selectedStart.equals(selectedEnd.equals("")))) {
+		
+		if (!(selectedContent.equals("")|selectedStart.equals("")|selectedEnd.equals(""))) {
+		
+		if (!(selectedStart.equals(selectedEnd))) {
 			  Content content = Content.findContent(selectedContent, Contents);
 			  
 			  Location locStart = Location.findLocation(selectedStart, Locations);
@@ -94,9 +96,17 @@ public class BookContainerMenuController {
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");
 			  JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+			  
+			  ClientMenuController cm = new ClientMenuController(client);
+			  view.dispose();
+			  cm.initController();
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Start and end can not be the same location");
+		}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Please select an item from all scroll down menus");
 		}
 	}
 	
