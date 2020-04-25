@@ -155,4 +155,9 @@ public class DatabaseData {
 		int id = c.getID();
 		Clients[id+1] = c;
 	}
+	
+	public static void updateJourney(ContainerJourney c) {
+		int id = c.getJourneyID();
+		Journies[id+1] = c;
+	}
 }
