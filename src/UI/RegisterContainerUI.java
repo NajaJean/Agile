@@ -7,6 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import core.DatabaseData;
 import core.Location;
 
 public class RegisterContainerUI extends JFrame {
