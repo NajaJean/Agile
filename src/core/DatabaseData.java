@@ -112,4 +112,15 @@ public class DatabaseData {
 			
 		}
 	}
+	
+	public static void addClient(Client c) {
+		String[][] clients = d.getTable("Clients");
+		int clientLength = Database.lengthTable(clients);
+		Client Clients2[] = new Client[clientLength];
+		for(int i = 0; i<clientLength-1; i++) {
+			Clients2[i] = Clients[i];
+		}
+		Clients2[clientLength-1] = c;
+		Clients = Clients2;
+	}
 }
