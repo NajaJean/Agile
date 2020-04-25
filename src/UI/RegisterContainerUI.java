@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import core.Location;
+
 public class RegisterContainerUI extends JFrame {
 	String loc;
     java.awt.Container container = getContentPane();
