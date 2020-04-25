@@ -1,6 +1,8 @@
 package UI;
 
 
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import core.*;
@@ -21,38 +23,54 @@ public class Map extends JFrame{
     JLabel worldmap = new JLabel (new ImageIcon(wMap));
     
     JLabel[] shippingC;
-    ContainerJourney[] containerJs;
+    ContainerJourney[] cJs;
+    Client client;
     
     boolean isGoingRight = true;
     
     //Climate climate = new Climate();
     
  
-    public Map(ContainerJourney[] containerJourneys) {
+    public Map(Client client, ContainerJourney[] containerJourneys) {
     	
-    	containerJs = containerJourneys;
-    	JLabel[] temp = new JLabel[containerJs.length];
-    	for (int i = 0; i < containerJs.length; i++) {
+    	this.client = client;
+    	cJs = getClientsCJs(containerJourneys);
+    	
+    	JLabel[] temp = new JLabel[cJs.length];
+    	for (int i = 0; i < cJs.length; i++) {
     		temp[i] = new JLabel(new ImageIcon(containerSmall));
     		temp[i].setToolTipText("<html>" +
-    				"Container ID: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerID()) + "<br>" +
-    				"Container Coordinates: " + String.valueOf(containerJs[i].getCurrentX()) + ", " + String.valueOf(containerJs[i].getCurrentY()) + "<br>" +
-    				"Content: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
-    				"Container Temperature: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
-    				"Container Pressure: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
-    				"Container Humidity: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
+    				"Container ID: " + String.valueOf(cJs[i].getContaineronJourney().getContainerID()) + "<br>" +
+    				"Container Coordinates: " + String.valueOf(cJs[i].getCurrentX()) + ", " + String.valueOf(cJs[i].getCurrentY()) + "<br>" +
+    				"Content: " + String.valueOf(cJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
+    				"Container Temperature: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
+    				"Container Pressure: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
+    				"Container Humidity: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
     				"</html>");}
     	shippingC = temp;
     	worldmap.setBounds (0, 0, 1800, 900);
-        
+    	
+    	for (int i = 0; i < shippingC.length; i++) {
+    		setContainer(i);
+    	}
+    	
         addComponentsToContainer();
         addComponentsToMap();
         
-        setTitle("World Map");
+        /*setTitle("World Map");
         setVisible(true);
         setBounds(0, 0, 1810, 950);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(false);*/
+    }
+    
+    public JLabel getMapBackground() {
+    	worldmap.setBounds (0, 0, 1800, 900);
+    	return worldmap;
+    }
+    
+    public JLabel[] getContainerLabels() {
+    	return shippingC;
     }
     
     public void addComponentsToContainer() {
@@ -63,18 +81,34 @@ public class Map extends JFrame{
     public void addComponentsToMap() {
         map.add(worldmap);
     }
-    
+     public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
+    	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
+ 		for (int i = 0; i < containerJourneys.length; i++) {
+ 			
+ 			if (client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) 
+ 			{
+ 			
+ 				clientContainersList.add(containerJourneys[i]);
+ 			}
+ 			
+ 		}
+ 		
+ 		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
+ 		clientConts = clientContainersList.toArray(clientConts);
+ 		
+ 		return clientConts;
+     }
     
     public void setLabelIcon(int index, String setToThis) {
     	shippingC[index].setIcon(new ImageIcon(setToThis));
     }
     
     public boolean isGoingRight(int index) {
-		return 0 < (containerJs[index].getEndLocX()-containerJs[index].getStartLocX());
+		return 0 < (cJs[index].getEndLocX()-cJs[index].getStartLocX());
 	}
     
     public void setContainer(int i) {
-    	shippingC[i].setBounds ((int)containerJs[i].getCurrentX(), (int)containerJs[i].getCurrentY(), 50, 38);        
+    	shippingC[i].setBounds ((int)cJs[i].getCurrentX(), (int)cJs[i].getCurrentY(), 50, 38);        
     }
     
 	private void ifEnrouteChangeIcon(int j, int index, String enrouteIcon, String stationaryIcon) {
@@ -90,7 +124,7 @@ public class Map extends JFrame{
 	}
 
 	private boolean isEnroute(int currentStep, int index) {
-		return (currentStep > 5) && (Math.abs(containerJs[index].getCurrentX()-containerJs[index].getEndLocX()) > 3);
+		return (currentStep > 5) && (Math.abs(cJs[index].getCurrentX()-cJs[index].getEndLocX()) > 3);
 	}
     
     public void showAllContainers(){
@@ -101,12 +135,12 @@ public class Map extends JFrame{
     
     public void resetTooltips(int i) {
 		shippingC[i].setToolTipText("<html>" +
-				"Container ID: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerID()) + "<br>" +
-				"Container Coordinates: " + String.valueOf(containerJs[i].getCurrentX()) + ", " + String.valueOf(containerJs[i].getCurrentY()) + "<br>" +
-				"Content: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
-				"Container Temperature: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
-				"Container Pressure: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
-				"Container Humidity: " + String.valueOf(containerJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
+				"Container ID: " + String.valueOf(cJs[i].getContaineronJourney().getContainerID()) + "<br>" +
+				"Container Coordinates: " + String.valueOf(cJs[i].getCurrentX()) + ", " + String.valueOf(cJs[i].getCurrentY()) + "<br>" +
+				"Content: " + String.valueOf(cJs[i].getContaineronJourney().getContainerContent().getName()) + "<br>" +
+				"Container Temperature: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getTemp()) + "<br>" +
+				"Container Pressure: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getPressure()) + "<br>" +
+				"Container Humidity: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
 				"</html>");
 	}
 	
@@ -145,7 +179,7 @@ public class Map extends JFrame{
    									  };
    	
 	   
-	Map frame = new Map(containerJs);
+	Map frame = new Map(testClient, containerJs);
 	frame.showAllContainers();
 	
    } 

@@ -1,11 +1,25 @@
 package UI;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
+import core.Client;
+import core.ContainerJourney;
+import core.DatabaseData;
+
 public class ClientMenu extends JFrame {
+	
+	Client client;
+	ContainerJourney[] cJs;
+	Map map;
+	
     private JMenuBar clientMenuBar;
     private JLabel welcomeLabel;
+    private JLabel[] shippingLabels;
+    private JLabel backgroundLabel;
+    
     
     JMenu bookingMenu = new JMenu ("Booking");
     JMenuItem book_containerItem = new JMenuItem ("Book container");
@@ -17,7 +31,15 @@ public class ClientMenu extends JFrame {
     
     
     
-    public ClientMenu() { 
+    public ClientMenu(Client client) { 
+    	
+    	this.client = client;
+		this.cJs = DatabaseData.getJournies();
+		map = new Map(client, cJs);
+		
+		backgroundLabel = map.getMapBackground();
+		shippingLabels = map.getContainerLabels();
+		
         //construct preComponents
         bookingMenu.add (book_containerItem);
         my_containersMenu.add(my_containersMenuItem);
@@ -30,14 +52,23 @@ public class ClientMenu extends JFrame {
         clientMenuBar.add (my_containersMenu);
         clientMenuBar.add (settingsMenu);
         welcomeLabel = new JLabel ("Welcome to ContainerManager");
-
+        
+   
         //adjust size and set layout
-        setPreferredSize (new Dimension (681, 405));
+        setPreferredSize (new Dimension (1810, 950));
         setLayout (null);
 
         //add components
+        
         add (clientMenuBar);
-        add (welcomeLabel);
+                
+        for (int i = 0; i < shippingLabels.length; i++) {
+    		add(shippingLabels[i]);}
+        
+        //add (welcomeLabel);
+        
+        
+        add (backgroundLabel);
 
         //set component bounds (only needed by Absolute Positioning)
         clientMenuBar.setBounds (0, 0, 400, 30);
@@ -45,7 +76,7 @@ public class ClientMenu extends JFrame {
         
         setTitle("Client Menu");
         setVisible(true);
-        setBounds(10, 10, 600, 300);
+        setBounds(10, 10, 1810, 950);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
     }
@@ -65,7 +96,7 @@ public class ClientMenu extends JFrame {
     public JMenuItem getConfigure_client_detailsItem() {
     	return configure_client_detailsItem;
     }
-    public static void main(String[] args) {
-		ClientMenu menu = new ClientMenu();
-	}
+    /*public static void main(String[] args) {
+		ClientMenu menu = new ClientMenu(client);
+	}*/
 }

@@ -17,7 +17,7 @@ public class ClientMenuController {
 	ContainerJourney[] cJs;
 	
 	ClientMenuController(Client client) {
-		view = new ClientMenu();
+		view = new ClientMenu(client);
 		this.client = client;
 		this.cJs = DatabaseData.getJournies();
 	}
@@ -50,27 +50,7 @@ public class ClientMenuController {
 	
 	private void gotoShowMyContainersItem() {
 		
-		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
-		for (int i = 0; i < cJs.length; i++) {
-			
-			
-			System.out.println(client.getID());
-			System.out.println(cJs[i].getContaineronJourney().getClientofContainer().getID());
-			
-			if (client.getID() == cJs[i].getContaineronJourney().getClientofContainer().getID()) 
-			{
-			
-				clientContainersList.add(cJs[i]);
-			}
-			
-		}
-		
-		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
-		clientConts = clientContainersList.toArray(clientConts);
-		
-	
-		
-		Map map = new Map(clientConts);
+		Map map = new Map(client, cJs);
 		map.showAllContainers();
 		
 	}
