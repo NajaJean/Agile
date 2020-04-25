@@ -10,17 +10,13 @@ public class ClientMenu extends JFrame {
     JMenu bookingMenu = new JMenu ("Booking");
     JMenuItem book_containerItem = new JMenuItem ("Book container");
     JMenu my_containersMenu = new JMenu ("My containers");
-    JMenuItem my_containersMenuItem = new JMenuItem ("Show my containers"); 
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
     JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
     
-    
-    
-    public ClientMenu() { 
+    public ClientMenu() {
         //construct preComponents
         bookingMenu.add (book_containerItem);
-        my_containersMenu.add(my_containersMenuItem);
         settingsMenu.add (sign_outItem);
         settingsMenu.add (configure_client_detailsItem);
 
@@ -58,14 +54,7 @@ public class ClientMenu extends JFrame {
     	return sign_outItem;
     }
     
-    public JMenuItem getShowMyContainersItem() {
-    	return my_containersMenuItem;
-    }
-    
     public JMenuItem getConfigure_client_detailsItem() {
     	return configure_client_detailsItem;
     }
-    public static void main(String[] args) {
-		ClientMenu menu = new ClientMenu();
-	}
 }
