@@ -35,7 +35,7 @@ public class StartLoginPage extends JFrame {
     	welcomeLabel.setFont(new Font("Serif", Font.BOLD, 16));
     	welcomeLabel.setBounds ((frameWidth/2) - (200/2), 10, 200, 25);
         lcLogin.setBounds ((frameWidth/2) - (200/2), 35, 200, 50);
-        cLogin.setBounds ((frameWidth/2) - (100/2), 85, 100, 50);
+        cLogin.setBounds ((frameWidth/2) - (200/2), 85, 200, 50);
     } 
  
     public void addComponentsToContainer() {
