@@ -52,20 +52,23 @@ public class ClientMenuController {
 		
 		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
 		for (int i = 0; i < cJs.length; i++) {
-			System.out.println(cJs[i].getStartLocX());
-			clientContainersList.add(cJs[i]);
-			System.out.println(cJs[i]);
+			
+			
+			System.out.println(client.getID());
+			System.out.println(cJs[i].getContaineronJourney().getClientofContainer().getID());
+			
+			if (client.getID() == cJs[i].getContaineronJourney().getClientofContainer().getID()) 
+			{
+			
+				clientContainersList.add(cJs[i]);
+			}
 			
 		}
 		
 		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
 		clientConts = clientContainersList.toArray(clientConts);
 		
-		for (int i = 0; i < clientConts.length; i++) {
-			
-			System.out.println(clientConts[i]);
-			
-		}
+	
 		
 		Map map = new Map(clientConts);
 		map.showAllContainers();
