@@ -146,8 +146,8 @@ public class ContainerJourney {
 	
     @Override
     public String toString() {
-    	return "'"+ journeyID + "', '" + start + "', '" + end + "', '" + 
-    			container + "', '" + currentGps[0] + "', '" + currentGps[1] + "'";
+    	return "'"+ journeyID + "', '" + start.getLocationID() + "', '" + end.getLocationID() + "', '" + 
+    			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "'";
     }
     
     
