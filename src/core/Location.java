@@ -4,7 +4,7 @@ package core;
 public class Location {
     private String name;
     private int ID;
-    private static double[] GPScoord = new double[2];
+    private double[] GPScoord = new double[2];
     
     private static int count = 1;
     
@@ -26,11 +26,11 @@ public class Location {
     	return GPScoord;
     }
     
-    public static double getGPScoordX() {
+    public double getGPScoordX() {
     	return GPScoord[0];
     }
     
-    public static double getGPScoordY() {
+    public double getGPScoordY() {
     	return GPScoord[1];
     }
     
@@ -45,17 +45,17 @@ public class Location {
     	GPScoord[axis] = GPScoord[axis] + j;
     }
     
-    public static Environment getEnvironment() {
+    public Environment getEnvironment() {
 		
 		Weather[] climate;
 		climate = Climate.getClimate();
 		
 		Environment localEnviro = new Environment(0.0, 0.0, 0.0);
 		for (int i = 0; i < climate.length; i++) {
-			if (((climate[i].from[0] <= getGPScoordX()) && 
-					(getGPScoordX() < climate[i].to[0])) &&
-				((climate[i].from[1] <= getGPScoordY()) && 
-						(getGPScoordY() < climate[i].to[1])))
+			if (((climate[i].from[0] <= GPScoord[0]) && 
+					(GPScoord[0] < climate[i].to[0])) &&
+				((climate[i].from[1] <= GPScoord[1]) && 
+						(GPScoord[1] < climate[i].to[1])))
 			{
 				localEnviro = climate[i].localWeather;
 				
