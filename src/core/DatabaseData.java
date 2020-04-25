@@ -21,6 +21,10 @@ public class DatabaseData {
 		initJournies();
 	}
 	
+	public static Database getDatabase() {
+		return d;
+	}
+	
 	public static Client[] getClients() {
 		return Clients;
 	}
