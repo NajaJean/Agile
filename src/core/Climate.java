@@ -41,9 +41,9 @@ public class Climate{
 						  new Weather(Australiafrom, Australiato, AustraliaEnv)};
 	
 	public void updateWeatherAllContainerJs(ContainerJourney cJs[]) {
+		
 			for (int j = 0; j < cJs.length; j++) {
-				updateWeatherForOneContainerJ(cJs[j]);
-				
+				updateWeatherForOneContainerJ(cJs[j]);		
 		}
 	}
 	

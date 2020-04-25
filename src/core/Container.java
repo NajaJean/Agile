@@ -25,6 +25,20 @@ public class Container {
 		this.location = location;
 	}
 	
+	public Container(Client client, Content content, Location location) {
+		this.containerID = count++;
+		this.client = client;
+		this.enviro = Location.getEnvironment();
+		this.content = content;
+		this.location = location;
+	}
+	
+	public Container(Location location) {
+		this.containerID = count++;
+		this.enviro = Location.getEnvironment();
+		this.location = location;
+	}
+	
 	public Location getContainerLocation() {
 		return location;
 	}
@@ -85,4 +99,12 @@ public class Container {
 		}
     	return result;
     }
+	
+	
+	public static void main(String[] args) {
+		double[] hawaiigpscoords = {1735.0, 265.0};
+		Location Hawaii = new Location("Hawaii", hawaiigpscoords);
+		Container test = new Container(Hawaii);
+		System.out.println(test.getContainerEnvironment());
+	}
 }
