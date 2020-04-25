@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
 
 import core.Client;
 import core.ContainerJourney;
@@ -19,19 +20,19 @@ public class ClientMenu extends JFrame {
     private JLabel welcomeLabel;
     private JLabel[] shippingLabels;
     private JLabel backgroundLabel;
-    
+   
     
     JMenu bookingMenu = new JMenu ("Booking");
     JMenuItem book_containerItem = new JMenuItem ("Book container");
     JMenu my_containersMenu = new JMenu ("My containers");
-    JMenuItem my_containersMenuItem = new JMenuItem ("Show my containers"); 
+    JMenuItem my_containersMenuItem = new JMenuItem ("Show my containers");
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
     JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
     
     
     
-    public ClientMenu(Client client) { 
+    public ClientMenu(Client client) {  	 	
     	
     	this.client = client;
 		this.cJs = DatabaseData.getJournies();
@@ -41,6 +42,9 @@ public class ClientMenu extends JFrame {
 		shippingLabels = map.getContainerLabels();
 		
         //construct preComponents
+		bookingMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
+		my_containersMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
+		settingsMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
         bookingMenu.add (book_containerItem);
         my_containersMenu.add(my_containersMenuItem);
         settingsMenu.add (sign_outItem);
@@ -55,7 +59,8 @@ public class ClientMenu extends JFrame {
         
    
         //adjust size and set layout
-        setPreferredSize (new Dimension (1810, 950));
+       
+        setPreferredSize (new Dimension (1810, 1010));
         setLayout (null);
 
         //add components
@@ -71,12 +76,14 @@ public class ClientMenu extends JFrame {
         add (backgroundLabel);
 
         //set component bounds (only needed by Absolute Positioning)
-        clientMenuBar.setBounds (0, 0, 400, 30);
-        welcomeLabel.setBounds (80, 80, 280, 25);
+        clientMenuBar.setBounds (0, 0, 1810, 60);
+        backgroundLabel.setBounds (0, 60, 1800, 900);
+        
+       
         
         setTitle("Client Menu");
         setVisible(true);
-        setBounds(10, 10, 1810, 950);
+        setBounds(10, 10, 1810, 1010);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
     }

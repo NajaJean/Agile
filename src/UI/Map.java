@@ -57,11 +57,11 @@ public class Map extends JFrame{
         addComponentsToContainer();
         addComponentsToMap();
         
-        /*setTitle("World Map");
+        setTitle("World Map");
         setVisible(true);
         setBounds(0, 0, 1810, 950);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);*/
+        setResizable(false);
     }
     
     public JLabel getMapBackground() {
@@ -147,12 +147,13 @@ public class Map extends JFrame{
     
    public static void main(String[] args) throws InterruptedException {
 	   
-	double[] cphgpscoords = {730.0, 128.0};
+	double[] cphgpscoords = {210.0, 580.0};
    	double[] tokyogpscoords = {1423.0, 245.0};
    	double[] sydneygpscoords = {1495.0, 750.0};
    	double[] nygpscoords = {290.0, 225.0};
    	double[] hawaiigpscoords = {1735.0, 265.0};
    	double[] riogpscoords = {420.0, 670.0};
+   	
    	
 
    	Location CPH = new Location("Copenhagen", cphgpscoords);
@@ -173,9 +174,12 @@ public class Map extends JFrame{
    	Container shippingContainer3 = new Container(testClient, testEnv, stuff, Rio);
    	
    	//we want this
-   	ContainerJourney[] containerJs = {new ContainerJourney(CPH, NY, shippingContainer1),
-   									  new ContainerJourney(Hawaii, Tokyo, shippingContainer2),
-   									  new ContainerJourney(Rio, Sydney, shippingContainer3)
+   	ContainerJourney[] containerJs = {new ContainerJourney(CPH, CPH, shippingContainer1),
+   									  new ContainerJourney(Tokyo, Tokyo, shippingContainer2),
+   									  new ContainerJourney(Sydney, Sydney, shippingContainer3),
+   									  new ContainerJourney(NY, NY, shippingContainer1),
+ 									  new ContainerJourney(Hawaii, Hawaii, shippingContainer2),
+ 									  new ContainerJourney(Rio, Rio, shippingContainer3)
    									  };
    	
 	   
