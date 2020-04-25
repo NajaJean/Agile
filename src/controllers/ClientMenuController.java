@@ -32,7 +32,20 @@ public class ClientMenuController {
 
 	
 	private void goToBookContainerMenu() {
-		
+		int id = DatabaseData.getDatabase().getEmptyContainer();	
+
+		if(id==0) {
+			NotifyObject response = new NotifyObject(33, "No empty containers available");
+			JOptionPane.showMessageDialog(null,response.getNotifyMessage());
+		}
+		else {
+			Container container = Container.findContainer(id, DatabaseData.getContainers());
+			container.setClientofContainer(client);
+			
+			view.dispose();
+			BookContainerMenuController wBook = new BookContainerMenuController(client, container);
+			wBook.initController();
+		}
 	}
 	
 	private void signOut() {
