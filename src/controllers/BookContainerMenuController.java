@@ -94,6 +94,10 @@ public class BookContainerMenuController {
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");
 			  JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+			
+			  ClientMenuController cm = new ClientMenuController(client);
+			  view.dispose();
+			  cm.initController();
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Start and end can not be the same location");
