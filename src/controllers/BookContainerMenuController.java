@@ -69,7 +69,7 @@ public class BookContainerMenuController {
 	}
 	
 	private void bookContainer(ActionEvent e) {
-		if (!(selectedStart.equals(selectedEnd.equals("")))) {
+		if (!(selectedStart.equals(selectedEnd))) {
 			  Content content = Content.findContent(selectedContent, Contents);
 			  
 			  Location locStart = Location.findLocation(selectedStart, Locations);
