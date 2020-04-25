@@ -1,24 +1,35 @@
 package controllers;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 import UI.ClientMenu;
 import UI.ConfigureClient;
+import UI.Map;
 import UI.StartLoginPage;
 import core.Client;
+import core.ContainerJourney;
+import core.DatabaseData;
 
 public class ClientMenuController {
 	private ClientMenu view; 
 	Client client;
+	ContainerJourney[] cJs;
 	
 	ClientMenuController(Client client) {
 		view = new ClientMenu();
 		this.client = client;
+		this.cJs = DatabaseData.getJournies();
 	}
 	
 	public void initController() {
 		view.getBook_containerItem().addActionListener(e -> goToBookContainerMenu());
 		view.getSign_outItem().addActionListener(e -> signOut());
 		view.getConfigure_client_detailsItem().addActionListener(e -> goToConfigureClientMenu());
+		view.getShowMyContainersItem().addActionListener(e -> gotoShowMyContainersItem());
 	}
+	
+
 	
 	private void goToBookContainerMenu() {
 		
@@ -35,5 +46,29 @@ public class ClientMenuController {
 		view.dispose();
 		ConfigureClientController wConf = new ConfigureClientController(client);
 		wConf.initController();
+	}
+	
+	private void gotoShowMyContainersItem() {
+		
+		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
+		for (int i = 0; i < cJs.length; i++) {
+			System.out.println(cJs[i].getStartLocX());
+			clientContainersList.add(cJs[i]);
+			System.out.println(cJs[i]);
+			
+		}
+		
+		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
+		clientConts = clientContainersList.toArray(clientConts);
+		
+		for (int i = 0; i < clientConts.length; i++) {
+			
+			System.out.println(clientConts[i]);
+			
+		}
+		
+		Map map = new Map(clientConts);
+		map.showAllContainers();
+		
 	}
 }

@@ -28,7 +28,7 @@ public class Map extends JFrame{
     //Climate climate = new Climate();
     
  
-    Map(ContainerJourney[] containerJourneys) {
+    public Map(ContainerJourney[] containerJourneys) {
     	
     	containerJs = containerJourneys;
     	JLabel[] temp = new JLabel[containerJs.length];
@@ -93,11 +93,10 @@ public class Map extends JFrame{
 		return (currentStep > 5) && (Math.abs(containerJs[index].getCurrentX()-containerJs[index].getEndLocX()) > 3);
 	}
     
-    public void showAllContainers() throws InterruptedException {
+    public void showAllContainers(){
     	for (int i = 0; i < shippingC.length; i++) {
     		resetTooltips(i);
         	setContainer(i);}
-    	Thread.sleep(5000);
     } 
     
     public void resetTooltips(int i) {

@@ -107,9 +107,52 @@ public class DatabaseData {
 		
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
-			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), 
-					Location.findLocation(Integer.parseInt(journies[i+1][3]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][4]), Containers));	
+			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][1]), Locations), 
+					Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][3]), Containers));	
 			
 		}
+	}
+	
+	public static void addClient(Client c) {
+		String[][] clients = d.getTable("Clients");
+		int clientLength = Database.lengthTable(clients);
+		Client Clients2[] = new Client[clientLength];
+		for(int i = 0; i<clientLength-1; i++) {
+			Clients2[i] = Clients[i];
+		}
+		Clients2[clientLength-1] = c;
+		Clients = Clients2;
+	}
+	
+	public static void addContainerJourney(ContainerJourney c) {
+		String[][] journies = d.getTable("Journies");
+		int journeyLength = Database.lengthTable(journies);
+		ContainerJourney journies2[] = new ContainerJourney[journeyLength];
+		for(int i = 0; i<journeyLength-1; i++) {
+			journies2[i] = Journies[i];
+		}
+		journies2[journeyLength-1] = c;
+		Journies = journies2;
+	}
+	
+	public static void addContainer(Container c) {
+		String[][] containers = d.getTable("Containers");
+		int containerLength = Database.lengthTable(containers);
+		Container containers2[] = new Container[containerLength];
+		for(int i = 0; i<containerLength-1; i++) {
+			containers2[i] = Containers[i];
+		}
+		containers2[containerLength-1] = c;
+		Containers = containers2;
+	}
+	
+	public static void updateContainer(Container c) {
+		int id = c.getContainerID();
+		Containers[id+1] = c;
+	}
+	
+	public static void updateClient(Client c) {
+		int id = c.getID();
+		Clients[id+1] = c;
 	}
 }
