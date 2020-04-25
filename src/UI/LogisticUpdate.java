@@ -66,6 +66,12 @@ public class LogisticUpdate extends JFrame {
         containerBox.setBounds (155, 15, 100, 25);
         containerIDLabel.setBounds (20, 15, 135, 25);
         arrivedCheckBox.setBounds (15, 135, 100, 25);
+	
+	setTitle("Update container menu");
+        setVisible(true);
+        setBounds(10, 10, 600, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     
     }
     
