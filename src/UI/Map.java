@@ -83,7 +83,7 @@ public class Map extends JFrame{
     }
      public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
     	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
- 		for (int i = 0; i < DatabaseData.nextJourneyIDX; i++) {
+ 		for (int i = 0; i < containerJourneys.length; i++) {
  			
  			if (client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) 
  			{
