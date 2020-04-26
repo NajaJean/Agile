@@ -11,8 +11,8 @@ public class Database {
 		support.addPropertyChangeListener(listener);
 	}
 	
-	private void notifyObservers(Object obj, String objType) {
-		support.firePropertyChange("Adding Data", obj, objType);
+	private void notifyObservers(String objType, Object obj) {
+		support.firePropertyChange(objType, null, obj);
 	}
 	
 	private Connection c;
@@ -104,8 +104,7 @@ public class Database {
 			Statement s = c.createStatement();
 			s.execute(addRow);
 			System.out.println("data added sucessfully");
-			
-			notifyObservers(obj, objType);
+			notifyObservers(objType, obj);
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}

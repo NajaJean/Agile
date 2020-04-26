@@ -36,7 +36,6 @@ public class LogisticCreateClientController {
 			Client c = new Client(userText, pwdText, nameText, emailText, addressText);
 			
 			DatabaseData.getDatabase().addToDatabase("Clients", c.toString(), c);
-			//DatabaseData.addClient(c);
 			
 			JOptionPane.showMessageDialog(null, "Client successfully created!");
 			

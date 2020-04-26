@@ -8,12 +8,12 @@ public class DatabaseObserver implements PropertyChangeListener {
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		
-		switch ((String) evt.getNewValue()) {
+		switch ((String) evt.getPropertyName()) {
 			case ("Clients"):
-				DatabaseData.addClient((Client) evt.getOldValue()); 
+				DatabaseData.addClient((Client) evt.getNewValue());
 				break;
 			case ("Containers"):
-				DatabaseData.addContainer((Container) evt.getOldValue());
+				DatabaseData.addContainer((Container) evt.getNewValue());
 				break;
 			case ("Contents"):
 				// addContent
@@ -22,7 +22,7 @@ public class DatabaseObserver implements PropertyChangeListener {
 				// addEnvironment
 				break;
 			case ("Journies"):
-				DatabaseData.addContainerJourney((ContainerJourney) evt.getOldValue());
+				DatabaseData.addContainerJourney((ContainerJourney) evt.getNewValue());
 				break;
 			case("Locations"):
 				// addLocation
