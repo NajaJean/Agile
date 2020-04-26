@@ -57,11 +57,11 @@ public class Map extends JFrame{
         addComponentsToContainer();
         addComponentsToMap();
         
-        setTitle("World Map");
+        /* setTitle("World Map");
         setVisible(true);
         setBounds(0, 0, 1810, 950);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(false);*/
     }
     
     public JLabel getMapBackground() {

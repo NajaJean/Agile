@@ -43,24 +43,4 @@ public class Climate{
 	public static Weather[] getClimate() {
 		return climate;
 	}
-	/*
-	public void updateWeatherAllContainerJs(ContainerJourney cJs[]) {
-			for (int j = 0; j < cJs.length; j++) {
-				updateWeatherForOneContainerJ(cJs[j]);		
-		}
-	}
-	
-	
-	
-	public void updateWeatherForOneContainerJ(ContainerJourney cJ) {
-		for (int i = 0; i < climate.length; i++) {
-				if (((climate[i].from[0] <= cJ.getCurrentX()) && 
-						(cJ.getCurrentX() < climate[i].to[0])) &&
-					((climate[i].from[1] <= cJ.getCurrentY()) && 
-							(cJ.getCurrentY() < climate[i].to[1]))){
-					cJ.getContaineronJourney().setContainerEnvironment(climate[i].localWeather);
-					
-				}
-		}	
-	}*/
 }

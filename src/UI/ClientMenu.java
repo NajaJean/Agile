@@ -42,9 +42,13 @@ public class ClientMenu extends JFrame {
 		shippingLabels = map.getContainerLabels();
 		
         //construct preComponents
-		bookingMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
-		my_containersMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
-		settingsMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 30));
+		bookingMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		my_containersMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		settingsMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		book_containerItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		my_containersMenuItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		sign_outItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		configure_client_detailsItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
         bookingMenu.add (book_containerItem);
         my_containersMenu.add(my_containersMenuItem);
         settingsMenu.add (sign_outItem);
