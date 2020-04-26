@@ -40,15 +40,17 @@ public class Climate{
 						  new Weather(SAsiafrom, SAsiato, SAsiaEnv),
 						  new Weather(Australiafrom, Australiato, AustraliaEnv)};
 	
+	public static Weather[] getClimate() {
+		return climate;
+	}
+	/*
 	public void updateWeatherAllContainerJs(ContainerJourney cJs[]) {
 			for (int j = 0; j < cJs.length; j++) {
 				updateWeatherForOneContainerJ(cJs[j]);		
 		}
 	}
 	
-	public static Weather[] getClimate() {
-		return climate;
-	}
+	
 	
 	public void updateWeatherForOneContainerJ(ContainerJourney cJ) {
 		for (int i = 0; i < climate.length; i++) {
@@ -60,5 +62,5 @@ public class Climate{
 					
 				}
 		}	
-	}
+	}*/
 }
