@@ -1,13 +1,14 @@
 package UI;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 
 import javax.swing.*;
 
-import core.Container;
+import core.ContainerJourney;
 
 public class LogisticUpdate extends JFrame {
-	Container [] Containers;
+	ContainerJourney[] Journies;
 	private JLabel gpsLatitudeLabel;
     private JTextField gpsLatitudeField;
     private JLabel gpsLongitudeLabel;
@@ -18,18 +19,17 @@ public class LogisticUpdate extends JFrame {
     private JLabel containerIDLabel;
     private JCheckBox arrivedCheckBox;
     
-    public LogisticUpdate(Container[] Containers) {
+    public LogisticUpdate(ContainerJourney[] Journies) {
     	//construct preComponents
-    	this.Containers=Containers;
+    	this.Journies=Journies;
     	
-    	String[] containerBoxItems = new String [Containers.length]; 
-    	for(int i = 0; i<Containers.length;i++) {
-    		containerBoxItems[i]= "ID: " + Containers[i].getContainerID() + ", Location: " + Containers[i].getContainerLocation().getLocationName();
+    	String[] containerBoxItems = new String [Journies.length]; 
+    	for(int i = 0; i<Journies.length;i++) {
+    		containerBoxItems[i] = Integer.toString(Journies[i].getContaineronJourney().getContainerID());
     	}
     	
-
-        
-
+    	Arrays.sort(containerBoxItems);
+    	
         //construct components
         gpsLatitudeLabel = new JLabel ("GPS latitude:");
         gpsLatitudeField = new JTextField (5);
@@ -66,8 +66,8 @@ public class LogisticUpdate extends JFrame {
         containerBox.setBounds (155, 15, 100, 25);
         containerIDLabel.setBounds (20, 15, 135, 25);
         arrivedCheckBox.setBounds (15, 135, 100, 25);
-	
-	setTitle("Update container menu");
+        
+        setTitle("Update container menu");
         setVisible(true);
         setBounds(10, 10, 600, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,10 +96,6 @@ public class LogisticUpdate extends JFrame {
     
     public JCheckBox getarrivedCheckBox() {
     	return arrivedCheckBox;
-    }
-    
-     
-	
-	
+    }	
 
 }
