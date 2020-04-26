@@ -28,6 +28,7 @@ public class RegisterContainerController {
 		view.getRegContainerButton().addActionListener(e -> tryRegister());
 		view.getGoBackButton().addActionListener(e -> goToLogisticCompanyMenu());
 		view.getLocationContainerJComboBox().addActionListener(e -> locationSelected(e));
+		view.getLoadClimateButton().addActionListener(e -> tryClimate());
 		}
 	
 	public void locationSelected(ActionEvent e) {
@@ -36,11 +37,15 @@ public class RegisterContainerController {
 		chosenLocation = Location.findLocation(selected, Locations);
 	}
 	
-	public void tryRegister() {
+	public void tryClimate() {
 		double enviroTemp = chosenLocation.getEnvironment().getTemp();
 		double enviroPres = chosenLocation.getEnvironment().getPressure();
 		double enviroHum = chosenLocation.getEnvironment().getHumidity();
 		view.changeString(selected, enviroTemp, enviroPres, enviroHum);
+	}
+	
+	public void tryRegister() {
+
 		
 		/*Mathilde: This is how I would update the database with the new registered container
 		 * 			Although it doesn't seem to work. The error might come from C.toString
@@ -60,8 +65,7 @@ public class RegisterContainerController {
 											"Humidity: "+enviroHum+" mg/L");
 		view.dispose();
 		LogisticCompanyMenuController w = new LogisticCompanyMenuController();
-		w.initController();*/
-		
+		w.initController();*/		
 	}
 	
 	private void goToLogisticCompanyMenu() {

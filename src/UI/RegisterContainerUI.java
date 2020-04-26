@@ -19,12 +19,13 @@ public class RegisterContainerUI extends JFrame {
 	JLabel tempInfoLabel = new JLabel ("");
 	JLabel presInfoLabel = new JLabel ("");
 	JLabel humInfoLabel = new JLabel ("");
+	JButton loadClimateButton = new JButton ("See climate for location");
 	JButton regContainerButton = new JButton ("Register Container");
 	JButton goBackButton = new JButton ("Go back");
 	
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int frameWidth = 400;
-    private int frameHeight = 300;
+    private int frameHeight = 230;
     
     public RegisterContainerUI() {
 	Location[] Locations = DatabaseData.getLocations();
@@ -47,6 +48,9 @@ public class RegisterContainerUI extends JFrame {
         setResizable(false);
     }
     
+    public JButton getLoadClimateButton() {
+    	return loadClimateButton;
+    }
     public JButton getRegContainerButton() {
     	return regContainerButton;
     }
@@ -60,12 +64,13 @@ public class RegisterContainerUI extends JFrame {
     public void setLocationAndSize() {
     	locationContainerLabel.setBounds (frameWidth/8, 10, 160, 25);
     	locationContainerJComboBox.setBounds (frameWidth/2, 10, 100, 25);
-    	enviroInfoLabel.setBounds(frameWidth/8, 30, 200, 50);
+    	enviroInfoLabel.setBounds(frameWidth/8, 30, 250, 50);
     	tempInfoLabel.setBounds(frameWidth/8, 45, 200, 50);
     	presInfoLabel.setBounds(frameWidth/8, 60, 200, 50);
     	humInfoLabel.setBounds(frameWidth/8, 75, 200, 50);
-        regContainerButton.setBounds ((frameWidth/2) - (100/2), 120, 150, 25);
-        goBackButton.setBounds ((frameWidth/2) - (100/2), 145, 150, 25);
+    	loadClimateButton.setBounds((frameWidth/10), 120, 170, 25);
+        regContainerButton.setBounds ((frameWidth/2), 120, 150, 25);
+        goBackButton.setBounds ((frameWidth/3), 145, 150, 25);
     }
     
     public void addComponentsToContainer() {
@@ -75,6 +80,7 @@ public class RegisterContainerUI extends JFrame {
     	container.add(tempInfoLabel);
     	container.add(presInfoLabel);
     	container.add(humInfoLabel);
+    	container.add(loadClimateButton);
     	container.add(regContainerButton);
     	container.add(goBackButton);	
     }
