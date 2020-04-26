@@ -1,5 +1,6 @@
 package controllers;
 
+import UI.AutoAdd;
 import UI.LogisticCompanyMenu;
 import UI.StartLoginPage;
 
@@ -15,8 +16,15 @@ public class LogisticCompanyMenuController {
 		view.getRegisterContainerItem().addActionListener(e -> openRegisterNewContainerMenu());
 		view.getCreateNewClientItem().addActionListener(e -> goToCreateClientMenu());
 		view.getSignOutItem().addActionListener(e -> signOut());
+		view.getAutoMenuItem().addActionListener(e -> goToAutoMenu());
 	}
 	
+	private void goToAutoMenu() {
+		view.dispose();
+		AutoAddController w = new AutoAddController();
+		w.initController();
+	}
+
 	private void signOut() {
 		view.dispose();
 		StartLoginPage view = new StartLoginPage();

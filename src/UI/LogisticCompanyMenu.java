@@ -11,8 +11,12 @@ public class LogisticCompanyMenu extends JFrame {
     JMenuItem create_new_clientItem = new JMenuItem ("Create new client");
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
+
+    JMenuItem autoMenuItem = new JMenuItem("Auto generate");
     
     public LogisticCompanyMenu() {
+    	
+    	settingsMenu.add(autoMenuItem);
         containerMenu.add (update_container_statusItem);
         containerMenu.add (register_new_containerItem);
         clientMenu.add (create_new_clientItem);
@@ -21,6 +25,7 @@ public class LogisticCompanyMenu extends JFrame {
         menuBar.add (containerMenu);
         menuBar.add (clientMenu);
         menuBar.add (settingsMenu);
+        
 
         setPreferredSize (new Dimension (681, 404));
         setLayout (null);
@@ -46,5 +51,9 @@ public class LogisticCompanyMenu extends JFrame {
     }
     public JMenuItem getSignOutItem() {
     	return sign_outItem;
+    }
+    
+    public JMenuItem getAutoMenuItem() {
+    	return autoMenuItem;    	
     }
 }
