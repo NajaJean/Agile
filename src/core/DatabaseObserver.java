@@ -51,7 +51,7 @@ public class DatabaseObserver implements PropertyChangeListener {
 					// updateLocation
 					break;
 			}
-		} else if (action == "Reomve") {
+		} else if (action == "Remove") {
 			// Remove logic
 		}
 	}

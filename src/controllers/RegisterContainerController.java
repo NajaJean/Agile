@@ -46,9 +46,11 @@ public class RegisterContainerController {
 		 * 			Although it doesn't seem to work. The error might come from C.toString
 		 *          Since we are here dealing with a container will NULL content and NULL client
 		 */
-		/*
+		
 		Container C = new Container(chosenLocation.getEnvironment(),chosenLocation);
-		DatabaseData.getDatabase().addToDatabase("Containers", C.toString());
+		DatabaseData.getDatabase().addToDatabase("Containers", C.toString(), C);
+		
+		/*
 		DatabaseData.addContainer(C);
 		
 		JOptionPane.showMessageDialog(null, "Container successfully registered.\n"+
