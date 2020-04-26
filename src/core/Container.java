@@ -11,19 +11,6 @@ public class Container {
 	
 	private static int count = 1;
 	
-	public Container(Client client, Environment enviro, Content content, Location location) {
-		this.containerID = count++;
-		this.client = client;
-		this.enviro = enviro;
-		this.content = content;
-		this.location = location;
-	}
-	
-	public Container(Environment enviro,Location location) {
-		this.containerID = count++;
-		this.enviro = enviro;
-		this.location = location;
-	}
 	
 	public Container(Client client, Content content, Location location) {
 		this.containerID = count++;

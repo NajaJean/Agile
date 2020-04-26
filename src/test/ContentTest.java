@@ -33,7 +33,7 @@ public class ContentTest {
 		assertEquals(null, Content.findContent(1, consEmpty));
 		assertEquals(null, Content.findContent("Banana", consEmpty));
 		assertEquals(null, Content.findContent("Bana", cons));
-		assertEquals("'20', 'Banana', '23', '0.1'", con1.toString());
+		assertEquals("'20', 'Banana', '30', '0.1'", con1.toString());
 		
 		
 	}

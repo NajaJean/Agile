@@ -31,11 +31,11 @@ public class StepDefs_ClientNotified {
 	public void a_client_has_a_container() {
 		client = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln");
 		enviro = new Environment(5.3,1.1,0.85);
-		double[] cphgps = {55.1, 12.6};
+		double[] cphgps = {730.0, 188.0};
 		loc = new Location("Copenhagen",cphgps);
 
 		// Does not have content yet, just a client that booked an empty container
-		clientContainer = new Container(enviro,loc);
+		clientContainer = new Container(loc);
 		clientContainer.setClientofContainer(client);
 	}
 	

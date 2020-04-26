@@ -40,7 +40,7 @@ public class StepDefs_LogisticRegisterContainer {
 
 	@Then("the container is created with no content in the database and message displayed saying {string}")
 	public void the_container_is_created_with_no_content_in_the_database_and_message_displayed_saying(String string) {
-		C = new Container(enviro,loc);
+		C = new Container(loc);
 		String s = C.toString();
 		d.addToDatabase("Containers", s, C);
 		System.out.print(string);

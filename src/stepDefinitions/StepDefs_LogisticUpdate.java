@@ -92,7 +92,7 @@ public class StepDefs_LogisticUpdate {
 		C = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		co = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
 		en = new Environment(5.3,1.1,0.85);
-		selectedC = new Container(C,en,co,CPH);
+		selectedC = new Container(C,co,CPH);
 		selectedJ = new ContainerJourney(CPH, NY, selectedC);
 	} 
 

@@ -28,7 +28,7 @@ public class StepDefs_ClientUserManagement {
 		loc = new Location("Copenhagen",cphgps);
 
 		// Does not have content yet, just a client that booked an empty container
-	    specificClientContainer = new Container(enviro,loc);
+	    specificClientContainer = new Container(loc);
 	    specificClientContainer.setClientofContainer(specificClient);
 	}
 

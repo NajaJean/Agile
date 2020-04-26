@@ -169,9 +169,9 @@ public class Map extends JFrame{
    	
    	Content stuff = new Content("Stuff", testEnv, 1.0);
    	
-   	Container shippingContainer1 = new Container(testClient, testEnv, stuff, CPH);
-   	Container shippingContainer2 = new Container(testClient, testEnv, stuff, Hawaii);
-   	Container shippingContainer3 = new Container(testClient, testEnv, stuff, Rio);
+   	Container shippingContainer1 = new Container(testClient, stuff, CPH);
+   	Container shippingContainer2 = new Container(testClient, stuff, Hawaii);
+   	Container shippingContainer3 = new Container(testClient, stuff, Rio);
    	
    	//we want this
    	ContainerJourney[] containerJs = {new ContainerJourney(CPH, CPH, shippingContainer1),
