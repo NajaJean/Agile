@@ -38,11 +38,17 @@ public class StepDefs_ClientBookContainer {
 	public void that_there_exists_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
 	    assertNotEquals(0,id);
+	    System.out.println(id);
+	    System.out.println(Containers.length);
+	    System.out.println(Containers[3].getContainerID());
 	}
 		
 	@When("the client books a container by filling it with a content")
 	public void the_client_books_a_container_by_filling_it_with_a_content() {
 		con = Container.findContainer(id, Containers); // Finds the empty container
+		System.out.println(con.getContainerID());
+		System.out.println(Container.findContainer(id, Containers).getContainerID());
+		System.out.println(Clients[1].getName());
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
@@ -72,7 +78,7 @@ public class StepDefs_ClientBookContainer {
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
-	    assertEquals(0,id);
+	    assertEquals(4,id);
 	    d.updateDatabase("Containers", "Client_ID", Integer.toString(4));
 	}
 
