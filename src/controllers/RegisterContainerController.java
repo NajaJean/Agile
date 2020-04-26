@@ -52,7 +52,7 @@ public class RegisterContainerController {
 		 *          Since we are here dealing with a container will NULL content and NULL client
 		 */
 		
-		Container C = new Container(chosenLocation.getEnvironment(),chosenLocation);
+		Container C = new Container(chosenLocation);
 		DatabaseData.getDatabase().addToDatabase("Containers", C.toString(), C);
 		
 		/*
