@@ -38,8 +38,8 @@ public class ContainerTest {
 		Container c1 = new Container(cl1, e1, con1,loc1);
 		Container c2 = new Container(cl2, e2, con2,loc2);
 		
-		assertEquals(3, c1.getContainerID()); //3
-		assertEquals(4, c2.getContainerID()); //4
+		assertEquals(5, c1.getContainerID()); //5
+		assertEquals(6, c2.getContainerID()); //6
 		
 		assertEquals(cl1,c1.getClientofContainer());
 		assertEquals(e1,c1.getContainerEnvironment());
@@ -70,8 +70,8 @@ public class ContainerTest {
 		Container c2 = new Container(cl2, e2, con2,loc2);
 		Container[] cons = {c1,c2};
 		
-		assertEquals(c1, Container.findContainer(5, cons));
-		assertEquals("'5', '5', '9', '5', '9'", c1.toString());
+		assertEquals(c1, Container.findContainer(7, cons));
+		assertEquals("'7', '9', '14', '15', '19'", c1.toString());
 		
 		
 	}

@@ -100,11 +100,11 @@ public class Container {
     	return result;
     }
 	
-	
-	public static void main(String[] args) {
+	// What is dis??
+/*	public static void main(String[] args) {
 		double[] hawaiigpscoords = {1735.0, 265.0};
 		Location Hawaii = new Location("Hawaii", hawaiigpscoords);
 		Container test = new Container(Hawaii);
 		System.out.println(test.getContainerEnvironment());
-	}
+	} */
 }

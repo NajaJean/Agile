@@ -52,12 +52,15 @@ public class ContainerJourneyTest {
 		assertTrue(locations[15].getGPScoordX() == cJ[0].getEndLocX());
 		assertTrue(locations[15].getGPScoordY()== cJ[0].getEndLocY());
 		
-		assertEquals("'2', '15', '5', '3', '55.67594', '12.56553'", cJ[1].toString());
+		assertEquals("'2', '15', '5', '1', '290.0', '285.0'", cJ[1].toString());
 		
-		assertEquals(cStart, ContainerJourney.findJourney("1", cJ));
+		assertEquals(cJ[1], ContainerJourney.findJourney("2", cJ));
 		assertEquals(null, ContainerJourney.findJourney("99", cJ));
-		assertEquals(null, ContainerJourney.findJourney("4", cJ)); 
+		assertEquals(null, ContainerJourney.findJourney("4", null)); 
 
+		assertEquals(cJ[1], ContainerJourney.findJourneyFromContainerID("1", cJ));
+		assertEquals(null, ContainerJourney.findJourneyFromContainerID("29", cJ));
+		assertEquals(null, ContainerJourney.findJourneyFromContainerID("4", null));
 	}
 	
 /*		@Test
