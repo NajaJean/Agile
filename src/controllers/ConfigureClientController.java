@@ -78,8 +78,7 @@ public class ConfigureClientController {
 		DatabaseData.getDatabase().updateDatabase("Clients", "Name",c.getName(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Email",c.getEmail(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Address",c.getAddress(),Integer.toString(c.getID()));
-		//Update client array
-		DatabaseData.updateClient(c);
+		DatabaseData.getDatabase().updateDatabase("Clients", c);
 		
 		ClientMenuController cm = new ClientMenuController(c);
 		view.dispose();

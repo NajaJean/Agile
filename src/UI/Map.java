@@ -14,11 +14,11 @@ public class Map extends JFrame{
 	java.awt.Container map = getContentPane();
 	java.awt.Container container = getContentPane();
 	
-	String planeright = "src\\planeright.png";
-	String planeleft = "src\\planeleft.png";
-	String ship = "src\\ship.png";
-	String containerSmall = "src\\containersmall.png";
-	String wMap = "src\\map.jpg";
+	String planeright = "src//planeright.png";
+	String planeleft = "src//planeleft.png";
+	String ship = "src//ship.png";
+	String containerSmall = "src//containersmall.png";
+	String wMap = "src//map.jpg";
 	
     JLabel worldmap = new JLabel (new ImageIcon(wMap));
     
@@ -83,7 +83,7 @@ public class Map extends JFrame{
     }
      public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
     	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
- 		for (int i = 0; i < containerJourneys.length; i++) {
+ 		for (int i = 0; i < DatabaseData.nextJourneyIDX; i++) {
  			
  			if (client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) 
  			{

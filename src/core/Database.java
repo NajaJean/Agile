@@ -11,8 +11,8 @@ public class Database {
 		support.addPropertyChangeListener(listener);
 	}
 	
-	private void notifyObservers(String objType, Object obj) {
-		support.firePropertyChange(objType, null, obj);
+	private void notifyObservers(String action, String objType, Object obj) {
+		support.firePropertyChange(action, objType, obj);
 	}
 	
 	private Connection c;
@@ -98,13 +98,12 @@ public class Database {
 
 	public void addToDatabase(String tableName, String values, Object obj){
 		String objType = tableName;
-		
 		String addRow = "INSERT INTO " + tableName + " VALUES (" + values + ")";
 		try {
 			Statement s = c.createStatement();
 			s.execute(addRow);
 			System.out.println("data added sucessfully");
-			notifyObservers(objType, obj);
+			notifyObservers("Add", objType, obj);
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}
@@ -143,6 +142,10 @@ public class Database {
 		}
 		response = new NotifyObject(23, "The update was successful");
 		return response;
+	}
+	
+	public void updateDatabase(String objType, Object obj) {
+		notifyObservers("Update", objType, obj);
 	}
 	
 	public boolean checkUser(String user, String pass) {

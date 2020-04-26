@@ -36,7 +36,7 @@ public class LoginController {
 		String password = view.getPasswordTextField().getText();
 		
 		if (CorL.contentEquals("Client")) {
-			if (DatabaseData.d.checkUser(username, password)) {
+			if (DatabaseData.getDatabase().checkUser(username, password)) {
 				client = Client.findClient(username, password, Clients);
 				response = client.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());

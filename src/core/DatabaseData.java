@@ -6,22 +6,22 @@ public class DatabaseData {
 	private static Database d = new Database("agileProject.accdb");
 	
 	private static Client[] Clients;
-	private static int nextClientIDX;
+	public static int nextClientIDX;
 	
 	private static Environment[] Environments;
-	private static int nextEnvironmentIDX;
+	public static int nextEnvironmentIDX;
 	
 	private static Content[] Contents;
-	private static int nextContentIDX;
+	public static int nextContentIDX;
 	
 	private static Container[] Containers; 
-	private static int nextContainerIDX;
+	public static int nextContainerIDX;
 	
 	private static Location[] Locations;
-	private static int nextLocationIDX;
+	public static int nextLocationIDX;
 	
 	private static ContainerJourney[] Journies;
-	private static int nextJourneyIDX;
+	public static int nextJourneyIDX;
 	
 	private final static int extraSpace = 10;
 	
@@ -152,17 +152,6 @@ public class DatabaseData {
 		}
 	}
 	
-	public static void addContainerJourney(ContainerJourney containerJourney) {
-		if (nextJourneyIDX >= Journies.length) {
-			Journies = Arrays.copyOf(Journies, (Journies.length + extraSpace));
-			Journies[nextJourneyIDX] = containerJourney;
-			nextJourneyIDX++;
-		} else {
-			Journies[nextJourneyIDX] = containerJourney;
-			nextJourneyIDX++;
-		}
-	}
-	
 	public static void addContainer(Container container) {
 		if (nextContainerIDX >= Containers.length) {
 			Containers = Arrays.copyOf(Containers, (Containers.length + extraSpace));
@@ -174,14 +163,25 @@ public class DatabaseData {
 		}
 	}
 	
-	public static void updateContainer(Container c) {
-		int id = c.getContainerID();
-		Containers[--id] = c;
+	public static void addContainerJourney(ContainerJourney containerJourney) {
+		if (nextJourneyIDX >= Journies.length) {
+			Journies = Arrays.copyOf(Journies, (Journies.length + extraSpace));
+			Journies[nextJourneyIDX] = containerJourney;
+			nextJourneyIDX++;
+		} else {
+			Journies[nextJourneyIDX] = containerJourney;
+			nextJourneyIDX++;
+		}
 	}
 	
 	public static void updateClient(Client c) {
 		int id = c.getID();
 		Clients[--id] = c;
+	}
+	
+	public static void updateContainer(Container c) {
+		int id = c.getContainerID();
+		Containers[--id] = c;
 	}
 	
 	public static void updateJourney(ContainerJourney c) {
