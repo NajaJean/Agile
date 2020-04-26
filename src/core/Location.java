@@ -50,15 +50,15 @@ public class Location {
 		Weather[] climate;
 		climate = Climate.getClimate();
 		
-		Environment localEnviro = new Environment(0.0, 0.0, 0.0);
+		Environment[] toAssign = DatabaseData.getEnvironments();
+		Environment localEnviro = toAssign[0];
 		for (int i = 0; i < climate.length; i++) {
 			if (((climate[i].from[0] <= GPScoord[0]) && 
 					(GPScoord[0] < climate[i].to[0])) &&
 				((climate[i].from[1] <= GPScoord[1]) && 
 						(GPScoord[1] < climate[i].to[1])))
 			{
-				localEnviro = climate[i].localWeather;
-				
+				localEnviro = toAssign[i + 1]; 
 			}
 		}
 		return localEnviro;
