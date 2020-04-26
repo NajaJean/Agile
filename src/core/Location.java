@@ -61,6 +61,7 @@ public class Location {
 				localEnviro = toAssign[i + 1]; 
 			}
 		}
+		
 		return localEnviro;
 	}
     

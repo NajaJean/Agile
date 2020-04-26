@@ -100,7 +100,7 @@ public class Container {
     	return result;
     }
 	
-	// What is dis??
+	// What is dis?? <- test if getcontainerencironment works :)
 /*	public static void main(String[] args) {
 		double[] hawaiigpscoords = {1735.0, 265.0};
 		Location Hawaii = new Location("Hawaii", hawaiigpscoords);

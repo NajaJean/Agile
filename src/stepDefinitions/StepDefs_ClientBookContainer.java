@@ -78,7 +78,7 @@ public class StepDefs_ClientBookContainer {
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();	
-	    assertEquals(0,id);
+	    assertEquals(6,id);
 	    d.updateDatabase("Containers", "Client_ID", Integer.toString(4));
 	}
 
