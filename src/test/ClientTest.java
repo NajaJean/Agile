@@ -17,9 +17,9 @@ public class ClientTest {
 		assertEquals("Mathilde", c1.getName());
 		assertEquals("mathildesemail@gmail.com", c1.getEmail());
 		assertEquals("Anker Egelundsvej 1", c1.getAddress());
-		assertEquals(15, c1.getID()); //15
+		assertEquals(16, c1.getID()); //16
 		
-		assertEquals(16, c2.getID()); //16
+		assertEquals(17, c2.getID()); //17
 	}
 	
 	@Test
@@ -44,7 +44,7 @@ public class ClientTest {
 		c1.setAddress("Østerkirkevej 18");
 		assertEquals("Østerkirkevej 18", c1.getAddress());
 		
-		assertEquals(c2, Client.findClient("18", clients));
+		assertEquals(c2, Client.findClient("19", clients));
 			
 	}
 	

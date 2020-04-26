@@ -19,7 +19,7 @@ public class ContainerTest {
 	private Content con1, con2;
 	private Location loc1, loc2;
 	private Environment[] toAssign;
-	private int expectedID = 7;
+	private int expectedID = 8;
 	
 	@Before 
 	public void createContainers() {
@@ -75,7 +75,7 @@ public class ContainerTest {
 		Container[] cons = {c1,c2};
 		
 		assertEquals(c1, Container.findContainer(expectedID + 2, cons));
-		assertEquals("'" + String.valueOf((expectedID + 2)) + "'" +", '9', '4', '15', '19'", c1.toString());
+		assertEquals("'" + String.valueOf((expectedID + 2)) + "'" +", '10', '4', '15', '19'", c1.toString());
 		
 		
 	}
