@@ -35,7 +35,7 @@ public class StepDefs_LogisticCompCreateClient {
 
 	@When("a logistic company wants to create a new client")
 	public void a_logistic_company_wants_to_create_a_new_client() {
-		d.addToDatabase("Clients", C.toString());
+		d.addToDatabase("Clients", C.toString(), C);
 	    
 	}
 

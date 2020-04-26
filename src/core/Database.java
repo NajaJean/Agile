@@ -1,8 +1,20 @@
 package core;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.sql.*; 
 
 public class Database {
+	private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+	
+	public void addObserver(PropertyChangeListener listener) {
+		support.addPropertyChangeListener(listener);
+	}
+	
+	private void notifyObservers(Object obj, String objType) {
+		support.firePropertyChange("Adding Data", obj, objType);
+	}
+	
 	private Connection c;
 
 	public Database(String url) {
@@ -84,12 +96,16 @@ public class Database {
 		return query;
 	}
 
-	public void addToDatabase(String tableName, String values){
+	public void addToDatabase(String tableName, String values, Object obj){
+		String objType = tableName;
+		
 		String addRow = "INSERT INTO " + tableName + " VALUES (" + values + ")";
 		try {
 			Statement s = c.createStatement();
 			s.execute(addRow);
 			System.out.println("data added sucessfully");
+			
+			notifyObservers(obj, objType);
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}

@@ -10,7 +10,11 @@ public class DatabaseData {
 	private static Location[] Locations;
 	private static ContainerJourney[] Journies;
 	
-	static { initDataBase(); }
+	static { 
+		initDataBase(); 
+		DatabaseObserver observer = new DatabaseObserver();
+		d.addObserver(observer);
+	}
 	
 	public static void initDataBase() {
 		initClients();
