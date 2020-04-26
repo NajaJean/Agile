@@ -29,7 +29,7 @@ public class RegisterContainerUI extends JFrame {
     public RegisterContainerUI() {
 	Location[] Locations = DatabaseData.getLocations();
     	String[] boxItems = new String[Locations.length];
-    	for (int i=0; i < .length; i++) {
+    	for (int i=0; i < Locations.length; i++) {
     		boxItems[i] = Locations[i].getLocationName();
     	}
     	locationContainerJComboBox = new JComboBox (boxItems);
