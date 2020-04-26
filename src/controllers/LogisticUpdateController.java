@@ -1,69 +1,79 @@
 package controllers;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
-
 import UI.LogisticUpdate;
-import UI.StartLoginPage;
-import core.Client;
 import core.Container;
 import core.ContainerJourney;
-import core.Database;
 import core.DatabaseData;
-import core.Location;
-
 
 public class LogisticUpdateController {
 	Container [] Containers;
 	ContainerJourney[] cJs;
 	LogisticUpdate view; 
+	String selectedContainer = "";
 	
 	Container chosenContainer;
 	public LogisticUpdateController() {
-		Containers = DatabaseData.getContainers();
+		Containers = DatabaseData.getContainers();//possibly never used, check this else delete
 		cJs = DatabaseData.getJournies();
-		this.view = new LogisticUpdate(Containers);
+		this.view = new LogisticUpdate(cJs);
 	}
 	
 	public void initController() {
 		view.getcancelButton().addActionListener(e -> cancel());
 		view.getsaveButton().addActionListener(e -> updateContainer());	
-		view.getcontainerBox().addActionListener(e -> containerSelect(e));
-		view.getarrivedCheckBox().addActionListener(e -> arrival(e));
+		JCheckBox checkBox = view.getarrivedCheckBox();
+		JComboBox containerBox = view.getcontainerBox();
 		
+		containerBox.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	if (!selectedContainer.contentEquals("")) {
+		    		view.getgpsLatitudeField().setText("");
+	    			view.getgpsLongitudeField().setText("");
+					
+					view.getgpsLatitudeField().setEnabled(true);
+					view.getgpsLongitudeField().setEnabled(true);
+					checkBox.setSelected(false);
+				}
+		    	selectedContainer = containerBox.getSelectedItem().toString();
+		        chosenContainer = Container.findContainer(Integer.parseInt(selectedContainer) , Containers);    
+		    }
+		});
 		
-	}
-	
-	
-	// Arrived check box
-	public void arrival(ActionEvent e) {
-		JCheckBox checkBox = (JCheckBox) e.getSource();
-		
-		if (checkBox.isSelected()) {
-			view.getgpsLatitudeField().setText(Double.toString(chosenContainer.getContainerLocation().getGPScoordX()));
-			view.getgpsLongitudeField().setText(Double.toString(chosenContainer.getContainerLocation().getGPScoordY()));
-			
-			view.getgpsLatitudeField().setEnabled(false);
-			view.getgpsLongitudeField().setEnabled(false);
-		}
-		
-		
-		
-	}
-	
-	
-	// Container select
-	public void containerSelect(ActionEvent e) {
-		JComboBox containerBox = (JComboBox) e.getSource();
-        String selected = containerBox.getSelectedItem().toString();
-        chosenContainer = Container.findContainer(Integer.parseInt(selected) , Containers);
-        
-        
-		
+		checkBox.addActionListener(new ActionListener() {
+		      public void actionPerformed(ActionEvent actionEvent) {
+		        AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
+		        boolean selected = abstractButton.getModel().isSelected();
+		        if (selectedContainer.equals("")) {
+		        	containerNotSelected();
+		        	checkBox.setSelected(false);
+		        }
+		        else {
+		        	if (selected) {
+			        	view.getgpsLatitudeField().setText(Double.toString(chosenContainer.getContainerLocation().getGPScoordX()));
+						view.getgpsLongitudeField().setText(Double.toString(chosenContainer.getContainerLocation().getGPScoordY()));
+						
+						view.getgpsLatitudeField().setEnabled(false);
+						view.getgpsLongitudeField().setEnabled(false);
+			        }
+		        	else {
+		        		view.getgpsLatitudeField().setText("");
+		    			view.getgpsLongitudeField().setText("");
+						
+						view.getgpsLatitudeField().setEnabled(true);
+						view.getgpsLongitudeField().setEnabled(true);
+		        	}
+		        }
+		      }
+		    });
 	}
 	
 	public void cancel() {
@@ -74,50 +84,48 @@ public class LogisticUpdateController {
 	}
 	
 	public void updateContainer() {
-		String gpsLatitudeText = view.getgpsLatitudeField().getText();
-		String gpsLongitudeText = view.getgpsLongitudeField().getText();
-		double gpsLatitude;
-		double gpsLongitude;
 		
-		try {
-			 gpsLatitude = Double.parseDouble(gpsLatitudeText);
-			 gpsLongitude = Double.parseDouble(gpsLongitudeText);
+		try {view.getgpsLatitudeField().setEnabled(true);
+			 view.getgpsLongitudeField().setEnabled(true);
 			 
-			 if (!(gpsLatitudeText.equals("")|gpsLongitudeText.equals(""))) {
-					ContainerJourney containerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(chosenContainer.getContainerID()), cJs );
-					containerJourney.setCurrentLocation(new double [] {gpsLatitude, gpsLongitude});
-					DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));
-					DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
-					DatabaseData.updateJourney(containerJourney);
-					
-					JOptionPane.showMessageDialog(null, "Container successfully updated!");
-					
-					LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
-					view.dispose();
-					lm.initController();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "All fields have to be filled.");
-				}
+			 String gpsLatitudeText = view.getgpsLatitudeField().getText();
+			 String gpsLongitudeText = view.getgpsLongitudeField().getText();
 			 
+			 double gpsLatitude = Double.parseDouble(gpsLatitudeText);
+			 double gpsLongitude = Double.parseDouble(gpsLongitudeText);
+			 
+			 ContainerJourney containerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(chosenContainer.getContainerID()), cJs );
+			 containerJourney.setCurrentLocation(new double [] {gpsLatitude, gpsLongitude});
+			 
+			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));
+			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
+			 DatabaseData.updateJourney(containerJourney);
+			
+			 updateSuccessful();
+			
+			 LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
+			 view.dispose();
+			 lm.initController();	 
 		}
 		catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error: GPS Latitude and GPS Longitude "
-											  + "\nbe given as decimal numbers.");
-		}
-		
-		
-		
-				
+			if (selectedContainer.equals("")) {
+				containerNotSelected();
+			}
+			else {
+				GPSisWrong();
+			}
+		}			
 	}
 	
+	public void containerNotSelected() {
+		JOptionPane.showMessageDialog(null, "Please select a container to update");
+	}
+	public void GPSisWrong() {
+		JOptionPane.showMessageDialog(null, "Error: GPS Latitude and GPS Longitude must "
+										+ "\nbe given as decimal numbers.");
+	}
+	public void updateSuccessful() {
+		JOptionPane.showMessageDialog(null, "Container successfully updated!");
+	}
 	
-	
-
-	
-	
-	
-	
-	
-
 }
