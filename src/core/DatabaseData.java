@@ -1,6 +1,10 @@
 package core;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang.ArrayUtils;
 
 public class DatabaseData {
 	public static Database d = new Database("agileProject.accdb");
@@ -137,18 +141,42 @@ public class DatabaseData {
 		Journies[(Journies.length - 1)] = containerJourney;
 	}
 	
+	public static void removeClient(Client client) {
+		int id = ArrayUtils.indexOf(Clients, client);
+		Client[] tempStart = Arrays.copyOfRange(Clients, 0, id);
+		Client[] tempEnd = Arrays.copyOfRange(Clients, ++id, Clients.length);
+		Clients = (Client [])ArrayUtils.addAll(tempStart, tempEnd);
+	}
+	
+	public static void removeContainer(Container container) {
+		int id = ArrayUtils.indexOf(Containers, container);
+		Container[] tempStart = Arrays.copyOfRange(Containers, 0, id);
+		Container[] tempEnd = Arrays.copyOfRange(Containers, ++id, Containers.length);
+		Containers = (Container [])ArrayUtils.addAll(tempStart, tempEnd);
+	}
+	
+	public static void removeContainerJourney(ContainerJourney containerJourney) {
+		int id = ArrayUtils.indexOf(Journies, containerJourney);
+		ContainerJourney[] tempStart = Arrays.copyOfRange(Journies, 0, id);
+		ContainerJourney[] tempEnd = Arrays.copyOfRange(Journies, ++id, Journies.length);
+		Journies = (ContainerJourney [])ArrayUtils.addAll(tempStart, tempEnd);
+	}
+	
 	public static void updateClient(Client client) {
-		int id = client.getID();
-		Clients[--id] = client;
+		Clients[ArrayUtils.indexOf(Clients, client)] = client;
 	}
 	
 	public static void updateContainer(Container container) {
-		int id = container.getContainerID();
-		Containers[--id] = container;
+		Containers[ArrayUtils.indexOf(Containers, container)] = container;
 	}
 	
 	public static void updateJourney(ContainerJourney containerJourney) {
-		int id = containerJourney.getJourneyID();
-		Journies[--id] = containerJourney;
+		Journies[ArrayUtils.indexOf(Journies, containerJourney)] = containerJourney;
+	}
+	
+	public static void printClients() {
+		for (Client c : Clients) {
+			System.out.println(c.toString());
+		}
 	}
 }
