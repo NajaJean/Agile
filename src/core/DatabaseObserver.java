@@ -34,8 +34,17 @@ public class DatabaseObserver implements PropertyChangeListener {
 					break;
 			}
 		} else if (action == "Remove") {
-			// Remove logic
+			switch ((String) evt.getOldValue()) {
+				case ("Clients"):
+					DatabaseData.removeClient((Client) evt.getNewValue());
+					break;
+				case ("Containers"):
+					DatabaseData.removeContainer((Container) evt.getNewValue());
+					break;
+				case ("Journies"):
+					DatabaseData.removeContainerJourney((ContainerJourney) evt.getNewValue());
+					break;
+			}
 		}
 	}
-	
 }

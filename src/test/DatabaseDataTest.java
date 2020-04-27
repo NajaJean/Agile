@@ -40,6 +40,8 @@ public class DatabaseDataTest {
 	public void addRemoveDataTest() {
 		// Add client
 		DatabaseData.addClient(client);
+		int clientIDX = ArrayUtils.indexOf(DatabaseData.getClients(), client);
+		assertTrue(clientIDX != -1);
 		assertEquals(client, DatabaseData.getClients()[DatabaseData.getClients().length - 1]);
 		
 		// Remove client
@@ -49,12 +51,14 @@ public class DatabaseDataTest {
 		assertNotSame(client, DatabaseData.getClients()[DatabaseData.getClients().length - 1]);
 		assertEquals(oldClientLength - 1, DatabaseData.getClients().length);
 		
-		int clientIDX = ArrayUtils.indexOf(DatabaseData.getClients(), client);
+		clientIDX = ArrayUtils.indexOf(DatabaseData.getClients(), client);
 		assertTrue(clientIDX == -1);
 		
 		
 		// Add container
 		DatabaseData.addContainer(container);
+		int containerIDX = ArrayUtils.indexOf(DatabaseData.getContainers(), container);
+		assertTrue(containerIDX != -1);
 		assertEquals(container, DatabaseData.getContainers()[DatabaseData.getContainers().length - 1]);
 		
 		// Remove container 
@@ -64,12 +68,14 @@ public class DatabaseDataTest {
 		assertNotSame(container, DatabaseData.getContainers()[DatabaseData.getContainers().length - 1]);
 		assertEquals(oldContainerLength - 1, DatabaseData.getContainers().length);
 		
-		int containerIDX = ArrayUtils.indexOf(DatabaseData.getContainers(), container);
+		containerIDX = ArrayUtils.indexOf(DatabaseData.getContainers(), container);
 		assertTrue(containerIDX == -1);
 		
 		
 		// Add container journey
 		DatabaseData.addContainerJourney(containerJourney);
+		int containerJourneyIDX = ArrayUtils.indexOf(DatabaseData.getJournies(), containerJourney);
+		assertTrue(containerJourneyIDX != -1);
 		assertEquals(containerJourney, DatabaseData.getJournies()[DatabaseData.getJournies().length - 1]);
 		
 		// Remove container journey
@@ -79,21 +85,22 @@ public class DatabaseDataTest {
 		assertNotSame(containerJourney, DatabaseData.getJournies()[DatabaseData.getJournies().length - 1]);
 		assertEquals(oldContainerJourneyLength - 1, DatabaseData.getJournies().length);
 		
-		int containerJourneyIDX = ArrayUtils.indexOf(DatabaseData.getContainers(), container);
+		containerJourneyIDX = ArrayUtils.indexOf(DatabaseData.getJournies(), containerJourney);
 		assertTrue(containerJourneyIDX == -1);
 	}
 	
-	/*
-	@Test
+	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void dataObserverTest() {
 		int oldLengthClients = DatabaseData.getClients().length;
-		Client newClient = new Client("C", "2323", "Carter", "carter@carter.com", "San Luis Obispo");
-		DatabaseData.getDatabase().addToDatabase("Clients", newClient.toString(), newClient);
+		DatabaseData.getDatabase().addToDatabase("Clients", client.toString(), client);
 		
 		assertEquals((oldLengthClients + 1), DatabaseData.getClients().length);
-		assertEquals(newClient, DatabaseData.getClients()[oldLengthClients]);
+		assertEquals(client, DatabaseData.getClients()[oldLengthClients]);
 		
-		DatabaseData.printClients();
+		DatabaseData.getDatabase().removeFromDatabase("Clients", client.getID(), client);
+		
+		assertEquals(oldLengthClients, DatabaseData.getClients().length);
+		// Throws exception:
+		Client test = DatabaseData.getClients()[oldLengthClients];
 	}
-	*/
 }

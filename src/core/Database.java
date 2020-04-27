@@ -62,12 +62,14 @@ public class Database {
 		return len;
 	}
 	
-	public void removeFromDatabase(String tableName,int id) {
+	public void removeFromDatabase(String tableName, int id, Object obj) {
+		String objType = tableName;
 		String removeRow = "DELETE FROM " + tableName + " WHERE ID = "+id;
 		try {
 			Statement s = c.createStatement();
 			s.execute(removeRow);
 			System.out.println("data removed sucessfully");
+			notifyObservers("Remove", objType, obj);
 			s.close();
 		} catch (SQLException e){System.out.println(e);}
 	}
