@@ -17,6 +17,18 @@ public class LogisticCompanyMenuController {
 		view.getCreateNewClientItem().addActionListener(e -> goToCreateClientMenu());
 		view.getSignOutItem().addActionListener(e -> signOut());
 		view.getAutoMenuItem().addActionListener(e -> goToAutoMenu());
+		view.getClientInfoItem().addActionListener(e -> goToClientInfoMenu());
+		view.getContainerInfoItem().addActionListener(e -> goToContainerInfoMenu());
+	}
+	private void goToClientInfoMenu() {
+		view.dispose();
+		LogisticInfoPageController w = new LogisticInfoPageController("Client");
+		w.initController();
+	}
+	private void goToContainerInfoMenu() {
+		view.dispose();
+		LogisticInfoPageController w = new LogisticInfoPageController("Container");
+		w.initController();
 	}
 	
 	private void goToAutoMenu() {
