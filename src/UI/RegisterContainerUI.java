@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
@@ -19,6 +20,8 @@ public class RegisterContainerUI extends JFrame {
 	JLabel tempInfoLabel = new JLabel ("");
 	JLabel presInfoLabel = new JLabel ("");
 	JLabel humInfoLabel = new JLabel ("");
+	JLabel regLabel = new JLabel("");
+	
 	JButton loadClimateButton = new JButton ("See climate for location");
 	JButton regContainerButton = new JButton ("Register Container");
 	JButton goBackButton = new JButton ("Go back");
@@ -64,13 +67,14 @@ public class RegisterContainerUI extends JFrame {
     public void setLocationAndSize() {
     	locationContainerLabel.setBounds (frameWidth/8, 10, 160, 25);
     	locationContainerJComboBox.setBounds (frameWidth/2, 10, 100, 25);
-    	enviroInfoLabel.setBounds(frameWidth/8, 30, 250, 50);
-    	tempInfoLabel.setBounds(frameWidth/8, 45, 200, 50);
-    	presInfoLabel.setBounds(frameWidth/8, 60, 200, 50);
-    	humInfoLabel.setBounds(frameWidth/8, 75, 200, 50);
-    	loadClimateButton.setBounds((frameWidth/10), 120, 170, 25);
-        regContainerButton.setBounds ((frameWidth/2), 120, 150, 25);
-        goBackButton.setBounds ((frameWidth/3), 145, 150, 25);
+    	enviroInfoLabel.setBounds(frameWidth/8, 25, 280, 50);
+    	tempInfoLabel.setBounds(frameWidth/8, 40, 200, 50);
+    	presInfoLabel.setBounds(frameWidth/8, 55, 200, 50);
+    	humInfoLabel.setBounds(frameWidth/8, 70, 200, 50);
+    	regLabel.setBounds(frameWidth/8, 90, 280, 50);
+    	loadClimateButton.setBounds((frameWidth/10), 130, 170, 25);
+        regContainerButton.setBounds ((frameWidth/2), 130, 150, 25);
+        goBackButton.setBounds ((frameWidth/3), 155, 160, 25);
     }
     
     public void addComponentsToContainer() {
@@ -80,9 +84,11 @@ public class RegisterContainerUI extends JFrame {
     	container.add(tempInfoLabel);
     	container.add(presInfoLabel);
     	container.add(humInfoLabel);
+    	container.add(regLabel);
     	container.add(loadClimateButton);
     	container.add(regContainerButton);
-    	container.add(goBackButton);	
+    	container.add(goBackButton);
+    	regLabel.setForeground(Color.RED);	
     }
     
     public void changeString(String selected, double temp, double pres, double hum) {
@@ -91,6 +97,13 @@ public class RegisterContainerUI extends JFrame {
 		tempInfoLabel.setText("Temperature: " + temp + " degrees");
 		presInfoLabel.setText("Pressure: " + pres + " atm");
 		humInfoLabel.setText("Humidity: " + hum + "%");
-
+    }
+    public void registerString(String selected) {
+    	regLabel.setVisible(true);
+    	regLabel.setText("Container successfully registered in " + selected + "!");
+    }
+    public void iString() {
+    	regLabel.setVisible(false);
+    	
     }
 }

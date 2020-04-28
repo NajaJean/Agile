@@ -35,6 +35,7 @@ public class RegisterContainerController {
 		JComboBox box = (JComboBox) e.getSource();
 		selected = (String) box.getSelectedItem();
 		chosenLocation = Location.findLocation(selected, Locations);
+		view.iString();
 	}
 	
 	public void tryClimate() {
@@ -45,27 +46,11 @@ public class RegisterContainerController {
 	}
 	
 	public void tryRegister() {
-
-		
-		/*Mathilde: This is how I would update the database with the new registered container
-		 * 			Although it doesn't seem to work. The error might come from C.toString
-		 *          Since we are here dealing with a container will NULL content and NULL client
-		 */
 		
 		Container C = new Container(chosenLocation);
 		DatabaseData.getDatabase().addToDatabase("Containers", C.toString(), C);
-		
-		/*
-		DatabaseData.addContainer(C);
-		
-		JOptionPane.showMessageDialog(null, "Container successfully registered.\n"+
-											"The current weather in " + chosenLocation.getLocationName() + " is:\n"+
-											"Temperature: "+enviroTemp+" °C\n"+
-											"Pressure: "+enviroPres+" atm\n"+
-											"Humidity: "+enviroHum+" mg/L");
-		view.dispose();
-		LogisticCompanyMenuController w = new LogisticCompanyMenuController();
-		w.initController();*/		
+		view.registerString(selected);
+	
 	}
 	
 	private void goToLogisticCompanyMenu() {
