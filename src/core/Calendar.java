@@ -13,6 +13,10 @@ public class Calendar {
 		return SystemDate;
 	}
 	
+	public static void setSystemDate(LocalDate newSysD) {
+		SystemDate = newSysD;
+	}
+	
 	public void goTomorrow() {
 		
 		SystemDate = SystemDate.plusDays(1);
@@ -42,16 +46,5 @@ public class Calendar {
 		for (int i = 0; i < days; i++) {
 			goTomorrow();
 		}
-	}
-	
-	public static void main(String[] args) 
-	{  
-		Calendar c = new Calendar();
-		
-		c.goTomorrow();
-		
-		c.goIntoTheFutureXDays(7);
-		c.goIntoTheFutureXDays(7);
-		c.goIntoTheFutureXDays(7);
 	}
 }

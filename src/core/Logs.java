@@ -33,33 +33,23 @@ public class Logs {
 	      System.out.println("An error occurred.");
 	      e.printStackTrace();
 	    }}
+
 	
-	
-	public void writeFile(String fileName) {
-		try {
-	      FileWriter myWriter = new FileWriter("src\\logs\\" + fileName + ".txt", true);
-	      myWriter.write("test\n");
-	      myWriter.close();
-	      System.out.println("Successfully wrote to the file.");
-	    } catch (IOException e) {
-	      System.out.println("An error occurred.");
-	      e.printStackTrace();
-	    }
-	}
-	
-	public void readFile(String fileName) {
+	public String readFile(String fileName) {
+		String data = "";
 		try {
 		      File myObj = new File("src\\logs\\" + fileName + ".txt");
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
-		        String data = myReader.nextLine();
-		        System.out.println(data);
+		        data = myReader.nextLine();
+		       // System.out.println(data);
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
 		    }
+		return data;
 	}
 	
 	public void createContainerLog(Container c) 
@@ -99,18 +89,6 @@ public class Logs {
 			appendContainerLog(cJs[i]);
 		}
 	}
-	
-	public static void main(String[] args) {
-	
-		Container[] cont = DatabaseData.getContainers();
-		ContainerJourney[] cJs = DatabaseData.getJournies();
-		Logs a = new Logs(cont);
-		
-		for (int i = 0; i < cont.length; i++) {
-			a.createContainerLog(cont[i]);
-			
-			a.appendContainerLog(cJs[i]);
-		}
-	}
+
 }
 

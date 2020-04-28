@@ -123,7 +123,7 @@ public class Automation {
 				LocalDate.of(2020, 5, startday), 
 				LocalDate.of(2020, month, endDay));
 		
-		System.out.println(a);
+		//System.out.println(a);
 		
 		return a;
 		}
