@@ -45,7 +45,6 @@ public class ContainerJourney {
 		currentGps[1] = temp[1];
 	}
 	
-
 	public LocalDate getStartDate() {
 		return startDate;
 	}
@@ -63,8 +62,10 @@ public class ContainerJourney {
 		this.container = container;
 		currentGps[0] = currentx;
 		currentGps[1] = currenty;
+
 		this.startDate = startDate;
 		this.endDate = endDate;
+
 	}
 	
 	public int getJourneyID() {
