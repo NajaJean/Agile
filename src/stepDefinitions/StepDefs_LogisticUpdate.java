@@ -4,6 +4,8 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.time.LocalDate;
+
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -46,6 +48,9 @@ public class StepDefs_LogisticUpdate {
 
 	Environment[] Enviros;
 	Container[] Containers; 
+	
+	LocalDate startDate = LocalDate.of(2020, 04, 28);
+	LocalDate endDate = LocalDate.of(2020, 05, 28);
 	
 	public StepDefs_LogisticUpdate(ScenarioContext context) {
 		this.context = context;
@@ -93,7 +98,7 @@ public class StepDefs_LogisticUpdate {
 		co = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
 		en = new Environment(5.3,1.1,0.85);
 		selectedC = new Container(C,co,CPH);
-		selectedJ = new ContainerJourney(CPH, NY, selectedC);
+		selectedJ = new ContainerJourney(CPH, NY, selectedC, startDate, endDate);
 	} 
 
 	@When("the company updates the current location")

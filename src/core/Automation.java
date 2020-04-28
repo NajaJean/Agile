@@ -1,5 +1,6 @@
 package core;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
@@ -57,17 +58,13 @@ public class Automation {
 		Client[] clients = DatabaseData.getClients();
 		Content[] contents = DatabaseData.getContents();
 		Location[] locations = DatabaseData.getLocations();
-		//Container[] containers = DatabaseData.getContainers(); this is here for the second print loop to show wierd stuff :D - Andrew
+		Container[] containers = DatabaseData.getContainers();// this is here for the second print loop to show wierd stuff :D - Andrew
 		
 		int numberOfClients = clients.length;
 		int numberOfContents = contents.length;
 		int numberOfLocations = locations.length;
 		
-		/*for (int i = 0; i < numberOfClients; i++) {
-			System.out.println(clients[i]);
-		}*/
-		/*
-		for (int i = 0; i < containers.length; i++) {
+		/*for (int i = 0; i < containers.length; i++) {
 			System.out.println(containers[i] + " " + containers[i].getContainerEnvironment().getTemp());
 		}*/
 		
@@ -90,7 +87,22 @@ public class Automation {
 		
 		int numberOfContainers = containers.length;
 		int numberOfLocations = locations.length;
+		int month;
+		int endDay;
+		int startday;
 		
+		month = r.nextInt(8) + 5;
+		startday = r.nextInt(23) + 4;
+		
+		if (month == 5) {
+			do {
+				endDay = r.nextInt(28) + 1;
+				
+			} while(startday >= endDay);
+		}
+		else {
+			endDay = r.nextInt(28) + 1;
+		}
 		
 		/*for (int i = 0; i < cjs.length; i++) {
 			System.out.println(cjs[i]);
@@ -106,11 +118,15 @@ public class Automation {
 
 		} while(start == end);
 		
+		ContainerJourney a = new ContainerJourney(start, end,
+				containers[r.nextInt(numberOfContainers)], 
+				LocalDate.of(2020, 5, startday), 
+				LocalDate.of(2020, month, endDay));
 		
-		return new ContainerJourney(start,
-									end,
-									containers[r.nextInt(numberOfContainers)]);
-	}
+		System.out.println(a);
+		
+		return a;
+		}
 	
 	/* not sure if we want this or not 
 	public ContainerJourney rCJswithNewContainer() {

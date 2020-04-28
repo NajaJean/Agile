@@ -1,5 +1,7 @@
 package core;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class ContainerJourney {
 	private int journeyID;
@@ -7,27 +9,48 @@ public class ContainerJourney {
 	private Location end;
 	private Container container;
 	private double[] currentGps = new double[2];
+	private LocalDate startDate;
+	private LocalDate endDate;
 	
 	private static int count = 1;
 	
 	
-	public ContainerJourney(Location start, Location end, Container container) {
+	public ContainerJourney(Location start, Location end, Container container,
+							LocalDate startDate, LocalDate endDate) {
 		this.journeyID = count++;
 		this.start = start;
 		this.end = end;
 		this.container = container;
-		
-		// I do not think we need to pass another parameter for the current location 
-		// because the current location should start at start when the container journey
-		// is initialized
-		
-		//i added this because if you just pass the start location it does a shallow copy which messes up things, 
-		//if you know how to pass the start location easier a deep copy pls change this
+		this.startDate = startDate;
+		this.endDate = endDate;
 		
 		double[] temp = start.getGPScoord();
 		currentGps = new double[2];
 		currentGps[0] = temp[0];
 		currentGps[1] = temp[1];
+	}
+	
+	public ContainerJourney(Location start, Location end, Container container,
+							LocalDate endDate) {
+		this.journeyID = count++;
+		this.start = start;
+		this.end = end;
+		this.container = container;
+		this.startDate = LocalDate.now();
+		this.endDate = endDate;
+		
+		double[] temp = start.getGPScoord();
+		currentGps = new double[2];
+		currentGps[0] = temp[0];
+		currentGps[1] = temp[1];
+	}
+	
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+	
+	public LocalDate getEndDate() {
+		return endDate;
 	}
 	
 	public int getJourneyID() {
@@ -84,6 +107,27 @@ public class ContainerJourney {
 		} else { 
 			notification = new NotifyObject(0, "Container is in transit");
 		} return notification;*/
+	}
+	
+	public void moveContainerOnJ() 
+	{
+		double travelDays = (double) ChronoUnit.DAYS.between(getStartDate(), getEndDate());
+	
+		double[] newCurrents = new double[2];
+		
+		if ((getCurrentX() == getEndLocX()) && (getCurrentY() == getEndLocY()))
+		{
+			newCurrents[0] = getEndLocX();
+			newCurrents[1] = getEndLocY();
+		}
+		else 
+		{
+			newCurrents[0] = getCurrentX() + ((getEndLocX() - getStartLocX()) / travelDays);
+			
+			newCurrents[1] = getCurrentY() + ((getEndLocY() - getStartLocY()) / travelDays);
+		}
+		
+		setCurrentLocation(newCurrents);
 	}
 	
 	public void updateWeather() {
@@ -147,7 +191,8 @@ public class ContainerJourney {
     @Override
     public String toString() {
     	return "'"+ journeyID + "', '" + start.getLocationID() + "', '" + end.getLocationID() + "', '" + 
-    			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "'";
+    			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
+    			startDate + "', '" + endDate + "'";
     }
     
     

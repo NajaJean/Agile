@@ -3,6 +3,7 @@ package controllers;
 import UI.AutoAdd;
 import UI.LogisticCompanyMenu;
 import UI.StartLoginPage;
+import core.Calendar;
 
 public class LogisticCompanyMenuController {
 	LogisticCompanyMenu view;
@@ -19,7 +20,26 @@ public class LogisticCompanyMenuController {
 		view.getAutoMenuItem().addActionListener(e -> goToAutoMenu());
 		view.getClientInfoItem().addActionListener(e -> goToClientInfoMenu());
 		view.getContainerInfoItem().addActionListener(e -> goToContainerInfoMenu());
+		view.getTomorrow().addActionListener(e -> goTOmorrow());
+		view.getNextWeek().addActionListener(e -> goNextWeek());
 	}
+	
+	private void goTOmorrow() {
+		view.dispose();
+		Calendar c = new Calendar();
+		c.goTomorrow();
+		LogisticCompanyMenuController w = new LogisticCompanyMenuController();
+		w.initController();
+	}
+	
+	private void goNextWeek() {
+		view.dispose();
+		Calendar c = new Calendar();
+		c.goIntoTheFutureXDays(7);
+		LogisticCompanyMenuController w = new LogisticCompanyMenuController();
+		w.initController();
+	}
+	
 	private void goToClientInfoMenu() {
 		view.dispose();
 		LogisticInfoPageController w = new LogisticInfoPageController("Client");

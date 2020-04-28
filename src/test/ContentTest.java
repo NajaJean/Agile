@@ -18,7 +18,7 @@ public class ContentTest {
 		assertEquals(1.0, con1.getEnvironment().getPressure(), 0.0001);
 		assertEquals(0.85, con1.getEnvironment().getHumidity(), 0.0001);
 		assertEquals(0.1, con1.getThreshold(), 0.0001);
-		assertEquals(19, con1.getContentID()); //19
+		assertEquals(26, con1.getContentID()); //19
 	}
 	
 	@Test
@@ -28,12 +28,12 @@ public class ContentTest {
 		Content[] cons = {con1, con2};
 		Content[] consEmpty = null;
 		
-		assertEquals(con1, Content.findContent(20, cons));
+		assertEquals(con1, Content.findContent(27, cons));
 		assertEquals(con1, Content.findContent("Banana", cons));
 		assertEquals(null, Content.findContent(1, consEmpty));
 		assertEquals(null, Content.findContent("Banana", consEmpty));
 		assertEquals(null, Content.findContent("Bana", cons));
-		assertEquals("'20', 'Banana', '30', '0.1'", con1.toString());
+		assertEquals("'27', 'Banana', '42', '0.1'", con1.toString());
 		
 		
 	}

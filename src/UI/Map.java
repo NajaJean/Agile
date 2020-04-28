@@ -144,7 +144,7 @@ public class Map extends JFrame{
 				"</html>");
 	}
 	
-    
+   /* 
    public static void main(String[] args) throws InterruptedException {
 	   
 	double[] cphgpscoords = {730.0, 188.0};
@@ -186,6 +186,6 @@ public class Map extends JFrame{
 	Map frame = new Map(testClient, containerJs);
 	frame.showAllContainers();
 	
-   } 
+   } */
 }
  

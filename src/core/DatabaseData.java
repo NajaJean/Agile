@@ -1,5 +1,6 @@
 package core;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,7 @@ public class DatabaseData {
 	private static Container[] Containers; 
 	private static Location[] Locations;
 	private static ContainerJourney[] Journies;
+	private static Logs Log;
 	
 	static { 
 		initDataBase(); 
@@ -29,6 +31,11 @@ public class DatabaseData {
 		initContents();
 		initContainers();
 		initJournies();
+		initLogs(Containers);
+	}
+	
+	public static Logs getLogs() {
+		return Log;
 	}
 	
 	public static Database getDatabase() {
@@ -117,13 +124,25 @@ public class DatabaseData {
 	
 	private static void initJournies () {
 		String[][] journies = d.getTable("Journies");
+		
 		int journiesLength = Database.lengthTable(journies);
 		
 		Journies = new ContainerJourney[journiesLength];
 		for(int i = 0; i < journiesLength; i++) {
 			Journies[i] = new ContainerJourney(Location.findLocation(Integer.parseInt(journies[i+1][1]), Locations), 
-				Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][3]), Containers));	
+				Location.findLocation(Integer.parseInt(journies[i+1][2]), Locations), Container.findContainer(Integer.parseInt(journies[i+1][3]), Containers),
+				LocalDate.of(Integer.parseInt(journies[i+1][7].substring(0,4)), 
+							 Integer.parseInt(journies[i+1][7].substring(5,7)),
+							 Integer.parseInt(journies[i+1][7].substring(8))),
+				LocalDate.of(Integer.parseInt(journies[i+1][8].substring(0,4)), 
+						 	 Integer.parseInt(journies[i+1][8].substring(5,7)),
+						 	 Integer.parseInt(journies[i+1][8].substring(8))));	
 		}
+	}
+	
+	private static void initLogs(Container[] Containers)
+	{
+		Log = new Logs(Containers);
 	}
 	
 	public static void addClient(Client client) {
@@ -172,6 +191,7 @@ public class DatabaseData {
 	
 	public static void updateJourney(ContainerJourney containerJourney) {
 		Journies[ArrayUtils.indexOf(Journies, containerJourney)] = containerJourney;
+		
 	}
 	
 	public static void printClients() {

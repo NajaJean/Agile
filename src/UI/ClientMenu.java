@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 
+import core.Calendar;
 import core.Client;
 import core.ContainerJourney;
 import core.DatabaseData;
@@ -20,6 +21,7 @@ public class ClientMenu extends JFrame {
     private JLabel welcomeLabel;
     private JLabel[] shippingLabels;
     private JLabel backgroundLabel;
+    private JLabel date = new JLabel(Calendar.getSystemDate().toString());
    
     
     JMenu bookingMenu = new JMenu ("Booking");
@@ -29,7 +31,9 @@ public class ClientMenu extends JFrame {
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
     JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
-    
+    JMenu future = new JMenu ("Future");
+    JMenuItem tomorrow = new JMenuItem("See Tomorrow");
+    JMenuItem nextWeek = new JMenuItem("See Next Week");
     
     
     public ClientMenu(Client client) {  	 	
@@ -43,6 +47,9 @@ public class ClientMenu extends JFrame {
 		
         //construct preComponents
 		bookingMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		future.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		tomorrow.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		nextWeek.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		my_containersMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		settingsMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		book_containerItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
@@ -53,12 +60,16 @@ public class ClientMenu extends JFrame {
         my_containersMenu.add(my_containersMenuItem);
         settingsMenu.add (sign_outItem);
         settingsMenu.add (configure_client_detailsItem);
+        future.add(tomorrow);
+        future.add(nextWeek);
+        date.setFont(new Font("Sansa-Serif", Font.BOLD, 25));
 
         //construct components
         clientMenuBar = new JMenuBar();
         clientMenuBar.add (bookingMenu);
         clientMenuBar.add (my_containersMenu);
         clientMenuBar.add (settingsMenu);
+        clientMenuBar.add (future);
         welcomeLabel = new JLabel ("Welcome to ContainerManager");
         
    
@@ -76,12 +87,13 @@ public class ClientMenu extends JFrame {
         
         //add (welcomeLabel);
         
-        
+        add (date);
         add (backgroundLabel);
 
         //set component bounds (only needed by Absolute Positioning)
         clientMenuBar.setBounds (0, 0, 1810, 60);
         backgroundLabel.setBounds (0, 60, 1800, 900);
+        date.setBounds(1650, 70, 200, 40);
         
        
         
@@ -107,7 +119,18 @@ public class ClientMenu extends JFrame {
     public JMenuItem getConfigure_client_detailsItem() {
     	return configure_client_detailsItem;
     }
-    /*public static void main(String[] args) {
-		ClientMenu menu = new ClientMenu(client);
-	}*/
+    
+    public JMenuItem getTomorrow() {
+    	return tomorrow;
+    }
+    
+    public JMenuItem getNextWeek() {
+    	return nextWeek;
+    }
+    
+    
+    public static void main(String[] args) {
+    	Client c = DatabaseData.getClients()[0];
+		ClientMenu menu = new ClientMenu(c);
+	}
 }

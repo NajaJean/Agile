@@ -2,6 +2,8 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
+
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -26,6 +28,9 @@ public class StepDefs_ClientNotified {
 	Location endLocation;
 	
 	NotifyObject notification;
+	
+	LocalDate startDate = LocalDate.of(2020, 04, 28);
+	LocalDate endDate = LocalDate.of(2020, 05, 28);
 	
 	@Given("a client has a container")
 	public void a_client_has_a_container() {
@@ -71,7 +76,7 @@ public class StepDefs_ClientNotified {
 		double[] gps2 = {latitude, longitude};
 		endLocation = new Location(end, gps2);
 	    
-	    clientContainerJourney = new ContainerJourney(startLocation, endLocation, clientContainer);
+	    clientContainerJourney = new ContainerJourney(startLocation, endLocation, clientContainer, startDate, endDate);
 	}
 
 	@When("the container reaches its final destination")

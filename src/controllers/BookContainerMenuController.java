@@ -3,6 +3,8 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -28,6 +30,19 @@ public class BookContainerMenuController {
 	String selectedStart;
 	String selectedEnd;
 	
+	String selSY;
+	String selSM;
+	String selSD;
+	
+	String selEY;
+	String selEM;
+	String selED;
+	
+	LocalDate selectedStartDate;
+	LocalDate selectedEndDate;
+	
+	
+	
 	public BookContainerMenuController(Client client, Container container) {
 		this.client = client;
 		this.container = container;
@@ -38,12 +53,28 @@ public class BookContainerMenuController {
 		selectedContent = "";
 		selectedStart = "";
 		selectedEnd = "";
+		
+		selSY = "";
+		selSM = "";
+		selSD = "";
+		
+		selEY = "";
+		selEM = "";
+		selED = "";
 	}
 	
 	public void initController() {
 		JComboBox contentBox = view.getcontentBox();
 		JComboBox startBox = view.getstartBox();
 		JComboBox endBox = view.getendBox();
+		
+		JComboBox sY = view.getStartYBox();
+		JComboBox sM = view.getStartMBox();
+		JComboBox sD = view.getStartDBox();
+		
+		JComboBox eY = view.getEndYBox();
+		JComboBox eM = view.getEndMBox();
+		JComboBox eD = view.getEndDBox();
 		
 		view.getBookButton().addActionListener(e -> bookContainer(e));
 		view.getCancelButton().addActionListener(e -> cancel());
@@ -65,13 +96,63 @@ public class BookContainerMenuController {
 		    	selectedEnd = (String) endBox.getSelectedItem();   
 		    }
 		});
+		
+		sY.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selSY = (String) sY.getSelectedItem();   
+		    }
+		});
+		
+		sM.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selSM = (String) sM.getSelectedItem();   
+		    }
+		});
+		
+		sD.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selSD = (String) sD.getSelectedItem();   
+		    }
+		});
+		
+
+		eY.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selEY = (String) eY.getSelectedItem();   
+		    }
+		});
+		
+		eM.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selEM = (String) eM.getSelectedItem();   
+		    }
+		});
+		
+		eD.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	selED = (String) eD.getSelectedItem();   
+		    }
+		});
 	}
 	
 	private void bookContainer(ActionEvent e) {
 		
-		if (!(selectedContent.equals("")|selectedStart.equals("")|selectedEnd.equals(""))) {
+		if (!(selectedContent.equals("")|selectedStart.equals("")|selectedEnd.equals("")
+				|selSY.equals("")|selSM.equals("")|selSD.equals("")
+				|selEY.equals("")|selEM.equals("")|selED.equals(""))) {
 		
 		if (!(selectedStart.equals(selectedEnd))) {
+			
+			LocalDate startDate = LocalDate.of(Integer.parseInt(selSY), Integer.parseInt(selSM), Integer.parseInt(selSD) );
+			LocalDate endDate = LocalDate.of(Integer.parseInt(selEY), Integer.parseInt(selEM), Integer.parseInt(selED));
+			
+			if (ChronoUnit.DAYS.between(startDate, endDate) >= 0) {
 			  Content content = Content.findContent(selectedContent, Contents);
 			  
 			  Location locStart = Location.findLocation(selectedStart, Locations);
@@ -87,7 +168,7 @@ public class BookContainerMenuController {
 			  //Configure container in container array
 			  DatabaseData.updateContainer(container);
 			 
-			  ContainerJourney cj = new ContainerJourney(locStart, locEnd, container);
+			  ContainerJourney cj = new ContainerJourney(locStart, locEnd, container, startDate, endDate);
 			  
 			  //Update database by adding cj
 			  //Add cj to containerJourney array
@@ -100,6 +181,10 @@ public class BookContainerMenuController {
 			  ClientMenuController cm = new ClientMenuController(client);
 			  view.dispose();
 			  cm.initController();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "The end date has to be later then the start date");
+			}
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Start and end can not be the same location");

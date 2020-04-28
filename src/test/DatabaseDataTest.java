@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +26,9 @@ public class DatabaseDataTest {
 	Location endLocation;
 	ContainerJourney containerJourney;
 	
+	LocalDate startDate = LocalDate.of(2020, 04, 28);
+	LocalDate endDate = LocalDate.of(2020, 05, 28);
+	
 	@Before
 	public void init() {
 		client = new Client("M", "12345", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
@@ -33,7 +38,7 @@ public class DatabaseDataTest {
 		container = new Container(client, content, startLocation);
 		
 		endLocation = new Location("New York", new double[]{40.71, 74.01});
-		containerJourney = new ContainerJourney(startLocation, endLocation, container);
+		containerJourney = new ContainerJourney(startLocation, endLocation, container, startDate, endDate);
 	}
 
 	@Test

@@ -23,7 +23,7 @@ public class LocationTest {
 		
 		assertEquals("Afrika", l.getLocationName());
 		assertEquals(gpsAfrica, l.getGPScoord());
-		assertEquals(23, l.getLocationID()); //23
+		assertEquals(27, l.getLocationID()); //27
 		
 		assertTrue(gpsAfrica[0] == l.getGPScoordX());
 		assertTrue(gpsAfrica[1]== l.getGPScoordY());
@@ -35,12 +35,12 @@ public class LocationTest {
 		assertTrue(l.getGPScoordY() == l.getGPScoordX());
 		
 		assertEquals(l, Location.findLocation("Afrika", LocationArray));
-		assertEquals(l2, Location.findLocation(24, LocationArray)); //14
+		assertEquals(l2, Location.findLocation(28, LocationArray)); //14
 		assertEquals(null, Location.findLocation("Afrika", LocationArray2));
 		assertEquals(null, Location.findLocation(9, LocationArray2));
 		assertEquals(LocationArray[0], Location.findLocation("Afrik", LocationArray));
 		
-		assertEquals("'Copenhagen', '24', '25.678', '4.6789'", l2.toString());
+		assertEquals("'Copenhagen', '28', '25.678', '4.6789'", l2.toString());
 /*		Environment e = new Environment(15.0,1.0,0.0);
 		assertEquals(e ,l2.getEnvironment()); */
 	}

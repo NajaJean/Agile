@@ -9,6 +9,7 @@ import UI.ClientMenu;
 import UI.ConfigureClient;
 import UI.Map;
 import UI.StartLoginPage;
+import core.Calendar;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -31,9 +32,25 @@ public class ClientMenuController {
 		view.getSign_outItem().addActionListener(e -> signOut());
 		view.getConfigure_client_detailsItem().addActionListener(e -> goToConfigureClientMenu());
 		view.getShowMyContainersItem().addActionListener(e -> gotoShowMyContainersItem());
+		view.getTomorrow().addActionListener(e -> goTOmorrow());
+		view.getNextWeek().addActionListener(e -> goNextWeek());
 	}
 	
-
+	private void goTOmorrow() {
+		view.dispose();
+		Calendar c = new Calendar();
+		c.goTomorrow();
+		ClientMenuController w = new ClientMenuController(client);
+		w.initController();
+	}
+	
+	private void goNextWeek() {
+		view.dispose();
+		Calendar c = new Calendar();
+		c.goIntoTheFutureXDays(7);
+		ClientMenuController w = new ClientMenuController(client);
+		w.initController();
+	}
 	
 	private void goToBookContainerMenu() {
 		int id = DatabaseData.getDatabase().getEmptyContainer();	

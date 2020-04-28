@@ -6,6 +6,8 @@ import org.junit.Test;
 import core.Client;
 
 public class ClientTest {
+	
+	int expectedIndex = 17;
 
 	@Test
 	public void testClientInfoFull() {
@@ -17,9 +19,9 @@ public class ClientTest {
 		assertEquals("Mathilde", c1.getName());
 		assertEquals("mathildesemail@gmail.com", c1.getEmail());
 		assertEquals("Anker Egelundsvej 1", c1.getAddress());
-		assertEquals(16, c1.getID()); //16
+		assertEquals(expectedIndex, c1.getID()); //16
 		
-		assertEquals(17, c2.getID()); //17
+		assertEquals(expectedIndex +1, c2.getID()); //17
 	}
 	
 	@Test
@@ -44,7 +46,7 @@ public class ClientTest {
 		c1.setAddress("Østerkirkevej 18");
 		assertEquals("Østerkirkevej 18", c1.getAddress());
 		
-		assertEquals(c2, Client.findClient("19", clients));
+		assertEquals(c2, Client.findClient("20", clients));
 			
 	}
 	
