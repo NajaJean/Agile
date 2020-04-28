@@ -164,7 +164,9 @@ public class BookContainerMenuController {
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",Integer.toString(client.getID()), Integer.toString(container.getContainerID()));
 			  //Update container in database (add content)
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(container.getContainerID()));
-			  
+			  //Update location of container in database 
+			  DatabaseData.getDatabase().updateDatabase("Containers", "Location_ID", Integer.toString(locEnd.getLocationID()), Integer.toString(container.getContainerID()));
+
 			  //Configure container in container array
 			  DatabaseData.updateContainer(container);
 			 

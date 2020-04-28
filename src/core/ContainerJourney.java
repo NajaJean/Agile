@@ -45,12 +45,26 @@ public class ContainerJourney {
 		currentGps[1] = temp[1];
 	}
 	
+
 	public LocalDate getStartDate() {
 		return startDate;
 	}
 	
 	public LocalDate getEndDate() {
 		return endDate;
+	} 
+	
+	public ContainerJourney(Location start, Location end, Container container,double currentx, double currenty,
+			LocalDate startDate, LocalDate endDate) {
+		// Overloaded method just when reading in the database 
+		this.journeyID = count++;
+		this.start = start;
+		this.end = end;
+		this.container = container;
+		currentGps[0] = currentx;
+		currentGps[1] = currenty;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 	
 	public int getJourneyID() {

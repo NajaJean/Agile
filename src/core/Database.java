@@ -109,7 +109,7 @@ public class Database {
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}
-	
+	// Changing current data to a new value
 	public NotifyObject updateDatabase(String tableName, String column, String value, String condition) {
 		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + "'"+value+"'"
@@ -127,7 +127,7 @@ public class Database {
 		response = new NotifyObject(23, "The update was successful");
 		return response;
 	}
-	
+	// Changing current data to a null field 
 	public NotifyObject updateDatabase(String tableName, String column, String condition) {
 		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "= NULL"

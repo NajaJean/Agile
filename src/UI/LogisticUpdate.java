@@ -22,13 +22,21 @@ public class LogisticUpdate extends JFrame {
     public LogisticUpdate(ContainerJourney[] Journies) {
     	//construct preComponents
     	this.Journies=Journies;
-    	
+    	int counter = 0;
     	String[] containerBoxItems = new String [Journies.length]; 
     	for(int i = 0; i<Journies.length;i++) {
-    		containerBoxItems[i] = Integer.toString(Journies[i].getContaineronJourney().getContainerID());
+    		//Ensures the journey is a current one
+    		if(Journies[i].getEndLocation().getGPScoordX()!=Journies[i].getCurrentX()&&
+    				Journies[i].getEndLocation().getGPScoordY()!=Journies[i].getCurrentY()) {
+    			Journies[i].getCurrentLocationDoubleA();
+        		containerBoxItems[i-counter] = Integer.toString(Journies[i].getContaineronJourney().getContainerID());
+    		}
+    		else {
+    			counter++;
+    		}
     	}
-    	
-    	Arrays.sort(containerBoxItems);
+    	// Had to take out because there are null values in the array
+    	//Arrays.sort(containerBoxItems);
     	
         //construct components
         gpsLatitudeLabel = new JLabel ("GPS latitude:");

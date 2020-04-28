@@ -19,7 +19,7 @@ public class ContainerTest {
 	private Content con1, con2;
 	private Location loc1, loc2;
 	private Environment[] toAssign;
-	private int expectedID = 9;
+	private int expectedID = 13;
 	
 	@Before 
 	public void createContainers() {

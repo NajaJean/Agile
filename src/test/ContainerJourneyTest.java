@@ -52,7 +52,7 @@ public class ContainerJourneyTest {
 		assertTrue(locations[15].getGPScoordX() == cJ[0].getEndLocX());
 		assertTrue(locations[15].getGPScoordY()== cJ[0].getEndLocY());
 		
-		assertEquals("'2', '15', '5', '1', '290.0', '285.0', '2020-04-28', '2020-05-28'", cJ[1].toString());
+		assertEquals("'2', '15', '5', '1', '410.0', '910.0', '2020-04-28', '2020-05-01'", cJ[1].toString());
 		
 		assertEquals(cJ[1], ContainerJourney.findJourney("2", cJ));
 		assertEquals(null, ContainerJourney.findJourney("99", cJ));
