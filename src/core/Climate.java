@@ -1,8 +1,7 @@
 package core;
 
 
-public class Climate{
-	
+public class Climate{	
 
 	static double[] NAfrom = {0.0, 0.0};
 	static double[] NAto = {490.0, 400.0};

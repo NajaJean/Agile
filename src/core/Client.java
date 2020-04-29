@@ -100,7 +100,7 @@ public class Client extends User {
 				}
 			}
 		} catch (Exception e) {
-			result = clients[0];
+		//	result = clients[0];
 		}
 
 		return result;

@@ -64,5 +64,8 @@ public class ClientTest {
 		assertEquals(c1, Client.findClient("mathildesemail@gmail.com", clients));
 		assertEquals(null, Client.findClient("najasemail@gmail.com", emptyClients));
 		assertEquals(null, Client.findClient("najasemail@gmai", clients));
+		
+		assertEquals(null, Client.findClient(19, clients));
+		assertEquals(null, Client.findClient(19, emptyClients));
 	}
 }
