@@ -1,11 +1,11 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import core.LogisticCompany;
 import core.NotifyObject;
 
-import static org.junit.Assert.assertNotEquals;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -45,9 +45,7 @@ public class StepDefs_LogisticLogIn {
 
 	@Given("the username or the password is wrong")
 	public void the_username_or_the_password_is_wrong() {
-		l.setUsername("wrong username");
-		l.setPassword("wrong password");
-		assertNotEquals("MSK" + "1234", l.getUsername() + l.getPassword());
+		assertFalse(l.isValidLogin("wrong username","wrong password"));
 	}
 
 	@When("the logistic Company tries logs in")

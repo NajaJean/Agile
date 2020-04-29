@@ -53,7 +53,7 @@ public class LoginController {
 			}
 		}
 		else {
-			if (username.equals("MSK") && password.equals("1234")) {
+			if (l.isValidLogin(username,password)) {
 				response = l.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
 				

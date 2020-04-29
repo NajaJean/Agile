@@ -4,7 +4,6 @@ public class LogisticCompany {
 	private String username = "MSK";
     private String password = "1234";
     private String name = "LongTimeNoSea";
-	private int ID = 1;
 	private boolean loggedIn;
 	
 	public String getUsername() {
@@ -17,11 +16,13 @@ public class LogisticCompany {
 	public String getName() {
 		return name;
 	}
-	public int getID() {
-		return ID;
-	}
+
     public boolean isLoggedIn() {
     	return this.loggedIn;
+    }
+    
+    public boolean isValidLogin(String username, String password) {
+    	return username==this.username && password==this.password;
     }
     
     public NotifyObject logIn(boolean b) {
