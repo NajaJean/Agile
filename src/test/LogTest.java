@@ -91,9 +91,7 @@ public class LogTest {
 	 				 String.valueOf(Calendar.getSystemDate()) + "\t" +
 	 				 String.valueOf(cJs[i].getEndDate()) + "\t";
 			String inFile = L.readFile("Container " + String.valueOf(cJs[i].getContaineronJourney().getContainerID()));
-	
-			System.out.println(expected);
-			System.out.println(inFile);
+
 			assertTrue(expected.equals(inFile));
 		}
 	}
