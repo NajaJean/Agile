@@ -62,10 +62,10 @@ public class Container {
 		this.content = content;
 	}
 	
-	public static Container findContainer(int id, Container[] containers) {
+	public static Container findContainer(int ContainerID, Container[] containers) {
 		Container result = null;
 		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].containerID == id) {
+			if(containers[i].containerID == ContainerID) {
 				result = containers[i];
 				break;
 			}
@@ -73,10 +73,10 @@ public class Container {
 		return result;
 	}
 	
-	public static Container findClientsContainer(int id, Container[] containers) {
+	public static Container findClientsContainer(int ClientID, Container[] containers) {
 		Container result = null;
 		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].client.getID() == id) {
+			if(containers[i].client.getID() == ClientID) {
 				result = containers[i];
 				break;
 			}
