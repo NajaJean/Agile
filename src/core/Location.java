@@ -102,4 +102,9 @@ public class Location {
     	return "'"+ name + "', '" + ID + "', '" + GPScoord[0] + "', '" + 
     			GPScoord[1] + "'";
     }
+    
+    public double euclideanDistance(double[] loc2) {
+    	return Math.sqrt((loc2[1] - this.getGPScoordY()) * (loc2[1] - this.getGPScoordY()) + 
+    			(loc2[0] - this.getGPScoordX()) * (loc2[0] - this.getGPScoordX()));
+    }
 }
