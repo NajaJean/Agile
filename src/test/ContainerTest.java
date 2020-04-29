@@ -74,9 +74,10 @@ public class ContainerTest {
 		Container c2 = new Container(cl2, con2,loc2);
 		Container[] cons = {c1,c2};
 		
+		assertEquals(c1, Container.findClientsContainer(cl1.getID(), cons));
+		
 		assertEquals(c1, Container.findContainer(expectedID + 2, cons));
 		assertEquals("'" + String.valueOf((expectedID + 2)) + "'" +", '11', '4', '17', '23'", c1.toString());
-		
 		
 	}
 }
