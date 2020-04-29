@@ -1,6 +1,7 @@
 package UI;
 
 
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -82,10 +83,14 @@ public class Map extends JFrame{
         map.add(worldmap);
     }
      public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
+    	 
     	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
+    	 
  		for (int i = 0; i < containerJourneys.length; i++) {
  			
- 			if (client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) 
+ 			if ((client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) && 
+ 					((int)ChronoUnit.DAYS.between(containerJourneys[i].getStartDate(), Calendar.getSystemDate()) >= 0) && 
+ 					((int)ChronoUnit.DAYS.between( Calendar.getSystemDate(), containerJourneys[i].getEndDate()) >= 0))
  			{
  			
  				clientContainersList.add(containerJourneys[i]);
