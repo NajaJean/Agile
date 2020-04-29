@@ -6,12 +6,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.Content;
+import core.DatabaseData;
 import core.Environment;
 import core.NotifyObject;
 
 public class EnvironmentTest {
 	
 	private Environment e;
+	Environment[] Enviros;
+ 	
+	public EnvironmentTest() {
+		this.Enviros = DatabaseData.getEnvironments();
+	}
 	
 	@Before
 	public void createEnvironment() {
@@ -48,14 +54,12 @@ public class EnvironmentTest {
 	
 	@Test
 	public void testFindEnviro() {
-		Environment e1 = new Environment(5.3,1.1,0.85);
-		Environment e2 = new Environment(5.4,1.1,0.85);
-		Environment[] enviros = {e1,e2};
+		Environment e1 = Enviros[0];
 		Environment[] enviros2 = null;
 		
-		assertEquals(e1, Environment.findEnviro("46", enviros)); //45
-		assertEquals(null, Environment.findEnviro("55", enviros2)); 	
-		assertEquals("'46', '5.3', '1.1', '0.85'" ,e1.toString());
+		assertEquals(e1, Environment.findEnviro(Integer.toString(e1.getEnviro_ID()), Enviros)); //45
+		assertEquals(null, Environment.findEnviro(Integer.toString(e1.getEnviro_ID()), enviros2)); 	
+		assertEquals("'1', '0.0', '0.0', '0.0'" ,e1.toString());
 	}
 	
 	@Test
