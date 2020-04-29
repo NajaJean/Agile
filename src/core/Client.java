@@ -1,6 +1,6 @@
 package core;
 
-public class Client {
+public class Client extends User {
     private String username;
     private String password;
     private String name;
@@ -27,7 +27,7 @@ public class Client {
     	this.name = name;
     }
     
-    public String getUserName() {
+    public String getUsername() {
     	return username;
     }
     public void setUserName(String username) {

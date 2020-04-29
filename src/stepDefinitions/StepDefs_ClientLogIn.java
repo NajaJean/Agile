@@ -34,18 +34,18 @@ public class StepDefs_ClientLogIn {
 	
 	@Given("the username is correct and password is correct")
 	public void the_username_is_correct_and_password_is_correct() {
-	    assertEquals(Clients[2].getUserName(), "alice");
+	    assertEquals(Clients[2].getUsername(), "alice");
 	    assertEquals(Clients[2].getPassword(), "1234");
 	}
 	
 	@Given("username and password exits in the Database")
 	public void username_and_password_exits_in_the_Database() {
-		assertTrue(d.checkUser(Clients[2].getUserName(), Clients[2].getPassword()));
+		assertTrue(d.checkUser(Clients[2].getUsername(), Clients[2].getPassword()));
 	}
 	
 	@When("the client logs in")
 	public void the_client_logs_in() {
-		response = Clients[2].logIn(d.checkUser(Clients[2].getUserName(), Clients[2].getPassword()));
+		response = Clients[2].logIn(d.checkUser(Clients[2].getUsername(), Clients[2].getPassword()));
 		context.setResponse(response);
 	}
 	
@@ -61,7 +61,7 @@ public class StepDefs_ClientLogIn {
 
 	@Given("the password or username is incorrect")
 	public void the_password_or_username_is_incorrect() {
-	    assertNotEquals(Clients[1].getUserName() + Clients[1].getPassword(), "alice" + "4321");
+	    assertNotEquals(Clients[1].getUsername() + Clients[1].getPassword(), "alice" + "4321");
 	}
 	
 	@When("the client tries to log in")

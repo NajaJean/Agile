@@ -57,7 +57,7 @@ public class ConfigureClient extends JFrame {
 		this.c = c;
 		
 		CurrentDataField = new JLabel[]{
-				new JLabel (c.getUserName()),
+				new JLabel (c.getUsername()),
 				new JLabel (c.getPassword()),
 				new JLabel (c.getName()),
 				new JLabel (c.getEmail()),

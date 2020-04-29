@@ -40,7 +40,7 @@ public class ConfigureClientController {
 	
 	public void saveChanges() {
 		String[] oldInfo = new String[5];
-		oldInfo[0] = c.getUserName();
+		oldInfo[0] = c.getUsername();
 		oldInfo[1] = c.getPassword();
 		oldInfo[2] = c.getName();
 		oldInfo[3] = c.getEmail();
@@ -66,14 +66,14 @@ public class ConfigureClientController {
 		response = c.configure();
 		JOptionPane.showMessageDialog(null, response.getNotifyMessage());
 		
-		JOptionPane.showMessageDialog(null, "New User Name: " + c.getUserName() + " \n" + 
+		JOptionPane.showMessageDialog(null, "New User Name: " + c.getUsername() + " \n" + 
 											"New Password: " + c.getPassword() + " \n" +
 											"New Name: " + c.getName() + " \n" +
 											"New Email: " + c.getEmail() + " \n" +
 											"New Address: " + c.getAddress());
 		
 		//Update database
-		DatabaseData.getDatabase().updateDatabase("Clients", "Username",c.getUserName(),Integer.toString(c.getID()));
+		DatabaseData.getDatabase().updateDatabase("Clients", "Username",c.getUsername(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Password",c.getPassword(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Name",c.getName(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Email",c.getEmail(),Integer.toString(c.getID()));

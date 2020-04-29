@@ -26,7 +26,7 @@ public class StepDefs_ConfigureClient {
 	@Given("a client")
 	public void a_client() {		
 		oldClient = new String[5];
-		oldClient[0] = Clients[0].getUserName();
+		oldClient[0] = Clients[0].getUsername();
 		oldClient[1] = Clients[0].getPassword();
 		oldClient[2] = Clients[0].getName();
 		oldClient[3] = Clients[0].getEmail();
@@ -45,7 +45,7 @@ public class StepDefs_ConfigureClient {
 
 	@Then("the client should have the new configured details")
 	public void the_client_should_have_the_new_configured_details() {
-		assertEquals(Clients[id].getUserName(), "bobby");
+		assertEquals(Clients[id].getUsername(), "bobby");
 		assertEquals(Clients[id].getPassword(), "4321");
 		assertEquals(Clients[id].getName(), "Bobby Smith");
 		assertEquals(Clients[id].getEmail(), "bobby_smith@gmail.com");
@@ -56,7 +56,7 @@ public class StepDefs_ConfigureClient {
 
 	@Then("the details should be updated in the database")
 	public void the_details_should_be_updated_in_the_database() {
-		String user = Clients[id].getUserName();
+		String user = Clients[id].getUsername();
 		d.updateDatabase("Clients", "Username",user,Integer.toString(id));
 		String pass = Clients[id].getPassword();
 		d.updateDatabase("Clients", "Password",pass,Integer.toString(id));

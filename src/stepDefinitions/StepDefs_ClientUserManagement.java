@@ -62,7 +62,7 @@ public class StepDefs_ClientUserManagement {
 	    assertTrue(specificClient.isLoggedIn());
 	    assertTrue(randomClient.isLoggedIn());
 	    
-	    assertEquals("bob", specificClientContainer.getClientofContainer().getUserName());
+	    assertEquals("bob", specificClientContainer.getClientofContainer().getUsername());
 	    assertEquals("1234", specificClientContainer.getClientofContainer().getPassword());
 	    
 	    assertTrue(specificClient == specificClientContainer.getClientofContainer());

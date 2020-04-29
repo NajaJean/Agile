@@ -1,6 +1,6 @@
 package core;
 
-public class LogisticCompany {
+public class LogisticCompany extends User {
 	private String username = "MSK";
     private String password = "1234";
     private String name = "LongTimeNoSea";
