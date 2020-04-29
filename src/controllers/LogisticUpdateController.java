@@ -102,12 +102,12 @@ public class LogisticUpdateController {
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
 			 DatabaseData.updateJourney(containerJourney);
 			 
-			 /*//If container has arrived
+			 //If container has arrived
 			 //Set the container client ID and content ID to null (make it free for a new journey) and update its current location
 			 DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",Integer.toString(containerJourney.getContaineronJourney().getContainerID()));
 			 DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID",Integer.toString(containerJourney.getContaineronJourney().getContainerID()));
 			 DatabaseData.getDatabase().updateDatabase("Containers", "Location_ID",Integer.toString(containerJourney.getEndLocation().getLocationID()),Integer.toString(containerJourney.getContaineronJourney().getContainerID()));
-			 */
+			 
 			 updateSuccessful();
 			
 			 LogisticCompanyMenuController lm = new LogisticCompanyMenuController();

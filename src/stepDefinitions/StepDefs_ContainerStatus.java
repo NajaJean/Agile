@@ -23,11 +23,12 @@ public class StepDefs_ContainerStatus {
 	Client[] Clients;
 	Container[] Containers; 
 	
-	Content newContent = new Content("Apples", new Environment(15.0,15.0,15.0),0.1);
+	Content newContent;
 	
 	public StepDefs_ContainerStatus() {
 		this.Clients = DatabaseData.getClients();
 		this.Containers = DatabaseData.getContainers();
+		newContent = new Content("Apples", new Environment(15.0,15.0,15.0),0.1);
 	}
 
 	@Given("a client with a container and a logistic company")

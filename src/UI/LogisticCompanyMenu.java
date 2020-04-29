@@ -50,8 +50,8 @@ public class LogisticCompanyMenu extends JFrame {
 
         add (menuBar);
         add (date);
-        menuBar.setBounds (0, 0, 235, 25);
-        date.setBounds(600, 0, 200, 40);
+        menuBar.setBounds (0, 0, 681, 25);
+        date.setBounds(600, 25, 200, 40);
         
         setTitle("Logistic Company");
         setVisible(true);

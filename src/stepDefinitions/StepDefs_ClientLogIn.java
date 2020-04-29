@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 import core.Client;
 import core.Database;
+import core.DatabaseData;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,43 +16,42 @@ import io.cucumber.java.en.When;
 public class StepDefs_ClientLogIn {
 	
 	ScenarioContext context;
-	
-	Client Cc = new Client("sally", "1234", "Sally Grant", "sally_grant@gmail.com","203 Acorn st"); 
-	Client Ic = new Client("Horona", "1234", "Habrat", "h@", "Hasd");
-	Database d = new Database("agileProject.accdb");
+	Client[] Clients;
+	Database d;
 	
 	NotifyObject response;
 	
 	public StepDefs_ClientLogIn(ScenarioContext context) {
 		this.context = context;
+		this.Clients = DatabaseData.getClients();
+		this.d = DatabaseData.getDatabase();
 	}
 	
 	@Given("that the client is not logged in")
 	public void that_the_client_is_not_logged_in() {
-		assertTrue(!Cc.isLoggedIn());
-		assertTrue(!Ic.isLoggedIn());
+		assertTrue(!Clients[1].isLoggedIn());
 	}
 	
 	@Given("the username is correct and password is correct")
 	public void the_username_is_correct_and_password_is_correct() {
-	    assertEquals(Cc.getUserName(), "sally");
-	    assertEquals(Cc.getPassword(), "1234");
+	    assertEquals(Clients[2].getUserName(), "alice");
+	    assertEquals(Clients[2].getPassword(), "1234");
 	}
 	
 	@Given("username and password exits in the Database")
 	public void username_and_password_exits_in_the_Database() {
-		assertTrue(d.checkUser(Cc.getUserName(), Cc.getPassword()));
+		assertTrue(d.checkUser(Clients[2].getUserName(), Clients[2].getPassword()));
 	}
 	
 	@When("the client logs in")
 	public void the_client_logs_in() {
-		response = Cc.logIn(d.checkUser(Cc.getUserName(), Cc.getPassword()));
+		response = Clients[2].logIn(d.checkUser(Clients[2].getUserName(), Clients[2].getPassword()));
 		context.setResponse(response);
 	}
 	
 	@Then("the client is logged in")
 	public void the_client_is_logged_in() {
-		assertTrue(Cc.isLoggedIn());
+		assertTrue(Clients[2].isLoggedIn());
 	}
 	
 	@Then("message is displayed saying {string}") 
@@ -61,22 +61,17 @@ public class StepDefs_ClientLogIn {
 
 	@Given("the password or username is incorrect")
 	public void the_password_or_username_is_incorrect() {
-	    assertNotEquals(Ic.getUserName() + Ic.getPassword(), "sally" + "1234");
-	}
-	
-	@Given("username or password does not exits in the Database")
-	public void username_or_password_does_not_exits_in_the_Database() {
-		assertFalse(d.checkUser(Ic.getUserName(), Ic.getPassword()));
+	    assertNotEquals(Clients[1].getUserName() + Clients[1].getPassword(), "alice" + "4321");
 	}
 	
 	@When("the client tries to log in")
 	public void the_client_tries_to_log_in() {
-	    response = Ic.logIn(d.checkUser(Ic.getUserName(), Ic.getPassword()));
+	    response = Clients[1].logIn(d.checkUser("alice", "4321"));
 	    context.setResponse(response);
 	}
 	
 	@Then("the client is not logged in")
 	public void the_client_is_not_logged_in() {
-		assertTrue(!Ic.isLoggedIn());
+		assertTrue(!Clients[1].isLoggedIn());
 	}	 
 }

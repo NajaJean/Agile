@@ -23,24 +23,13 @@ public class StepDefs_LogisticUpdate {
 	
 	ScenarioContext context;
 	NotifyObject response;
-	
-	double[] cphgpscoords = {730.0, 128.0};
-	double[] nygpscoords = {290.0, 225.0};
-	double[] hawaiigpscoords = {1735.0, 265.0};
-	double[] currentgpscoords = {1.0, 1.0};
 
-	Location CPH;
-	Location NY;
-	Location Hawaii;
-	Client C;
-	Environment en;
-	Content co;
+	double[] currentgpscoords = {1.0, 1.0};
 
 	Environment newEnviro;
 	int oldEnviro;
 	Container selectedC;
 
-	ContainerJourney containerJ;
 	ContainerJourney selectedJ;
 	
 	Database d = new Database("agileProject.accdb"); 
@@ -48,6 +37,7 @@ public class StepDefs_LogisticUpdate {
 
 	Environment[] Enviros;
 	Container[] Containers; 
+	ContainerJourney[] Journies;
 	
 	LocalDate startDate = LocalDate.of(2020, 04, 28);
 	LocalDate endDate = LocalDate.of(2020, 05, 28);
@@ -56,6 +46,7 @@ public class StepDefs_LogisticUpdate {
 		this.context = context;
 		this.Enviros = DatabaseData.getEnvironments();
 		this.Containers = DatabaseData.getContainers();
+		this.Journies = DatabaseData.getJournies();
 	}
 	
 	@Given("company selected a container")
@@ -91,14 +82,7 @@ public class StepDefs_LogisticUpdate {
 	
 	@Given("the company selected a container journey")
 	public void that_the_company_selected_a_container_journey() {
-		CPH = new Location("Copenhagen",cphgpscoords);
-		NY = new Location("New York",nygpscoords);
-		Hawaii = new Location("Hawaii",hawaiigpscoords);
-		C = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
-		co = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
-		en = new Environment(5.3,1.1,0.85);
-		selectedC = new Container(C,co,CPH);
-		selectedJ = new ContainerJourney(CPH, NY, selectedC, startDate, endDate);
+		selectedJ = Journies[id];
 	} 
 
 	@When("the company updates the current location")
@@ -123,7 +107,7 @@ public class StepDefs_LogisticUpdate {
 			// They both passed and they have the same response message
 			context.setResponse(firstResponse);
 		}
-		d.updateDatabase("Journies", "Current_y", Integer.toString(id));
-		d.updateDatabase("Journies", "Current_x", Integer.toString(id));
+		d.updateDatabase("Journies", "Current_y", Double.toString(Journies[0].getCurrentY()), Integer.toString(id));
+		d.updateDatabase("Journies", "Current_x", Double.toString(Journies[0].getCurrentX()),Integer.toString(id));
 	}
 }

@@ -51,7 +51,7 @@ public class StepDefs_ClientBookContainer {
 		System.out.println(Clients[1].getName());
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
-		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(id));
+		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(con.getContainerID()));
 
 		// Fill container
 		content = Content.findContent("Bananas", Contents);
@@ -73,13 +73,13 @@ public class StepDefs_ClientBookContainer {
 		String program = Integer.toString(Containers[id-1].getContainerContent().getContentID()); 
 		assertEquals(database,program);
 		d.updateDatabase("Containers", "Content_ID", Integer.toString(con.getContainerID()));
+		d.updateDatabase("Containers", "Client_ID", Integer.toString(con.getContainerID()));
 	}
 	
 	@Given("that there does not exist an empty container in the database")
 	public void that_there_does_not_exist_an_empty_container_in_the_database() {
-		id = d.getEmptyContainer();	
-	    assertEquals(6,id);
-	    d.updateDatabase("Containers", "Client_ID", Integer.toString(4));
+		id = 0;
+	    assertEquals(0,id);
 	}
 
 	@When("the Client tries to book a container")
