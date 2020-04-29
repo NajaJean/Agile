@@ -46,7 +46,7 @@ public class ClientTest {
 		c1.setAddress("Østerkirkevej 18");
 		assertEquals("Østerkirkevej 18", c1.getAddress());
 		
-		assertEquals(c2, Client.findClient("20", clients));
+		assertEquals(c2, Client.findClient(20, clients));
 			
 	}
 	
