@@ -73,6 +73,17 @@ public class Container {
 		return result;
 	}
 	
+	public static Container findClientsContainer(int id, Container[] containers) {
+		Container result = null;
+		for(int i = 0; i< containers.length; i++) {
+			if(containers[i].client.getID() == id) {
+				result = containers[i];
+				break;
+			}
+		}
+		return result;
+	}
+	
 
 	@Override
     public String toString() {

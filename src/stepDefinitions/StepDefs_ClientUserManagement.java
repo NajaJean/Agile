@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import core.Client;
 import core.Container;
 import core.Content;
+import core.DatabaseData;
 import core.Environment;
 import core.Location;
 import io.cucumber.java.en.Given;
@@ -14,18 +15,31 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_ClientUserManagement {
 	
-	Client specificClient = new Client("bob", "1234", "Bob Smith", "bob_smith@gmail.com","l34 Candy ln");
-	Client randomClient = new Client("alice", "1234", "Alice Harris", "alice.harris@gmail.com","10 Umbrella ct");
+	Client specificClient;
+	Client randomClient;
 	
 	Environment enviro;
 	Location loc;
 	Container specificClientContainer;
 	
+	Client[] Clients;
+	Environment[] Enviros;
+	Location[] Locs;
+	Content[] Contents;
+	
+	public StepDefs_ClientUserManagement() {
+		this.Clients = DatabaseData.getClients();
+		this.Enviros = DatabaseData.getEnvironments();
+		this.Locs = DatabaseData.getLocations();
+		this.Contents = DatabaseData.getContents();
+		specificClient = Clients[0];
+		randomClient = Clients[2];
+	}
+	
 	@Given("a client books a container")
 	public void a_client_books_a_container() {
-	    enviro = new Environment(5.3,1.1,0.85);
-	    double[] cphgps = {55.1, 12.6};
-		loc = new Location("Copenhagen",cphgps);
+	    enviro = Enviros[0];
+		loc = Locs[0];
 
 		// Does not have content yet, just a client that booked an empty container
 	    specificClientContainer = new Container(loc);
@@ -34,10 +48,7 @@ public class StepDefs_ClientUserManagement {
 
 	@Given("the client sets the contents of the container")
 	public void the_client_sets_the_contents_of_the_container() {
-		Environment requiredAppleEnvironment = new Environment(5.0, 1.0, 0.9);
-		double appleThreshold = 0.1;
-		
-	    specificClientContainer.setContainerContent(new Content("Apple", requiredAppleEnvironment, appleThreshold));
+	    specificClientContainer.setContainerContent(Contents[3]);
 	}
 
 	@When("clients log into the Container Management System")
