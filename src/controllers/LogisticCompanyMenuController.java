@@ -19,6 +19,7 @@ public class LogisticCompanyMenuController {
 		view.getSignOutItem().addActionListener(e -> signOut());
 		view.getAutoMenuItem().addActionListener(e -> goToAutoMenu());
 		view.getClientInfoItem().addActionListener(e -> goToClientInfoMenu());
+		view.getClientByMailItem().addActionListener(e -> goToClientByMailMenu());
 		view.getContainerInfoItem().addActionListener(e -> goToContainerInfoMenu());
 		view.getTomorrow().addActionListener(e -> goTOmorrow());
 		view.getNextWeek().addActionListener(e -> goNextWeek());
@@ -45,6 +46,12 @@ public class LogisticCompanyMenuController {
 		LogisticInfoPageController w = new LogisticInfoPageController("Client");
 		w.initController();
 	}
+	private void goToClientByMailMenu() {
+		view.dispose();
+		LogiticFindClientByMailController w = new LogiticFindClientByMailController();
+		w.initController();
+	}
+	
 	private void goToContainerInfoMenu() {
 		view.dispose();
 		LogisticInfoPageController w = new LogisticInfoPageController("Container");

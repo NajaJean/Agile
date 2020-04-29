@@ -68,7 +68,7 @@ public class StepDefs_LogisticAdvancedQueries {
 		
 		assertEquals(mostVisitedLoc,Location.findLocation(mostVisitedLoc, Locations).getLocationID());
 		
-		assertEquals(busiestClient,Client.findClient(Integer.toString(busiestClient), Clients).getID());
+		assertEquals(busiestClient,Client.findClient(busiestClient, Clients).getID());
 		
 		assertEquals(mostTravelledCon,Container.findContainer(mostTravelledCon, Containers).getContainerID());
 	}

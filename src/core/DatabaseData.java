@@ -114,7 +114,7 @@ public class DatabaseData {
 		Containers = new Container[containerLength];
 		for(int i = 0; i < containerLength; i++) {
 			try {
-				Containers[i] = new Container(Client.findClient(containers[i+1][2],Clients), Content.findContent(Integer.parseInt(containers[i+1][4]),Contents),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
+				Containers[i] = new Container(Client.findClient(Integer.parseInt(containers[i+1][2]),Clients), Content.findContent(Integer.parseInt(containers[i+1][4]),Contents),Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));
 			}
 			catch(Exception e) {
 				Containers[i] = new Container(Location.findLocation(Integer.parseInt(containers[i+1][5]), Locations));

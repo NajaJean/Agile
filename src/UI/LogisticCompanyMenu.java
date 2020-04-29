@@ -16,8 +16,9 @@ public class LogisticCompanyMenu extends JFrame {
     JMenuItem create_new_clientItem = new JMenuItem ("Create new client");
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
-    JMenuItem clientInfoItem = new JMenuItem ("My clients");
-    JMenuItem containerInfoItem = new JMenuItem ("My containers");
+    JMenuItem clientInfoItem = new JMenuItem ("Client list");
+    JMenuItem clientByMailItem = new JMenuItem ("Find client by e-mail");
+    JMenuItem containerInfoItem = new JMenuItem ("Container list");
 
     JMenuItem autoMenuItem = new JMenuItem("Auto generate");
     JMenu future = new JMenu ("Future");
@@ -32,6 +33,7 @@ public class LogisticCompanyMenu extends JFrame {
         containerMenu.add (containerInfoItem);
         clientMenu.add (create_new_clientItem);
         clientMenu.add (clientInfoItem);
+        clientMenu.add(clientByMailItem);
         settingsMenu.add (sign_outItem);
         future.add(tomorrow);
         future.add(nextWeek);
@@ -77,16 +79,19 @@ public class LogisticCompanyMenu extends JFrame {
     public JMenuItem getClientInfoItem() {
     	return clientInfoItem;    	
     }
+    public JMenuItem getClientByMailItem() {
+    	return clientByMailItem;    	
+    }
     public JMenuItem getContainerInfoItem() {
     	return containerInfoItem;    	
     }
-    
     public JMenuItem getTomorrow() {
     	return tomorrow;
     }
-    
     public JMenuItem getNextWeek() {
     	return nextWeek;
     }
+    
+    
     
 }
