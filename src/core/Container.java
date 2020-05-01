@@ -1,7 +1,7 @@
 package core;
 
 
-public class Container {
+public class Container implements Search<Container>{
 	
 	private int containerID; 
 	private Client client;
@@ -11,6 +11,7 @@ public class Container {
 	
 	private static int count = 1;
 	
+	public Container() {}
 	
 	public Container(Client client, Content content, Location location) {
 		this.containerID = count++;
@@ -62,6 +63,10 @@ public class Container {
 		this.content = content;
 	}
 	
+	public static void resetCount() {
+		count = 1;
+	}
+	
 	public static Container findContainer(int ContainerID, Container[] containers) {
 		Container result = null;
 		for(int i = 0; i< containers.length; i++) {
@@ -73,18 +78,41 @@ public class Container {
 		return result;
 	}
 	
-	public static Container findClientsContainer(int ClientID, Container[] containers) {
+	public static Container findClientsContainer(String ClientID, Container[] containers) {
 		Container result = null;
 		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].client.getID() == ClientID) {
+			if(containers[i].client.getID() == Integer.valueOf(ClientID)) {
 				result = containers[i];
 				break;
 			}
 		}
 		return result;
 	}
-	
 
+	@Override
+	public Container findFromID(int containerID, Container[] containers) {
+		Container result = null;
+		for(int i = 0; i< containers.length; i++) {
+			if(containers[i].containerID == containerID) {
+				result = containers[i];
+				break;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public Container findFromString(String string, Container[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Container findFromStrings(String firstString, String secondString, Container[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
     public String toString() {
 		String result = "";
@@ -97,12 +125,4 @@ public class Container {
 		}
     	return result;
     }
-	
-	// What is dis?? <- test if getcontainerencironment works :)
-/*	public static void main(String[] args) {
-		double[] hawaiigpscoords = {1735.0, 265.0};
-		Location Hawaii = new Location("Hawaii", hawaiigpscoords);
-		Container test = new Container(Hawaii);
-		System.out.println(test.getContainerEnvironment());
-	} */
 }

@@ -1,12 +1,14 @@
 package core;
 
 
-public class Environment {
+public class Environment implements Search<Environment> {
 	private int enviro_ID;
 	private double temp;
 	private double pressure;
 	private double humidity;
 	private static int count = 1;
+	
+	public Environment() {}
 	
 	public Environment(double temp, double pressure, double humidity) {
 		this.temp = temp;
@@ -41,6 +43,10 @@ public class Environment {
 	
 	public double getHumidity() {
 		return humidity;
+	}
+	
+	public static void resetCount() {
+		count = 1;
 	}
 	
 	public static Environment findEnviro(String id, Environment[] enviros) {
@@ -85,6 +91,40 @@ public class Environment {
 		} else {
 			notification = new NotifyObject(0, "Container environment is valid");
 		} return notification;
+	}
+
+	@Override
+	public Environment findFromID(int ID, Environment[] enviros) { 
+		Environment result = null;
+		try {
+			for(int i = 0; i< enviros.length; i++) {
+				if(enviros[i].enviro_ID == ID) {
+					result = enviros[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result;
+	}
+
+	@Override
+	public Environment findFromString(String ID, Environment[] enviros) {
+		Environment result = null;
+		try {
+			for(int i = 0; i< enviros.length; i++) {
+				if(enviros[i].enviro_ID == Integer.parseInt(ID)) {
+					result = enviros[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result;
+	}
+
+	@Override
+	public Environment findFromStrings(String firstString, String secondString, Environment[] enviros) { 
+		String str = (firstString.isEmpty() ? secondString : firstString);
+		return findFromString(str, enviros);
 	}
 	
     @Override

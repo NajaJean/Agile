@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -45,16 +46,16 @@ public class StepDefs_ClientNotified {
 	@Given("a client has a container")
 	public void a_client_has_a_container() {
 		
-		client = Clients[0];		
-		clientContainer = Container.findContainer(client.getID(), Containers);
+		client = Clients[0];
+		clientContainer = Container.findClientsContainer(String.valueOf(client.getID()), Containers);
 	}
 	
 	@When("the environment in the container is outside the contents threshold")
 	public void the_environment_in_the_container_is_outside_the_contents_threshold() {
 		Environment containerEnvironment = Environments[8];
-	    clientContainer.setContainerEnvironment(containerEnvironment);
+		clientContainer.setContainerEnvironment(containerEnvironment);
 	    
-	    notification = clientContainer.getContainerEnvironment().checkEnvironment(clientContainer.getContainerContent());  
+	   	notification = clientContainer.getContainerEnvironment().checkEnvironment(clientContainer.getContainerContent());  
 	}
 
 	@Then("container management system notifies client of invalid environment")
@@ -66,7 +67,7 @@ public class StepDefs_ClientNotified {
 	public void the_container_reaches_its_final_destination() {
 		clientContainerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(clientContainer.getContainerID()), Journies);
 		clientContainer.setContainerLocation(clientContainerJourney.getEndLocation());
-		assertEquals(clientContainerJourney.getEndLocation(),clientContainerJourney.getContaineronJourney().getContainerLocation());
+		assertEquals(clientContainerJourney.getEndLocation(), clientContainer.getContainerLocation());
 		notification = new NotifyObject(100, "Client is notified of arrival");
 	}
 

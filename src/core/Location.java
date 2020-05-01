@@ -1,12 +1,13 @@
 package core;
 
-
-public class Location {
+public class Location implements Search<Location>{
     private String name;
     private int ID;
     private double[] GPScoord = new double[2];
     
     private static int count = 1;
+    
+    public Location() {}
     
     public Location(String name, double[] gps) {
     	this.name = name;
@@ -43,6 +44,10 @@ public class Location {
     
     public void incrementOneGPSCoord(int axis, double j) {
     	GPScoord[axis] = GPScoord[axis] + j;
+    }
+    
+    public static void resetCount() {
+    	count = 1;
     }
     
     public Environment getEnvironment() {
@@ -96,7 +101,43 @@ public class Location {
 		}
 		return result; 
 	}
-    
+
+	@Override
+	public Location findFromID(int ID, Location[] locs) {
+    	Location result = null;
+		try {
+			result = locs[0];
+			for(int i = 0; i < locs.length; i++) {
+				if(locs[i].ID == ID) {
+					result = locs[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result; 
+	}
+
+	@Override
+	public Location findFromString(String name, Location[] locs) {
+    	Location result = null;
+		try {
+			result = locs[0];
+			for(int i = 0; i< locs.length; i++) {
+				if(locs[i].name.equals(name)) {
+					result = locs[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result; 
+	}
+
+	@Override
+	public Location findFromStrings(String firstString, String secondString, Location[] locs) {
+		String str = (firstString.isEmpty() ? secondString : firstString);
+		return findFromString(str, locs);
+	}
+	
     @Override
     public String toString() {
     	return "'"+ name + "', '" + ID + "', '" + GPScoord[0] + "', '" + 

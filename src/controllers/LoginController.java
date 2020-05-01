@@ -1,10 +1,13 @@
 package controllers;
 
+import java.util.HashMap;
+
 import javax.swing.JOptionPane;
 
 import UI.Login;
 import UI.StartLoginPage;
 import core.Client;
+import core.ArraySearch;
 import core.DatabaseData;
 import core.LogisticCompany;
 import core.NotifyObject;
@@ -13,6 +16,7 @@ public class LoginController {
 	private Login view; 
 	
 	Client[] Clients;
+	ArraySearch<Client> clientSearch;
 	
 	Client client;
 	LogisticCompany l = new LogisticCompany();
@@ -23,6 +27,7 @@ public class LoginController {
 		view = new Login(CorL);
 		this.CorL = CorL;
 		this.Clients = DatabaseData.getClients();
+		this.clientSearch = new ArraySearch<>(new Client());
 	}
 	
 	public void initController() {
@@ -37,7 +42,7 @@ public class LoginController {
 		
 		if (CorL.contentEquals("Client")) {
 			if (DatabaseData.getDatabase().checkUser(username, password)) {
-				client = Client.findClient(username, password, Clients);
+				client = clientSearch.find(username, password, Clients);
 				response = client.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
 				

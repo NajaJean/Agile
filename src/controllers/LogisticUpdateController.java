@@ -100,7 +100,6 @@ public class LogisticUpdateController {
 			 
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
-			 DatabaseData.updateJourney(containerJourney);
 			 
 			 //If container has arrived
 			 //Set the container client ID and content ID to null (make it free for a new journey) and update its current location

@@ -166,16 +166,12 @@ public class BookContainerMenuController {
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(container.getContainerID()));
 			  //Update location of container in database 
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Location_ID", Integer.toString(locEnd.getLocationID()), Integer.toString(container.getContainerID()));
-
-			  //Configure container in container array
-			  DatabaseData.updateContainer(container);
 			 
 			  ContainerJourney cj = new ContainerJourney(locStart, locEnd, container, startDate, endDate);
 			  
 			  //Update database by adding cj
 			  //Add cj to containerJourney array
 			  DatabaseData.getDatabase().addToDatabase("Journies", cj.toString(), cj);
-			  DatabaseData.addContainerJourney(cj);
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");
 			  JOptionPane.showMessageDialog(null, response.getNotifyMessage());

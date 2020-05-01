@@ -3,7 +3,7 @@ package core;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class ContainerJourney {
+public class ContainerJourney implements Search<ContainerJourney> {
 	private int journeyID;
 	private Location start;
 	private Location end;
@@ -109,6 +109,10 @@ public class ContainerJourney {
 		return container;
 	}
 	
+	public static void resetCount() {
+		count = 1;
+	}
+	
 	// Needed to update the current location of the container
 	// Returns a NotifyObject to notify the client in the case where current == end
 	
@@ -209,6 +213,24 @@ public class ContainerJourney {
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
+
+	@Override
+	public ContainerJourney findFromID(int ID, ContainerJourney[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ContainerJourney findFromString(String string, ContainerJourney[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ContainerJourney findFromStrings(String firstString, String secondString, ContainerJourney[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
     //Testing weather update keep it until the update is implemented in the UI

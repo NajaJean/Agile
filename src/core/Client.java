@@ -1,6 +1,6 @@
 package core;
 
-public class Client extends User {
+public class Client extends User implements Search<Client> {
     private String username;
     private String password;
     private String name;
@@ -9,6 +9,8 @@ public class Client extends User {
     private int ID;
     private static int count = 1;
     private boolean loggedIn;
+    
+    public Client() {};
     
     public Client(String username, String password, String name, String email, String address) {
     	this.username = username;
@@ -61,6 +63,10 @@ public class Client extends User {
     	return ID;
     }
     
+    public static void resetCount() {
+    	count = 1;
+    }
+    
     public boolean isLoggedIn() {
     	return this.loggedIn;
     }
@@ -82,6 +88,48 @@ public class Client extends User {
     	NotifyObject response;
     	response = new NotifyObject(101, "Your information is updated!");
     	return response;
+    }
+    
+    @Override
+    public Client findFromID(int ID, Client[] clients) {
+		Client result = null;
+		try {
+			for(int i = 0; i < clients.length; i++) {
+				if(clients[i].ID == ID) {
+					result = clients[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result;
+    }
+    
+    @Override
+    public Client findFromString(String email, Client[] clients) {
+		Client result = null;
+		try {
+			for(int i = 0; i < clients.length; i++) {
+				if(email.equals(clients[i].email)) {
+					result = clients[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result;
+    }
+    
+    @Override
+    public Client findFromStrings(String username, String password, Client[] clients) {
+		Client result = null;
+		try {
+			for(int i = 0; i < clients.length; i++) {
+				if(username.equals(clients[i].username) && password.equals(clients[i].password)) {
+					result = clients[i];
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return result;
     }
     
     @Override
