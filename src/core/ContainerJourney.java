@@ -153,13 +153,15 @@ public class ContainerJourney implements Search {
 	public void updateWeather() {
 		Weather[] climate;
 		climate = Climate.getClimate();
+		Environment[] toAssign = DatabaseData.getEnvironments();
+		Environment localEnviro = toAssign[0];
 		
 		for (int i = 0; i < climate.length; i++) {
 				if (((climate[i].from[0] <= getCurrentX()) && 
 						(getCurrentX() < climate[i].to[0])) &&
 					((climate[i].from[1] <= getCurrentY()) && 
 							(getCurrentY() < climate[i].to[1]))){
-					getContaineronJourney().setContainerEnvironment(climate[i].localWeather);
+					getContaineronJourney().setContainerEnvironment(toAssign[i + 1]);
 					
 				}
 		}	

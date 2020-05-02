@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
@@ -19,6 +20,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import core.*;
 
 public class Graph extends JFrame {
+	
+	  private JButton backButton;
 
 	private static final long serialVersionUID = 1L;
   	Container[] cS = DatabaseData.getContainers();
@@ -27,6 +30,10 @@ public class Graph extends JFrame {
   	public Graph(String title, int ContainerID, int ColumnIndex, String YLabel, String datasetName) {
   		super(title);
 	    
+  		backButton = new JButton ( "Back" );
+  		
+        
+  		
   		String[][] a = getValuesFromFile(ContainerID, ColumnIndex);
   		
 	    DefaultCategoryDataset dataset = createDataset( datasetName, a );
@@ -46,6 +53,8 @@ public class Graph extends JFrame {
 	    ChartPanel panel = new ChartPanel(chart);
 	    setContentPane(panel);
 	    windowSettings();
+	    add ( backButton );
+  		backButton.setBounds ((getWidth()/4), (getHeight()/4), 50, 25);
   	}
   	
   	protected String[][] getValuesFromFile(int ContainerID, int ColumnIndex)
@@ -93,18 +102,11 @@ public class Graph extends JFrame {
   		setAlwaysOnTop(true);
 	    pack();
 	    setSize(600, 400);
-	    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setVisible(true);
   	}
-
-  public static void main(String[] args) {
-    SwingUtilities.invokeLater(() -> {
-    	Graph example = new Graph("Line Chart Example", 1, 1, "a", "b");
-      example.setAlwaysOnTop(true);
-      example.pack();
-      example.setSize(600, 400);
-      example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-      example.setVisible(true);
-    });
-  }
+  	
+  	public JButton getBackButton() {
+		return backButton;
+	}
 }

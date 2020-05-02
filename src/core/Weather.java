@@ -6,9 +6,9 @@ public class Weather {
 	double[] to;
 	Environment localWeather;
 	
-	public Weather (double[] from, double[] to, Environment weather) {
+	public Weather (double[] from, double[] to) {
 		this.from = from;
 		this.to = to;
-		this.localWeather = weather;
+		//this.localWeather = weather;
 	}	
 }

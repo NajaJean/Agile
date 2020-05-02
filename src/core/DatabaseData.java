@@ -10,7 +10,6 @@ import org.apache.commons.lang.ArrayUtils;
 
 public class DatabaseData {
 	private static Database d = new Database("agileProject.accdb");
-	private static Logs Log;
 	
 	public static Database getDatabase() {
 		return d;
@@ -165,12 +164,15 @@ public class DatabaseData {
 		return Journies;
 	}
 	
-	private static void initLogs(Container[] Containers) {
-		Log = new Logs(Containers);
+	private static Logs initLogs() {
+		Container[] containers = getContainers();
+		Logs log = new Logs(containers);
+		return log;
 	}
 	
 	public static Logs getLogs() {
-		initLogs(getContainers());
-		return Log;
+		
+		Logs log = initLogs();
+		return log;
 	}
 }
