@@ -1,31 +1,29 @@
 package core;
 
-public class ArraySearch {
+public class ArraySearch<T> {
 	
-	private Search search;
+	private Search<T> search;
 	
-	public ArraySearch() {}
-	
-	public ArraySearch(Search search) {
+	public ArraySearch(Search<T> search) {
 		this.search = search;
 	}
 	
-	public void setSearch(Search search) {
+	public void setSearch(Search<T> search) {
 		this.search = search;
 	}
 	
-	public int findIDX(int ID, Object[] Objects) {
-		int result = search.findFromID(ID, Objects);
+	public T find(int ID, T[] Objects) {
+		T result = search.findFromID(ID, Objects);
 		return result;
 	}
 	
-	public int findIDX(String string, Object[] Objects) {
-		int result = search.findFromString(string, Objects);
+	public T find(String string, T[] Objects) {
+		T result = search.findFromString(string, Objects);
 		return result;
 	}
 	
-	public int findIDX(String firstString, String secondString, Object[] Objects) {
-		int result = search.findFromStrings(firstString, secondString, Objects);
+	public T find(String firstString, String secondString, T[] Objects) {
+		T result = search.findFromStrings(firstString, secondString, Objects);
 		return result;
 	}
 }

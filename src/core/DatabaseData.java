@@ -12,6 +12,11 @@ public class DatabaseData {
 	private static Database d = new Database("agileProject.accdb");
 	private static Logs Log;
 	
+	static { 
+		DatabaseObserver observer = new DatabaseObserver();
+		d.addObserver(observer);
+	}
+	
 	public static Database getDatabase() {
 		return d;
 	}
@@ -74,15 +79,13 @@ public class DatabaseData {
 		String[][] contents = d.getTable("Contents");
 		Content.resetCount();
 		
-		ArraySearch search = new ArraySearch(new Environment());
+		ArraySearch<Environment> searchEnviros = new ArraySearch<>(new Environment());
 		
 		ArrayList<Content> Contents = new ArrayList<>();
 		Environment[] Environments = getEnvironments();
 		for(int i = 0; i < Database.lengthTable(contents); i++) {
-			int envIDX = search.findIDX(contents[i+1][3], Environments);
-			
 			Contents.add(new Content(contents[i+1][2], 
-						Environments[envIDX], 
+						searchEnviros.find(contents[i+1][3], Environments), 
 						Double.parseDouble(contents[i+1][4])));
 		}
 		return Contents;
@@ -96,26 +99,19 @@ public class DatabaseData {
 		Content[] Contents = getContents();
 		Location[] Locations = getLocations();
 		
-		ArraySearch search = new ArraySearch();
+		ArraySearch<Client> searchClients = new ArraySearch<>(new Client());
+		ArraySearch<Content> searchContents = new ArraySearch<>(new Content());
+		ArraySearch<Location> searchLocations = new ArraySearch<>(new Location());
 		
 		ArrayList<Container> Containers = new ArrayList<>();
 		for(int i = 0; i < Database.lengthTable(containers); i++) {
 			try {
-				search.setSearch(new Client());
-				int clientIDX = search.findIDX(Integer.parseInt(containers[i+1][2]), Clients);
-				search.setSearch(new Content());
-				int contentIDX = search.findIDX(Integer.parseInt(containers[i+1][4]), Contents);
-				search.setSearch(new Location());
-				int locationIDX = search.findIDX(Integer.parseInt(containers[i+1][5]), Locations);
-				
-				Containers.add(new Container(Clients[clientIDX], 
-							  Contents[contentIDX],
-							  Locations[locationIDX]));
-			} catch (Exception e) {
-				search.setSearch(new Location());
-				int locationIDX = search.findIDX(Integer.parseInt(containers[i+1][5]), Locations);
-				
-				Containers.add(new Container(Locations[locationIDX]));
+				Containers.add(new Container(searchClients.find(Integer.parseInt(containers[i+1][2]), Clients), 
+							  searchContents.find(Integer.parseInt(containers[i+1][4]), Contents),
+							  searchLocations.find(Integer.parseInt(containers[i+1][5]), Locations)));
+			}
+			catch(Exception e) {
+				Containers.add(new Container(searchLocations.find(Integer.parseInt(containers[i+1][5]), Locations)));
 			}
 		}
 		return Containers;
@@ -134,6 +130,7 @@ public class DatabaseData {
 		return Locations;
 	}
 	
+	
 	private static ArrayList<ContainerJourney> initJournies () {
 		String[][] journies = d.getTable("Journies");
 		ContainerJourney.resetCount();
@@ -141,19 +138,14 @@ public class DatabaseData {
 		Location[] Locations = getLocations();
 		Container[] Containers = getContainers();
 		
-		ArraySearch search = new ArraySearch();
+		ArraySearch<Location> searchLocations = new ArraySearch<>(new Location());
+		ArraySearch<Container> searchContainers = new ArraySearch<>(new Container());
 		
 		ArrayList<ContainerJourney> Journies = new ArrayList<>();
 		for(int i = 0; i < Database.lengthTable(journies); i++) {
-			search.setSearch(new Location());
-			int locationFirstIDX = search.findIDX(Integer.parseInt(journies[i+1][1]), Locations);
-			int locationSecondIDX = search.findIDX(Integer.parseInt(journies[i+1][2]), Locations);
-			search.setSearch(new Container());
-			int containerIDX = search.findIDX(Integer.parseInt(journies[i+1][3]), Containers);
-			
-			Journies.add(new ContainerJourney(Locations[locationFirstIDX], 
-						Locations[locationSecondIDX], 
-						Containers[containerIDX],
+			Journies.add(new ContainerJourney(searchLocations.find(Integer.parseInt(journies[i+1][1]), Locations), 
+						searchLocations.find(Integer.parseInt(journies[i+1][2]), Locations), 
+						searchContainers.find(Integer.parseInt(journies[i+1][3]), Containers),
 						Double.parseDouble(journies[i+1][6]),Double.parseDouble(journies[i+1][5]),
 						LocalDate.of(Integer.parseInt(journies[i+1][7].substring(0,4)), 
 							 Integer.parseInt(journies[i+1][7].substring(5,7)),
@@ -165,7 +157,8 @@ public class DatabaseData {
 		return Journies;
 	}
 	
-	private static void initLogs(Container[] Containers) {
+	private static void initLogs(Container[] Containers)
+	{
 		Log = new Logs(Containers);
 	}
 	

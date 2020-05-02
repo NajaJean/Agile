@@ -1,9 +1,9 @@
 package core;
 
-public interface Search {
-	public abstract int findFromID(int ID, Object[] Objects);
+public interface Search<T> {
+	public abstract T findFromID(int ID, T[] Objects);
 	
-	public abstract int findFromString(String string, Object[] Objects);
+	public abstract T findFromString(String string, T[] Objects);
 	
-	public abstract int findFromStrings(String firstString, String secondString, Object[] Objects);
+	public abstract T findFromStrings(String firstString, String secondString, T[] Objects);
 }

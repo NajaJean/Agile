@@ -1,8 +1,20 @@
 package core;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.sql.*; 
 
-public class Database {	
+public class Database {
+	private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+	
+	public void addObserver(PropertyChangeListener listener) {
+		support.addPropertyChangeListener(listener);
+	}
+	
+	private void notifyObservers(String action, String objType, Object obj) {
+		support.firePropertyChange(action, objType, obj);
+	}
+	
 	private Connection c;
 
 	public Database(String url) {
@@ -50,13 +62,14 @@ public class Database {
 		return len;
 	}
 	
-	public void removeFromDatabase(String tableName, int id) {
+	public void removeFromDatabase(String tableName, int id, Object obj) {
 		String objType = tableName;
 		String removeRow = "DELETE FROM " + tableName + " WHERE ID = "+id;
 		try {
 			Statement s = c.createStatement();
 			s.execute(removeRow);
 			System.out.println("data removed sucessfully");
+			notifyObservers("Remove", objType, obj);
 			s.close();
 		} catch (SQLException e){System.out.println(e);}
 	}
@@ -85,13 +98,14 @@ public class Database {
 		return query;
 	}
 
-	public void addToDatabase(String tableName, String values){
+	public void addToDatabase(String tableName, String values, Object obj){
 		String objType = tableName;
 		String addRow = "INSERT INTO " + tableName + " VALUES (" + values + ")";
 		try {
 			Statement s = c.createStatement();
 			s.execute(addRow);
 			System.out.println("data added sucessfully");
+			notifyObservers("Add", objType, obj);
 			s.close();
 		} catch (SQLException e){System.out.println(e);} 		
 	}
@@ -130,6 +144,10 @@ public class Database {
 		}
 		response = new NotifyObject(23, "The update was successful");
 		return response;
+	}
+	
+	public void updateDatabase(String objType, Object obj) {
+		notifyObservers("Update", objType, obj);
 	}
 	
 	public boolean checkUser(String user, String pass) {

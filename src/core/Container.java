@@ -1,7 +1,7 @@
 package core;
 
 
-public class Container implements Search {
+public class Container implements Search<Container>{
 	
 	private int containerID; 
 	private Client client;
@@ -90,33 +90,27 @@ public class Container implements Search {
 	}
 
 	@Override
-	public int findFromID(int containerID, Object[] containers) {
-		int index = -1;
-		for(int i = 0; i < containers.length; i++) {
-			if(containerID == ((Container)containers[i]).containerID) {
-				index = i;
+	public Container findFromID(int containerID, Container[] containers) {
+		Container result = null;
+		for(int i = 0; i< containers.length; i++) {
+			if(containers[i].containerID == containerID) {
+				result = containers[i];
 				break;
 			}
 		}
-		return index;
+		return result;
 	}
 
 	@Override
-	public int findFromString(String clientID, Object[] containers) {
-		int index = -1;
-		for(int i = 0; i < containers.length; i++) {
-			if(Integer.parseInt(clientID) == ((Container)containers[i]).client.getID()) {
-				index = i;
-				break;
-			}
-		}
-		return index;
+	public Container findFromString(String string, Container[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] containers) {
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, containers);
+	public Container findFromStrings(String firstString, String secondString, Container[] Objects) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	@Override

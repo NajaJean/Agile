@@ -30,7 +30,7 @@ public class AutoAddController {
 	private void addRClient() {
 		
 		Client newC = auto.rClient();
-		DatabaseData.getDatabase().addToDatabase("Clients", newC.toString());
+		DatabaseData.getDatabase().addToDatabase("Clients", newC.toString(), newC);
 		
 		JOptionPane.showMessageDialog(null, "Client successfully created!");
 		
@@ -38,7 +38,7 @@ public class AutoAddController {
 	private void addRContainer() 
 	{
 		Container C = auto.rContainer();
-		DatabaseData.getDatabase().addToDatabase("Containers", C.toString());
+		DatabaseData.getDatabase().addToDatabase("Containers", C.toString(), C);
 	
 		JOptionPane.showMessageDialog(null, "Container successfully created!");
 	}
@@ -46,7 +46,7 @@ public class AutoAddController {
 	private void addRCJ() 
 	{
 		ContainerJourney cj = auto.rCJs();
-		DatabaseData.getDatabase().addToDatabase("Journies", cj.toString());
+		DatabaseData.getDatabase().addToDatabase("Journies", cj.toString(), cj);
 	
 		JOptionPane.showMessageDialog(null, "Journey successfully created!");
 	}

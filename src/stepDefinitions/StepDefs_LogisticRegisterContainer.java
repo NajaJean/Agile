@@ -42,13 +42,13 @@ public class StepDefs_LogisticRegisterContainer {
 	public void the_container_is_created_with_no_content_in_the_database_and_message_displayed_saying(String string) {
 		C = new Container(loc);
 		String s = C.toString();
-		d.addToDatabase("Containers", s);
+		d.addToDatabase("Containers", s, C);
 		System.out.print(string);
 	}
 
 	@Then("container is found in the database")
 	public void container_is_found_in_the_database() {
 	    d.getEmptyContainer(); 
-	    d.removeFromDatabase("Containers", C.getContainerID());
+	    d.removeFromDatabase("Containers", C.getContainerID(), C);
 	}
 }

@@ -16,7 +16,7 @@ public class LoginController {
 	private Login view; 
 	
 	Client[] Clients;
-	ArraySearch search;
+	ArraySearch<Client> clientSearch;
 	
 	Client client;
 	LogisticCompany l = new LogisticCompany();
@@ -27,7 +27,7 @@ public class LoginController {
 		view = new Login(CorL);
 		this.CorL = CorL;
 		this.Clients = DatabaseData.getClients();
-		this.search = new ArraySearch(new Client());
+		this.clientSearch = new ArraySearch<>(new Client());
 	}
 	
 	public void initController() {
@@ -42,19 +42,15 @@ public class LoginController {
 		
 		if (CorL.contentEquals("Client")) {
 			if (DatabaseData.getDatabase().checkUser(username, password)) {
-				int index = search.findIDX(username, password, Clients);
-				if (index == -1) { 
-					JOptionPane.showMessageDialog(null, "Error logging in");
-					return; 
-				}
-				
-				client = Clients[index];
+				client = clientSearch.find(username, password, Clients);
 				response = client.logIn(true);
 				JOptionPane.showMessageDialog(null, response.getNotifyMessage());
+				
 				ClientMenuController cm = new ClientMenuController(client);
 				view.dispose();
 				
 				cm.initController();
+				
 			}
 			else {
 				//response = client.logIn(false);

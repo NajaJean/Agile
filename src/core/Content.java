@@ -1,7 +1,7 @@
 package core;
 
 
-public class Content implements Search {
+public class Content implements Search<Content>{
 	private String name;
 	private Environment enviro;
 	private double threshold;
@@ -72,35 +72,35 @@ public class Content implements Search {
 	}
 
 	@Override
-	public int findFromID(int ID, Object[] contents) {
-		int index = -1;
+	public Content findFromID(int ID, Content[] contents) {
+		Content result = null;
 		try {
 			for(int i = 0; i < contents.length; i++) {
-				if(ID == ((Content)contents[i]).content_ID) {
-					index = i;
+				if(contents[i].content_ID == ID) {
+					result = contents[i];
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return index;
+		return result;
 	}
 	
 	@Override
-	public int findFromString(String name, Object[] contents) {
-		int index = -1;
+	public Content findFromString(String name, Content[] contents) {
+		Content result = null;
 		try {
 			for(int i = 0; i < contents.length; i++) {
-				if(name.equals(((Content)contents[i]).name)) {
-					index = i;
+				if(contents[i].name.equals(name)) {
+					result = contents[i];
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return index;
+		return result;
 	}
 	
 	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] contents) {
+	public Content findFromStrings(String firstString, String secondString, Content[] contents) {
 		String str = (firstString.isEmpty() ? secondString : firstString);
 		return findFromString(str, contents);
 	}
