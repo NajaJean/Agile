@@ -1,6 +1,6 @@
 package core;
 
-public class Client extends User implements Search<Client> {
+public class Client extends User implements Search {
     private String username;
     private String password;
     private String name;
@@ -91,45 +91,45 @@ public class Client extends User implements Search<Client> {
     }
     
     @Override
-    public Client findFromID(int ID, Client[] clients) {
-		Client result = null;
+    public int findFromID(int ID, Object[] clients) {
+		int index = -1;
 		try {
 			for(int i = 0; i < clients.length; i++) {
-				if(clients[i].ID == ID) {
-					result = clients[i];
+				if(ID == ((Client)clients[i]).ID) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result;
+		return index;
     }
     
     @Override
-    public Client findFromString(String email, Client[] clients) {
-		Client result = null;
+    public int findFromString(String email, Object[] clients) {
+		int index = -1;
 		try {
 			for(int i = 0; i < clients.length; i++) {
-				if(email.equals(clients[i].email)) {
-					result = clients[i];
+				if(email.equals(((Client)clients[i]).email)) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result;
+		return index;
     }
     
     @Override
-    public Client findFromStrings(String username, String password, Client[] clients) {
-		Client result = null;
+    public int findFromStrings(String username, String password, Object[] clients) {
+		int index = -1;
 		try {
 			for(int i = 0; i < clients.length; i++) {
-				if(username.equals(clients[i].username) && password.equals(clients[i].password)) {
-					result = clients[i];
+				if(username.equals(((Client)clients[i]).username) && password.equals(((Client)clients[i]).password)) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result;
+		return index;
     }
     
     @Override
@@ -172,7 +172,7 @@ public class Client extends User implements Search<Client> {
 		Client result = null;
 		try {
 			for(int i = 0; i< clients.length; i++) {
-				if(email.equals(clients[i].email)) {
+				if(email.equals(((Client)clients[i]).email)) {
 					result = clients[i];
 					break;
 				}

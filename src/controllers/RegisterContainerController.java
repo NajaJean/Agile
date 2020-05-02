@@ -58,7 +58,7 @@ public class RegisterContainerController {
 	
 	public void tryRegister() {
 		Container C = new Container(chosenLocation);
-		DatabaseData.getDatabase().addToDatabase("Containers", C.toString(), C);
+		DatabaseData.getDatabase().addToDatabase("Containers", C.toString());
 		view.registerString(selected);
 	}
 	
