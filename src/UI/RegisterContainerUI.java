@@ -66,12 +66,12 @@ public class RegisterContainerUI extends JFrame {
     
     public void setLocationAndSize() {
     	locationContainerLabel.setBounds (frameWidth/8, 10, 160, 25);
-    	locationContainerJComboBox.setBounds (frameWidth/2, 10, 100, 25);
+    	locationContainerJComboBox.setBounds (frameWidth/2, 10, 140, 25);
     	enviroInfoLabel.setBounds(frameWidth/8, 25, 280, 50);
     	tempInfoLabel.setBounds(frameWidth/8, 40, 200, 50);
     	presInfoLabel.setBounds(frameWidth/8, 55, 200, 50);
     	humInfoLabel.setBounds(frameWidth/8, 70, 200, 50);
-    	regLabel.setBounds(frameWidth/8, 90, 280, 50);
+    	regLabel.setBounds(frameWidth/8, 90, 300, 50);
     	loadClimateButton.setBounds((frameWidth/10), 130, 170, 25);
         regContainerButton.setBounds ((frameWidth/2), 130, 150, 25);
         goBackButton.setBounds ((frameWidth/3), 155, 160, 25);
