@@ -30,10 +30,12 @@ public class Calendar {
 			if (((int)ChronoUnit.DAYS.between(cJs[i].getStartDate(), SystemDate) > 0) && 
 				((int)ChronoUnit.DAYS.between( SystemDate, cJs[i].getEndDate()) >= 0)) 
 			{
-				log.appendContainerLog(cJs[i]);
+				
 				cJs[i].moveContainerOnJ();
+				log.appendContainerLog(cJs[i]);
 				DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(cJs[i].getCurrentX()), Integer.toString(cJs[i].getJourneyID()));
-				DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(cJs[i].getCurrentY()), Integer.toString(cJs[i].getJourneyID()));		
+				DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(cJs[i].getCurrentY()), Integer.toString(cJs[i].getJourneyID()));	
+				
 				
 			}
 			

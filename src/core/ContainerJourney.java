@@ -248,43 +248,4 @@ public class ContainerJourney implements Search {
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
-    
-    
-    //Testing weather update keep it until the update is implemented in the UI
-    //and autoweather is working
-    /*public static void main(String[] args) {
-    	double[] cphgpscoords = {730.0, 128.0};
-       	double[] tokyogpscoords = {1423.0, 245.0};
-       	double[] sydneygpscoords = {1495.0, 750.0};
-       	double[] nygpscoords = {290.0, 225.0};
-       	double[] hawaiigpscoords = {1735.0, 265.0};
-       	double[] riogpscoords = {420.0, 670.0};
-       	
-
-       	Location CPH = new Location("Copenhagen", cphgpscoords);
-       	Location Tokyo = new Location("Tokyo", tokyogpscoords);
-       	Location Sydney = new Location("Sydney", sydneygpscoords);
-       	Location NY = new Location("New York", nygpscoords);
-       	Location Hawaii = new Location("Hawaii", hawaiigpscoords);
-       	Location Rio = new Location("Rio", riogpscoords);
-       	
-       	Environment testEnv = new Environment(5.0, 5.0, 5.0);
-       	
-       	Client testClient = new Client("asd", "yoDaddy69", "1", "2", "3");
-       	
-       	Content stuff = new Content("Stuff", testEnv, 1.0);
-       	
-       	Container shippingContainer1 = new Container(testClient, testEnv, stuff, CPH);
-       	Container shippingContainer2 = new Container(testClient, testEnv, stuff, Hawaii);
-       	Container shippingContainer3 = new Container(testClient, testEnv, stuff, Rio);
-       	
-       	//we want this
-       	ContainerJourney[] cJs = {new ContainerJourney(CPH, NY, shippingContainer1),
-       									  new ContainerJourney(Hawaii, Tokyo, shippingContainer2),
-       									  new ContainerJourney(Rio, Sydney, shippingContainer3)
-       									  };
-       	System.out.println(cJs[0].getContaineronJourney().getContainerEnvironment());
-       	cJs[0].setCurrentLocation(hawaiigpscoords);
-       	System.out.println(cJs[0].getContaineronJourney().getContainerEnvironment());
-	}*/
 }

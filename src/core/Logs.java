@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;  
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;  
 
 
@@ -25,7 +26,7 @@ public class Logs {
 		try {
 	      File myObj = new File("src\\logs\\" + fileName  + ".txt");
 	      if (myObj.createNewFile()) {
-	        System.out.println("File created: " + myObj.getName());
+	       // System.out.println("File created: " + myObj.getName());
 	      } else {
 	        //System.out.println("File already exists.");
 	      }
@@ -41,8 +42,8 @@ public class Logs {
 		      File myObj = new File("src\\logs\\" + fileName + ".txt");
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
-		        data = myReader.nextLine();
-		       // System.out.println(data);
+		        data += myReader.nextLine() + "\n";
+		        //System.out.println(data);
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
@@ -57,7 +58,18 @@ public class Logs {
 		createFile("Container " + String.valueOf(c.getContainerID()));
 	}
 	
+	public Double modNum(Double number) 
+	{	
+		Random r = new Random();
+		
+		return number * (((double) r.nextInt(20) + 91.0) / 100);
+	}
 	
+	public String randomizeE(Environment e) 
+	{	
+		return "'" + String.valueOf(e.getEnviro_ID()) + "', '" + String.format("%.2f", modNum(e.getTemp())) + "', '" +
+				String.format("%.2f", modNum(e.getPressure())) + "', '" + String.format("%.2f", modNum(e.getHumidity())) + "'";
+	}
 	
 	public void appendContainerLog(ContainerJourney c)
 	{
@@ -66,17 +78,17 @@ public class Logs {
 		    		  					String.valueOf(c.getContaineronJourney().getContainerID()) + ".txt", true);
 		      myWriter.write(String.valueOf(c.getContaineronJourney().getContainerID()) + "\t" + 
 		    		  		 String.valueOf(c.getContaineronJourney().getClientofContainer()) + "\t" +
-		    		  		 String.valueOf(c.getContaineronJourney().getContainerEnvironment()) + "\t" + 
+		    		  		 randomizeE(c.getContaineronJourney().getContainerEnvironment()) + "\t" +
 		    		  		 String.valueOf(c.getContaineronJourney().getContainerContent()) + "\t" +
 		    		  		 String.format("%.2f", c.getCurrentX()) + "\t" +
 		    		  		 String.format("%.2f", c.getCurrentY()) + "\t" + 
 		      				 String.valueOf(c.getJourneyID()) + "\t" +
 		      				 String.valueOf(c.getStartDate()) + "\t" + 
-		      				String.valueOf(Calendar.getSystemDate()) + "\t" +
+		      				 String.valueOf(Calendar.getSystemDate()) + "\t" +
 		      				 String.valueOf(c.getEndDate()) + "\t" + "\n");
 		      
 		      myWriter.close();
-		      System.out.println("Successfully wrote to the file.");
+		      //System.out.println("Successfully wrote to the file.");
 		    } catch (IOException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();

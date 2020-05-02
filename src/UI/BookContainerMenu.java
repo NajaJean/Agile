@@ -8,6 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class BookContainerMenu extends JFrame {
+	
 	private JComboBox contentBox;
     private JLabel jcomp2;
     private JLabel jcomp3;
@@ -132,6 +133,7 @@ public class BookContainerMenu extends JFrame {
 	public JComboBox getendBox() {
 		return endBox;
 	}
+	
 	public JButton getBookButton() {
 		return bookButton;
 	}
@@ -159,9 +161,9 @@ public class BookContainerMenu extends JFrame {
 		return endD;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		BookContainerMenu b = new BookContainerMenu();
-	}
+	}*/
 
 }
