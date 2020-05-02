@@ -2,6 +2,7 @@ package controllers;
 
 import UI.Login;
 import UI.LogiticFindClientByMailUI;
+import core.ArraySearch;
 import core.Client;
 import core.DatabaseData;
 
@@ -10,9 +11,12 @@ public class LogiticFindClientByMailController {
 	Client[] Clients;
 	Client client;
 	
+	ArraySearch search;
+	
 	public LogiticFindClientByMailController() {
 		view = new LogiticFindClientByMailUI();
 		this.Clients = DatabaseData.getClients();
+		this.search = new ArraySearch(new Client());
 	}
 	
 	public void initController() {
@@ -21,8 +25,9 @@ public class LogiticFindClientByMailController {
 	}
 	public void tryFindClient() {
 		String email = view.getEmailField().getText();
-		if (Client.findClient(email, Clients) != null) {
-			client = Client.findClient(email, Clients);
+		int clientIDX = search.findIDX(email, Clients);
+		if (clientIDX != -1) {
+			client = Clients[clientIDX];
 			view.theClient(client.getID(), client.getName(), client.getEmail(), client.getAddress());
 		}
 		else {

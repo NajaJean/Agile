@@ -183,4 +183,5 @@ public class Client extends User implements Search<Client> {
 
 		return result;
 	}
+
 }

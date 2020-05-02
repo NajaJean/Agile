@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import core.ArraySearch;
 import core.Container;
 import core.Database;
 import core.DatabaseData;
@@ -19,12 +20,15 @@ public class StepDefs_LogisticRegisterContainer {
 	Environment[] Enviros;
 	Location[] Locations;
 	
+	ArraySearch search;
+	
 	Location loc;
 	Environment enviro;
 	
 	public StepDefs_LogisticRegisterContainer() {
 		this.Enviros = DatabaseData.getEnvironments();
 		this.Locations = DatabaseData.getLocations();
+		this.search = new ArraySearch(new Location());
 	}
 
 	@Given("that Logistic Company wants to register a container")
@@ -35,7 +39,8 @@ public class StepDefs_LogisticRegisterContainer {
 	@When("the Logistic Company inserts all information")
 	public void the_Logistic_Company_inserts_all_information() {
 		enviro = Enviros[0];
-		loc = Location.findLocation("Copenhagen",Locations);
+		int locationIDX = search.findIDX("Copenhagen", Locations);
+		loc = Locations[locationIDX];
 	}
 
 	@Then("the container is created with no content in the database and message displayed saying {string}")

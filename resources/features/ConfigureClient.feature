@@ -2,6 +2,7 @@
 Feature: Configure Client  Mathilde
 	Description: A client wants to configure its details.
 	Actor: Client
+	
 	Scenario: Client configures its details.
 		Given a client
 		When a client configures its details

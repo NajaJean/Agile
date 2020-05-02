@@ -28,6 +28,8 @@ public class StepDefs_ClientNotified {
 	Location[] Locations;
 	ContainerJourney[] Journies;
 	
+	ArraySearch search;
+	
 	ContainerJourney clientContainerJourney;
 	
 	NotifyObject notification;
@@ -41,13 +43,15 @@ public class StepDefs_ClientNotified {
 		this.Containers = DatabaseData.getContainers();
 		this.Environments = DatabaseData.getEnvironments();
 		this.Journies = DatabaseData.getJournies();
+		this.search = new ArraySearch();
 	}
 	
 	@Given("a client has a container")
 	public void a_client_has_a_container() {
-		
 		client = Clients[0];
-		clientContainer = Container.findClientsContainer(String.valueOf(client.getID()), Containers);
+		search.setSearch(new Container());
+		int containerIDX = search.findIDX(String.valueOf(client.getID()), Containers);
+		clientContainer = Containers[containerIDX];
 	}
 	
 	@When("the environment in the container is outside the contents threshold")
@@ -65,7 +69,10 @@ public class StepDefs_ClientNotified {
 	
 	@When("the container reaches its final destination")
 	public void the_container_reaches_its_final_destination() {
-		clientContainerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(clientContainer.getContainerID()), Journies);
+		search.setSearch(new ContainerJourney());
+		int cjIDX = search.findIDX(String.valueOf(clientContainer.getContainerID()), Journies); // CJ found from containerID
+		clientContainerJourney = Journies[cjIDX];
+
 		clientContainer.setContainerLocation(clientContainerJourney.getEndLocation());
 		assertEquals(clientContainerJourney.getEndLocation(), clientContainer.getContainerLocation());
 		notification = new NotifyObject(100, "Client is notified of arrival");

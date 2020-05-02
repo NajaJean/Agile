@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
@@ -20,6 +21,8 @@ public class StepDefs_LogisticAdvancedQueries {
 	Client[] Clients;
 	Container[] Containers;
 	
+	ArraySearch search;
+	
 	int mostUsedContent;
 	
 	int mostVisitedLoc;
@@ -33,6 +36,7 @@ public class StepDefs_LogisticAdvancedQueries {
 		this.Locations = DatabaseData.getLocations();
 		this.Clients = DatabaseData.getClients();
 		this.Containers = DatabaseData.getContainers();
+		this.search = new ArraySearch();
 	}
 	
 	@Given("A logistic company has preloaded data from the database")
@@ -64,13 +68,21 @@ public class StepDefs_LogisticAdvancedQueries {
 	}
 	@Then("these are validated for the company")
 	public void these_are_validated_for_the_company() {
-		assertEquals(mostUsedContent,Content.findContent(mostUsedContent, Contents).getContentID());
+		search.setSearch(new Content());
+		int contentIDX = search.findIDX(mostUsedContent, Contents);
+		assertEquals(mostUsedContent, Contents[contentIDX].getContentID());
 		
-		assertEquals(mostVisitedLoc,Location.findLocation(mostVisitedLoc, Locations).getLocationID());
+		search.setSearch(new Location());
+		int locationIDX = search.findIDX(mostVisitedLoc, Locations);
+		assertEquals(mostVisitedLoc, Locations[locationIDX].getLocationID());
 		
-		assertEquals(busiestClient,Client.findClient(busiestClient, Clients).getID());
+		search.setSearch(new Client());
+		int clientIDX = search.findIDX(busiestClient, Clients);
+		assertEquals(busiestClient, Clients[clientIDX].getID());
 		
-		assertEquals(mostTravelledCon,Container.findContainer(mostTravelledCon, Containers).getContainerID());
+		search.setSearch(new Container());
+		int containerIDX = search.findIDX(mostTravelledCon, Containers);
+		assertEquals(mostTravelledCon, Containers[containerIDX].getContainerID());
 	}
 
 }

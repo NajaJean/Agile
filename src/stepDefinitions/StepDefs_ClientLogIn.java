@@ -29,7 +29,7 @@ public class StepDefs_ClientLogIn {
 	
 	@Given("that the client is not logged in")
 	public void that_the_client_is_not_logged_in() {
-		assertTrue(!Clients[1].isLoggedIn());
+		assertFalse(Clients[1].isLoggedIn());
 	}
 	
 	@Given("the username is correct and password is correct")
@@ -72,6 +72,6 @@ public class StepDefs_ClientLogIn {
 	
 	@Then("the client is not logged in")
 	public void the_client_is_not_logged_in() {
-		assertTrue(!Clients[1].isLoggedIn());
+		assertFalse(Clients[1].isLoggedIn());
 	}	 
 }

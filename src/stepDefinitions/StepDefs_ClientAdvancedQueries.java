@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -27,6 +28,8 @@ public class StepDefs_ClientAdvancedQueries {
 	ContainerJourney[] ClientJournies;
 	Client c;
 	
+	ArraySearch search;
+	
 	int longestTravelledCon;
 	
 	public StepDefs_ClientAdvancedQueries() {
@@ -35,6 +38,7 @@ public class StepDefs_ClientAdvancedQueries {
 		this.Clients = DatabaseData.getClients();
 		this.Containers = DatabaseData.getContainers();
 		this.Journies = DatabaseData.getJournies();
+		this.search = new ArraySearch(new Container()); 
 	}
 	
 	@Given("A client has data stored in the database")
@@ -75,7 +79,8 @@ public class StepDefs_ClientAdvancedQueries {
 	
 	@Then("these are validated for the client")
 	public void these_are_validated_for_the_client() {
-		assertEquals(longestTravelledCon,Container.findContainer(longestTravelledCon, Containers).getContainerID());
+		int containerIDX = search.findIDX(longestTravelledCon, Containers);
+		assertEquals(longestTravelledCon, Containers[containerIDX].getContainerID());
 		// THIS IS NTO COMPLETE YET
 	}
 

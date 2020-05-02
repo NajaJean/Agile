@@ -23,7 +23,7 @@ public class StepDefs_LogisticLogIn {
 	
 	@Given("that the Logistic Company is not logged in")
 	public void that_the_Logistic_Company_is_not_logged_in() {
-		assertTrue(!l.isLoggedIn());
+		assertFalse(l.isLoggedIn());
 	}
 
 	@Given("the username is {string} and password is {string}")
@@ -56,6 +56,6 @@ public class StepDefs_LogisticLogIn {
 	
 	@Then("the Logistic Company is not logged in")
 	public void the_Logistic_Company_is_not_logged_in() {
-		assertTrue(!l.isLoggedIn());
+		assertFalse(l.isLoggedIn());
 	}
 }	

@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import UI.LogisticUpdate;
+import core.ArraySearch;
 import core.Container;
 import core.ContainerJourney;
 import core.DatabaseData;
@@ -20,11 +21,15 @@ public class LogisticUpdateController {
 	String selectedContainer = "";
 	
 	Container chosenContainer;
+	
+	ArraySearch search;
+	
 	public LogisticUpdateController() {
 		Containers = DatabaseData.getContainers();//possibly never used, check this else delete
 		cJs = DatabaseData.getJournies();
 		// NEED a method to only show the current containers on a journey (where the current x and y are not at the end location)
 		this.view = new LogisticUpdate(cJs);
+		this.search = new ArraySearch();
 	}
 	
 	public void initController() {
@@ -45,7 +50,14 @@ public class LogisticUpdateController {
 					checkBox.setSelected(false);
 				}
 		    	selectedContainer = containerBox.getSelectedItem().toString();
-		        chosenContainer = Container.findContainer(Integer.parseInt(selectedContainer) , Containers);    
+		    	
+		    	search.setSearch(new Container());
+		    	int containerIDX = search.findIDX(Integer.parseInt(selectedContainer), Containers);
+		    	if (containerIDX == -1) {
+		    		JOptionPane.showMessageDialog(null, "Error updating container");
+		    		return;
+		    	}
+		        chosenContainer = Containers[containerIDX];    
 		    }
 		});
 		
@@ -95,7 +107,13 @@ public class LogisticUpdateController {
 			 double gpsLatitude = Double.parseDouble(gpsLatitudeText);
 			 double gpsLongitude = Double.parseDouble(gpsLongitudeText);
 			 
-			 ContainerJourney containerJourney = ContainerJourney.findJourneyFromContainerID(Integer.toString(chosenContainer.getContainerID()), cJs );
+			 search.setSearch(new ContainerJourney());
+			 int cjIDX = search.findIDX(String.valueOf(chosenContainer.getContainerID()), cJs); // CJ found from containerID
+			 if (cjIDX == -1) {
+				 JOptionPane.showMessageDialog(null, "Error updating container");
+				 return;
+			 }
+			 ContainerJourney containerJourney = cJs[cjIDX];
 			 containerJourney.setCurrentLocation(new double [] {gpsLatitude, gpsLongitude});
 			 
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));

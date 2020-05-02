@@ -37,40 +37,6 @@ public class Content implements Search<Content>{
 		count = 1;
 	}
 	
-	public static Content findContent(int id, Content[] contents) {
-		Content result = null;
-		try {
-			for(int i = 0; i< contents.length; i++) {
-				if(contents[i].content_ID == id) {
-					result = contents[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-//			result = contents[0];
-		}
-
-		return result;
-	}
-	
-	public static Content findContent(String name, Content[] contents) {
-		Content result = null;
-		try {
-			for(int i = 0; i< contents.length; i++) {
-				if(contents[i].name.equals(name)) {
-					result = contents[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-//			result = contents[0];
-			System.out.println(e);
-		}
-
-		return result;
-	}
-
 	@Override
 	public Content findFromID(int ID, Content[] contents) {
 		Content result = null;

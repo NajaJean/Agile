@@ -14,6 +14,7 @@ public class ContainerJourney implements Search<ContainerJourney> {
 	
 	private static int count = 1;
 	
+	public ContainerJourney() {}
 	
 	public ContainerJourney(Location start, Location end, Container container,
 							LocalDate startDate, LocalDate endDate) {
@@ -150,7 +151,6 @@ public class ContainerJourney implements Search<ContainerJourney> {
 	}
 	
 	public void updateWeather() {
-		
 		Weather[] climate;
 		climate = Climate.getClimate();
 		
@@ -164,6 +164,7 @@ public class ContainerJourney implements Search<ContainerJourney> {
 				}
 		}	
 	}
+
 	
 	
 	public static ContainerJourney findJourney(String id, ContainerJourney[] cJs) {
@@ -213,6 +214,7 @@ public class ContainerJourney implements Search<ContainerJourney> {
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
+
 
 	@Override
 	public ContainerJourney findFromID(int ID, ContainerJourney[] Objects) {
