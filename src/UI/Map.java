@@ -35,7 +35,7 @@ public class Map extends JFrame{
     public Map(Client client, ContainerJourney[] containerJourneys) {
     	
     	this.client = client;
-    	cJs = getClientsCJs(containerJourneys);
+    	cJs = client.getClientsCJs(containerJourneys);
     	
     	JLabel[] temp = new JLabel[cJs.length];
     	for (int i = 0; i < cJs.length; i++) {
@@ -82,27 +82,7 @@ public class Map extends JFrame{
     public void addComponentsToMap() {
         map.add(worldmap);
     }
-     public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
-    	 
-    	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
-    	 
- 		for (int i = 0; i < containerJourneys.length; i++) {
- 			
- 			if ((client.getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) && 
- 					((int)ChronoUnit.DAYS.between(containerJourneys[i].getStartDate(), Calendar.getSystemDate()) >= 0) && 
- 					((int)ChronoUnit.DAYS.between( Calendar.getSystemDate(), containerJourneys[i].getEndDate()) >= 0))
- 			{
- 			
- 				clientContainersList.add(containerJourneys[i]);
- 			}
- 			
- 		}
- 		
- 		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
- 		clientConts = clientContainersList.toArray(clientConts);
- 		
- 		return clientConts;
-     }
+     
     
     public void setLabelIcon(int index, String setToThis) {
     	shippingC[index].setIcon(new ImageIcon(setToThis));

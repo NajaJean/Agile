@@ -18,7 +18,6 @@ public class ClientMenu extends JFrame {
 	Map map;
 	
     private JMenuBar clientMenuBar;
-    private JLabel welcomeLabel;
     private JLabel[] shippingLabels;
     private JLabel backgroundLabel;
     private JLabel date = new JLabel(Calendar.getSystemDate().toString());
@@ -27,7 +26,7 @@ public class ClientMenu extends JFrame {
     JMenu bookingMenu = new JMenu ("Booking");
     JMenuItem book_containerItem = new JMenuItem ("Book container");
     JMenu my_containersMenu = new JMenu ("My containers");
-    JMenuItem my_containersMenuItem = new JMenuItem ("Show my containers");
+    JMenuItem my_containersMenuItem = new JMenuItem ("History");
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
     JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
@@ -70,7 +69,6 @@ public class ClientMenu extends JFrame {
         clientMenuBar.add (my_containersMenu);
         clientMenuBar.add (settingsMenu);
         clientMenuBar.add (future);
-        welcomeLabel = new JLabel ("Welcome to ContainerManager");
         
    
         //adjust size and set layout
@@ -112,7 +110,7 @@ public class ClientMenu extends JFrame {
     	return sign_outItem;
     }
     
-    public JMenuItem getShowMyContainersItem() {
+    public JMenuItem getHistoryItem() {
     	return my_containersMenuItem;
     }
     
@@ -128,9 +126,9 @@ public class ClientMenu extends JFrame {
     	return nextWeek;
     }
     
-    
+    /*
     public static void main(String[] args) {
     	Client c = DatabaseData.getClients()[0];
 		ClientMenu menu = new ClientMenu(c);
-	}
+	}*/
 }

@@ -5,11 +5,11 @@ import javax.swing.WindowConstants;
 
 import org.jfree.data.category.DefaultCategoryDataset;
 
- class Graph3Humidity extends Graph {
+ public class Graph3Humidity extends Graph {
 	
 	public Graph3Humidity(int ContainerID) 
 	{
-		super("Humidity inside the container", ContainerID, 3, "Humidity [ATM]", "Humidity in the container");
+		super("Humidity inside the container", ContainerID, 3, "Humidity [%]", "Humidity in the container");
 		createDataset(getValuesFromFile(ContainerID));
 
 	}

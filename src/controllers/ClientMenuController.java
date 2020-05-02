@@ -37,7 +37,7 @@ public class ClientMenuController {
 		view.getBook_containerItem().addActionListener(e -> goToBookContainerMenu());
 		view.getSign_outItem().addActionListener(e -> signOut());
 		view.getConfigure_client_detailsItem().addActionListener(e -> goToConfigureClientMenu());
-		view.getShowMyContainersItem().addActionListener(e -> gotoShowMyContainersItem());
+		view.getHistoryItem().addActionListener(e -> gotoHistoryItem());
 		view.getTomorrow().addActionListener(e -> goTOmorrow());
 		view.getNextWeek().addActionListener(e -> goNextWeek());
 	}
@@ -93,10 +93,9 @@ public class ClientMenuController {
 		wConf.initController();
 	}
 	
-	private void gotoShowMyContainersItem() {
-		
-		Map map = new Map(client, cJs);
-		map.showAllContainers();
-		
+	private void gotoHistoryItem() {
+		view.dispose();
+		HistoryController wConf = new HistoryController(client);
+		wConf.initController();
 	}
 }

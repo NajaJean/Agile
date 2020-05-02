@@ -1,5 +1,8 @@
 package core;
 
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+
 public class Client extends User implements Search {
     private String username;
     private String password;
@@ -138,4 +141,26 @@ public class Client extends User implements Search {
     			address + "', '" + username + "', '" + password + "'";
     }
    
+    public ContainerJourney[] getClientsCJs(ContainerJourney[] containerJourneys) {
+   	 
+   	 ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
+   	 
+		for (int i = 0; i < containerJourneys.length; i++) {
+			
+			if ((getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) && 
+					((int)ChronoUnit.DAYS.between(containerJourneys[i].getStartDate(), Calendar.getSystemDate()) >= 0) && 
+					((int)ChronoUnit.DAYS.between( Calendar.getSystemDate(), containerJourneys[i].getEndDate()) >= 0))
+			{
+			
+				clientContainersList.add(containerJourneys[i]);
+			}
+			
+		}
+		
+		ContainerJourney[] clientConts = new ContainerJourney[clientContainersList.size()];
+		clientConts = clientContainersList.toArray(clientConts);
+		
+		return clientConts;
+    }
+    
 }
