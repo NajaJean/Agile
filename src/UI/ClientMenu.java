@@ -27,6 +27,7 @@ public class ClientMenu extends JFrame {
     JMenuItem book_containerItem = new JMenuItem ("Book container");
     JMenu my_containersMenu = new JMenu ("My containers");
     JMenuItem my_containersMenuItem = new JMenuItem ("History");
+    JMenuItem containerByContentMenuItem = new JMenuItem("Find container(s) by content");
     JMenu settingsMenu = new JMenu ("Settings");
     JMenuItem sign_outItem = new JMenuItem ("Sign out");
     JMenuItem configure_client_detailsItem = new JMenuItem ("Configure client details");
@@ -57,6 +58,7 @@ public class ClientMenu extends JFrame {
 		configure_client_detailsItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
         bookingMenu.add (book_containerItem);
         my_containersMenu.add(my_containersMenuItem);
+        my_containersMenu.add(containerByContentMenuItem);
         settingsMenu.add (sign_outItem);
         settingsMenu.add (configure_client_detailsItem);
         future.add(tomorrow);
@@ -116,6 +118,10 @@ public class ClientMenu extends JFrame {
     
     public JMenuItem getConfigure_client_detailsItem() {
     	return configure_client_detailsItem;
+    }
+    
+    public JMenuItem getClientFindCon() {
+    	return containerByContentMenuItem;
     }
     
     public JMenuItem getTomorrow() {

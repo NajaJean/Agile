@@ -40,6 +40,7 @@ public class ClientMenuController {
 		view.getHistoryItem().addActionListener(e -> gotoHistoryItem());
 		view.getTomorrow().addActionListener(e -> goTOmorrow());
 		view.getNextWeek().addActionListener(e -> goNextWeek());
+		view.getClientFindCon().addActionListener(e -> goToClientFindCon());
 	}
 	
 	private void goTOmorrow() {
@@ -91,6 +92,12 @@ public class ClientMenuController {
 		view.dispose();
 		ConfigureClientController wConf = new ConfigureClientController(client);
 		wConf.initController();
+	}
+	
+	private void goToClientFindCon() {
+		view.dispose();
+		ClientFindConController w = new ClientFindConController(client);
+		w.initController();
 	}
 	
 	private void gotoHistoryItem() {
