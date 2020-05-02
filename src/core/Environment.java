@@ -1,7 +1,7 @@
 package core;
 
 
-public class Environment implements Search<Environment> {
+public class Environment implements Search {
 	private int enviro_ID;
 	private double temp;
 	private double pressure;
@@ -94,35 +94,35 @@ public class Environment implements Search<Environment> {
 	}
 
 	@Override
-	public Environment findFromID(int ID, Environment[] enviros) { 
-		Environment result = null;
+	public int findFromID(int ID, Object[] enviros) { 
+		int index = -1;
 		try {
-			for(int i = 0; i< enviros.length; i++) {
-				if(enviros[i].enviro_ID == ID) {
-					result = enviros[i];
+			for(int i = 0; i < enviros.length; i++) {
+				if(ID == ((Environment)enviros[i]).enviro_ID) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result;
+		return index;
 	}
 
 	@Override
-	public Environment findFromString(String ID, Environment[] enviros) {
-		Environment result = null;
+	public int findFromString(String ID, Object[] enviros) {
+		int index = -1;
 		try {
-			for(int i = 0; i< enviros.length; i++) {
-				if(enviros[i].enviro_ID == Integer.parseInt(ID)) {
-					result = enviros[i];
+			for(int i = 0; i < enviros.length; i++) {
+				if(Integer.parseInt(ID) == ((Environment)enviros[i]).enviro_ID) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result;
+		return index;
 	}
 
 	@Override
-	public Environment findFromStrings(String firstString, String secondString, Environment[] enviros) { 
+	public int findFromStrings(String firstString, String secondString, Object[] enviros) { 
 		String str = (firstString.isEmpty() ? secondString : firstString);
 		return findFromString(str, enviros);
 	}

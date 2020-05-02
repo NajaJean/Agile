@@ -1,6 +1,6 @@
 package core;
 
-public class Location implements Search<Location>{
+public class Location implements Search {
     private String name;
     private int ID;
     private double[] GPScoord = new double[2];
@@ -103,37 +103,35 @@ public class Location implements Search<Location>{
 	}
 
 	@Override
-	public Location findFromID(int ID, Location[] locs) {
-    	Location result = null;
+	public int findFromID(int ID, Object[] locs) {
+    	int index = -1;
 		try {
-			result = locs[0];
 			for(int i = 0; i < locs.length; i++) {
-				if(locs[i].ID == ID) {
-					result = locs[i];
+				if(ID == ((Location)locs[i]).ID) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result; 
+		return index; 
 	}
 
 	@Override
-	public Location findFromString(String name, Location[] locs) {
-    	Location result = null;
+	public int findFromString(String name, Object[] locs) {
+    	int index = -1;
 		try {
-			result = locs[0];
-			for(int i = 0; i< locs.length; i++) {
-				if(locs[i].name.equals(name)) {
-					result = locs[i];
+			for(int i = 0; i < locs.length; i++) {
+				if(name.equals(((Location)locs[i]).name)) {
+					index = i;
 					break;
 				}
 			}
 		} catch (Exception e) { e.printStackTrace(); }
-		return result; 
+		return index; 
 	}
 
 	@Override
-	public Location findFromStrings(String firstString, String secondString, Location[] locs) {
+	public int findFromStrings(String firstString, String secondString, Object[] locs) {
 		String str = (firstString.isEmpty() ? secondString : firstString);
 		return findFromString(str, locs);
 	}

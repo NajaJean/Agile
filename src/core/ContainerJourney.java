@@ -3,7 +3,7 @@ package core;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class ContainerJourney implements Search<ContainerJourney> {
+public class ContainerJourney implements Search {
 	private int journeyID;
 	private Location start;
 	private Location end;
@@ -205,7 +205,40 @@ public class ContainerJourney implements Search<ContainerJourney> {
 
 		return result;
 	}
-	
+
+	@Override
+	public int findFromID(int ID, Object[] cJs) {
+		int index = -1;
+		try {
+			for(int i = 0; i < cJs.length; i++) {
+				if(ID == ((ContainerJourney)cJs[i]).journeyID) {
+					index = i;
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return index;
+	}
+
+	@Override
+	public int findFromString(String containerID, Object[] cJs) {
+		int index = -1;
+		try {
+			for(int i = 0; i < cJs.length; i++) {
+				if(Integer.parseInt(containerID) == ((ContainerJourney)cJs[i]).container.getContainerID()) {
+					index = i;
+					break;
+				}
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+		return index;
+	}
+
+	@Override
+	public int findFromStrings(String firstString, String secondString, Object[] cJs) {
+		String str = (firstString.isEmpty() ? secondString : firstString);
+		return findFromString(str, cJs);
+	}
 	
     @Override
     public String toString() {
@@ -213,24 +246,6 @@ public class ContainerJourney implements Search<ContainerJourney> {
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
-
-	@Override
-	public ContainerJourney findFromID(int ID, ContainerJourney[] Objects) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ContainerJourney findFromString(String string, ContainerJourney[] Objects) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ContainerJourney findFromStrings(String firstString, String secondString, ContainerJourney[] Objects) {
-		// TODO Auto-generated method stub
-		return null;
-	}
     
     
     //Testing weather update keep it until the update is implemented in the UI
