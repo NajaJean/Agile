@@ -165,6 +165,49 @@ public class ContainerJourney implements Search {
 		}	
 	}
 
+	
+	
+	public static ContainerJourney findJourney(String id, ContainerJourney[] cJs) {
+		ContainerJourney result = null;
+		try {
+			for(int i = 0; i< cJs.length; i++) {
+				if(cJs[i].journeyID == Integer.parseInt(id)) {
+					result = cJs[i];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+//			result = cJs[0];
+		}
+		
+//		assert result != null;
+
+		return result;
+	}
+	
+	
+	
+	public static ContainerJourney findJourneyFromContainerID(String containerID, ContainerJourney[] cJs) {
+		ContainerJourney result = null;
+		try {
+			for(int i = 0; i< cJs.length; i++) {
+				if(cJs[i].container.getContainerID() == Integer.parseInt(containerID)) {
+					result = cJs[i];
+					break;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+//			result = cJs[0];
+		}
+		
+//		assert result != null;
+
+		return result;
+	}
+
+
 	@Override
 	public int findFromID(int ID, Object[] cJs) {
 		int index = -1;
