@@ -94,8 +94,16 @@ public class ClientMenuController {
 	}
 	
 	private void gotoHistoryItem() {
-		view.dispose();
-		HistoryController wConf = new HistoryController(client);
-		wConf.initController();
+		
+		if (client.getClientsCJs(cJs).length != 0) {	
+			view.dispose();
+			HistoryController wConf = new HistoryController(client);
+			wConf.initController();
+		}
+		else 
+		{
+			NotifyObject noContainers = new NotifyObject(111, "You dont have any active containers");
+			JOptionPane.showMessageDialog(null, noContainers.getNotifyMessage());
+		}
 	}
 }

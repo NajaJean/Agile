@@ -48,6 +48,7 @@ public class HistoryController {
 	
 	private void goToShowHistory() 
 	{
+
 		if (selParameter == "Temperature") 
 		{
 			Graph1Temp g = new Graph1Temp(selId);
