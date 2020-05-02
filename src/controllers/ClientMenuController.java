@@ -9,6 +9,7 @@ import UI.ClientMenu;
 import UI.ConfigureClient;
 import UI.Map;
 import UI.StartLoginPage;
+import core.ArraySearch;
 import core.Calendar;
 import core.Client;
 import core.Container;
@@ -20,11 +21,16 @@ public class ClientMenuController {
 	private ClientMenu view; 
 	Client client;
 	ContainerJourney[] cJs;
+	Container[] Containers;
+	
+	ArraySearch search;
 	
 	ClientMenuController(Client client) {
 		view = new ClientMenu(client);
 		this.client = client;
 		this.cJs = DatabaseData.getJournies();
+		this.Containers = DatabaseData.getContainers();
+		this.search = new ArraySearch(new Container());
 	}
 	
 	public void initController() {
@@ -60,7 +66,12 @@ public class ClientMenuController {
 			JOptionPane.showMessageDialog(null,response.getNotifyMessage());
 		}
 		else {
-			Container container = Container.findContainer(id, DatabaseData.getContainers());
+			int containerIDX = search.findIDX(id, Containers);
+			if (containerIDX == -1) {
+				JOptionPane.showMessageDialog(null, "Error finding empty container");
+				return;
+			}
+			Container container = Containers[containerIDX];
 			container.setClientofContainer(client);
 			
 			view.dispose();

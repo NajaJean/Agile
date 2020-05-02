@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import UI.BookContainerMenu;
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -25,6 +26,8 @@ public class BookContainerMenuController {
 	Content[] Contents;
 	Location[] Locations;
 	ContainerJourney[] Journies;
+	
+	ArraySearch search;
 	
 	String selectedContent;
 	String selectedStart;
@@ -53,14 +56,13 @@ public class BookContainerMenuController {
 		selectedContent = "";
 		selectedStart = "";
 		selectedEnd = "";
-		
 		selSY = "";
 		selSM = "";
 		selSD = "";
-		
 		selEY = "";
 		selEM = "";
 		selED = "";
+		this.search = new ArraySearch();
 	}
 	
 	public void initController() {
@@ -153,10 +155,23 @@ public class BookContainerMenuController {
 			LocalDate endDate = LocalDate.of(Integer.parseInt(selEY), Integer.parseInt(selEM), Integer.parseInt(selED));
 			
 			if (ChronoUnit.DAYS.between(startDate, endDate) >= 0) {
-			  Content content = Content.findContent(selectedContent, Contents);
+			  search.setSearch(new Content());
+			  int contentIDX = search.findIDX(selectedContent, Contents);
+			  if (contentIDX == -1) {
+				  JOptionPane.showMessageDialog(null, "Error booking container");
+				  return;
+			  }
+			  Content content = Contents[contentIDX];
 			  
-			  Location locStart = Location.findLocation(selectedStart, Locations);
-			  Location locEnd = Location.findLocation(selectedEnd, Locations);
+			  search.setSearch(new Location());
+			  int locationStartIDX = search.findIDX(selectedStart, Locations);
+			  int locationEndIDX = search.findIDX(selectedEnd, Locations);
+			  if (locationStartIDX == -1 || locationEndIDX == -1) {
+				  JOptionPane.showMessageDialog(null, "Error booking container");
+				  return;
+			  }
+			  Location locStart = Locations[locationStartIDX];
+			  Location locEnd = Locations[locationEndIDX];
 			  
 			  container.setContainerContent(content);
 			  

@@ -49,23 +49,6 @@ public class Environment implements Search {
 		count = 1;
 	}
 	
-	public static Environment findEnviro(String id, Environment[] enviros) {
-		Environment result = null;
-		try {
-			for(int i = 0; i< enviros.length; i++) {
-				if(enviros[i].enviro_ID == Integer.parseInt(id)) {
-					result = enviros[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-//			result = enviros[0];
-		}
-		
-		return result;
-	}
-	
 	public boolean validEnvironment(Content content) {
 		Environment required = content.getEnvironment();
 		double threshold = content.getThreshold();

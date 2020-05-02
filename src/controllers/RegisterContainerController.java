@@ -5,6 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import UI.RegisterContainerUI;
+import core.ArraySearch;
 import core.Container;
 import core.DatabaseData;
 import core.Environment;
@@ -19,9 +20,12 @@ public class RegisterContainerController {
 	String selected;
 	Location[] Locations;
 	
+	ArraySearch search;
+	
 	public RegisterContainerController() {
 		view = new RegisterContainerUI();
 		this.Locations = DatabaseData.getLocations();
+		this.search = new ArraySearch(new Location());
 	}
 	
 	public void initController() {
@@ -34,7 +38,14 @@ public class RegisterContainerController {
 	public void locationSelected(ActionEvent e) {
 		JComboBox box = (JComboBox) e.getSource();
 		selected = (String) box.getSelectedItem();
-		chosenLocation = Location.findLocation(selected, Locations);
+		
+		int locationIDX = search.findIDX(selected, Locations);
+		if (locationIDX == -1) {
+			JOptionPane.showMessageDialog(null, "Error finding location");
+			return;
+		}
+		chosenLocation = Locations[locationIDX];
+		
 		view.iString();
 	}
 	
@@ -46,11 +57,9 @@ public class RegisterContainerController {
 	}
 	
 	public void tryRegister() {
-		
 		Container C = new Container(chosenLocation);
 		DatabaseData.getDatabase().addToDatabase("Containers", C.toString());
 		view.registerString(selected);
-	
 	}
 	
 	private void goToLogisticCompanyMenu() {

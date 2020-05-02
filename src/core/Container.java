@@ -66,28 +66,6 @@ public class Container implements Search {
 	public static void resetCount() {
 		count = 1;
 	}
-	
-	public static Container findContainer(int ContainerID, Container[] containers) {
-		Container result = null;
-		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].containerID == ContainerID) {
-				result = containers[i];
-				break;
-			}
-		}
-		return result;
-	}
-	
-	public static Container findClientsContainer(String ClientID, Container[] containers) {
-		Container result = null;
-		for(int i = 0; i< containers.length; i++) {
-			if(containers[i].client.getID() == Integer.valueOf(ClientID)) {
-				result = containers[i];
-				break;
-			}
-		}
-		return result;
-	}
 
 	@Override
 	public int findFromID(int containerID, Object[] containers) {

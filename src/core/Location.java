@@ -51,7 +51,6 @@ public class Location implements Search {
     }
     
     public Environment getEnvironment() {
-		
 		Weather[] climate;
 		climate = Climate.getClimate();
 		
@@ -68,38 +67,6 @@ public class Location implements Search {
 		}
 		
 		return localEnviro;
-	}
-    
-    public static Location findLocation(int id, Location[] locs) {
-    	Location result = null;
-		try {
-			result = locs[0];
-			for(int i = 0; i< locs.length; i++) {
-				if(locs[i].ID == id) {
-					result = locs[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return result; 
-	}
-    
-    public static Location findLocation(String name, Location[] locs) {
-    	Location result = null;
-		try {
-			result = locs[0];
-			for(int i = 0; i< locs.length; i++) {
-				if(locs[i].name.equals(name)) {
-					result = locs[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return result; 
 	}
 
 	@Override

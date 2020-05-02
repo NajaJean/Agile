@@ -3,6 +3,7 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
@@ -27,11 +28,14 @@ public class StepDefs_ClientBookContainer {
 	Client[] Clients;
 	Content[] Contents;
 	
+	ArraySearch search;
+	
 	public StepDefs_ClientBookContainer(ScenarioContext context) {
 		this.context = context;
 		this.Containers = DatabaseData.getContainers();
 		this.Clients = DatabaseData.getClients();
 		this.Contents = DatabaseData.getContents();
+		this.search = new ArraySearch();
 	}
 	
 	@Given("that there exists an empty container in the database")
@@ -45,16 +49,17 @@ public class StepDefs_ClientBookContainer {
 		
 	@When("the client books a container by filling it with a content")
 	public void the_client_books_a_container_by_filling_it_with_a_content() {
-		con = Container.findContainer(id, Containers); // Finds the empty container
-		System.out.println(con.getContainerID());
-		System.out.println(Container.findContainer(id, Containers).getContainerID());
-		System.out.println(Clients[1].getName());
+		search.setSearch(new Container());
+		int containerIDX = search.findIDX(id, Containers); // Finds the empty container
+		con = Containers[containerIDX]; 
 		con.setClientofContainer(Clients[1]); // Assign to client
 		String containerClientID = Integer.toString(con.getClientofContainer().getID());
 		d.updateDatabase("Containers", "Client_ID",containerClientID , Integer.toString(con.getContainerID()));
 
 		// Fill container
-		content = Content.findContent("Bananas", Contents);
+		search.setSearch(new Content());
+		int contentIDX = search.findIDX("Bananas", Contents);
+		content = Contents[contentIDX];
 		con.setContainerContent(content);
 		response = new NotifyObject(31, "Container is succesfully booked");
 		context.setResponse(response);

@@ -22,7 +22,7 @@ public class LogisticCompany extends User {
     }
     
     public boolean isValidLogin(String username, String password) {
-    	return username==this.username && password==this.password;
+    	return username.equals(this.username) && password.contentEquals(this.password);
     }
     
     public NotifyObject logIn(boolean b) {
