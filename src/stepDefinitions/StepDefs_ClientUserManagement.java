@@ -1,6 +1,8 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import core.Client;
@@ -65,13 +67,13 @@ public class StepDefs_ClientUserManagement {
 	    assertEquals("bob", specificClientContainer.getClientofContainer().getUsername());
 	    assertEquals("1234", specificClientContainer.getClientofContainer().getPassword());
 	    
-	    assertTrue(specificClient == specificClientContainer.getClientofContainer());
-	    assertTrue(randomClient != specificClientContainer.getClientofContainer());
+	    assertEquals(specificClient,specificClientContainer.getClientofContainer());
+	    assertNotEquals(randomClient, specificClientContainer.getClientofContainer());
 	    
-	    int specificID = specificClient.getID();
+/*	    int specificID = specificClient.getID();
 	    int randomID = randomClient.getID();
 	    
-	    assertTrue(specificID != randomID);
+	    assertFalse(specificID == randomID);*/
 	}
 	
 }
