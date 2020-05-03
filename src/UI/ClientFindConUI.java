@@ -58,10 +58,10 @@ public class ClientFindConUI extends JFrame {
     
     public void setLocationAndSize() {
     	contentLabel.setBounds (frameWidth/14, 10, 260, 25);
-    	contentField.setBounds (frameWidth/2 - (100/20), 10, 150, 25);
+    	contentField.setBounds (frameWidth/2 - (100/2), 10, 150, 25);
     	conLabel.setBounds (frameWidth/14, 45, 310, 25);
-    	list.setBounds(frameWidth/14, 75, 600, 150);
-    	listScroller.setBounds (frameWidth/14, 75, 600, 150);
+    	list.setBounds(frameWidth/14, 75, 610, 150);
+    	listScroller.setBounds (frameWidth/14, 75, 610, 150);
     	findContainerButton.setBounds(frameWidth/6, 250, 180, 25);
     	goBackButton.setBounds (frameWidth/2 - (100/40), 250, 180, 25);
     }
@@ -81,14 +81,15 @@ public class ClientFindConUI extends JFrame {
     	
     	listItems = new String [containers.length];
 		for (int i = 0; i< containers.length;i++) {
-			listItems[i] = "ContainerID: " + containers[i].getContainerID() + ". Temp: " + containers[i].getContainerEnvironment().getTemp() 
-					+ " degrees, pressure: " + containers[i].getContainerEnvironment().getPressure() + "atm, humidity: " + containers[i].getContainerEnvironment().getHumidity()
-					+ "%. Content: " + containers[i].getContainerContent().getName() + ". Location: " + containers[i].getContainerLocation().getLocationName();
+			listItems[i] = "ContainerID: " + containers[i].getContainerID() + ".  Temperature: " + containers[i].getContainerEnvironment().getTemp() 
+					+ " degrees,  pressure: " + containers[i].getContainerEnvironment().getPressure() + "atm,  humidity: " + containers[i].getContainerEnvironment().getHumidity()
+					+ "%.  Content: " + containers[i].getContainerContent().getName() + ".  Location: " + containers[i].getContainerLocation().getLocationName();
 		}
         
 		list = new JList(listItems);
-		listScroller.setViewportView(list);
 		listScroller.setAlignmentY(LEFT_ALIGNMENT);
+		listScroller.setViewportView(list);
+		
 //		listScroller.setBounds (frameWidth/14, 75, 600, 150);
     }
   
