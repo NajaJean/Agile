@@ -4,12 +4,31 @@ import UI.AutoAdd;
 import UI.LogisticCompanyMenu;
 import UI.StartLoginPage;
 import core.Calendar;
+import core.Database;
+import core.DatabaseData;
+import core.Client;
+import core.Container;
+import core.Content;
+import core.Location;
 
 public class LogisticCompanyMenuController {
 	LogisticCompanyMenu view;
+	String mostUsedContent;
+	String mostVisitedLoc;
+	String busiestClient;
+	String mostTravelledCon;
+	
+	Content[] Contents;
+	Location[] Locations;
+	Client[] Clients;
+	Container[] Containers;
 	
 	public LogisticCompanyMenuController() {
 		view = new LogisticCompanyMenu();
+		this.Contents = DatabaseData.getContents();
+		this.Locations = DatabaseData.getLocations();
+		this.Clients = DatabaseData.getClients();
+		this.Containers = DatabaseData.getContainers();
 	}
 	
 	public void initController() {
@@ -23,6 +42,31 @@ public class LogisticCompanyMenuController {
 		view.getContainerInfoItem().addActionListener(e -> goToContainerInfoMenu());
 		view.getTomorrow().addActionListener(e -> goTOmorrow());
 		view.getNextWeek().addActionListener(e -> goNextWeek());
+		getStats();
+		view.changeStats(mostTravelledCon,mostUsedContent,busiestClient,mostVisitedLoc);
+	}
+	
+	private void getStats() {
+		Database d = DatabaseData.getDatabase();
+		String maxContent = "SELECT Content_ID FROM Containers GROUP BY Content_ID"
+				+ " HAVING COUNT (Content_ID) = (SELECT MAX(mycount) FROM ("
+				+ "SELECT Content_ID, COUNT(Content_ID) mycount FROM Containers GROUP BY Content_ID))";
+		mostUsedContent = Contents[Integer.parseInt(d.queryDatabase(maxContent))-1].getName();
+		
+		String maxLoc = "SELECT End FROM Journies GROUP BY End"
+				+ " HAVING COUNT (End) = (SELECT MAX(mycount) FROM ("
+				+ "SELECT End, COUNT(End) mycount FROM Journies GROUP BY End))";
+		mostVisitedLoc = Locations[Integer.parseInt(d.queryDatabase(maxLoc))-1].getLocationName();
+		
+		String maxClient = "SELECT Client_ID FROM Containers GROUP BY Client_ID"
+				+ " HAVING COUNT (Client_ID) = (SELECT MAX(mycount) FROM ("
+				+ "SELECT Client_ID, COUNT(Client_ID) mycount FROM Containers GROUP BY Client_ID))";
+		busiestClient = Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getName() + " ID: " + Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getID();
+		
+		String maxContainer = "SELECT Container_ID FROM Journies GROUP BY Container_ID"
+				+ " HAVING COUNT (Container_ID) = (SELECT MAX(mycount) FROM ("
+				+ "SELECT Container_ID, COUNT(Container_ID) mycount FROM Journies GROUP BY Container_ID))";
+		mostTravelledCon = d.queryDatabase(maxContainer);
 	}
 	
 	private void goTOmorrow() {
