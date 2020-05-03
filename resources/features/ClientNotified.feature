@@ -10,9 +10,5 @@ Feature: ClientNotified
     When the environment in the container is outside the contents threshold 
     Then container management system notifies client of invalid environment
     
-  
-	Scenario: Client is notified when one of its containers reaches its final destination
-  	Given a client has a container
-  	When the container reaches its final destination
-  	Then container management system notifies client container arrived
+ 
   

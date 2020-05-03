@@ -67,20 +67,4 @@ public class StepDefs_ClientNotified {
 		assertEquals("Client is notified of invalid environment", notification.getNotifyMessage());
 	}
 	
-	@When("the container reaches its final destination")
-	public void the_container_reaches_its_final_destination() {
-		search.setSearch(new ContainerJourney());
-		int cjIDX = search.findIDX(String.valueOf(clientContainer.getContainerID()), Journies); // CJ found from containerID
-		clientContainerJourney = Journies[cjIDX];
-
-		clientContainer.setContainerLocation(clientContainerJourney.getEndLocation());
-		assertEquals(clientContainerJourney.getEndLocation(), clientContainer.getContainerLocation());
-		notification = new NotifyObject(100, "Client is notified of arrival");
-	}
-
-	@Then("container management system notifies client container arrived")
-	public void container_management_system_notifies_client_container_arrived() {
-	    assertEquals("Client is notified of arrival", notification.getNotifyMessage());
-	}
-
 }
