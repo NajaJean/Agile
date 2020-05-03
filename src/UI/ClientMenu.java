@@ -55,6 +55,7 @@ public class ClientMenu extends JFrame {
 		book_containerItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		my_containersMenuItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		sign_outItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
+		containerByContentMenuItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		configure_client_detailsItem.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
         bookingMenu.add (book_containerItem);
         my_containersMenu.add(my_containersMenuItem);
