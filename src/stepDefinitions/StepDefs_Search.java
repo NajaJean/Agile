@@ -3,6 +3,10 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import core.ArraySearch;
 import core.Client;
 import core.Container;
@@ -49,10 +53,12 @@ public class StepDefs_Search {
 
 	@Then("the containers belonging to the client and with the desired content is found.")
 	public void the_containers_belonging_to_the_client_and_with_the_desired_content_is_found() {
-//		System.out.println(Clients[0].findClientContentContainers(content, containers));
 		clientContainers = Clients[0].findClientContentContainers(content, containers);
 		Container[] conSet = {containers[0], containers[1]};
-		assertTrue(conSet.equals(clientContainers));
+		Set<Container> set1 = new HashSet<Container>(Arrays.asList(conSet));
+		Set<Container> set2 = new HashSet<Container>(Arrays.asList(clientContainers));
+		assertTrue(set1.equals(set2));
+		
 	}
 
 
