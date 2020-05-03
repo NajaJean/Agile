@@ -37,33 +37,6 @@ public class ClientFindConController {
 		view.getGoBackButton().addActionListener(e -> goBack());
 	}
 	
-	/*
-	public void tryFindContainer() {
-		String content = view.getContentField().getText();
-		for (int i = 0; i<contents.length;i++) {
-			System.out.println(c.getID());
-			int temp = contents[i].findFromStrings(String.valueOf(c.getID()), content, contents);
-			System.out.println(temp);
-			if (temp != -1) {
-				contents[temp].toString();
-				conArray.add(contents[temp]);    	      
-		        Content[] aCon = new Content[contents.length - 1]; 
-		        for (int j = 0, k = 0; j < contents.length; j++) { 
-	
-		            if (j == temp) {
-		                continue; 
-		            }  
-		            aCon[k++] = contents[j];
-		        } 
-		        contents = aCon;
-			}
-
-		}
-		Content[] conList = (Content[]) conArray.toArray();
-		view.containerList(conList);	
-	}
-	*/
-	
 	public void tryFindContainer() {
 		String content = view.getContentField().getText();
 		Container[] clientContainers = c.findClientContentContainers(content, containers);

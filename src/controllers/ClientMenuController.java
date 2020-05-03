@@ -38,31 +38,7 @@ public class ClientMenuController {
 		Log = new Logs(Containers);
 		
 		//Content outside threshold
-		String thresholdMessage = "";
-		Container[] clientContainers = client.findClientContainers(Containers);
-		for (int i=0; i<clientContainers.length; i++) {
-			String log = Log.readFile("Container "+clientContainers[i].getContainerID());
-			
-			String lines[] = log.split("\\n");
-	  		String[][] data = new String[lines.length][];
-	  		String[][] returnData = new String[lines.length][];
-	  		
-	  		String outsideDates = "";
-	  		for (int j = 0; j < lines.length; j++) 
-	  		{   data[j] = lines[j].split("\\t");
-	  			returnData[j] = new String[]{data[j][data[j].length-1], data[j][data[j].length-3]};
-	  			
-	  			if (returnData[j][1].equals("Not OK")) {
-	  				outsideDates = outsideDates + returnData[j][0] + ", ";
-	  			}
-	  		}
-	  		if (!outsideDates.equals("")) {
-	  			thresholdMessage = thresholdMessage + 
-	  							   "Container "+clientContainers[i]+ 
-	  							   " with "+clientContainers[i].getContainerContent().getName() + 
-	  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
-	  		}
-		}
+		String thresholdMessage = containersOutsideThreshold(client);
 		if (!thresholdMessage.equals("")) {
 			JOptionPane.showMessageDialog(null,thresholdMessage);
 		}
@@ -147,5 +123,36 @@ public class ClientMenuController {
 			NotifyObject noContainers = new NotifyObject(111, "You dont have any active containers");
 			JOptionPane.showMessageDialog(null, noContainers.getNotifyMessage());
 		}
+	}
+	
+	private String containersOutsideThreshold(Client client) {
+		String thresholdMessage = "";
+		Container[] clientContainers = client.findClientContainers(Containers);
+		for (int i=0; i<clientContainers.length; i++) {
+			String log = Log.readFile("Container "+clientContainers[i].getContainerID());
+			
+			if(!log.equals("")) {
+				String lines[] = log.split("\\n");
+		  		String[][] data = new String[lines.length][];
+		  		String[][] returnData = new String[lines.length][];
+		  		
+		  		String outsideDates = "";
+		  		for (int j = 0; j < lines.length; j++) 
+		  		{   data[j] = lines[j].split("\\t");
+		  			returnData[j] = new String[]{data[j][data[j].length-1], data[j][data[j].length-3]};
+		  			
+		  			if (returnData[j][0].equals("Not OK")) {
+		  				outsideDates = outsideDates + returnData[j][1] + ", ";
+		  			}
+		  		}
+		  		if (!outsideDates.equals("")) {
+		  			thresholdMessage = thresholdMessage + 
+		  							   "Container "+clientContainers[i].getContainerID()+ 
+		  							   " with "+clientContainers[i].getContainerContent().getName() + 
+		  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
+		  		}
+			}
+		}
+		return thresholdMessage;
 	}
 }
