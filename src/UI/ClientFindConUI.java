@@ -17,15 +17,16 @@ public class ClientFindConUI extends JFrame {
 	String[] listItems;
 	Content[] content;
 	java.awt.Container container = getContentPane();
-	JLabel contentLabel = new JLabel ("Enter content of container(s):");
+	JLabel contentLabel = new JLabel ("Enter content of container(s) you want to find:");
 	JTextField contentField = new JTextField();
-	JList<String> list = new JList<>();
+	JLabel conLabel = new JLabel("My containers");
+	JList<String> list = new JList();
 	JScrollPane listScroller = new JScrollPane();
 	JButton findContainerButton = new JButton ("Find container(s)");
 	JButton goBackButton = new JButton ("Go back");
 	
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private int frameWidth = 681;
+    private int frameWidth = 750;
     private int frameHeight = 413;
     
     public ClientFindConUI() {
@@ -37,15 +38,10 @@ public class ClientFindConUI extends JFrame {
 	
 	    setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
 	    setLocationRelativeTo(null);
-	    JScrollPane listScroller = new JScrollPane(list);
         listScroller.setPreferredSize(new Dimension(250, 80));
-        listScroller.setAlignmentX(LEFT_ALIGNMENT);
-        add (listScroller);
-        listScroller.setBounds (frameWidth/10, 50, 490, 150);
+//        listScroller.setAlignmentX(LEFT_ALIGNMENT);  
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setResizable(false);
-	    list.setVisible(false);
-        
     }
     
     public JTextField getContentField() {
@@ -61,29 +57,39 @@ public class ClientFindConUI extends JFrame {
     }
     
     public void setLocationAndSize() {
-    	contentLabel.setBounds (frameWidth/10, 10, 200, 25);
-    	contentField.setBounds (frameWidth/2 - (100/4), 10, 170, 25);
-    	list.setBounds(frameWidth/4, 80, 250, 100);
-    	findContainerButton.setBounds(frameWidth/11, 240, 180, 25);
-    	goBackButton.setBounds (frameWidth/2, 240, 180, 25);
+    	contentLabel.setBounds (frameWidth/14, 10, 260, 25);
+    	contentField.setBounds (frameWidth/2 - (100/20), 10, 150, 25);
+    	conLabel.setBounds (frameWidth/14, 45, 310, 25);
+    	list.setBounds(frameWidth/14, 75, 600, 150);
+    	listScroller.setBounds (frameWidth/14, 75, 600, 150);
+    	findContainerButton.setBounds(frameWidth/6, 250, 180, 25);
+    	goBackButton.setBounds (frameWidth/2 - (100/40), 250, 180, 25);
     }
     
     public void addComponentsToContainer() {
     	container.add(contentLabel);
     	container.add(contentField);
-    	container.add(findContainerButton);
+    	container.add(conLabel);
     	container.add(list);
+    	container.add(listScroller);
+    	container.add(findContainerButton);
     	container.add(goBackButton);
     }
     
-    public void containerList(Container[] containers) {
-		list.setVisible(true);
+    public void containerList(String content, Container[] containers) {
+    	conLabel.setText("My containers with content " + content);
+    	
     	listItems = new String [containers.length];
 		for (int i = 0; i< containers.length;i++) {
-			listItems[i] = containers[i].toString();
+			listItems[i] = "ContainerID: " + containers[i].getContainerID() + ". Temp: " + containers[i].getContainerEnvironment().getTemp() 
+					+ " degrees, pressure: " + containers[i].getContainerEnvironment().getPressure() + "atm, humidity: " + containers[i].getContainerEnvironment().getHumidity()
+					+ "%. Content: " + containers[i].getContainerContent().getName() + ". Location: " + containers[i].getContainerLocation().getLocationName();
 		}
-		list = new JList<String>(listItems);
-		listScroller = new JScrollPane(list);
+        
+		list = new JList(listItems);
+		listScroller.setViewportView(list);
+		listScroller.setAlignmentY(LEFT_ALIGNMENT);
+//		listScroller.setBounds (frameWidth/14, 75, 600, 150);
     }
   
 }

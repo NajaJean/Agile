@@ -68,9 +68,8 @@ public class ClientFindConController {
 		String content = view.getContentField().getText();
 		Container[] clientContainers = c.findClientContentContainers(content, containers);
 	
-		view.containerList(clientContainers);
+		view.containerList(content, clientContainers);
 	}
-	
 	
 	
 	public void goBack() {
