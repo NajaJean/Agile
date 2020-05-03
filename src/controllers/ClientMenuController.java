@@ -43,25 +43,27 @@ public class ClientMenuController {
 		for (int i=0; i<clientContainers.length; i++) {
 			String log = Log.readFile("Container "+clientContainers[i].getContainerID());
 			
-			String lines[] = log.split("\\n");
-	  		String[][] data = new String[lines.length][];
-	  		String[][] returnData = new String[lines.length][];
-	  		
-	  		String outsideDates = "";
-	  		for (int j = 0; j < lines.length; j++) 
-	  		{   data[j] = lines[j].split("\\t");
-	  			returnData[j] = new String[]{data[j][data[j].length-1], data[j][data[j].length-3]};
-	  			
-	  			if (returnData[j][1].equals("Not OK")) {
-	  				outsideDates = outsideDates + returnData[j][0] + ", ";
-	  			}
-	  		}
-	  		if (!outsideDates.equals("")) {
-	  			thresholdMessage = thresholdMessage + 
-	  							   "Container "+clientContainers[i]+ 
-	  							   " with "+clientContainers[i].getContainerContent().getName() + 
-	  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
-	  		}
+			if(!log.equals("")) {
+				String lines[] = log.split("\\n");
+		  		String[][] data = new String[lines.length][];
+		  		String[][] returnData = new String[lines.length][];
+		  		
+		  		String outsideDates = "";
+		  		for (int j = 0; j < lines.length; j++) 
+		  		{   data[j] = lines[j].split("\\t");
+		  			returnData[j] = new String[]{data[j][data[j].length-1], data[j][data[j].length-3]};
+		  			
+		  			if (returnData[j][1].equals("Not OK")) {
+		  				outsideDates = outsideDates + returnData[j][0] + ", ";
+		  			}
+		  		}
+		  		if (!outsideDates.equals("")) {
+		  			thresholdMessage = thresholdMessage + 
+		  							   "Container "+clientContainers[i]+ 
+		  							   " with "+clientContainers[i].getContainerContent().getName() + 
+		  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
+		  		}
+			}
 		}
 		if (!thresholdMessage.equals("")) {
 			JOptionPane.showMessageDialog(null,thresholdMessage);
