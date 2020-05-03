@@ -147,7 +147,7 @@ public class ClientMenuController {
 		  		}
 		  		if (!outsideDates.equals("")) {
 		  			thresholdMessage = thresholdMessage + 
-		  							   "Container "+clientContainers[i]+ 
+		  							   "Container "+clientContainers[i].getContainerID()+ 
 		  							   " with "+clientContainers[i].getContainerContent().getName() + 
 		  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
 		  		}
