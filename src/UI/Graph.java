@@ -22,7 +22,7 @@ import core.*;
 
 public class Graph extends JFrame {
 	
-	  private JButton backButton;
+	 
 
 	private static final long serialVersionUID = 1L;
   	Container[] cS = DatabaseData.getContainers();
@@ -31,7 +31,7 @@ public class Graph extends JFrame {
   	public Graph(String title, int ContainerID, int ColumnIndex, String YLabel, String datasetName) {
   		super(title);
 	    
-  		backButton = new JButton ( "Back" );
+  		
   		 		
   		String[][] a = getValuesFromFile(ContainerID, ColumnIndex);
   		
@@ -51,11 +51,10 @@ public class Graph extends JFrame {
 	    
 	    ChartPanel panel = new ChartPanel(chart);
 	    //setContentPane(panel);
-	    add (panel, BorderLayout.CENTER);
+	    add (panel);
 	    windowSettings();
 	   
-	    add ( backButton, BorderLayout.SOUTH );
-  		backButton.setBounds (100, 100, 50, 25);
+	  
   	}
   	
   	protected String[][] getValuesFromFile(int ContainerID, int ColumnIndex)
@@ -103,11 +102,9 @@ public class Graph extends JFrame {
   		setAlwaysOnTop(true);
 	    pack();
 	    setSize(600, 400);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	    setVisible(true);
   	}
   	
-  	public JButton getBackButton() {
-		return backButton;
-	}
+  
 }
