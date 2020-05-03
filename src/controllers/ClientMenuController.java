@@ -15,6 +15,7 @@ import core.Client;
 import core.Container;
 import core.ContainerJourney;
 import core.DatabaseData;
+import core.Logs;
 import core.NotifyObject;
 
 public class ClientMenuController {
@@ -22,6 +23,8 @@ public class ClientMenuController {
 	Client client;
 	ContainerJourney[] cJs;
 	Container[] Containers;
+	
+	Logs Log;
 	
 	ArraySearch search;
 	
@@ -31,6 +34,38 @@ public class ClientMenuController {
 		this.cJs = DatabaseData.getJournies();
 		this.Containers = DatabaseData.getContainers();
 		this.search = new ArraySearch(new Container());
+		
+		Log = new Logs(Containers);
+		
+		//Content outside threshold
+		String thresholdMessage = "";
+		Container[] clientContainers = client.findClientContainers(Containers);
+		for (int i=0; i<clientContainers.length; i++) {
+			String log = Log.readFile("Container "+clientContainers[i].getContainerID());
+			
+			String lines[] = log.split("\\n");
+	  		String[][] data = new String[lines.length][];
+	  		String[][] returnData = new String[lines.length][];
+	  		
+	  		String outsideDates = "";
+	  		for (int j = 0; j < lines.length; j++) 
+	  		{   data[j] = lines[j].split("\\t");
+	  			returnData[j] = new String[]{data[j][data[j].length-1], data[j][data[j].length-3]};
+	  			
+	  			if (returnData[j][1].equals("Not OK")) {
+	  				outsideDates = outsideDates + returnData[j][0] + ", ";
+	  			}
+	  		}
+	  		if (!outsideDates.equals("")) {
+	  			thresholdMessage = thresholdMessage + 
+	  							   "Container "+clientContainers[i]+ 
+	  							   " with "+clientContainers[i].getContainerContent().getName() + 
+	  							   " has exceeded it's threshold at date: "+outsideDates+"\n\n";
+	  		}
+		}
+		if (!thresholdMessage.equals("")) {
+			JOptionPane.showMessageDialog(null,thresholdMessage);
+		}
 	}
 	
 	public void initController() {
