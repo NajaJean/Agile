@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -31,9 +32,7 @@ public class Graph extends JFrame {
   		super(title);
 	    
   		backButton = new JButton ( "Back" );
-  		
-        
-  		
+  		 		
   		String[][] a = getValuesFromFile(ContainerID, ColumnIndex);
   		
 	    DefaultCategoryDataset dataset = createDataset( datasetName, a );
@@ -51,10 +50,12 @@ public class Graph extends JFrame {
 	    axis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
 	    
 	    ChartPanel panel = new ChartPanel(chart);
-	    setContentPane(panel);
+	    //setContentPane(panel);
+	    add (panel, BorderLayout.CENTER);
 	    windowSettings();
-	    add ( backButton );
-  		backButton.setBounds ((getWidth()/4), (getHeight()/4), 50, 25);
+	   
+	    add ( backButton, BorderLayout.SOUTH );
+  		backButton.setBounds (100, 100, 50, 25);
   	}
   	
   	protected String[][] getValuesFromFile(int ContainerID, int ColumnIndex)
