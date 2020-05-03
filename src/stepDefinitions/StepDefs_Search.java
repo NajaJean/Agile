@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import core.ArraySearch;
 import core.Client;
+import core.Container;
+import core.DatabaseData;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +16,8 @@ public class StepDefs_Search {
 	String email;
 	Client[] Clients;
 	Client client;
+	String content;
+	Container[] containers = DatabaseData.getContainers();
 	
 	//Given a Logistic Company
 	
@@ -38,14 +42,14 @@ public class StepDefs_Search {
 	
 	@When("the client types the content of the container")
 	public void the_client_types_the_content_of_the_container() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    content = "Mangoes";
 	}
 
 	@Then("the containers belonging to the client and with the desired content is found.")
 	public void the_containers_belonging_to_the_client_and_with_the_desired_content_is_found() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		Container[] clientContainers = client.findClientContentContainers(content, containers);
+		Container[] conSet = {containers[0], containers[1]};
+		assertEquals(conSet, clientContainers);
 	}
 
 
