@@ -162,51 +162,5 @@ public class Client extends User implements Search {
 		
 		return clientConts;
     }
- 
-	public static Client findClient(int id, Client[] clients) {
-		Client result = null;
-		try {
-			for(int i = 0; i< clients.length; i++) {
-				if(clients[i].ID == id) {
-					result = clients[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-		//	result = clients[0];
-		}
-
-		return result;
-	}
-	public static Client findClient(String user,String pass, Client[] clients) {
-		Client result = null;
-		try {
-			for(int i = 0; i< clients.length; i++) {
-				if(pass.equals(clients[i].password) && user.equals(clients[i].username)) {
-					result = clients[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			//result = clients[0];
-		}
-
-		return result;
-	}
-	public static Client findClient(String email, Client[] clients) {
-		Client result = null;
-		try {
-			for(int i = 0; i< clients.length; i++) {
-				if(email.equals(((Client)clients[i]).email)) {
-					result = clients[i];
-					break;
-				}
-			}
-		} catch (Exception e) {
-			//result = clients[0];
-		}
-
-		return result;
-	}
 
 }
