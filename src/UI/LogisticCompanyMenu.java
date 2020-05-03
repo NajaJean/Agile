@@ -8,6 +8,12 @@ public class LogisticCompanyMenu extends JFrame {
     private JMenuBar menuBar;
     
     private JLabel date = new JLabel(Calendar.getSystemDate().toString());
+    private JLabel stats = new JLabel("Company Statistics:");
+    JLabel containerLabel = new JLabel ("");
+	JLabel contentLabel = new JLabel ("");
+	JLabel locationLabel = new JLabel ("");
+	JLabel clientLabel = new JLabel ("");
+	JLabel imgLabel = new JLabel(new ImageIcon("profileImage.jpg"));
     
     JMenu containerMenu = new JMenu ("Container");
     JMenuItem update_container_statusItem = new JMenuItem ("Update container status");
@@ -43,21 +49,38 @@ public class LogisticCompanyMenu extends JFrame {
         menuBar.add (settingsMenu);
         menuBar.add (future);
         
-        
-
         setPreferredSize (new Dimension (681, 404));
         setLayout (null);
 
         add (menuBar);
         add (date);
+        add(stats);
+        add(containerLabel);
+        add(locationLabel);
+        add(contentLabel);
+        add(clientLabel);
+        add(imgLabel);
+        
         menuBar.setBounds (0, 0, 681, 25);
         date.setBounds(600, 25, 200, 40);
+        stats.setBounds(20,200,200,40);
+        containerLabel.setBounds(20, 215, 400, 50);
+    	locationLabel.setBounds(20, 230, 400, 50);
+    	clientLabel.setBounds(20, 245, 400, 50);
+    	contentLabel.setBounds(20, 260, 400, 50);
         
         setTitle("Logistic Company");
         setVisible(true);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+    }
+    
+    public void changeStats(String container, String content, String client, String location) {
+    	containerLabel.setText("Furthest travelled container: " + container);
+		locationLabel.setText("Most visited location: " + location);
+		clientLabel.setText("Most active client: " + client);
+		contentLabel.setText("Most shipped content: " + content);
     }
     
     public JMenuItem getUpdateContainerStatusItem() {
