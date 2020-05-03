@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import core.ArraySearch;
 import core.Client;
@@ -51,7 +52,7 @@ public class StepDefs_Search {
 //		System.out.println(Clients[0].findClientContentContainers(content, containers));
 		clientContainers = Clients[0].findClientContentContainers(content, containers);
 		Container[] conSet = {containers[0], containers[1]};
-		assertEquals(conSet, clientContainers);
+		assertTrue(conSet.equals(clientContainers));
 	}
 
 
