@@ -16,17 +16,13 @@ public class StepDefs_LogisticRegisterContainer {
 	Database d = new Database("agileProject.accdb");
 	Container C;
 	LogisticCompany l;
-	
-	Environment[] Enviros;
 	Location[] Locations;
 	
 	ArraySearch search;
 	
 	Location loc;
-	Environment enviro;
 	
 	public StepDefs_LogisticRegisterContainer() {
-		this.Enviros = DatabaseData.getEnvironments();
 		this.Locations = DatabaseData.getLocations();
 		this.search = new ArraySearch(new Location());
 	}
@@ -38,7 +34,6 @@ public class StepDefs_LogisticRegisterContainer {
 
 	@When("the Logistic Company inserts all information")
 	public void the_Logistic_Company_inserts_all_information() {
-		enviro = Enviros[0];
 		int locationIDX = search.findIDX("Copenhagen", Locations);
 		loc = Locations[locationIDX];
 	}
