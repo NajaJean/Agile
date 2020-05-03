@@ -14,10 +14,11 @@ public class StepDefs_Search {
 
 	ArraySearch search;
 	String email;
-	Client[] Clients;
+	Client[] Clients = DatabaseData.getClients();
 	Client client;
 	String content;
 	Container[] containers = DatabaseData.getContainers();
+	Container[] clientContainers;
 	
 	//Given a Logistic Company
 	
@@ -35,7 +36,7 @@ public class StepDefs_Search {
 
 	@Then("the client with the typed email will be found")
 	public void the_client_with_the_typed_email_will_be_found() {
-	    assertEquals(email, client);
+	    assertEquals(email, client.getEmail());
 	}
 
 	// Given a client 
@@ -47,7 +48,8 @@ public class StepDefs_Search {
 
 	@Then("the containers belonging to the client and with the desired content is found.")
 	public void the_containers_belonging_to_the_client_and_with_the_desired_content_is_found() {
-		Container[] clientContainers = client.findClientContentContainers(content, containers);
+//		System.out.println(Clients[0].findClientContentContainers(content, containers));
+		clientContainers = Clients[0].findClientContentContainers(content, containers);
 		Container[] conSet = {containers[0], containers[1]};
 		assertEquals(conSet, clientContainers);
 	}
