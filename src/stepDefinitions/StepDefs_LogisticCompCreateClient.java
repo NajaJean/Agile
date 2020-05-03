@@ -1,11 +1,13 @@
 package stepDefinitions;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import core.Client;
 import core.Database;
 import core.DatabaseData;
 import core.LogisticCompany;
+import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,6 +19,7 @@ public class StepDefs_LogisticCompCreateClient {
 	Client C;
 	LogisticCompany l; 
 	Client[] Clients;
+	NotifyObject response;
 	
 	public StepDefs_LogisticCompCreateClient() {
 		this.Clients = DatabaseData.getClients();
@@ -41,8 +44,8 @@ public class StepDefs_LogisticCompCreateClient {
 
 	@Then("the client is created and message displayed says {string}")
 	public void the_client_is_created_and_message_displayed_says(String string) {
-		// need notify
-	    System.out.print("Client successfully created!");
+		response = C.createNewClient();
+		assertEquals("Client successfully created!",response.getNotifyMessage());
 	}
 	
 	@Then("is found in the database")

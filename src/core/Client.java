@@ -95,6 +95,12 @@ public class Client extends User implements Search {
     	return response;
     }
     
+    public NotifyObject createNewClient() {
+    	NotifyObject response;
+    	response = new NotifyObject(131, "Client successfully created!");
+    	return response;
+    }
+    
     @Override
     public int findFromID(int ID, Object[] clients) {
 		int index = -1;

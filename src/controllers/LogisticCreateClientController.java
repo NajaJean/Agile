@@ -37,7 +37,7 @@ public class LogisticCreateClientController {
 			
 			DatabaseData.getDatabase().addToDatabase("Clients", c.toString());
 			
-			JOptionPane.showMessageDialog(null, "Client successfully created!");
+			JOptionPane.showMessageDialog(null, c.createNewClient().getNotifyMessage());
 			
 			LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 			view.dispose();
