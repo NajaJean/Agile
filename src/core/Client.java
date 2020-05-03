@@ -3,6 +3,8 @@ package core;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import org.apache.commons.lang.ArrayUtils;
+
 public class Client extends User implements Search {
     private String username;
     private String password;
@@ -162,5 +164,42 @@ public class Client extends User implements Search {
 		
 		return clientConts;
     }
-
+    
+    public Container[] findClientContainers (Container[] containers) {
+		ArrayList<Container> result = new ArrayList<>();
+		
+		for (int i = 0; i < containers.length; i++) {
+			if (containers[i].getClientofContainer() == null) { continue; }
+			if (ID == containers[i].getClientofContainer().getID()) {
+				result.add(containers[i]);
+			}
+		}
+    	
+    	return result.toArray(new Container[0]);
+	}
+    
+    public Container[] findClientContentContainers (String contentName, Container[] containers) {
+    	ArrayList<Container> result = new ArrayList<>();
+    	Container[] clientContainers = findClientContainers(containers);
+    	
+    	for (int i = 0; i < clientContainers.length; i++) {
+    		if (contentName.equals(clientContainers[i].getContainerContent().getName())) {
+    			result.add(clientContainers[i]);
+    		}
+    	}
+    	
+    	return result.toArray(new Container[0]);
+    }
+   
+    
+    // Temp - for testing
+    public static void main(String[] args) {
+    	Client c = DatabaseData.getClients()[0];
+    	
+    	Container[] result = c.findClientContentContainers("Mangoes", DatabaseData.getContainers());
+    	
+    	for (Container con : result) {
+    		System.out.println(con);
+    	}
+    }
 }

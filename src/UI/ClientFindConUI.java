@@ -10,6 +10,7 @@ import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import core.Container;
 import core.Content;;
 
 public class ClientFindConUI extends JFrame {
@@ -18,7 +19,7 @@ public class ClientFindConUI extends JFrame {
 	java.awt.Container container = getContentPane();
 	JLabel contentLabel = new JLabel ("Enter content of container(s):");
 	JTextField contentField = new JTextField();
-	JList list = new JList();
+	JList<String> list = new JList<>();
 	JScrollPane listScroller = new JScrollPane();
 	JButton findContainerButton = new JButton ("Find container(s)");
 	JButton goBackButton = new JButton ("Go back");
@@ -28,7 +29,6 @@ public class ClientFindConUI extends JFrame {
     private int frameHeight = 413;
     
     public ClientFindConUI() {
-    	String[] listItems;
 	    setLayout(null);
 	    setLocationAndSize();
 	    addComponentsToContainer();
@@ -76,16 +76,14 @@ public class ClientFindConUI extends JFrame {
     	container.add(goBackButton);
     }
     
-    public void containerList(Content[] content) {
-    	list.setVisible(true);
-    	listItems = new String [content.length];
-		for (int i = 0; i<content.length;i++) {
-			listItems[i] = content[i].toString();
+    public void containerList(Container[] containers) {
+		list.setVisible(true);
+    	listItems = new String [containers.length];
+		for (int i = 0; i< containers.length;i++) {
+			listItems[i] = containers[i].toString();
 		}
-		list = new JList (listItems);
+		list = new JList<String>(listItems);
 		listScroller = new JScrollPane(list);
-    	
-    	
     }
-
+  
 }

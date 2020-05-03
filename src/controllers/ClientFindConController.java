@@ -36,6 +36,8 @@ public class ClientFindConController {
 		view.getFindContainerButton().addActionListener(e -> tryFindContainer());
 		view.getGoBackButton().addActionListener(e -> goBack());
 	}
+	
+	/*
 	public void tryFindContainer() {
 		String content = view.getContentField().getText();
 		for (int i = 0; i<contents.length;i++) {
@@ -58,9 +60,18 @@ public class ClientFindConController {
 
 		}
 		Content[] conList = (Content[]) conArray.toArray();
-		view.containerList(conList);
-	
+		view.containerList(conList);	
 	}
+	*/
+	
+	public void tryFindContainer() {
+		String content = view.getContentField().getText();
+		Container[] clientContainers = c.findClientContentContainers(content, containers);
+	
+		view.containerList(clientContainers);
+	}
+	
+	
 	
 	public void goBack() {
 		ClientMenuController cm = new ClientMenuController(c);
