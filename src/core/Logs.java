@@ -77,6 +77,9 @@ public class Logs {
 		try {
 		      FileWriter myWriter = new FileWriter("src\\logs\\" + "Container " + 
 		    		  					String.valueOf(c.getContaineronJourney().getContainerID()) + ".txt", true);
+		      
+			  String isThresholdOK = thresholdCheck(c);	  
+		      
 		      myWriter.write(String.valueOf(c.getContaineronJourney().getContainerID()) + "\t" + 
 		    		  		 String.valueOf(c.getContaineronJourney().getClientofContainer()) + "\t" +
 		    		  		 randomizeE(c.getContaineronJourney().getContainerEnvironment()) + "\t" +
@@ -86,7 +89,8 @@ public class Logs {
 		      				 String.valueOf(c.getJourneyID()) + "\t" +
 		      				 String.valueOf(c.getStartDate()) + "\t" + 
 		      				 String.valueOf(Calendar.getSystemDate()) + "\t" +
-		      				 String.valueOf(c.getEndDate()) + "\t" + "\n");
+		      				 String.valueOf(c.getEndDate()) + "\t" + 
+		      				 isThresholdOK + "\t" + "\n");
 		      
 		      myWriter.close();
 		      //System.out.println("Successfully wrote to the file.");
@@ -94,6 +98,18 @@ public class Logs {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
 		    }
+	}
+
+	private String thresholdCheck(ContainerJourney c) {
+		NotifyObject response = c.getContaineronJourney().getContainerEnvironment().checkEnvironment(c.getContaineronJourney().getContainerContent());
+		  String isThresholdOK;
+		  if (response.getNotifyCode()!=0) {
+			  isThresholdOK = "Not OK";
+		  }
+		  else {
+			  isThresholdOK = "OK";
+		  }
+		return isThresholdOK;
 	}
 	
 	public void appendAllContainerLogs(ContainerJourney[] cJs) {

@@ -70,9 +70,9 @@ public class Environment implements Search {
 	public NotifyObject checkEnvironment(Content content) {
 		NotifyObject notification;
 		if (!validEnvironment(content)) {
-			notification = new NotifyObject(200, "Client is notified of invalid environment");
+			notification = new NotifyObject(200, "Your shipment of "+content.getName()+" has exceeded its threshold");
 		} else {
-			notification = new NotifyObject(0, "Container environment is valid");
+			notification = new NotifyObject(0, "Your shipment of "+content.getName()+" has not exceeded its threshold");
 		} return notification;
 	}
 
