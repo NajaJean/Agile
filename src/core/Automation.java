@@ -80,12 +80,13 @@ public class Automation {
 		
 		Container[] containers = DatabaseData.getContainers();
 		Location[] locations = DatabaseData.getLocations();
+		Client[] clients = DatabaseData.getClients();
+		Content[] contents = DatabaseData.getContents();
 		
 		ContainerJourney[] cjs = DatabaseData.getJournies();
 		Location start;
 		Location end;
-		
-		int numberOfContainers = containers.length;
+
 		int numberOfLocations = locations.length;
 		int month;
 		int endDay;
@@ -95,18 +96,10 @@ public class Automation {
 		month = r.nextInt(8) + 5;
 		startday = r.nextInt(23) + 4;
 		
-		if (month == 5) {
-			do {
-				endDay = r.nextInt(28) + 1;
-				
-			} while(startday >= endDay);
-		}
-		else {
-			do {
-				endDay = r.nextInt(28) + 1;
-				
-			} while(startday >= endDay);
-		}
+		do {
+			endDay = r.nextInt(28) + 1;
+			
+		} while(startday >= endDay);
 		
 		start = locations[r.nextInt(numberOfLocations)];
 		
@@ -120,9 +113,10 @@ public class Automation {
 				containers[con-1],
 				LocalDate.of(2020, 5, startday), 
 				LocalDate.of(2020, month, endDay));
-		
-		//System.out.println(a);
-		
+		String client = Integer.toString(r.nextInt(clients.length));
+		String content = Integer.toString(r.nextInt(contents.length));
+		DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",client , Integer.toString(con));
+		DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", content, Integer.toString(con));
 		return a;
 		}
 
