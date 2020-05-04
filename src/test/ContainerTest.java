@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
@@ -14,16 +15,19 @@ import core.Location;
 
 public class ContainerTest {
 	
-	private Client cl1, cl2;
-	private Environment e1, e2;
-	private Content con1, con2;
-	private Location loc1, loc2;
-	private Environment[] toAssign;
-	private int expectedID = 13;
+	Client cl1, cl2;
+	Environment e1, e2;
+	Content con1, con2;
+	Location loc1, loc2;
+	Environment[] toAssign = DatabaseData.getEnvironments();
+	int expectedID = 1;
+	ArraySearch search;
 	
 	@Before 
 	public void createContainers() {
-		toAssign = DatabaseData.getEnvironments();
+		search = new ArraySearch(new Container());
+		Container.resetCount();
+		
 		cl1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		e1 = new Environment(5.3,1.1,0.85);
 		con1 = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
@@ -39,16 +43,16 @@ public class ContainerTest {
 	
 	@Test
 	public void testContainer() {	
-		Container c1 = new Container(cl1, con1,loc1);
-		Container c2 = new Container(cl2, con2,loc2);
+		Container c1 = new Container(cl1, con1, loc1);
+		Container c2 = new Container(cl2, con2, loc2);
 		
 		assertEquals(expectedID, c1.getContainerID()); 
-		assertEquals(expectedID +1 , c2.getContainerID()); 
+		assertEquals(expectedID +1, c2.getContainerID()); 
 		
 		assertEquals(cl1,c1.getClientofContainer());
-		assertEquals(toAssign[3],c1.getContainerEnvironment());
-		assertEquals(con1,c1.getContainerContent());
-		assertEquals(loc1,c1.getContainerLocation());
+		assertEquals(toAssign[3].toString(), c1.getContainerEnvironment().toString());
+		assertEquals(con1, c1.getContainerContent());
+		assertEquals(loc1, c1.getContainerLocation());
 	}
 	
 	@Test
@@ -74,10 +78,8 @@ public class ContainerTest {
 		Container c2 = new Container(cl2, con2,loc2);
 		Container[] cons = {c1,c2};
 		
-		assertEquals(c1, Container.findClientsContainer(cl1.getID(), cons));
+		assertEquals(c1, cons[search.findIDX(String.valueOf(cl1.getID()), cons)]); // Find from clientID
 		
-		assertEquals(c1, Container.findContainer(expectedID + 2, cons));
-		assertEquals("'" + String.valueOf((expectedID + 2)) + "'" +", '11', '4', '17', '23'", c1.toString());
-		
+		assertEquals(c1, cons[search.findIDX(expectedID, cons)]);
 	}
 }

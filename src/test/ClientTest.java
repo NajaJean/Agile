@@ -2,12 +2,22 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import core.ArraySearch;
 import core.Client;
 
 public class ClientTest {
 	
-	int expectedIndex = 17;
+	int expectedIndex = 1;
+	ArraySearch search;
+	
+	@Before
+	public void setUp() {
+		search = new ArraySearch(new Client());
+		Client.resetCount();
+	}
 
 	@Test
 	public void testClientInfoFull() {
@@ -21,15 +31,12 @@ public class ClientTest {
 		assertEquals("Anker Egelundsvej 1", c1.getAddress());
 		assertEquals(expectedIndex, c1.getID()); 
 		
-		assertEquals(expectedIndex +1, c2.getID());
+		assertEquals(expectedIndex + 1, c2.getID());
 	}
 	
 	@Test
 	public void testConfigureClient() {
 		Client c1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
-		Client c2 = new Client("H", "1234", "Naja", "hsh@hdew.com", "Hjemme 12");
-		
-		Client[] clients = {c1,c2};
 		
 		c1.setUserName("W");
 		assertEquals("W", c1.getUsername());
@@ -45,9 +52,6 @@ public class ClientTest {
 		
 		c1.setAddress("Østerkirkevej 18");
 		assertEquals("Østerkirkevej 18", c1.getAddress());
-		
-		assertEquals(c2, Client.findClient(20, clients));
-			
 	}
 	
 	@Test
@@ -55,17 +59,18 @@ public class ClientTest {
 		Client c1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		Client c2 = new Client("N", "4321", "Naja","najasemail@gmail.com","Raadhuspladsen 100");
 		Client[] clients = {c1,c2};
-		Client[] emptyClients = null;
+		Client[] emptyClients = new Client[0];
 		
-		assertEquals(c1, Client.findClient("M", "1234", clients));
-		assertEquals(null, Client.findClient("M", "1234", emptyClients));
-		assertEquals(null, Client.findClient("N", "1234", clients));
+		assertEquals(c1, clients[search.findIDX(expectedIndex, clients)]);
+		assertEquals(-1, search.findIDX(23, clients));
+		assertEquals(-1, search.findIDX(23, emptyClients));
 		
-		assertEquals(c1, Client.findClient("mathildesemail@gmail.com", clients));
-		assertEquals(null, Client.findClient("najasemail@gmail.com", emptyClients));
-		assertEquals(null, Client.findClient("najasemail@gmai", clients));
+		assertEquals(c1, clients[search.findIDX("M", "1234", clients)]);
+		assertEquals(-1, search.findIDX("M", "1234", emptyClients));
+		assertEquals(-1, search.findIDX("N", "1234", clients));
 		
-		assertEquals(null, Client.findClient(19, clients));
-		assertEquals(null, Client.findClient(19, emptyClients));
+		assertEquals(c1, clients[search.findIDX("mathildesemail@gmail.com", clients)]);
+		assertEquals(-1, search.findIDX("najasemail@gmail.com", emptyClients));
+		assertEquals(-1, search.findIDX("najasemail@gmai", clients));
 	}
 }

@@ -109,6 +109,27 @@ public class Location implements Search {
     			GPScoord[1] + "'";
     }
     
+    @Override 
+    public boolean equals(Object obj) {
+    	 if (obj == this) { return true; }
+    	 
+    	 if (obj == null || obj.getClass() != this.getClass()) { 
+    		 return false;
+    	 }
+    	 
+    	 Location loc = (Location) obj;
+    	 return ID == loc.ID && name.equals(loc.name) 
+    			 && GPScoord[0] == loc.GPScoord[0] && GPScoord[1] == loc.GPScoord[1];
+    }
+    
+    @Override
+    public int hashCode() {
+    	int hash = 3;
+    	hash = 13 * hash + (this.name != null ? this.name.hashCode() : 0);
+    	hash = 13 * hash + this.ID;
+    	return hash;
+    }
+    
     public double euclideanDistance(double[] loc2) {
     	return Math.sqrt((loc2[1] - this.getGPScoordY()) * (loc2[1] - this.getGPScoordY()) + 
     			(loc2[0] - this.getGPScoordX()) * (loc2[0] - this.getGPScoordX()));

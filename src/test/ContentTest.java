@@ -2,16 +2,23 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import core.ArraySearch;
 import core.Content;
 import core.DatabaseData;
 import core.Environment;
 
 public class ContentTest {
-	Content[] Contents;
-	public ContentTest() {
-		this.Contents = DatabaseData.getContents();
+	
+	Content[] Contents = DatabaseData.getContents();
+	ArraySearch search;
+
+	@Before 
+	public void setUp() {
+		search = new ArraySearch(new Content());
+		Content.resetCount();
 	}
 
 	@Test
@@ -23,15 +30,16 @@ public class ContentTest {
 	@Test
 	public void testFindContent() {
 		Content con1 = Contents[1];
-		Content[] consEmpty = null;
+		Content[] emptyContents = new Content[0];
 		
-		assertEquals(con1, Content.findContent(con1.getContentID(), Contents));
-		assertEquals(con1, Content.findContent("Bananas", Contents));
-		assertEquals(null, Content.findContent(con1.getContentID(), consEmpty));
-		assertEquals(null, Content.findContent("Bananas", consEmpty));
-		assertEquals(null, Content.findContent("Bana", Contents));
-		assertEquals("'2', 'Bananas', '2', '0.05'", con1.toString());
+		assertEquals(con1, Contents[search.findIDX(con1.getContentID(), Contents)]);
+		assertEquals(con1, Contents[search.findIDX("Bananas", Contents)]);
 		
+		assertEquals(-1, search.findIDX(con1.getContentID(), emptyContents));
+		assertEquals(-1, search.findIDX("Bananas", emptyContents));
+		assertEquals(-1, search.findIDX("Bana", Contents));
 		
+		String expected = "'2', 'Bananas', '2', '0.05'";
+		assertEquals(expected, con1.toString());
 	}
 }
