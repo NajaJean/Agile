@@ -3,7 +3,7 @@ package core;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class ContainerJourney implements Search {
+public class ContainerJourney implements Search, DatabaseEntity {
 	private int journeyID;
 	private Location start;
 	private Location end;
@@ -207,4 +207,19 @@ public class ContainerJourney implements Search {
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
+
+	@Override
+	public String databaseTable() {
+		return "Journies";
+	}
+
+	@Override
+	public int entityID() {
+		return journeyID;
+	}
+
+	@Override
+	public String addValues() {
+		return this.toString();
+	}
 }

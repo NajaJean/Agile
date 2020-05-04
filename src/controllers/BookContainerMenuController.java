@@ -186,7 +186,7 @@ public class BookContainerMenuController {
 			  
 			  //Update database by adding cj
 			  //Add cj to containerJourney array
-			  DatabaseData.getDatabase().addToDatabase("Journies", cj.toString());
+			  DatabaseData.getDatabase().addToDatabase(cj);
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");
 			  JOptionPane.showMessageDialog(null, response.getNotifyMessage());
