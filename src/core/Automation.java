@@ -90,6 +90,7 @@ public class Automation {
 		int month;
 		int endDay;
 		int startday;
+		int con;
 		
 		month = r.nextInt(8) + 5;
 		startday = r.nextInt(23) + 4;
@@ -101,15 +102,11 @@ public class Automation {
 			} while(startday >= endDay);
 		}
 		else {
-			endDay = r.nextInt(28) + 1;
+			do {
+				endDay = r.nextInt(28) + 1;
+				
+			} while(startday >= endDay);
 		}
-		
-		/*for (int i = 0; i < cjs.length; i++) {
-			System.out.println(cjs[i]);
-		}*/
-		
-		
-		//System.out.println("CJ");
 		
 		start = locations[r.nextInt(numberOfLocations)];
 		
@@ -117,9 +114,10 @@ public class Automation {
 		    end = locations[r.nextInt(numberOfLocations)];
 
 		} while(start == end);
+		con = DatabaseData.getDatabase().getEmptyContainer();
 		
 		ContainerJourney a = new ContainerJourney(start, end,
-				containers[r.nextInt(numberOfContainers)], 
+				containers[con-1],
 				LocalDate.of(2020, 5, startday), 
 				LocalDate.of(2020, month, endDay));
 		
@@ -127,38 +125,5 @@ public class Automation {
 		
 		return a;
 		}
-	
-	/* not sure if we want this or not 
-	public ContainerJourney rCJswithNewContainer() {
-			
-			Random r = new Random();
-			Container cont = rContainer();
-			Location[] locations = DatabaseData.getLocations();
-			
-			int numberOfLocations = locations.length;
-			
-			return new ContainerJourney(locations[r.nextInt(numberOfLocations)],
-										locations[r.nextInt(numberOfLocations)],
-										cont);
-	} */
-	
-	
-	
-	/*public static void main(String[] args) {
-		
-		Automation a = new Automation();
-	
-		Client randoo = a.rClient();
-		Container rCon = a.rContainer();
-		ContainerJourney cJ1 = a.rCJs();
-		//ContainerJourney cJ2 = a.rCJswithNewContainer();
-		
-		
-		System.out.println(randoo);
-		System.out.println(rCon);
-		System.out.println(cJ1);
-		//System.out.println(cJ2);
-		
-	}*/
 
 }
