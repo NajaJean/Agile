@@ -55,19 +55,19 @@ public class ClientMenuController {
 	}
 	
 	private void goTOmorrow() {
-		view.dispose();
 		Calendar c = new Calendar();
 		c.goTomorrow();
 		ClientMenuController w = new ClientMenuController(client);
 		w.initController();
+		view.dispose();
 	}
 	
 	private void goNextWeek() {
-		view.dispose();
 		Calendar c = new Calendar();
 		c.goIntoTheFutureXDays(7);
 		ClientMenuController w = new ClientMenuController(client);
 		w.initController();
+		view.dispose();
 	}
 	
 	private void goToBookContainerMenu() {
