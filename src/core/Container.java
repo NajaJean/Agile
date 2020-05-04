@@ -119,4 +119,9 @@ public class Container implements Search, DatabaseEntity {
 	public int entityID() {
 		return containerID;
 	}
+
+	@Override
+	public String addValues() {
+		return this.toString();
+	}
 }

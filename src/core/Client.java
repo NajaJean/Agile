@@ -218,5 +218,10 @@ public class Client extends User implements Search, DatabaseEntity {
 	public int entityID() {
 		return ID;
 	}
+
+	@Override
+	public String addValues() {
+		return this.toString();
+	}
     
 }

@@ -35,7 +35,7 @@ public class LogisticCreateClientController {
 		if (!(userText.equals("")|pwdText.equals("")|nameText.equals("")|emailText.equals("")|addressText.equals(""))) {
 			Client c = new Client(userText, pwdText, nameText, emailText, addressText);
 			
-			DatabaseData.getDatabase().addToDatabase("Clients", c.toString());
+			DatabaseData.getDatabase().addToDatabase(c);
 			
 			JOptionPane.showMessageDialog(null, c.createNewClient().getNotifyMessage());
 			

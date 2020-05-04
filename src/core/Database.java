@@ -84,15 +84,14 @@ public class Database {
 		return query;
 	}
 
-	public void addToDatabase(String tableName, String values){
-		String objType = tableName;
-		String addRow = "INSERT INTO " + tableName + " VALUES (" + values + ")";
+	public void addToDatabase(DatabaseEntity e){
+		String addRow = "INSERT INTO " + e.databaseTable() + " VALUES (" + e.addValues() + ")";
 		try {
 			Statement s = c.createStatement();
 			s.execute(addRow);
 			System.out.println("data added sucessfully");
 			s.close();
-		} catch (SQLException e){System.out.println(e);} 		
+		} catch (SQLException ex){System.out.println(ex);} 		
 	}
 	// Changing current data to a new value
 	public NotifyObject updateDatabase(String tableName, String column, String value, String condition) {
