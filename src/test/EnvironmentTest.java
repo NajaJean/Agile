@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import core.ArraySearch;
 import core.Content;
 import core.DatabaseData;
 import core.Environment;
@@ -13,14 +14,14 @@ import core.NotifyObject;
 public class EnvironmentTest {
 	
 	private Environment e;
-	Environment[] Enviros;
- 	
-	public EnvironmentTest() {
-		this.Enviros = DatabaseData.getEnvironments();
-	}
+	Environment[] Enviros = DatabaseData.getEnvironments();
+	ArraySearch search;
 	
 	@Before
-	public void createEnvironment() {
+	public void setUp() {
+		search = new ArraySearch(new Environment());
+		Environment.resetCount();
+		
 		e = new Environment(5.3,1.1,0.85);
 	}
 	
@@ -55,11 +56,13 @@ public class EnvironmentTest {
 	@Test
 	public void testFindEnviro() {
 		Environment e1 = Enviros[0];
-		Environment[] enviros2 = null;
+		Environment[] emptyEnviros = new Environment[0];
 		
-		assertEquals(e1, Environment.findEnviro(Integer.toString(e1.getEnviro_ID()), Enviros)); //45
-		assertEquals(null, Environment.findEnviro(Integer.toString(e1.getEnviro_ID()), enviros2)); 	
-		assertEquals("'1', '0.0', '0.0', '0.0'" ,e1.toString());
+		assertEquals(e1, Enviros[search.findIDX(e1.getEnviro_ID(), Enviros)]); 
+		assertEquals(-1, search.findIDX(e1.getEnviro_ID(), emptyEnviros)); 	
+		
+		String expected = "'1', '0.0', '0.0', '0.0'";
+		assertEquals(expected ,e1.toString());
 	}
 	
 	@Test

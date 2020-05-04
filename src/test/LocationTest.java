@@ -2,12 +2,23 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import core.ArraySearch;
 import core.Environment;
 import core.Location;
 
 public class LocationTest {
+	
+	int expectedIndex = 1;
+	ArraySearch search;
+	
+	@Before
+	public void setUp() {
+		search = new ArraySearch(new Location());
+		Location.resetCount();
+	}
 
 	@Test
 	public void testContent() {
@@ -18,12 +29,12 @@ public class LocationTest {
 		Location l = new Location("Afrika", gpsAfrica);
 		Location l2 = new Location("Copenhagen",gpsCopenhagen);
 
-		Location[] LocationArray = {l,l2};
-		Location[] LocationArray2 = null;
+		Location[] Locations = {l,l2};
+		Location[] emptyLocations = new Location[0];
 		
 		assertEquals("Afrika", l.getLocationName());
 		assertEquals(gpsAfrica, l.getGPScoord());
-		assertEquals(27, l.getLocationID()); //27
+		assertEquals(expectedIndex, l.getLocationID()); 
 		
 		assertTrue(gpsAfrica[0] == l.getGPScoordX());
 		assertTrue(gpsAfrica[1]== l.getGPScoordY());
@@ -34,13 +45,14 @@ public class LocationTest {
 		
 		assertTrue(l.getGPScoordY() == l.getGPScoordX());
 		
-		assertEquals(l, Location.findLocation("Afrika", LocationArray));
-		assertEquals(l2, Location.findLocation(28, LocationArray)); //14
-		assertEquals(null, Location.findLocation("Afrika", LocationArray2));
-		assertEquals(null, Location.findLocation(9, LocationArray2));
-		assertEquals(LocationArray[0], Location.findLocation("Afrik", LocationArray));
+		assertEquals(l, Locations[search.findIDX("Afrika", Locations)]);
+		assertEquals(l2, Locations[search.findIDX(expectedIndex + 1, Locations)]); 
 		
-		assertEquals("'Copenhagen', '28', '25.678', '4.6789'", l2.toString());
+		assertEquals(-1, search.findIDX("Afrika", emptyLocations));
+		assertEquals(-1, search.findIDX(expectedIndex, emptyLocations));
+		
+		String expected = "'Copenhagen', '2', '25.678', '4.6789'";
+		assertEquals(expected, l2.toString());
 /*		Environment e = new Environment(15.0,1.0,0.0);
 		assertEquals(e ,l2.getEnvironment()); */
 	}

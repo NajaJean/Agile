@@ -2,8 +2,10 @@ package test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
@@ -13,6 +15,14 @@ import core.Environment;
 import core.Location;
 
 public class ContainerJourneyTest {
+	
+	ArraySearch search;
+	
+	@Before
+	public void setUp() {
+		search = new ArraySearch(new ContainerJourney());
+		ContainerJourney.resetCount();
+	}
 
 	@Test
 	public void testContent() {
@@ -20,6 +30,8 @@ public class ContainerJourneyTest {
 		ContainerJourney[] cJ = DatabaseData.getJournies(); 
 		Location[] locations = DatabaseData.getLocations();
 		Container[] containers = DatabaseData.getContainers();
+		
+		ContainerJourney[] emptyCJs = new ContainerJourney[0];
 /*		Client client = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
 		Environment environment = new Environment(5.3,1.1,0.85);
 		Content content = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
@@ -41,7 +53,7 @@ public class ContainerJourneyTest {
 		assertEquals(locations[0], cJ[0].getStartLocation());
 		assertEquals(locations[15], cJ[0].getEndLocation());
 		
-		assertEquals(containers[2], cJ[0].getContaineronJourney());
+		assertEquals(containers[2].toString(), cJ[0].getContaineronJourney().toString());
 		
 		assertTrue(locations[0].getGPScoordX() == cJ[0].getStartLocX());
 		assertTrue(locations[0].getGPScoordY() == cJ[0].getStartLocY());
@@ -52,15 +64,15 @@ public class ContainerJourneyTest {
 		assertTrue(locations[15].getGPScoordX() == cJ[0].getEndLocX());
 		assertTrue(locations[15].getGPScoordY()== cJ[0].getEndLocY());
 		
-		assertEquals("'2', '15', '5', '1', '410.0', '910.0', '2020-03-28', '2020-04-01'", cJ[1].toString());
+		assertEquals("'2', '15', '5', '1', '410.0', '910.0', '2020-03-28', '2020-04-15'", cJ[1].toString());
 		
-		assertEquals(cJ[1], ContainerJourney.findJourney("2", cJ));
-		assertEquals(null, ContainerJourney.findJourney("99", cJ));
-		assertEquals(null, ContainerJourney.findJourney("4", null)); 
+		assertEquals(cJ[1], cJ[search.findIDX(2, cJ)]);
+		assertEquals(-1, search.findIDX("99", cJ));
+		assertEquals(-1, search.findIDX("4", emptyCJs)); 
 
-		assertEquals(cJ[1], ContainerJourney.findJourneyFromContainerID("1", cJ));
-		assertEquals(null, ContainerJourney.findJourneyFromContainerID("29", cJ));
-		assertEquals(null, ContainerJourney.findJourneyFromContainerID("4", null));
+		assertEquals(cJ[1], cJ[search.findIDX("1", cJ)]); // Find from containerID
+		assertEquals(-1, search.findIDX("29", cJ));
+		assertEquals(-1, search.findIDX("4", emptyCJs));
 	}
 	
 /*		@Test
