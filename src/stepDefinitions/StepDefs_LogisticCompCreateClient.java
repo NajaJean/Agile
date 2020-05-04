@@ -51,6 +51,6 @@ public class StepDefs_LogisticCompCreateClient {
 	@Then("is found in the database")
 	public void is_found_in_the_database() {
 		assertTrue(d.checkUser(C.getUsername(), C.getPassword()));
-		d.removeFromDatabase("Clients", C.getID()); 
+		d.removeFromDatabase(C); 
 	}
 }

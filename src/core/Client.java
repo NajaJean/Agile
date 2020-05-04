@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.lang.ArrayUtils;
 
-public class Client extends User implements Search {
+public class Client extends User implements Search, DatabaseEntity {
     private String username;
     private String password;
     private String name;
@@ -208,4 +208,15 @@ public class Client extends User implements Search {
     		System.out.println(con);
     	}
     }
+
+	@Override
+	public String databaseTable() {
+		return "Clients";
+	}
+
+	@Override
+	public int entityID() {
+		return ID;
+	}
+    
 }

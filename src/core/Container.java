@@ -1,7 +1,7 @@
 package core;
 
 
-public class Container implements Search {
+public class Container implements Search, DatabaseEntity {
 	
 	private int containerID; 
 	private Client client;
@@ -109,4 +109,14 @@ public class Container implements Search {
 		}
     	return result;
     }
+
+	@Override
+	public String databaseTable() {
+		return "Containers";
+	}
+
+	@Override
+	public int entityID() {
+		return containerID;
+	}
 }

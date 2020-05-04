@@ -33,7 +33,7 @@ public class Database {
 					}
 				}
 			}
-			System.out.println(tableName + "  table imported sucessfully!");
+			//System.out.println(tableName + "  table imported sucessfully!");
 			s.close();
 		} catch (SQLException e){System.out.println(e);}
 
@@ -50,15 +50,14 @@ public class Database {
 		return len;
 	}
 	
-	public void removeFromDatabase(String tableName, int id) {
-		String objType = tableName;
-		String removeRow = "DELETE FROM " + tableName + " WHERE ID = "+id;
+	public void removeFromDatabase(DatabaseEntity e) {
+		String removeRow = "DELETE FROM " + e.databaseTable() + " WHERE ID = "+e.entityID();
 		try {
 			Statement s = c.createStatement();
 			s.execute(removeRow);
 			System.out.println("data removed sucessfully");
 			s.close();
-		} catch (SQLException e){System.out.println(e);}
+		} catch (SQLException ex){System.out.println(ex);}
 	}
 	
 	public String queryDatabase(String sql) {  
