@@ -70,6 +70,7 @@ public class LogisticCompanyMenu extends JFrame {
     	locationLabel.setBounds(20, 230, 400, 50);
     	clientLabel.setBounds(20, 245, 400, 50);
     	contentLabel.setBounds(20, 260, 400, 50);
+    	lbl.setBounds(20,40,600,200);
         
         setTitle("Logistic Company");
         setVisible(true);
