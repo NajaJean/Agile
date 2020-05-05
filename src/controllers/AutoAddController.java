@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 
 import UI.*;
@@ -46,8 +48,16 @@ public class AutoAddController {
 	private void addRCJ() 
 	{
 		ContainerJourney cj = auto.rCJs();
+		
+		Random r = new Random();
+		Client[] clients = DatabaseData.getClients();
+		Content[] contents = DatabaseData.getContents();
+		String client = Integer.toString(r.nextInt(clients.length));
+		String content = Integer.toString(r.nextInt(contents.length));
+		DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",client , Integer.toString(cj.getContaineronJourney().getContainerID()));
+		DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", content, Integer.toString(cj.getContaineronJourney().getContainerID()));
+		
 		DatabaseData.getDatabase().addToDatabase(cj);
-	
 		JOptionPane.showMessageDialog(null, "Journey successfully created!");
 	}
 	

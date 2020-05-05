@@ -43,8 +43,6 @@ public class Automation {
 	
 	public Client rClient() {
 		
-		//System.out.println("Client");
-	
 		return new Client((rName(3) + "UserName"), rPass(3) + "PASS", 
 						  (rName(3) + " " + rName(3) + "Name"), 
 						   rEmail(3), rAddress(3)  + "Address");
@@ -58,17 +56,11 @@ public class Automation {
 		Client[] clients = DatabaseData.getClients();
 		Content[] contents = DatabaseData.getContents();
 		Location[] locations = DatabaseData.getLocations();
-		Container[] containers = DatabaseData.getContainers();// this is here for the second print loop to show wierd stuff :D - Andrew
 		
 		int numberOfClients = clients.length;
 		int numberOfContents = contents.length;
 		int numberOfLocations = locations.length;
-		
-		/*for (int i = 0; i < containers.length; i++) {
-			System.out.println(containers[i] + " " + containers[i].getContainerEnvironment().getTemp());
-		}*/
-		
-		//System.out.println("Container");
+
 		return new Container(clients[r.nextInt(numberOfClients)], 
 							 contents[r.nextInt(numberOfContents)], 
 							 locations[r.nextInt(numberOfLocations)]);
@@ -80,8 +72,6 @@ public class Automation {
 		
 		Container[] containers = DatabaseData.getContainers();
 		Location[] locations = DatabaseData.getLocations();
-		Client[] clients = DatabaseData.getClients();
-		Content[] contents = DatabaseData.getContents();
 		
 		ContainerJourney[] cjs = DatabaseData.getJournies();
 		Location start;
@@ -113,10 +103,6 @@ public class Automation {
 				containers[con-1],
 				LocalDate.of(2020, 5, startday), 
 				LocalDate.of(2020, month, endDay));
-		String client = Integer.toString(r.nextInt(clients.length));
-		String content = Integer.toString(r.nextInt(contents.length));
-		DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",client , Integer.toString(con));
-		DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", content, Integer.toString(con));
 		return a;
 		}
 
