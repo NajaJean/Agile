@@ -19,6 +19,7 @@ public class ContainerTest {
 	Environment e1, e2;
 	Content con1, con2;
 	Location loc1, loc2;
+	Container[] containers = DatabaseData.getContainers();
 	Environment[] toAssign = DatabaseData.getEnvironments();
 	int expectedID = 1;
 	ArraySearch search;
@@ -82,7 +83,7 @@ public class ContainerTest {
 		
 		assertEquals(c1, cons[search.findIDX(expectedID, cons)]);
 		System.out.println(c1.getContainerID());
-		assertEquals(1, c1.findFromStrings("4","1", cons));
+		assertEquals(1, c1.findFromStrings("1","1", containers));
 		
 	}
 }
