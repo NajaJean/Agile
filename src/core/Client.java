@@ -199,7 +199,7 @@ public class Client extends User implements Search, DatabaseEntity {
    
     
     // Temp - for testing
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
     	Client c = DatabaseData.getClients()[0];
     	
     	Container[] result = c.findClientContentContainers("Mangoes", DatabaseData.getContainers());
@@ -207,7 +207,7 @@ public class Client extends User implements Search, DatabaseEntity {
     	for (Container con : result) {
     		System.out.println(con);
     	}
-    }
+    }*/
 
 	@Override
 	public String databaseTable() {

@@ -81,5 +81,8 @@ public class ContainerTest {
 		assertEquals(c1, cons[search.findIDX(String.valueOf(cl1.getID()), cons)]); // Find from clientID
 		
 		assertEquals(c1, cons[search.findIDX(expectedID, cons)]);
+		System.out.println(c1.getContainerID());
+		assertEquals(1, c1.findFromStrings("4","1", cons));
+		
 	}
 }
