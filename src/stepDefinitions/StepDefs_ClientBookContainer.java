@@ -40,7 +40,7 @@ public class StepDefs_ClientBookContainer {
 	
 	@Given("that there exists an empty container in the database")
 	public void that_there_exists_an_empty_container_in_the_database() {
-		id = d.getEmptyContainer();	
+		id = d.getEmptyContainer();
 	    assertNotEquals(0,id);
 	    System.out.println(id);
 	    System.out.println(Containers.length);
