@@ -32,21 +32,6 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		currentGps[1] = temp[1];
 	}
 	
-/*	public ContainerJourney(Location start, Location end, Container container,
-							LocalDate endDate) {
-		this.journeyID = count++;
-		this.start = start;
-		this.end = end;
-		this.container = container;
-		this.startDate = LocalDate.now();
-		this.endDate = endDate;
-		
-		double[] temp = start.getGPScoord();
-		currentGps = new double[2];
-		currentGps[0] = temp[0];
-		currentGps[1] = temp[1];
-	} */
-	
 	public LocalDate getStartDate() {
 		return startDate;
 	}
@@ -192,14 +177,12 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	@Override
 	public int findFromID(int ID, Object[] cJs) {
 		int index = -1;
-		try {
 			for(int i = 0; i < cJs.length; i++) {
 				if(ID == ((ContainerJourney)cJs[i]).journeyID) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
 	}
 
