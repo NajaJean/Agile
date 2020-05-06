@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
+import java.util.Locale;
+
 import core.*;
 
 public class LogTest {
@@ -61,11 +63,11 @@ public class LogTest {
 		
 		String expected1stpart = String.valueOf(cJs[0].getContaineronJourney().getContainerID()) + "\t" + 
 		  		 String.valueOf(cJs[0].getContaineronJourney().getClientofContainer());
-		  		 //String.valueOf(cJs[0].getContaineronJourney().getContainerEnvironment()) + "\t" + 
+		  		 
 		  		 
 		String expected2ndpart = String.valueOf(cJs[0].getContaineronJourney().getContainerContent()) + "\t" + 
-		  		 String.format("%.2f", cJs[0].getCurrentX()) + "\t" +
-				 String.format("%.2f", cJs[0].getCurrentY()) + "\t" +
+		  		 String.format(Locale.ROOT,"%.2f", cJs[0].getCurrentX()) + "\t" +
+				 String.format(Locale.ROOT,"%.2f", cJs[0].getCurrentY()) + "\t" +
 				 String.valueOf(cJs[0].getJourneyID()) + "\t" +
 				 String.valueOf(cJs[0].getStartDate()) + "\t" + 
 				 String.valueOf(Calendar.getSystemDate()) + "\t" +
@@ -91,11 +93,11 @@ public class LogTest {
 		
 			String expected1stpart = String.valueOf(cJs[i].getContaineronJourney().getContainerID()) + "\t" + 
 			  		 String.valueOf(cJs[i].getContaineronJourney().getClientofContainer());
-			  		 //String.valueOf(cJs[0].getContaineronJourney().getContainerEnvironment()) + "\t" + 
+			  		 
 			  		 
 			String expected2ndpart = String.valueOf(cJs[i].getContaineronJourney().getContainerContent()) + "\t" + 
-			  		 String.format("%.2f", cJs[i].getCurrentX()) + "\t" +
-					 String.format("%.2f", cJs[i].getCurrentY()) + "\t" +
+			  		 String.format(Locale.ROOT,"%.2f", cJs[i].getCurrentX()) + "\t" +
+					 String.format(Locale.ROOT,"%.2f", cJs[i].getCurrentY()) + "\t" +
 					 String.valueOf(cJs[i].getJourneyID()) + "\t" +
 					 String.valueOf(cJs[i].getStartDate()) + "\t" + 
 					 String.valueOf(Calendar.getSystemDate()) + "\t" +
