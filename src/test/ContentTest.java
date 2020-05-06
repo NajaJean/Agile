@@ -38,7 +38,7 @@ public class ContentTest {
 		assertEquals(-1, search.findIDX(con1.getContentID(), emptyContents));
 		assertEquals(-1, search.findIDX("Bananas", emptyContents));
 		assertEquals(-1, search.findIDX("Bana", Contents));
-		
+			
 		String expected = "'2', 'Bananas', '2', '0.05'";
 		assertEquals(expected, con1.toString());
 	}
