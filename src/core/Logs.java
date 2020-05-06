@@ -69,8 +69,8 @@ public class Logs {
 	public String randomizeE(Environment e) 
 	{	
 		
-		return "'" + String.valueOf(e.getEnviro_ID()) + "', '" + String.format("%.2f", modNum(e.getTemp())) + "', '" +
-				String.format("%.2f", modNum(e.getPressure())) + "', '" + String.format("%.2f", modNum(e.getHumidity())) + "'";
+		return "'" + String.valueOf(e.getEnviro_ID()) + "', '" + String.format(Locale.ROOT,"%.2f", modNum(e.getTemp())) + "', '" +
+				String.format(Locale.ROOT,"%.2f", modNum(e.getPressure())) + "', '" + String.format(Locale.ROOT,"%.2f", modNum(e.getHumidity())) + "'";
 	}
 	
 	public void appendContainerLog(ContainerJourney c)
