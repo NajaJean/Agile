@@ -84,6 +84,6 @@ public class ContainerTest {
 		assertEquals(c1, cons[search.findIDX(expectedID, cons)]);
 
 		assertEquals(0, c1.findFromStrings("1","1", containers));
-		
+		assertEquals(0, c1.findFromStrings("","1", containers));
 	}
 }
