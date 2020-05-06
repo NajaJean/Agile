@@ -40,28 +40,24 @@ public class Content extends Search {
 	@Override
 	public int findFromID(int ID, Object[] contents) {
 		int index = -1;
-		try {
 			for(int i = 0; i < contents.length; i++) {
 				if(ID == ((Content)contents[i]).content_ID) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
 	}
 	
 	@Override
 	public int findFromString(String name, Object[] contents) {
 		int index = -1;
-		try {
 			for(int i = 0; i < contents.length; i++) {
 				if(name.equals(((Content)contents[i]).name)) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
 	}
 	

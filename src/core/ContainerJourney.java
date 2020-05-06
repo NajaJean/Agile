@@ -32,7 +32,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		currentGps[1] = temp[1];
 	}
 	
-	public ContainerJourney(Location start, Location end, Container container,
+/*	public ContainerJourney(Location start, Location end, Container container,
 							LocalDate endDate) {
 		this.journeyID = count++;
 		this.start = start;
@@ -45,7 +45,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		currentGps = new double[2];
 		currentGps[0] = temp[0];
 		currentGps[1] = temp[1];
-	}
+	} */
 	
 	public LocalDate getStartDate() {
 		return startDate;
