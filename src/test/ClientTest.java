@@ -2,15 +2,23 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import core.ArraySearch;
 import core.Client;
+import core.Container;
+import core.ContainerJourney;
+import core.DatabaseData;
 
 public class ClientTest {
 	
-	int expectedIndex = 1;
+	ContainerJourney[] cJs = DatabaseData.getJournies(); 
+	Client[] clients = DatabaseData.getClients();
 	ArraySearch search;
 	
 	@Before
@@ -21,17 +29,12 @@ public class ClientTest {
 
 	@Test
 	public void testClientInfoFull() {
-		Client c1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
-		Client c2 = new Client("N", "4321", "Naja","najasemail@gmail.com","Rådhuspladsen 100");
-		
-		assertEquals("M", c1.getUsername());
-		assertEquals("1234", c1.getPassword());
-		assertEquals("Mathilde", c1.getName());
-		assertEquals("mathildesemail@gmail.com", c1.getEmail());
-		assertEquals("Anker Egelundsvej 1", c1.getAddress());
-		assertEquals(expectedIndex, c1.getID()); 
-		
-		assertEquals(expectedIndex + 1, c2.getID());
+		assertEquals("bob", clients[0].getUsername());
+		assertEquals("1234", clients[0].getPassword());
+		assertEquals("Bob Smith", clients[0].getName());
+		assertEquals("bob_smith@gmail.com", clients[0].getEmail());
+		assertEquals("134 Candy Ln", clients[0].getAddress());
+		assertEquals(1, clients[0].getID()); 
 	}
 	
 	@Test
@@ -51,26 +54,34 @@ public class ClientTest {
 		assertEquals("ullasemail@gmail.com", c1.getEmail());
 		
 		c1.setAddress("Østerkirkevej 18");
-		assertEquals("Østerkirkevej 18", c1.getAddress());
+		assertEquals("Østerkirkevej 18", c1.getAddress());	
 	}
 	
 	@Test
 	public void testFindClient() {
-		Client c1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
-		Client c2 = new Client("N", "4321", "Naja","najasemail@gmail.com","Raadhuspladsen 100");
-		Client[] clients = {c1,c2};
+
 		Client[] emptyClients = new Client[0];
 		
-		assertEquals(c1, clients[search.findIDX(expectedIndex, clients)]);
+		assertEquals(clients[0], clients[search.findIDX(1, clients)]);
 		assertEquals(-1, search.findIDX(23, clients));
 		assertEquals(-1, search.findIDX(23, emptyClients));
 	
-		assertEquals(c1, clients[Client.findFromUserPass("M", "1234", clients)]);
-		assertEquals(-1, Client.findFromUserPass("M", "1234", emptyClients));
+		assertEquals(clients[0], clients[Client.findFromUserPass("bob", "1234", clients)]);
+		assertEquals(-1, Client.findFromUserPass("bob", "1234", emptyClients));
 		assertEquals(-1, Client.findFromUserPass("N", "1234", clients));
 		
-		assertEquals(c1, clients[search.findIDX("mathildesemail@gmail.com", clients)]);
+		assertEquals(clients[0], clients[search.findIDX("bob_smith@gmail.com", clients)]);
 		assertEquals(-1, search.findIDX("najasemail@gmail.com", emptyClients));
 		assertEquals(-1, search.findIDX("najasemail@gmai", clients));
+		
+		ContainerJourney[] conJ = {cJs[1], cJs[2]};
+//		ContainerJourney[] conJ = {cJs[1], cJs[2], cJs[4], cJs[5], cJs[10]};
+		ContainerJourney[] conJ2 = clients[0].getClientsCJs(cJs);
+		
+		Set<ContainerJourney> set1 = new HashSet<ContainerJourney>(Arrays.asList(conJ));
+		Set<ContainerJourney> set2 = new HashSet<ContainerJourney>(Arrays.asList(conJ2));
+		
+		assertTrue(set1.equals(set2));
+		
 	}
 }
