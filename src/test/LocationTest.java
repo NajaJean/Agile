@@ -57,6 +57,9 @@ public class LocationTest {
 		assertEquals(e ,l2.getEnvironment()); */
 		
 		assertEquals(-308075418, Locations[0].hashCode());
+		assertEquals(false, Locations[0].equals(null));
+		assertEquals(true, Locations[0].equals(Locations[0]));
+		assertEquals(false, Locations[0].equals(gpsCopenhagen));
 	}
 
 }
