@@ -64,10 +64,10 @@ public class ClientTest {
 		assertEquals(c1, clients[search.findIDX(expectedIndex, clients)]);
 		assertEquals(-1, search.findIDX(23, clients));
 		assertEquals(-1, search.findIDX(23, emptyClients));
-		
-		assertEquals(c1, clients[c1.findFromUserPass("M", "1234", clients)]);
-		assertEquals(-1, c1.findFromUserPass("M", "1234", emptyClients));
-		assertEquals(-1, c1.findFromUserPass("N", "1234", clients));
+	
+		assertEquals(c1, clients[Client.findFromUserPass("M", "1234", clients)]);
+		assertEquals(-1, Client.findFromUserPass("M", "1234", emptyClients));
+		assertEquals(-1, Client.findFromUserPass("N", "1234", clients));
 		
 		assertEquals(c1, clients[search.findIDX("mathildesemail@gmail.com", clients)]);
 		assertEquals(-1, search.findIDX("najasemail@gmail.com", emptyClients));

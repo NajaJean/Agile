@@ -18,6 +18,7 @@ public class StepDefs_ClientLogIn {
 	ScenarioContext context;
 	Client[] Clients;
 	Database d;
+	Client c;
 	
 	NotifyObject response;
 	
@@ -27,31 +28,37 @@ public class StepDefs_ClientLogIn {
 		this.d = DatabaseData.getDatabase();
 	}
 	
+	@Given("a client with username {string} and password {string}")
+	public void a_client_with_username_and_password(String username, String password) {
+		int clientIndex = Client.findFromUserPass(username, password, Clients);
+		c = Clients[clientIndex];
+	}
+	
 	@Given("that the client is not logged in")
 	public void that_the_client_is_not_logged_in() {
-		assertFalse(Clients[1].isLoggedIn());
+		assertFalse(c.isLoggedIn());
 	}
 	
 	@Given("the username is correct and password is correct")
 	public void the_username_is_correct_and_password_is_correct() {
-	    assertEquals(Clients[2].getUsername(), "alice");
-	    assertEquals(Clients[2].getPassword(), "1234");
+	    assertEquals(c.getUsername(), "bob");
+	    assertEquals(c.getPassword(), "1234");
 	}
 	
 	@Given("username and password exits in the Database")
 	public void username_and_password_exits_in_the_Database() {
-		assertTrue(d.checkUser(Clients[2].getUsername(), Clients[2].getPassword()));
+		assertTrue(d.checkUser(c.getUsername(), c.getPassword()));
 	}
 	
 	@When("the client logs in")
 	public void the_client_logs_in() {
-		response = Clients[2].logIn(d.checkUser(Clients[2].getUsername(), Clients[2].getPassword()));
+		response = c.logIn(d.checkUser(c.getUsername(), c.getPassword()));
 		context.setResponse(response);
 	}
 	
 	@Then("the client is logged in")
 	public void the_client_is_logged_in() {
-		assertTrue(Clients[2].isLoggedIn());
+		assertTrue(c.isLoggedIn());
 	}
 	
 	@Then("message is displayed saying {string}") 
@@ -61,17 +68,17 @@ public class StepDefs_ClientLogIn {
 
 	@Given("the password or username is incorrect")
 	public void the_password_or_username_is_incorrect() {
-	    assertNotEquals(Clients[1].getUsername() + Clients[1].getPassword(), "alice" + "4321");
+	    assertNotEquals(c.getUsername() + c.getPassword(), "alice" + "4321");
 	}
 	
 	@When("the client tries to log in")
 	public void the_client_tries_to_log_in() {
-	    response = Clients[1].logIn(d.checkUser("alice", "4321"));
+	    response = c.logIn(d.checkUser("alice", "4321"));
 	    context.setResponse(response);
 	}
 	
 	@Then("the client is not logged in")
 	public void the_client_is_not_logged_in() {
-		assertFalse(Clients[1].isLoggedIn());
+		assertFalse(c.isLoggedIn());
 	}	 
 }
