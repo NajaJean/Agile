@@ -1,7 +1,7 @@
 package core;
 
 
-public class Container implements Search, DatabaseEntity {
+public class Container extends Search implements DatabaseEntity {
 	
 	private int containerID; 
 	private Client client;
@@ -89,12 +89,6 @@ public class Container implements Search, DatabaseEntity {
 			}
 		}
 		return index;
-	}
-
-	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] containers) {
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, containers);
 	}
 	
 	@Override

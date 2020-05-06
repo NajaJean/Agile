@@ -1,6 +1,6 @@
 package core;
 
-public class Location implements Search {
+public class Location extends Search {
     private String name;
     private int ID;
     private double[] GPScoord = new double[2];
@@ -95,12 +95,6 @@ public class Location implements Search {
 			}
 		} catch (Exception e) { e.printStackTrace(); }
 		return index; 
-	}
-
-	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] locs) {
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, locs);
 	}
 	
     @Override

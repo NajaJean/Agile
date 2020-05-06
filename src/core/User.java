@@ -1,7 +1,7 @@
 package core;
 import core.NotifyObject;
 
-public abstract class User {
+public interface User {
 	
 	public abstract NotifyObject logIn(boolean b);
 	

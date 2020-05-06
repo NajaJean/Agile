@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class ContainerJourney implements Search, DatabaseEntity {
+public class ContainerJourney extends Search implements DatabaseEntity {
 	private int journeyID;
 	private Location start;
 	private Location end;
@@ -215,12 +215,6 @@ public class ContainerJourney implements Search, DatabaseEntity {
 			}
 		} catch (Exception e) { e.printStackTrace(); }
 		return index;
-	}
-
-	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] cJs) {
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, cJs);
 	}
 	
     @Override

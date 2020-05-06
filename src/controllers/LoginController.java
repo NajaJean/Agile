@@ -42,7 +42,7 @@ public class LoginController {
 		
 		if (CorL.contentEquals("Client")) {
 			if (DatabaseData.getDatabase().checkUser(username, password)) {
-				int index = search.findIDX(username, password, Clients);
+				int index = client.findFromStrings(username, password, Clients);
 				if (index == -1) { 
 					JOptionPane.showMessageDialog(null, "Error logging in");
 					return; 

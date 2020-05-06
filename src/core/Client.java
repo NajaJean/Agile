@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.lang.ArrayUtils;
 
-public class Client extends User implements Search, DatabaseEntity {
+public class Client extends Search implements User, DatabaseEntity {
     private String username;
     private String password;
     private String name;
@@ -129,7 +129,6 @@ public class Client extends User implements Search, DatabaseEntity {
 		return index;
     }
     
-    @Override
     public int findFromStrings(String username, String password, Object[] clients) {
 		int index = -1;
 		try {
@@ -196,18 +195,6 @@ public class Client extends User implements Search, DatabaseEntity {
     	
     	return result.toArray(new Container[0]);
     }
-   
-    
-    // Temp - for testing
-/*    public static void main(String[] args) {
-    	Client c = DatabaseData.getClients()[0];
-    	
-    	Container[] result = c.findClientContentContainers("Mangoes", DatabaseData.getContainers());
-    	
-    	for (Container con : result) {
-    		System.out.println(con);
-    	}
-    }*/
 
 	@Override
 	public String databaseTable() {

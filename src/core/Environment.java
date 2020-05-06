@@ -1,7 +1,7 @@
 package core;
 
 
-public class Environment implements Search {
+public class Environment extends Search {
 	private int enviro_ID;
 	private double temp;
 	private double pressure;
@@ -102,12 +102,6 @@ public class Environment implements Search {
 			}
 		} catch (Exception e) { e.printStackTrace(); }
 		return index;
-	}
-
-	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] enviros) { 
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, enviros);
 	}
 	
     @Override

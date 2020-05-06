@@ -24,8 +24,4 @@ public class ArraySearch {
 		return result;
 	}
 	
-	public int findIDX(String firstString, String secondString, Object[] Objects) {
-		int result = search.findFromStrings(firstString, secondString, Objects);
-		return result;
-	}
 }

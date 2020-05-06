@@ -1,7 +1,7 @@
 package core;
 
 
-public class Content implements Search {
+public class Content extends Search {
 	private String name;
 	private Environment enviro;
 	private double threshold;
@@ -63,12 +63,6 @@ public class Content implements Search {
 			}
 		} catch (Exception e) { e.printStackTrace(); }
 		return index;
-	}
-	
-	@Override
-	public int findFromStrings(String firstString, String secondString, Object[] contents) {
-		String str = (firstString.isEmpty() ? secondString : firstString);
-		return findFromString(str, contents);
 	}
 	
 	@Override
