@@ -55,6 +55,8 @@ public class LocationTest {
 		assertEquals(expected, l2.toString());
 /*		Environment e = new Environment(15.0,1.0,0.0);
 		assertEquals(e ,l2.getEnvironment()); */
+		
+		assertEquals(-308075418, Locations[0].hashCode());
 	}
 
 }
