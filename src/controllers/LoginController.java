@@ -1,7 +1,5 @@
 package controllers;
 
-import java.util.HashMap;
-
 import javax.swing.JOptionPane;
 
 import UI.Login;
@@ -42,7 +40,7 @@ public class LoginController {
 		
 		if (CorL.contentEquals("Client")) {
 			if (DatabaseData.getDatabase().checkUser(username, password)) {
-				int index = client.findFromStrings(username, password, Clients);
+				int index = Client.findFromUserPass(username, password, Clients);
 				if (index == -1) { 
 					JOptionPane.showMessageDialog(null, "Error logging in");
 					return; 

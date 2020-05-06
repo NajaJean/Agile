@@ -129,7 +129,7 @@ public class Client extends Search implements User, DatabaseEntity {
 		return index;
     }
     
-    public int findFromStrings(String username, String password, Object[] clients) {
+    public static int findFromUserPass(String username, String password, Object[] clients) {
 		int index = -1;
 		try {
 			for(int i = 0; i < clients.length; i++) {
