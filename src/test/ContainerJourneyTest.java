@@ -58,5 +58,10 @@ public class ContainerJourneyTest {
 		assertEquals(cJ[1], cJ[search.findIDX("1", cJ)]); // Find from containerID
 		assertEquals(-1, search.findIDX("29", cJ));
 		assertEquals(-1, search.findIDX("4", emptyCJs));
+		
+		assertEquals("Journies", cJ[0].databaseTable());
+		assertEquals(1, cJ[0].entityID());
+		assertEquals("'1', '1', '16', '3', '1735.0', '325.0', '2020-03-28', '2020-04-15'", cJ[0].addValues());
+		
 	}
 }
