@@ -39,6 +39,7 @@ public class CalendarTest {
 		c.goTomorrow();
 
 		assertTrue(testSet.plusDays(1).toString().equals(Calendar.getSystemDate().toString()));
+		
 	}
 	
 	@Test
