@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;  
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;  
 
@@ -33,7 +34,7 @@ public class Logs {
 	    } catch (IOException e) {
 	      System.out.println("An error occurred.");
 	      e.printStackTrace();
-	    }}
+	    }}  
 
 	
 	public String readFile(String fileName) {
@@ -86,7 +87,7 @@ public class Logs {
 		    		  		 String.valueOf(c.getContaineronJourney().getContainerContent()) + "\t" +
 		    		  		 String.format("%.2f", c.getCurrentX()) + "\t" +
 		    		  		 String.format("%.2f", c.getCurrentY()) + "\t" + 
-		      				 String.valueOf(c.getJourneyID()) + "\t" +
+		      				 String.format(Locale.ROOT,"%.f",c.getJourneyID()) + "\t" +
 		      				 String.valueOf(c.getStartDate()) + "\t" + 
 		      				 String.valueOf(Calendar.getSystemDate()) + "\t" +
 		      				 String.valueOf(c.getEndDate()) + "\t" + 
