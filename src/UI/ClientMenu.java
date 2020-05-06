@@ -138,10 +138,4 @@ public class ClientMenu extends JFrame {
     public JMenuItem getNextWeek() {
     	return nextWeek;
     }
-    
-    /*
-    public static void main(String[] args) {
-    	Client c = DatabaseData.getClients()[0];
-		ClientMenu menu = new ClientMenu(c);
-	}*/
 }
