@@ -28,7 +28,11 @@ public class LogTest {
 		L = new Logs(cs);
 		
 		first = a.rCJs();
+		first.getContaineronJourney().setClientofContainer(a.randomClient());
+		first.getContaineronJourney().setContainerContent(a.randomContent());
 		second = a.rCJs();
+		second.getContaineronJourney().setClientofContainer(a.randomClient());
+		second.getContaineronJourney().setContainerContent(a.randomContent());
 		cJs = new ContainerJourney[]{first, second};
 	}
 		

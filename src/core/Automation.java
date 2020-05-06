@@ -106,4 +106,14 @@ public class Automation {
 		return a;
 		}
 
+	public Client randomClient() {
+		Random r = new Random();
+		Client[] clients = DatabaseData.getClients();
+		return clients[r.nextInt(clients.length)-1];
+	}
+	public Content randomContent() {
+		Random r = new Random();
+		Content[] contents = DatabaseData.getContents();
+		return contents[r.nextInt(contents.length)];
+	}
 }
