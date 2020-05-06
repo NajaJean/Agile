@@ -28,8 +28,9 @@ public class StepDefs_LogisticLogIn {
 
 	@Given("the username is {string} and password is {string}")
 	public void the_username_is_and_password_is(String string, String string2) {
-	    assertEquals("MSK", string);
-	    assertEquals("1234", string2);
+	    assertEquals(l.getUsername(), string);
+	    assertEquals(l.getPassword(), string2);
+	    assertTrue(l.isValidLogin(string,string2));
 	}
 
 	@When("the logistic Company logs in")
@@ -46,6 +47,8 @@ public class StepDefs_LogisticLogIn {
 	@Given("the username or the password is wrong")
 	public void the_username_or_the_password_is_wrong() {
 		assertFalse(l.isValidLogin("wrong username","wrong password"));
+		assertFalse(l.isValidLogin("MSK","wrong password"));
+		assertFalse(l.isValidLogin("wrong username","1234"));
 	}
 
 	@When("the logistic Company tries logs in")
