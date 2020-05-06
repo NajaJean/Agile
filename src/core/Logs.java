@@ -87,7 +87,7 @@ public class Logs {
 		    		  		 String.valueOf(c.getContaineronJourney().getContainerContent()) + "\t" +
 		    		  		 String.format(Locale.ROOT,"%.2f", c.getCurrentX()) + "\t" +
 		    		  		 String.format(Locale.ROOT,"%.2f", c.getCurrentY()) + "\t" + 
-		      				 String.format(Locale.ROOT,"%.f",c.getJourneyID()) + "\t" +
+		      				 String.valueOf(c.getJourneyID()) + "\t" +
 		      				 String.valueOf(c.getStartDate()) + "\t" + 
 		      				 String.valueOf(Calendar.getSystemDate()) + "\t" +
 		      				 String.valueOf(c.getEndDate()) + "\t" + 
