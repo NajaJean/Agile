@@ -45,6 +45,7 @@ public class ClientMenuController {
 	}
 	
 	public void initController() {
+		view.changeStats(getStats());
 		view.getBook_containerItem().addActionListener(e -> goToBookContainerMenu());
 		view.getSign_outItem().addActionListener(e -> signOut());
 		view.getConfigure_client_detailsItem().addActionListener(e -> goToConfigureClientMenu());
@@ -52,6 +53,16 @@ public class ClientMenuController {
 		view.getTomorrow().addActionListener(e -> goTOmorrow());
 		view.getNextWeek().addActionListener(e -> goNextWeek());
 		view.getClientFindCon().addActionListener(e -> goToClientFindCon());
+	}
+	
+	private String getStats() {
+		ContainerJourney[] ClientJournies = ContainerJourney.clientJournies(DatabaseData.getJournies(), client);
+ 		int longestTravelledCon = ContainerJourney.longestJourney(ClientJournies).getJourneyID();
+ 		ContainerJourney journey = ContainerJourney.longestJourney(ClientJournies);
+ 		double distance = Math.round(journey.getEndLocation().euclideanDistance(journey.getCurrentLocationDoubleA()));
+ 		String s = Integer.toString(longestTravelledCon) + " Distance: " + Double.toString(distance) + "km From: " + 
+ 		journey.getStartLocation().getLocationName() + " - " + journey.getEndLocation().getLocationName();
+ 		return s;
 	}
 	
 	private void goTOmorrow() {

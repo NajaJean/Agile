@@ -2,6 +2,7 @@ package core;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class ContainerJourney implements Search, DatabaseEntity {
 	private int journeyID;
@@ -114,19 +115,10 @@ public class ContainerJourney implements Search, DatabaseEntity {
 		count = 1;
 	}
 	
-	// Needed to update the current location of the container
-	// Returns a NotifyObject to notify the client in the case where current == end
-	
 	public void setCurrentLocation(double[] current) {
 		this.currentGps[0] = current[0];
 		this.currentGps[1] = current[1];
 		updateWeather();
-		/*NotifyObject notification;
-		if ((current[0] == end.getGPScoord()[0]) && (current[1] == end.getGPScoord()[1])) {
-			notification = new NotifyObject(100, "Client is notified of arrival");
-		} else { 
-			notification = new NotifyObject(0, "Container is in transit");
-		} return notification;*/
 	}
 	
 	public void moveContainerOnJ() 
@@ -165,6 +157,36 @@ public class ContainerJourney implements Search, DatabaseEntity {
 					
 				}
 		}	
+	}
+	
+	public static ContainerJourney[] clientJournies(ContainerJourney[] Journies, Client c) {
+		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
+ 		for (int i = 0; i < Journies.length; i++) {
+ 			
+ 			if (c.getID() == Journies[i].getContaineronJourney().getClientofContainer().getID()) 
+ 			{
+ 			
+ 				clientContainersList.add(Journies[i]);
+ 			}
+ 			
+ 		}
+ 		
+ 		ContainerJourney[] ClientJournies = new ContainerJourney[clientContainersList.size()];
+ 		ClientJournies = clientContainersList.toArray(ClientJournies);
+ 		return ClientJournies;
+	}
+	
+	public static ContainerJourney longestJourney(ContainerJourney[] ClientJournies) {
+		double len = 0;
+ 		ContainerJourney con = ClientJournies[0];
+ 		for(int i=0; i<ClientJournies.length;i++) {
+ 			double newlen = ClientJournies[i].getEndLocation().euclideanDistance(ClientJournies[i].getCurrentLocationDoubleA());
+ 			if(newlen>len) {
+ 				len = newlen;
+ 				con = ClientJournies[i];
+ 			}
+ 		}
+ 		return con;
 	}
 
 	@Override
@@ -222,4 +244,5 @@ public class ContainerJourney implements Search, DatabaseEntity {
 	public String addValues() {
 		return this.toString();
 	}
+	
 }

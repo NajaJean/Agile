@@ -128,49 +128,5 @@ public class Map extends JFrame{
 				"Container Humidity: " + String.valueOf(cJs[i].getContaineronJourney().getContainerEnvironment().getHumidity()) + "<br>" +
 				"</html>");
 	}
-	
-   /* 
-   public static void main(String[] args) throws InterruptedException {
-	   
-	double[] cphgpscoords = {730.0, 188.0};
-   	double[] tokyogpscoords = {1423.0, 245.0};
-   	double[] sydneygpscoords = {1495.0, 750.0};
-   	double[] nygpscoords = {290.0, 225.0};
-   	double[] hawaiigpscoords = {1735.0, 265.0};
-   	double[] riogpscoords = {420.0, 670.0};
-   	
-   	
-
-   	Location CPH = new Location("Copenhagen", cphgpscoords);
-   	Location Tokyo = new Location("Tokyo", tokyogpscoords);
-   	Location Sydney = new Location("Sydney", sydneygpscoords);
-   	Location NY = new Location("New York", nygpscoords);
-   	Location Hawaii = new Location("Hawaii", hawaiigpscoords);
-   	Location Rio = new Location("Rio", riogpscoords);
-   	
-   	Environment testEnv = new Environment(5.0, 5.0, 5.0);
-   	
-   	Client testClient = new Client("asd", "yoDaddy69", "1", "2", "3");
-   	
-   	Content stuff = new Content("Stuff", testEnv, 1.0);
-   	
-   	Container shippingContainer1 = new Container(testClient, stuff, CPH);
-   	Container shippingContainer2 = new Container(testClient, stuff, Hawaii);
-   	Container shippingContainer3 = new Container(testClient, stuff, Rio);
-   	
-   	//we want this
-   	ContainerJourney[] containerJs = {new ContainerJourney(CPH, CPH, shippingContainer1),
-   									  new ContainerJourney(Tokyo, Tokyo, shippingContainer2),
-   									  new ContainerJourney(Sydney, Sydney, shippingContainer3),
-   									  new ContainerJourney(NY, NY, shippingContainer1),
- 									  new ContainerJourney(Hawaii, Hawaii, shippingContainer2),
- 									  new ContainerJourney(Rio, Rio, shippingContainer3)
-   									  };
-   	
-	   
-	Map frame = new Map(testClient, containerJs);
-	frame.showAllContainers();
-	
-   } */
 }
  

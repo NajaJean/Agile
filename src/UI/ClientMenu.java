@@ -21,7 +21,7 @@ public class ClientMenu extends JFrame {
     private JLabel[] shippingLabels;
     private JLabel backgroundLabel;
     private JLabel date = new JLabel(Calendar.getSystemDate().toString());
-   
+    private JLabel conStat = new JLabel ("");
     
     JMenu bookingMenu = new JMenu ("Booking");
     JMenuItem book_containerItem = new JMenuItem ("Book container");
@@ -89,12 +89,14 @@ public class ClientMenu extends JFrame {
         //add (welcomeLabel);
         
         add (date);
+        add (conStat);
         add (backgroundLabel);
-
+        
         //set component bounds (only needed by Absolute Positioning)
         clientMenuBar.setBounds (0, 0, 1810, 60);
         backgroundLabel.setBounds (0, 60, 1800, 900);
         date.setBounds(1650, 70, 200, 40);
+        conStat.setBounds(1300,90,500,40);
         
        
         
@@ -103,6 +105,10 @@ public class ClientMenu extends JFrame {
         setBounds(10, 10, 1810, 1010);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+    }
+    
+    public void changeStats(String con) {
+    	conStat.setText("Longest Journey - ID: "+ con);
     }
     
     public JMenuItem getBook_containerItem() {
