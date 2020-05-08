@@ -68,7 +68,7 @@ public class Location extends Search {
 	}
 
 	@Override
-	public int findFromString(String name, Object[] locs) {
+	public int find(String name, Object[] locs) {
     	int index = -1;
 		try {
 			for(int i = 0; i < locs.length; i++) {

@@ -15,12 +15,12 @@ public class ArraySearch {
 	}
 	
 	public int findIDX(int ID, Search[] Objects) {
-		int result = search.findFromID(ID, Objects);
+		int result = search.find(ID, Objects);
 		return result;
 	}
 	
 	public int findIDX(String string, Object[] Objects) {
-		int result = search.findFromString(string, Objects);
+		int result = search.find(string, Objects);
 		return result;
 	}
 	

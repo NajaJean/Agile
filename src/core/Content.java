@@ -37,7 +37,7 @@ public class Content extends Search {
 	}
 	
 	@Override
-	public int findFromString(String name, Object[] contents) {
+	public int find(String name, Object[] contents) {
 		int index = -1;
 			for(int i = 0; i < contents.length; i++) {
 				if(name.equals(((Content)contents[i]).name)) {

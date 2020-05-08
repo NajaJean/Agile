@@ -99,7 +99,7 @@ public class Client extends Search implements User, DatabaseEntity {
     }
     
     @Override
-    public int findFromString(String email, Object[] clients) {
+    public int find(String email, Object[] clients) {
 		int index = -1;
 		try {
 			for(int i = 0; i < clients.length; i++) {

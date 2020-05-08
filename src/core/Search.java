@@ -3,7 +3,7 @@ package core;
 public abstract class Search {
 	protected int ID;
 	
-	public int findFromID(int ID, Search[] objects) {
+	public int find(int ID, Search[] objects) {
 		int index = -1;
 		try {
 			for(int i = 0; i < objects.length; i++) {
@@ -16,5 +16,5 @@ public abstract class Search {
 		return index;
 	}
 	
-	public abstract int findFromString(String string, Object[] Objects);
+	public abstract int find(String string, Object[] Objects);
 }

@@ -76,7 +76,7 @@ public class Environment extends Search {
 	}
 
 	@Override
-	public int findFromString(String ID, Object[] enviros) {
+	public int find(String ID, Object[] enviros) {
 		int index = -1;
 		try {
 			for(int i = 0; i < enviros.length; i++) {

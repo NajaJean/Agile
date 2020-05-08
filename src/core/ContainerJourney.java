@@ -174,7 +174,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	}
 
 	@Override
-	public int findFromString(String containerID, Object[] cJs) {
+	public int find(String containerID, Object[] cJs) {
 		int index = -1;
 		try {
 			for(int i = 0; i < cJs.length; i++) {

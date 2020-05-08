@@ -65,7 +65,7 @@ public class Container extends Search implements DatabaseEntity {
 	}
 
 	@Override
-	public int findFromString(String clientID, Object[] containers) {
+	public int find(String clientID, Object[] containers) {
 		int index = -1;
 		for(int i = 0; i < containers.length; i++) {
 			if(Integer.parseInt(clientID) == ((Container)containers[i]).client.getID()) {
