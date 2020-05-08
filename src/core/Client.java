@@ -3,15 +3,12 @@ package core;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import org.apache.commons.lang.ArrayUtils;
-
 public class Client extends Search implements User, DatabaseEntity {
     private String username;
     private String password;
     private String name;
     private String email;
     private String address;
-    private int ID;
     private static int count = 1;
     private boolean loggedIn;
     
@@ -99,20 +96,6 @@ public class Client extends Search implements User, DatabaseEntity {
     	NotifyObject response;
     	response = new NotifyObject(131, "Client successfully created!");
     	return response;
-    }
-    
-    @Override
-    public int findFromID(int ID, Object[] clients) {
-		int index = -1;
-		try {
-			for(int i = 0; i < clients.length; i++) {
-				if(ID == ((Client)clients[i]).ID) {
-					index = i;
-					break;
-				}
-			}
-		} catch (Exception e) { e.printStackTrace(); }
-		return index;
     }
     
     @Override

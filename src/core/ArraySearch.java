@@ -14,7 +14,7 @@ public class ArraySearch {
 		this.search = search;
 	}
 	
-	public int findIDX(int ID, Object[] Objects) {
+	public int findIDX(int ID, Search[] Objects) {
 		int result = search.findFromID(ID, Objects);
 		return result;
 	}

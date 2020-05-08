@@ -5,7 +5,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class ContainerJourney extends Search implements DatabaseEntity {
-	private int journeyID;
 	private Location start;
 	private Location end;
 	private Container container;
@@ -19,7 +18,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	
 	public ContainerJourney(Location start, Location end, Container container,
 							LocalDate startDate, LocalDate endDate) {
-		this.journeyID = count++;
+		this.ID = count++;
 		this.start = start;
 		this.end = end;
 		this.container = container;
@@ -43,7 +42,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	public ContainerJourney(Location start, Location end, Container container,double currentx, double currenty,
 			LocalDate startDate, LocalDate endDate) {
 		// Overloaded method just when reading in the database 
-		this.journeyID = count++;
+		this.ID = count++;
 		this.start = start;
 		this.end = end;
 		this.container = container;
@@ -56,7 +55,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	}
 	
 	public int getJourneyID() {
-		return journeyID;
+		return ID;
 	}
 	
 	public Location getStartLocation() {
@@ -175,18 +174,6 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	}
 
 	@Override
-	public int findFromID(int ID, Object[] cJs) {
-		int index = -1;
-			for(int i = 0; i < cJs.length; i++) {
-				if(ID == ((ContainerJourney)cJs[i]).journeyID) {
-					index = i;
-					break;
-				}
-			}
-		return index;
-	}
-
-	@Override
 	public int findFromString(String containerID, Object[] cJs) {
 		int index = -1;
 		try {
@@ -202,7 +189,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	
     @Override
     public String toString() {
-    	return "'"+ journeyID + "', '" + start.getLocationID() + "', '" + end.getLocationID() + "', '" + 
+    	return "'"+ ID + "', '" + start.getLocationID() + "', '" + end.getLocationID() + "', '" + 
     			container.getContainerID() + "', '" + currentGps[0] + "', '" + currentGps[1] + "', '" +
     			startDate + "', '" + endDate + "'";
     }
@@ -214,7 +201,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 
 	@Override
 	public int entityID() {
-		return journeyID;
+		return ID;
 	}
 
 	@Override

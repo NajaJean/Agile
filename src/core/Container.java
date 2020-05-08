@@ -2,19 +2,16 @@ package core;
 
 
 public class Container extends Search implements DatabaseEntity {
-	
-	private int containerID; 
 	private Client client;
 	private Environment enviro;
 	private Content content;
 	private Location location;
-	
 	private static int count = 1;
 	
 	public Container() {}
 	
 	public Container(Client client, Content content, Location location) {
-		this.containerID = count++;
+		this.ID = count++;
 		this.client = client;
 		this.enviro = location.getEnvironment();
 		this.content = content;
@@ -22,7 +19,7 @@ public class Container extends Search implements DatabaseEntity {
 	}
 	
 	public Container(Location location) {
-		this.containerID = count++;
+		this.ID = count++;
 		this.enviro = location.getEnvironment();
 		this.location = location;
 	}
@@ -36,7 +33,7 @@ public class Container extends Search implements DatabaseEntity {
 	}
 	
 	public int getContainerID() {
-		return containerID;
+		return ID;
 	}
 	
 	public Client getClientofContainer() {
@@ -68,18 +65,6 @@ public class Container extends Search implements DatabaseEntity {
 	}
 
 	@Override
-	public int findFromID(int containerID, Object[] containers) {
-		int index = -1;
-		for(int i = 0; i < containers.length; i++) {
-			if(containerID == ((Container)containers[i]).containerID) {
-				index = i;
-				break;
-			}
-		}
-		return index;
-	}
-
-	@Override
 	public int findFromString(String clientID, Object[] containers) {
 		int index = -1;
 		for(int i = 0; i < containers.length; i++) {
@@ -95,11 +80,11 @@ public class Container extends Search implements DatabaseEntity {
     public String toString() {
 		String result = "";
 		try {
-			result = "'"+containerID+"', '"+ client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
+			result = "'"+ ID +"', '"+ client.getID() + "', '" + enviro.getEnviro_ID() + "', '" + 
 	    			content.getContentID() + "', '" + location.getLocationID()+"'";
 		}
 		catch(Exception e) {
-			result = "'"+containerID+"', NULL, '" + enviro.getEnviro_ID() + "', NULL, '" +  location.getLocationID()+"'";
+			result = "'"+ ID +"', NULL, '" + enviro.getEnviro_ID() + "', NULL, '" +  location.getLocationID()+"'";
 		}
     	return result;
     }
@@ -111,7 +96,7 @@ public class Container extends Search implements DatabaseEntity {
 
 	@Override
 	public int entityID() {
-		return containerID;
+		return ID;
 	}
 
 	@Override

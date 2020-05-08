@@ -2,9 +2,7 @@ package core;
 
 public class Location extends Search {
     private String name;
-    private int ID;
     private double[] GPScoord = new double[2];
-    
     private static int count = 1;
     
     public Location() {}
@@ -67,20 +65,6 @@ public class Location extends Search {
 		}
 		
 		return localEnviro;
-	}
-
-	@Override
-	public int findFromID(int ID, Object[] locs) {
-    	int index = -1;
-		try {
-			for(int i = 0; i < locs.length; i++) {
-				if(ID == ((Location)locs[i]).ID) {
-					index = i;
-					break;
-				}
-			}
-		} catch (Exception e) { e.printStackTrace(); }
-		return index; 
 	}
 
 	@Override

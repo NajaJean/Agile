@@ -2,7 +2,6 @@ package core;
 
 
 public class Environment extends Search {
-	private int enviro_ID;
 	private double temp;
 	private double pressure;
 	private double humidity;
@@ -14,11 +13,11 @@ public class Environment extends Search {
 		this.temp = temp;
 		this.pressure = pressure;
 		this.humidity = humidity;
-		this.enviro_ID = count++;
+		this.ID = count++;
 	}
 	
 	public int getEnviro_ID() {
-		return enviro_ID;
+		return ID;
 	}
 	
 	public void setTemp(double temp) {
@@ -77,25 +76,11 @@ public class Environment extends Search {
 	}
 
 	@Override
-	public int findFromID(int ID, Object[] enviros) { 
-		int index = -1;
-		try {
-			for(int i = 0; i < enviros.length; i++) {
-				if(ID == ((Environment)enviros[i]).enviro_ID) {
-					index = i;
-					break;
-				}
-			}
-		} catch (Exception e) { e.printStackTrace(); }
-		return index;
-	}
-
-	@Override
 	public int findFromString(String ID, Object[] enviros) {
 		int index = -1;
 		try {
 			for(int i = 0; i < enviros.length; i++) {
-				if(Integer.parseInt(ID) == ((Environment)enviros[i]).enviro_ID) {
+				if(Integer.parseInt(ID) == ((Environment)enviros[i]).ID) {
 					index = i;
 					break;
 				}
@@ -106,7 +91,7 @@ public class Environment extends Search {
 	
     @Override
     public String toString() {
-    	return "'"+ enviro_ID + "', '" + temp + "', '" + pressure + "', '" + 
+    	return "'"+ ID + "', '" + temp + "', '" + pressure + "', '" + 
     			humidity + "'";
     }
 }
