@@ -6,13 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.ArraySearch;
-import core.Environment;
+import core.DatabaseData;
 import core.Location;
 
 public class LocationTest {
 	
 	int expectedIndex = 1;
 	ArraySearch search;
+	Location[] locations = DatabaseData.getLocations();
+	double[] gpsCapeTown = {780.0, 790.0};
+	Location[] emptyLocations = new Location[0];
 	
 	@Before
 	public void setUp() {
@@ -21,45 +24,37 @@ public class LocationTest {
 	}
 
 	@Test
-	public void testContent() {
+	public void testLocation() {
 	
-		double[] gpsAfrica = {55.67594, 12.56553};
-		double[] gpsCopenhagen = {25.678, 4.6789}; 
+		assertEquals("Cape Town", locations[5].getLocationName());
+		assertEquals(6, locations[5].getLocationID()); 
 		
-		Location l = new Location("Afrika", gpsAfrica);
-		Location l2 = new Location("Copenhagen",gpsCopenhagen);
+		assertTrue(gpsCapeTown[0] == locations[5].getGPScoordX());
+		assertTrue(gpsCapeTown[1]== locations[5].getGPScoordY());
+		
+		locations[5].setGPSCoordX(22.1234);
+		locations[5].setGPSCoordY(23.1234);
+		locations[5].incrementOneGPSCoord(0, 1.00);
+		
+		assertTrue(locations[5].getGPScoordY() == locations[5].getGPScoordX());
+		
+		assertEquals(locations[5], locations[search.findIDX("Cape Town", locations)]);
+		assertEquals(locations[5], locations[search.findIDX(6, locations)]); 
+	}
+	
+	@Test
+	public void testFindLocation() {
 
-		Location[] Locations = {l,l2};
-		Location[] emptyLocations = new Location[0];
-		
-		assertEquals("Afrika", l.getLocationName());
-		assertEquals(gpsAfrica, l.getGPScoord());
-		assertEquals(expectedIndex, l.getLocationID()); 
-		
-		assertTrue(gpsAfrica[0] == l.getGPScoordX());
-		assertTrue(gpsAfrica[1]== l.getGPScoordY());
-		
-		l.setGPSCoordX(22.1234);
-		l.setGPSCoordY(23.1234);
-		l.incrementOneGPSCoord(0, 1.00);
-		
-		assertTrue(l.getGPScoordY() == l.getGPScoordX());
-		
-		assertEquals(l, Locations[search.findIDX("Afrika", Locations)]);
-		assertEquals(l2, Locations[search.findIDX(expectedIndex + 1, Locations)]); 
-		
 		assertEquals(-1, search.findIDX("Afrika", emptyLocations));
 		assertEquals(-1, search.findIDX(expectedIndex, emptyLocations));
 		
-		String expected = "'Copenhagen', '2', '25.678', '4.6789'";
-		assertEquals(expected, l2.toString());
-/*		Environment e = new Environment(15.0,1.0,0.0);
-		assertEquals(e ,l2.getEnvironment()); */
+		String expected = "'Cape Town', '6', '780.0', '790.0'";
+		assertEquals(expected, locations[5].toString());
 		
-		assertEquals(-308075418, Locations[0].hashCode());
-		assertEquals(false, Locations[0].equals(null));
-		assertEquals(true, Locations[0].equals(Locations[0]));
-		assertEquals(false, Locations[0].equals(gpsCopenhagen));
+		assertEquals(-636331458, locations[0].hashCode());
+		assertEquals(false, locations[0].equals(null));
+		assertEquals(true, locations[0].equals(locations[0]));
+		assertEquals(false, locations[0].equals(gpsCapeTown));
 	}
 
 }

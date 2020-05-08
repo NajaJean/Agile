@@ -19,6 +19,7 @@ public class AutomationTest {
 	private Client[] clients;
 	private Container[] containers;
 	private ContainerJourney[] cJs;
+	DatabaseData d = new DatabaseData();
 	
 	
 	@Before

@@ -176,14 +176,12 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	@Override
 	public int find(String containerID, Object[] cJs) {
 		int index = -1;
-		try {
 			for(int i = 0; i < cJs.length; i++) {
 				if(Integer.parseInt(containerID) == ((ContainerJourney)cJs[i]).container.getContainerID()) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
 	}
 	

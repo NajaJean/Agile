@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.ArraySearch;
+import core.Climate;
 import core.Content;
 import core.DatabaseData;
 import core.Environment;
@@ -13,6 +14,7 @@ import core.NotifyObject;
 
 public class EnvironmentTest {
 	
+	private Climate c = new Climate();
 	private Environment e;
 	Environment[] Enviros = DatabaseData.getEnvironments();
 	ArraySearch search;

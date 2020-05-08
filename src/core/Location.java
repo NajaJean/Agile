@@ -70,14 +70,12 @@ public class Location extends Search {
 	@Override
 	public int find(String name, Object[] locs) {
     	int index = -1;
-		try {
 			for(int i = 0; i < locs.length; i++) {
 				if(name.equals(((Location)locs[i]).name)) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index; 
 	}
 	

@@ -1,6 +1,5 @@
 package core;
 
-
 public class Climate{	
 
 	static double[] NAfrom = {0.0, 0.0};

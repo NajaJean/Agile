@@ -13,7 +13,7 @@ public class ConfigureClient extends JFrame {
 	
 	Client c;
 	
-	//temporary test client
+/*	//temporary test client
 	Client TestClient = new Client("corona", "1234", "labrat", "@", "asd");
 	String[] TestC = new String[]{"corona", "1234", "labrat", "@", "asd"};
 	
@@ -25,7 +25,7 @@ public class ConfigureClient extends JFrame {
 		Address{ int num() {return 4;}};
 	
 		abstract int num();
-	}
+	} */
 	
 	JLabel[] CurrentData = new JLabel[]{ 
 		new JLabel ("Current Username:"),

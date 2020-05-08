@@ -101,27 +101,23 @@ public class Client extends Search implements User, DatabaseEntity {
     @Override
     public int find(String email, Object[] clients) {
 		int index = -1;
-		try {
 			for(int i = 0; i < clients.length; i++) {
 				if(email.equals(((Client)clients[i]).email)) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
     }
     
     public static int findFromUserPass(String username, String password, Object[] clients) {
 		int index = -1;
-		try {
 			for(int i = 0; i < clients.length; i++) {
 				if(username.equals(((Client)clients[i]).username) && password.equals(((Client)clients[i]).password)) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
     }
     

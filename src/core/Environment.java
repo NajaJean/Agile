@@ -78,14 +78,12 @@ public class Environment extends Search {
 	@Override
 	public int find(String ID, Object[] enviros) {
 		int index = -1;
-		try {
 			for(int i = 0; i < enviros.length; i++) {
 				if(Integer.parseInt(ID) == ((Environment)enviros[i]).ID) {
 					index = i;
 					break;
 				}
 			}
-		} catch (Exception e) { e.printStackTrace(); }
 		return index;
 	}
 	
