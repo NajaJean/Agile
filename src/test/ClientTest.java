@@ -75,7 +75,7 @@ public class ClientTest {
 		assertEquals(-1, search.findIDX("najasemail@gmai", clients));
 		
 		ContainerJourney[] conJ = {cJs[1], cJs[2]};
-//		ContainerJourney[] conJ = {cJs[1], cJs[2], cJs[4], cJs[5], cJs[10]};
+
 		ContainerJourney[] conJ2 = clients[0].getClientsCJs(cJs);
 		
 		Set<ContainerJourney> set1 = new HashSet<ContainerJourney>(Arrays.asList(conJ));

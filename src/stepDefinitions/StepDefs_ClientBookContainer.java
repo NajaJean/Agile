@@ -42,9 +42,6 @@ public class StepDefs_ClientBookContainer {
 	public void that_there_exists_an_empty_container_in_the_database() {
 		id = d.getEmptyContainer();
 	    assertNotEquals(0,id);
-	    System.out.println(id);
-	    System.out.println(Containers.length);
-	    System.out.println(Containers[3].getContainerID());
 	}
 		
 	@When("the client books a container by filling it with a content")
