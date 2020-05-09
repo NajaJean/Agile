@@ -22,7 +22,8 @@ public class StepDefs_LogisticCompCreateClient {
 	NotifyObject response;
 	ScenarioContext context;
 	
-	public StepDefs_LogisticCompCreateClient() {
+	public StepDefs_LogisticCompCreateClient(ScenarioContext context) {
+		this.context = context;
 		this.Clients = DatabaseData.getClients();
 	}
 	

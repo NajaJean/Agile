@@ -24,7 +24,8 @@ public class StepDefs_LogisticRegisterContainer {
 	
 	Location loc;
 	
-	public StepDefs_LogisticRegisterContainer() {
+	public StepDefs_LogisticRegisterContainer(ScenarioContext context) {
+		this.context = context;
 		this.Locations = DatabaseData.getLocations();
 		this.search = new ArraySearch(new Location());
 	}
