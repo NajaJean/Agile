@@ -1,7 +1,6 @@
 package core;
 
-import java.sql.*; 
-
+import java.sql.*;
 public class Database {	
 	private Connection c;
 
@@ -9,7 +8,10 @@ public class Database {
 		try{  
 			this.c = DriverManager.getConnection("jdbc:ucanaccess://"+url); 
 
-		}catch(Exception ee){System.out.println(ee);} 
+		}catch(Exception ee){
+//			e.printStackTrace();
+//			throw new exception("Database wasn't found", ee);
+			System.out.println(ee.getMessage());} 
 	}
 
 	public String[][] getTable(String tableName) {
