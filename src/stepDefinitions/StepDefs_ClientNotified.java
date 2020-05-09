@@ -56,7 +56,7 @@ public class StepDefs_ClientNotified {
 	
 	@When("the environment in the container is outside the contents threshold")
 	public void the_environment_in_the_container_is_outside_the_contents_threshold() {
-		Environment containerEnvironment = Environments[8];
+		Environment containerEnvironment = Environments[0];
 		clientContainer.setContainerEnvironment(containerEnvironment);
 	    
 	   	notification = clientContainer.getContainerEnvironment().checkEnvironment(clientContainer.getContainerContent());  

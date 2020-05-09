@@ -61,7 +61,7 @@ public class ContainerJourneyTest {
 		
 		assertEquals("Journies", cJ[0].databaseTable());
 		assertEquals(1, cJ[0].entityID());
-		assertEquals("'1', '1', '16', '3', '1735.0', '325.0', '2020-03-28', '2020-04-15'", cJ[0].addValues());
+		assertEquals("'1', '1', '16', '3', '1735.0', '325.0', '2020-03-27', '2020-04-15'", cJ[0].addValues());
 		
 		cJ[0].moveContainerOnJ();
 		cJ[1].moveContainerOnJ();
