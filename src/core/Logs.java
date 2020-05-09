@@ -26,11 +26,7 @@ public class Logs {
 		
 		try {
 	      File myObj = new File("src\\logs\\" + fileName  + ".txt");
-	      if (myObj.createNewFile()) {
-	       // System.out.println("File created: " + myObj.getName());
-	      } else {
-	        //System.out.println("File already exists.");
-	      }
+	      myObj.createNewFile();
 	    } catch (IOException e) {
 	      System.out.println("An error occurred.");
 	      e.printStackTrace();
@@ -44,7 +40,6 @@ public class Logs {
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
 		        data += myReader.nextLine() + "\n";
-		        //System.out.println(data);
 		      }
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
@@ -94,7 +89,6 @@ public class Logs {
 		      				 isThresholdOK + "\t" + "\n");
 		      
 		      myWriter.close();
-		      //System.out.println("Successfully wrote to the file.");
 		    } catch (IOException e) {
 		      System.out.println("An error occurred.");
 		      e.printStackTrace();
@@ -119,6 +113,6 @@ public class Logs {
 			appendContainerLog(cJs[i]);
 		}
 	}
-
 }
+
 
