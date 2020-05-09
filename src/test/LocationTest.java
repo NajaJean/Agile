@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import core.ArraySearch;
+import core.Container;
 import core.DatabaseData;
 import core.Location;
 
@@ -15,7 +16,9 @@ public class LocationTest {
 	ArraySearch search;
 	Location[] locations = DatabaseData.getLocations();
 	double[] gpsCapeTown = {780.0, 790.0};
+	double[] gpscph = {730.0, 740.0};
 	Location[] emptyLocations = new Location[0];
+	Container[] con = DatabaseData.getContainers();
 	
 	@Before
 	public void setUp() {
@@ -44,7 +47,9 @@ public class LocationTest {
 	
 	@Test
 	public void testFindLocation() {
-
+		Location lo = new Location(null, null);
+		
+		Location cph = new Location("Copenhagen", gpscph);
 		assertEquals(-1, search.findIDX("Afrika", emptyLocations));
 		assertEquals(-1, search.findIDX(expectedIndex, emptyLocations));
 		
@@ -52,9 +57,12 @@ public class LocationTest {
 		assertEquals(expected, locations[5].toString());
 		
 		assertEquals(-636331458, locations[0].hashCode());
-		assertEquals(false, locations[0].equals(null));
-		assertEquals(true, locations[0].equals(locations[0]));
-		assertEquals(false, locations[0].equals(gpsCapeTown));
+		assertEquals(508, lo.hashCode());
+		assertFalse(locations[0].equals(null));
+		assertTrue(locations[0].equals(locations[0]));
+		assertTrue(locations[5].equals(con[0].getContainerLocation()));
+		assertFalse(locations[0].equals(gpsCapeTown));
+		
 	}
 
 }
