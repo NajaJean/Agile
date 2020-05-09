@@ -66,45 +66,6 @@ public class Automation {
 							 locations[r.nextInt(numberOfLocations)]);
 	}
 	
-	public ContainerJourney rCJs() {
-		
-		Random r = new Random();
-		
-		Container[] containers = DatabaseData.getContainers();
-		Location[] locations = DatabaseData.getLocations();
-		
-		ContainerJourney[] cjs = DatabaseData.getJournies();
-		Location start;
-		Location end;
-
-		int numberOfLocations = locations.length;
-		int month;
-		int endDay;
-		int startday;
-		int con;
-		
-		month = r.nextInt(8) + 5;
-		startday = r.nextInt(23) + 4;
-		
-		do {
-			endDay = r.nextInt(28) + 1;
-			
-		} while(startday >= endDay);
-		
-		start = locations[r.nextInt(numberOfLocations)];
-		
-		do {
-		    end = locations[r.nextInt(numberOfLocations)];
-
-		} while(start == end);
-		con = DatabaseData.getDatabase().getEmptyContainer();
-		
-		ContainerJourney a = new ContainerJourney(start, end,
-				containers[con-1],
-				LocalDate.of(2020, 5, startday), 
-				LocalDate.of(2020, month, endDay));
-		return a;
-		}
 
 	public Client randomClient() {
 		Random r = new Random();
