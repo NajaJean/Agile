@@ -10,8 +10,6 @@ import core.*;
 
 public class Map extends JFrame{
 	  
-    //construct components
-	
 	java.awt.Container map = getContentPane();
 	java.awt.Container container = getContentPane();
 	
@@ -27,10 +25,7 @@ public class Map extends JFrame{
     ContainerJourney[] cJs;
     Client client;
     
-    boolean isGoingRight = true;
-    
-    //Climate climate = new Climate();
-    
+    boolean isGoingRight = true;    
  
     public Map(Client client, ContainerJourney[] containerJourneys) {
     	
@@ -57,12 +52,6 @@ public class Map extends JFrame{
     	
         addComponentsToContainer();
         addComponentsToMap();
-        
-        /* setTitle("World Map");
-        setVisible(true);
-        setBounds(0, 0, 1810, 950);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);*/
     }
     
     public JLabel getMapBackground() {
@@ -95,22 +84,6 @@ public class Map extends JFrame{
     public void setContainer(int i) {
     	shippingC[i].setBounds ((int)cJs[i].getCurrentX(), (int)cJs[i].getCurrentY(), 50, 38);        
     }
-    
-	private void ifEnrouteChangeIcon(int j, int index, String enrouteIcon, String stationaryIcon) {
-		if (isEnroute(j, index)) {
-			
-			if (isGoingRight(index)) { setLabelIcon(index, planeright);}
-			else {setLabelIcon(index, planeleft);}
-		}
-		else {
-				setLabelIcon(index, stationaryIcon);
-		}
-		
-	}
-
-	private boolean isEnroute(int currentStep, int index) {
-		return (currentStep > 5) && (Math.abs(cJs[index].getCurrentX()-cJs[index].getEndLocX()) > 3);
-	}
     
     public void showAllContainers(){
     	for (int i = 0; i < shippingC.length; i++) {

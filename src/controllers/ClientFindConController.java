@@ -24,7 +24,6 @@ public class ClientFindConController {
 	String[] listItems;
 	List<Content> conArray = new ArrayList<Content>();
 
-	
 	public ClientFindConController(Client c) {
 		view = new ClientFindConUI();
 		this.containers = DatabaseData.getContainers();

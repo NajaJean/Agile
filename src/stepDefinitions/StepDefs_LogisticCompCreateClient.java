@@ -20,6 +20,7 @@ public class StepDefs_LogisticCompCreateClient {
 	LogisticCompany l; 
 	Client[] Clients;
 	NotifyObject response;
+	ScenarioContext context;
 	
 	public StepDefs_LogisticCompCreateClient() {
 		this.Clients = DatabaseData.getClients();
@@ -42,10 +43,10 @@ public class StepDefs_LogisticCompCreateClient {
 	    
 	}
 
-	@Then("the client is created and message displayed says {string}")
-	public void the_client_is_created_and_message_displayed_says(String string) {
+	@Then("the client is created")
+	public void the_client_is_created() {
 		response = C.createNewClient();
-		assertEquals("Client successfully created!",response.getNotifyMessage());
+		context.setResponse(response);	
 	}
 	
 	@Then("is found in the database")

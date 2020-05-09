@@ -11,20 +11,14 @@ import ExternalData.DatabaseData;
 public class History extends JFrame {
 	
 	private ContainerJourney[] cJs;
-	
 	private JComboBox idBox;
     private JLabel showContLabel;
     private JLabel historyLabel;
     private JComboBox parametersBox;
-   
     private JButton showButton;
     private JButton cancelButton;
-    
-
 
 	public History(Client c) {
-    	//construct preComponents
-		
 		
 		this.cJs = c.getClientsCJs(DatabaseData.getJournies());
     	String[] idBoxItems1 = new String[cJs.length];
@@ -38,38 +32,28 @@ public class History extends JFrame {
     		parameterBoxItems[i] = parameters[i];
     	}
   
-        //construct components
         idBox = new JComboBox (idBoxItems1);
         showContLabel = new JLabel ("Show container ");
         historyLabel = new JLabel (" history.");
         parametersBox = new JComboBox (parameterBoxItems);
-    
         showButton = new JButton ("Show history");
         cancelButton = new JButton ("Cancel");
         
-     
-        //adjust size and set layout
         setPreferredSize (new Dimension (400, 100));
         setLayout (null);
 
-        //add components
         add (idBox);
         add (showContLabel);
         add (historyLabel);
         add (parametersBox);
-    
-        
         add (showButton);
         add (cancelButton);
 
-        //set component bounds (only needed by Absolute Positioning)
-       
         showContLabel.setBounds ( 13, 15, 100, 25);
         idBox.setBounds ( 125, 15, 35, 25);
         parametersBox.setBounds ( 180, 15, 100, 25);
         historyLabel.setBounds ( 290, 15, 100, 25);
     
-        
         showButton.setBounds (5, 50, 130, 25);
         cancelButton.setBounds (130, 50, 130, 25);
         
@@ -86,11 +70,9 @@ public class History extends JFrame {
 	public JButton getCancelButton() {
 		return cancelButton;
 	}
-	
 	public JComboBox getIdBox() {
 		return idBox;
 	}
-	
 	public JComboBox getParamBox() {
 		return parametersBox;
 	}

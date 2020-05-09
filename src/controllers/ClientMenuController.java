@@ -25,7 +25,6 @@ public class ClientMenuController {
 	Container[] Containers;
 	
 	Logs Log;
-	
 	ArraySearch search;
 	
 	ClientMenuController(Client client) {
@@ -37,7 +36,6 @@ public class ClientMenuController {
 		
 		Log = new Logs(Containers);
 		
-		//Content outside threshold
 		String thresholdMessage = containersOutsideThreshold(client);
 		if (!thresholdMessage.equals("")) {
 			JOptionPane.showMessageDialog(null,thresholdMessage);

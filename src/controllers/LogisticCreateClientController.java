@@ -21,7 +21,6 @@ public class LogisticCreateClientController {
 	private void goToLogisticCompanyMenu() {
 		LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 		view.dispose();
-		
 		lm.initController();
 	}
 	

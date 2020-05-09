@@ -26,8 +26,7 @@ public class LogisticCreateClient extends JFrame {
         setVisible(true);
         setBounds(10, 10, 370, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
- 
+        setResizable(false); 
     }
  
     public void setLayoutManager() {

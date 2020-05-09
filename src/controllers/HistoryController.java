@@ -20,7 +20,6 @@ public class HistoryController {
 		view = new History(c);
 		selId = -1;
 		selParameter = "";
-	
 	}
 	
 	public void initController() {

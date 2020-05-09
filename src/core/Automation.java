@@ -15,7 +15,6 @@ public class Automation {
 	{	
 		String name = RandomStringUtils.randomAlphabetic(textLength);
 		
-		//Capital first letter
 		name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
 		
 		return name;
@@ -36,13 +35,11 @@ public class Automation {
 		Random r = new Random();
 		String address = RandomStringUtils.randomAlphabetic(addressLength);
 		
-		//Capital first letter
 		address = address.substring(0, 1).toUpperCase() + address.substring(1).toLowerCase() +
 				" " + String.valueOf(r.nextInt(89) + 10);
 		
 		return address;			
 	}
-	
 	public Client rClient() {
 		
 		return new Client((rName(3) + "UserName"), rPass(3) + "PASS", 

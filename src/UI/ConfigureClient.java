@@ -10,22 +10,7 @@ import core.Client;
 public class ConfigureClient extends JFrame {
 	
 	java.awt.Container container = getContentPane();
-	
 	Client c;
-	
-/*	//temporary test client
-	Client TestClient = new Client("corona", "1234", "labrat", "@", "asd");
-	String[] TestC = new String[]{"corona", "1234", "labrat", "@", "asd"};
-	
-	enum Data{	
-		UserName{ int num() {return 0;}},
-		Password{ int num() {return 1;}},
-		Name{ int num() {return 2;}},
-		Email{ int num() {return 3;}},
-		Address{ int num() {return 4;}};
-	
-		abstract int num();
-	} */
 	
 	JLabel[] CurrentData = new JLabel[]{ 
 		new JLabel ("Current Username:"),
@@ -100,7 +85,6 @@ public class ConfigureClient extends JFrame {
     	container.add(NewData[i]);
     	container.add(NewTextField[i]);
     	}
-    	
     	container.add(doneButton);
     	container.add(returnButton);
     }

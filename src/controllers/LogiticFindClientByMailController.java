@@ -10,7 +10,6 @@ public class LogiticFindClientByMailController {
 	private LogiticFindClientByMailUI view;
 	Client[] Clients;
 	Client client;
-	
 	ArraySearch search;
 	
 	public LogiticFindClientByMailController() {

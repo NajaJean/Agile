@@ -10,7 +10,7 @@ import ExternalData.Logs;
 
 public class Calendar {
 	
-	public static LocalDate SystemDate = LocalDate.of(2020, 4, 27);//LocalDate.now();//LocalDate.of(2020, 4, 25);
+	public static LocalDate SystemDate = LocalDate.of(2020, 4, 27);
 	
 	public static LocalDate getSystemDate() {
 		return SystemDate;
@@ -38,7 +38,6 @@ public class Calendar {
 				log.appendContainerLog(cJs[i]);
 				DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(cJs[i].getCurrentX()), Integer.toString(cJs[i].getJourneyID()));
 				DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(cJs[i].getCurrentY()), Integer.toString(cJs[i].getJourneyID()));	
-				
 				
 			}
 			

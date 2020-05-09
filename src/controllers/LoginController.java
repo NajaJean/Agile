@@ -55,7 +55,6 @@ public class LoginController {
 				cm.initController();
 			}
 			else {
-				//response = client.logIn(false);
 				JOptionPane.showMessageDialog(null, "Incorrect username or password");
 			}
 		}

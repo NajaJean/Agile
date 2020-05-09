@@ -38,8 +38,7 @@ public class ClientFindConUI extends JFrame {
 	
 	    setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
 	    setLocationRelativeTo(null);
-        listScroller.setPreferredSize(new Dimension(250, 80));
-//        listScroller.setAlignmentX(LEFT_ALIGNMENT);  
+        listScroller.setPreferredSize(new Dimension(250, 80)); 
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setResizable(false);
     }
@@ -89,8 +88,7 @@ public class ClientFindConUI extends JFrame {
 		list = new JList(listItems);
 		listScroller.setAlignmentY(LEFT_ALIGNMENT);
 		listScroller.setViewportView(list);
-		
-//		listScroller.setBounds (frameWidth/14, 75, 600, 150);
+
     }
   
 }

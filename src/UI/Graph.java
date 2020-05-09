@@ -24,25 +24,21 @@ import core.*;
 
 public class Graph extends JFrame {
 	
-	 
-
 	private static final long serialVersionUID = 1L;
   	Container[] cS = DatabaseData.getContainers();
   	Logs L = new Logs(cS);
 
   	public Graph(String title, int ContainerID, int ColumnIndex, String YLabel, String datasetName) {
   		super(title);
-	    
-  		
   		 		
   		String[][] a = getValuesFromFile(ContainerID, ColumnIndex);
   		
 	    DefaultCategoryDataset dataset = createDataset( datasetName, a );
 	    
 	    JFreeChart chart = ChartFactory.createLineChart(
-	        "", // Chart title
-	        "Date", // X-Axis Label
-	        YLabel, // Y-Axis Label
+	        "", 
+	        "Date",
+	        YLabel,
 	        dataset
 	        );
 	    
@@ -52,27 +48,19 @@ public class Graph extends JFrame {
 	    axis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
 	    
 	    ChartPanel panel = new ChartPanel(chart);
-	    //setContentPane(panel);
 	    add (panel);
-	    windowSettings();
-	   
-	  
+	    windowSettings();	  
   	}
   	
-  	protected String[][] getValuesFromFile(int ContainerID, int ColumnIndex)
-  	{
-  		  				
+  	protected String[][] getValuesFromFile(int ContainerID, int ColumnIndex) {			
   		String inFile;
-  		
   		inFile = L.readFile("Container " + ContainerID);
   		
-  		//System.out.println(inFile);
   		String lines[] = inFile.split("\\n");
   		String[] temp = new String[4];
   		String[][] data = new String[lines.length][];
   		String[][] returnData = new String[lines.length][];
-  		
-  		
+
   		for (int i = 0; i < lines.length; i++) 
   		{
   			data[i] = lines[i].split("\\t");
@@ -85,22 +73,18 @@ public class Graph extends JFrame {
   	
   	
   	protected DefaultCategoryDataset createDataset(String xAxis, String[][] data) {
-	
 	    String series1 = xAxis;
-	    
-	
+
 	    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 	    
-	    for (int i = 0; i < data.length; i++) 
-	    {
+	    for (int i = 0; i < data.length; i++) {
 	    	dataset.addValue(Double.valueOf(data[i][0]), series1, data[i][1]);
 	    }
 	
 	    return dataset;
   }
   
-  	public void windowSettings() 
-  	{
+  	public void windowSettings() {
   		setAlwaysOnTop(true);
 	    pack();
 	    setSize(600, 400);

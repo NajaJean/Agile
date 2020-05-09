@@ -61,11 +61,9 @@ public class Location extends Search {
 					(GPScoord[0] < climate[i].to[0])) &&
 				((climate[i].from[1] <= GPScoord[1]) && 
 						(GPScoord[1] < climate[i].to[1])))
-			{
-				localEnviro = toAssign[i + 1]; 
+			{ localEnviro = toAssign[i + 1]; 
 			}
 		}
-		
 		return localEnviro;
 	}
 

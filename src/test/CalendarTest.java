@@ -11,11 +11,7 @@ import org.junit.Test;
 import core.*;
 
 public class CalendarTest {	
-	
-	@Before
-	public void prep() {	}
 		
-	
 	@Test
 	public void testGetSetSysDate() {
 		
@@ -30,7 +26,6 @@ public class CalendarTest {
 	public void testGoTomorrow() {
 		
 		Calendar c = new Calendar();
-		
 		
 		LocalDate testSet = LocalDate.of(2020,03,28);
 		

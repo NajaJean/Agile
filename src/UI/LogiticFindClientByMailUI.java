@@ -25,7 +25,6 @@ public class LogiticFindClientByMailUI extends JFrame {
     private int frameHeight = 230;
     
     public LogiticFindClientByMailUI() {
-    	Client[] clients = DatabaseData.getClients();
         setLayout(null);
         setLocationAndSize();
         addComponentsToContainer();

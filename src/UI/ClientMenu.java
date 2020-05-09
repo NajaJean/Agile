@@ -45,7 +45,6 @@ public class ClientMenu extends JFrame {
 		backgroundLabel = map.getMapBackground();
 		shippingLabels = map.getContainerLabels();
 		
-        //construct preComponents
 		bookingMenu.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		future.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
 		tomorrow.setFont(new Font("Sansa-Serif", Font.PLAIN, 20));
@@ -66,39 +65,28 @@ public class ClientMenu extends JFrame {
         future.add(nextWeek);
         date.setFont(new Font("Sansa-Serif", Font.BOLD, 25));
 
-        //construct components
         clientMenuBar = new JMenuBar();
         clientMenuBar.add (bookingMenu);
         clientMenuBar.add (my_containersMenu);
         clientMenuBar.add (settingsMenu);
         clientMenuBar.add (future);
         
-   
-        //adjust size and set layout
-       
         setPreferredSize (new Dimension (1810, 1010));
         setLayout (null);
 
-        //add components
-        
         add (clientMenuBar);
-                
+          
         for (int i = 0; i < shippingLabels.length; i++) {
     		add(shippingLabels[i]);}
-        
-        //add (welcomeLabel);
         
         add (date);
         add (conStat);
         add (backgroundLabel);
         
-        //set component bounds (only needed by Absolute Positioning)
         clientMenuBar.setBounds (0, 0, 1810, 60);
         backgroundLabel.setBounds (0, 60, 1800, 900);
         date.setBounds(1650, 70, 200, 40);
         conStat.setBounds(1300,90,500,40);
-        
-       
         
         setTitle("Client Menu");
         setVisible(true);

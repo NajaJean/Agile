@@ -25,8 +25,6 @@ public class StepDefs_Search {
 	Container[] containers = DatabaseData.getContainers();
 	Container[] clientContainers;
 	
-	//Given a Logistic Company
-	
 	@Given("a client email")
 	public void a_client_email() {		
 		email = Clients[0].getEmail();
@@ -44,8 +42,6 @@ public class StepDefs_Search {
 	    assertEquals(email, client.getEmail());
 	}
 
-	// Given a client 
-	
 	@When("the client types the content of the container")
 	public void the_client_types_the_content_of_the_container() {
 	    content = "Mangoes";

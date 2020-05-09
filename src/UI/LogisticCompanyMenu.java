@@ -32,7 +32,7 @@ public class LogisticCompanyMenu extends JFrame {
     JMenuItem nextWeek = new JMenuItem("See Next Week");
     
     public LogisticCompanyMenu() {
-    	
+    	 
     	settingsMenu.add(autoMenuItem);
         containerMenu.add (update_container_statusItem);
         containerMenu.add (register_new_containerItem);
@@ -96,7 +96,6 @@ public class LogisticCompanyMenu extends JFrame {
     public JMenuItem getSignOutItem() {
     	return sign_outItem;
     }
-    
     public JMenuItem getAutoMenuItem() {
     	return autoMenuItem;    	
     }
@@ -115,7 +114,4 @@ public class LogisticCompanyMenu extends JFrame {
     public JMenuItem getNextWeek() {
     	return nextWeek;
     }
-    
-    
-    
 }

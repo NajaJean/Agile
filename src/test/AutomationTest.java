@@ -19,25 +19,18 @@ public class AutomationTest {
 	private int lengths = 3;
 	private Client[] clients;
 	private Container[] containers;
-	private ContainerJourney[] cJs;
 	DatabaseData d = new DatabaseData();
-	
 	
 	@Before
 	public void prep() {
 		
 		clients = DatabaseData.getClients();
 		containers = DatabaseData.getContainers();
-		cJs = DatabaseData.getJournies();
-		a = new Automation();
-		
+		a = new Automation();	
 	}
-	
-	
 	
 	@Test
 	public void testrName() {
-		
 		String test = a.rName(lengths);
 		assertEquals(lengths, test.length()); 
 		assertTrue(Character.isUpperCase(test.charAt(0)));
@@ -49,8 +42,7 @@ public class AutomationTest {
 		String test = a.rPass(lengths);
 		assertEquals(lengths, test.length()); 
 	}
-	
-		
+			
 	@Test
 	public void testrEmail() {
 		
@@ -87,8 +79,6 @@ public class AutomationTest {
 		Database da = DatabaseData.getDatabase();
 		assertFalse(da.checkUser("Hans", "5432"));
 
-	}
-	
-	
+	}	
 
 }

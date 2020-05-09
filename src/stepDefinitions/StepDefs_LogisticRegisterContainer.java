@@ -7,6 +7,7 @@ import core.Container;
 import core.Environment;
 import core.Location;
 import core.LogisticCompany;
+import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,7 +18,8 @@ public class StepDefs_LogisticRegisterContainer {
 	Container C;
 	LogisticCompany l;
 	Location[] Locations;
-	
+	ScenarioContext context;
+	NotifyObject response;
 	ArraySearch search;
 	
 	Location loc;
@@ -38,11 +40,12 @@ public class StepDefs_LogisticRegisterContainer {
 		loc = Locations[locationIDX];
 	}
 
-	@Then("the container is created with no content in the database and message displayed saying {string}")
-	public void the_container_is_created_with_no_content_in_the_database_and_message_displayed_saying(String string) {
+	@Then("the container is created with no content in the database")
+	public void the_container_is_created_with_no_content_in_the_database() {
 		C = new Container(loc);
 		d.addToDatabase(C);
-		System.out.print(string);
+		response = new NotifyObject(202, "Container successfully registered");
+		context.setResponse(response);	
 	}
 
 	@Then("container is found in the database")

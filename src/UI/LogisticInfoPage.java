@@ -12,7 +12,6 @@ public class LogisticInfoPage extends JFrame {
     private JButton returnButton;
 
     public LogisticInfoPage(String ClorCo, Client[] Clients, Container[] Containers) {
-        //construct preComponents
     	
     	String[] listItems;
     	if (ClorCo.equals("Client")) {
@@ -38,21 +37,17 @@ public class LogisticInfoPage extends JFrame {
         	}
     	}
     	
-        //construct components
     	list = new JList (listItems);
         jcomp2 = new JLabel ("My "+ClorCo.toLowerCase()+"s:");
         returnButton = new JButton ("Return to menu");
 
-        //adjust size and set layout
         setPreferredSize (new Dimension (681, 413));
         setLayout (null);
 
-        //add components
         add (list);
         add (jcomp2);
         add (returnButton);
 
-        //set component bounds (only needed by Absolute Positioning)
         list.setBounds (15, 35, 490, 150);
         jcomp2.setBounds (15, 10, 100, 25);
         returnButton.setBounds (10, 195, 135, 25);

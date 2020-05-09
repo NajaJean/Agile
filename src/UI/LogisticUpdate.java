@@ -20,12 +20,11 @@ public class LogisticUpdate extends JFrame {
     private JCheckBox arrivedCheckBox;
     
     public LogisticUpdate(ContainerJourney[] Journies) {
-    	//construct preComponents
     	this.Journies=Journies;
     	int counter = 0;
     	String[] containerBoxItems = new String [Journies.length]; 
     	for(int i = 0; i<Journies.length;i++) {
-    		//Ensures the journey is a current one
+
     		if(Journies[i].getEndLocation().getGPScoordX()!=Journies[i].getCurrentX()&&
     				Journies[i].getEndLocation().getGPScoordY()!=Journies[i].getCurrentY()) {
     			Journies[i].getCurrentLocationDoubleA();
@@ -35,10 +34,7 @@ public class LogisticUpdate extends JFrame {
     			counter++;
     		}
     	}
-    	// Had to take out because there are null values in the array
-    	//Arrays.sort(containerBoxItems);
-    	
-        //construct components
+
         gpsLatitudeLabel = new JLabel ("GPS latitude:");
         gpsLatitudeField = new JTextField (5);
         gpsLongitudeLabel = new JLabel ("GPS longitude:");
@@ -49,11 +45,9 @@ public class LogisticUpdate extends JFrame {
         containerIDLabel = new JLabel ("Choose Container ID:");
         arrivedCheckBox = new JCheckBox ("Arrived");
 
-        //adjust size and set layout
         setPreferredSize (new Dimension (681, 416));
         setLayout (null);
 
-        //add components
         add (gpsLatitudeLabel);
         add (gpsLatitudeField);
         add (gpsLongitudeLabel);
@@ -64,7 +58,6 @@ public class LogisticUpdate extends JFrame {
         add (containerIDLabel);
         add (arrivedCheckBox);
 
-        //set component bounds (only needed by Absolute Positioning)
         gpsLatitudeLabel.setBounds (20, 45, 115, 25);
         gpsLatitudeField.setBounds (150, 45, 100, 25);
         gpsLongitudeLabel.setBounds (20, 90, 125, 25);
@@ -86,12 +79,9 @@ public class LogisticUpdate extends JFrame {
     public JTextField getgpsLatitudeField() {
     	return gpsLatitudeField;
     }
-    
     public JTextField getgpsLongitudeField() {
     	return gpsLongitudeField;
-    }
-    
-    
+    } 
     public JButton getcancelButton() {
     	return cancelButton;
     }
@@ -101,7 +91,6 @@ public class LogisticUpdate extends JFrame {
     public JComboBox getcontainerBox() {
     	return containerBox;
     }
-    
     public JCheckBox getarrivedCheckBox() {
     	return arrivedCheckBox;
     }	

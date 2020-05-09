@@ -72,7 +72,6 @@ public class ConfigureClientController {
 											"New Email: " + c.getEmail() + " \n" +
 											"New Address: " + c.getAddress());
 		
-		//Update database
 		DatabaseData.getDatabase().updateDatabase("Clients", "Username",c.getUsername(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Password",c.getPassword(),Integer.toString(c.getID()));
 		DatabaseData.getDatabase().updateDatabase("Clients", "Name",c.getName(),Integer.toString(c.getID()));

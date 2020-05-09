@@ -27,9 +27,7 @@ public class LogisticUpdateController {
 	ArraySearch search;
 
 	public LogisticUpdateController() {
-		Containers = DatabaseData.getContainers();//possibly never used, check this else delete
 		cJs = DatabaseData.getJournies();
-		// NEED a method to only show the current containers on a journey (where the current x and y are not at the end location)
 		this.view = new LogisticUpdate(cJs);
 		this.search = new ArraySearch();
 	}
@@ -102,7 +100,6 @@ public class LogisticUpdateController {
 		LogisticCompanyMenuController lm = new LogisticCompanyMenuController();
 		view.dispose();
 		lm.initController();
-
 	}
 
 	public void updateContainer() {
@@ -121,9 +118,6 @@ public class LogisticUpdateController {
 		DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(chosenCJ.getJourneyID()));
 		DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(chosenCJ.getJourneyID()));			
 		DatabaseData.getDatabase().updateDatabase("Journies", "EndDate", Calendar.getSystemDate().toString(), Integer.toString(chosenCJ.getJourneyID()));			
-
-		//If container has arrived
-		//Set the container client ID and content ID to null (make it free for a new journey) and update its current location
 		DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",Integer.toString(chosenCJ.getContaineronJourney().getContainerID()));
 		DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID",Integer.toString(chosenCJ.getContaineronJourney().getContainerID()));
 		DatabaseData.getDatabase().updateDatabase("Containers", "Location_ID",Integer.toString(chosenCJ.getEndLocation().getLocationID()),Integer.toString(chosenCJ.getContaineronJourney().getContainerID()));

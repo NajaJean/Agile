@@ -28,7 +28,6 @@ public class Login extends JFrame {
         setTitle("Login Form");
         setVisible(true);
         
-        // Center JFrame in the middle of screen when it is initialized
         setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
         setLocationRelativeTo(null);
         

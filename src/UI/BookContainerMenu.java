@@ -31,7 +31,7 @@ public class BookContainerMenu extends JFrame {
     
 
 	public BookContainerMenu() {
-    	//construct preComponents
+		
     	Content[] Contents = DatabaseData.getContents();
     	String[] boxItems1 = new String[Contents.length];
     	for (int i=0; i<Contents.length; i++) {
@@ -53,8 +53,7 @@ public class BookContainerMenu extends JFrame {
     	for (int i = 0; i < 28; i++) {
     		boxItemsDays[i] = String.valueOf( i + 1);
     	}
-  
-        //construct components
+
         contentBox = new JComboBox (boxItems1);
         jcomp2 = new JLabel ("Select content:");
         jcomp3 = new JLabel ("Shipped from:");
@@ -74,18 +73,15 @@ public class BookContainerMenu extends JFrame {
         endM = new JComboBox(boxItemsMonths);
         endD = new JComboBox(boxItemsDays);
 
-        //adjust size and set layout
         setPreferredSize (new Dimension (681, 413));
         setLayout (null);
 
-        //add components
         add (contentBox);
         add (jcomp2);
         add (jcomp3);
         add (startBox);
         add (jcomp5);
         add (endBox);
-        
         add (startDate);
         add (startY);
         add (startM);
@@ -94,11 +90,9 @@ public class BookContainerMenu extends JFrame {
         add (endY);
         add (endM);
         add (endD);
-        
         add (bookButton);
         add (cancelButton);
 
-        //set component bounds (only needed by Absolute Positioning)
         contentBox.setBounds (110, 15, 145, 25);
         jcomp2.setBounds (15, 15, 100, 25);
         jcomp3.setBounds (15, 45, 100, 25);
@@ -134,14 +128,12 @@ public class BookContainerMenu extends JFrame {
 	public JComboBox getendBox() {
 		return endBox;
 	}
-	
 	public JButton getBookButton() {
 		return bookButton;
 	}
 	public JButton getCancelButton() {
 		return cancelButton;
 	}
-	
 	public JComboBox getStartYBox() {
 		return startY;
 	}
@@ -151,7 +143,6 @@ public class BookContainerMenu extends JFrame {
 	public JComboBox getStartDBox() {
 		return startD;
 	}
-	
 	public JComboBox getEndYBox() {
 		return endY;
 	}
@@ -161,10 +152,5 @@ public class BookContainerMenu extends JFrame {
 	public JComboBox getEndDBox() {
 		return endD;
 	}
-	
-	/*public static void main(String[] args) {
-		
-		BookContainerMenu b = new BookContainerMenu();
-	}*/
 
 }

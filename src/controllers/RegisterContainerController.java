@@ -19,7 +19,6 @@ public class RegisterContainerController {
 	Environment Enviro;
 	String selected;
 	Location[] Locations;
-	
 	ArraySearch search;
 	
 	public RegisterContainerController() {

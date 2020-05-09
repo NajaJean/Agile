@@ -11,8 +11,6 @@ public class Database {
 			this.c = DriverManager.getConnection("jdbc:ucanaccess://"+url); 
 
 		}catch(Exception ee){
-//			e.printStackTrace();
-//			throw new exception("Database wasn't found", ee);
 			System.out.println(ee.getMessage());} 
 	}
 
@@ -37,7 +35,6 @@ public class Database {
 					}
 				}
 			}
-			//System.out.println(tableName + "  table imported sucessfully!");
 			s.close();
 		} catch (SQLException e){System.out.println(e);}
 
@@ -97,7 +94,7 @@ public class Database {
 			s.close();
 		} catch (SQLException ex){System.out.println(ex);} 		
 	}
-	// Changing current data to a new value
+
 	public NotifyObject updateDatabase(String tableName, String column, String value, String condition) {
 		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "=" + "'"+value+"'"
@@ -115,7 +112,7 @@ public class Database {
 		response = new NotifyObject(23, "The update was successful");
 		return response;
 	}
-	// Changing current data to a null field 
+
 	public NotifyObject updateDatabase(String tableName, String column, String condition) {
 		NotifyObject response;
 		String updateRow = "UPDATE " + tableName + " SET " + column + "= NULL"

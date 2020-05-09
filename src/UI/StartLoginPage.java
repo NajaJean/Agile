@@ -22,7 +22,6 @@ public class StartLoginPage extends JFrame {
         setTitle("Choose Login");
         setVisible(true);
         
-        // Center JFrame in the middle of screen when it is initialized
         setBounds(screenSize.width/2, screenSize.height/2, frameWidth, frameHeight);
         setLocationRelativeTo(null);
         
@@ -31,7 +30,6 @@ public class StartLoginPage extends JFrame {
     }
     
     public void setLocationAndSize() {
-    	// Set all JComponents into the center of the JFrame
     	welcomeLabel.setFont(new Font("Serif", Font.BOLD, 16));
     	welcomeLabel.setBounds ((frameWidth/2) - (200/2), 10, 200, 25);
         lcLogin.setBounds ((frameWidth/2) - (200/2), 35, 200, 50);

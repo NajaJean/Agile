@@ -43,8 +43,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	} 
 	
 	public ContainerJourney(Location start, Location end, Container container,double currentx, double currenty,
-			LocalDate startDate, LocalDate endDate) {
-		// Overloaded method just when reading in the database 
+			LocalDate startDate, LocalDate endDate) { 
 		this.ID = count++;
 		this.start = start;
 		this.end = end;
@@ -68,6 +67,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	public double getStartLocX() {
 		return start.getGPScoord()[0];
 	}
+	
 	public double getStartLocY() {
 		return start.getGPScoord()[1];
 	}
@@ -79,6 +79,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	public double getCurrentX() {
 		return currentGps[0];
 	}
+	
 	public double getCurrentY() {
 		return currentGps[1];
 	}
@@ -90,6 +91,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	public double getEndLocX() {
 		return end.getGPScoord()[0];
 	}
+	
 	public double getEndLocY() {
 		return end.getGPScoord()[1];
 	}
@@ -108,24 +110,18 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		updateWeather();
 	}
 	
-	public void moveContainerOnJ() 
-	{
+	public void moveContainerOnJ() {
 		double travelDays = (double) ChronoUnit.DAYS.between(getStartDate(), getEndDate());
-	
 		double[] newCurrents = new double[2];
 		
-		if ((getCurrentX() == getEndLocX()) && (getCurrentY() == getEndLocY()))
-		{
+		if ((getCurrentX() == getEndLocX()) && (getCurrentY() == getEndLocY()))	{
 			newCurrents[0] = getEndLocX();
 			newCurrents[1] = getEndLocY();
 		}
-		else 
-		{
+		else {
 			newCurrents[0] = getCurrentX() + ((getEndLocX() - getStartLocX()) / travelDays);
-			
 			newCurrents[1] = getCurrentY() + ((getEndLocY() - getStartLocY()) / travelDays);
 		}
-		
 		setCurrentLocation(newCurrents);
 	}
 	
@@ -133,7 +129,6 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		Weather[] climate;
 		climate = Climate.getClimate();
 		Environment[] toAssign = DatabaseData.getEnvironments();
-		Environment localEnviro = toAssign[0];
 		
 		for (int i = 0; i < climate.length; i++) {
 				if (((climate[i].from[0] <= getCurrentX()) && 
@@ -150,12 +145,9 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
  		for (int i = 0; i < Journies.length; i++) {
  			
- 			if (c.getID() == Journies[i].getContaineronJourney().getClientofContainer().getID()) 
- 			{
- 			
+ 			if (c.getID() == Journies[i].getContaineronJourney().getClientofContainer().getID()) {
  				clientContainersList.add(Journies[i]);
  			}
- 			
  		}
  		
  		ContainerJourney[] ClientJournies = new ContainerJourney[clientContainersList.size()];

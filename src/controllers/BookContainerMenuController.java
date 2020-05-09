@@ -32,19 +32,15 @@ public class BookContainerMenuController {
 	String selectedContent;
 	String selectedStart;
 	String selectedEnd;
-	
 	String selSY;
 	String selSM;
 	String selSD;
-	
 	String selEY;
 	String selEM;
 	String selED;
 	
 	LocalDate selectedStartDate;
 	LocalDate selectedEndDate;
-	
-	
 	
 	public BookContainerMenuController(Client client, Container container) {
 		this.client = client;
@@ -175,17 +171,12 @@ public class BookContainerMenuController {
 			  
 			  container.setContainerContent(content);
 			  
-			  //Set client of container in database
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Client_ID",Integer.toString(client.getID()), Integer.toString(container.getContainerID()));
-			  //Update container in database (add content)
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Content_ID", Integer.toString(content.getContentID()), Integer.toString(container.getContainerID()));
-			  //Update location of container in database 
 			  DatabaseData.getDatabase().updateDatabase("Containers", "Location_ID", Integer.toString(locEnd.getLocationID()), Integer.toString(container.getContainerID()));
 			 
 			  ContainerJourney cj = new ContainerJourney(locStart, locEnd, container, startDate, endDate);
 			  
-			  //Update database by adding cj
-			  //Add cj to containerJourney array
 			  DatabaseData.getDatabase().addToDatabase(cj);
 			  
 			  NotifyObject response = new NotifyObject(31, "Container is succesfully booked");

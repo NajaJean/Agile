@@ -26,7 +26,6 @@ public class ContainerJourneyTest {
 
 	@Test
 	public void testContent() {
-		Client[] clients = DatabaseData.getClients();
 		ContainerJourney[] cJ = DatabaseData.getJournies(); 
 		Location[] locations = DatabaseData.getLocations();
 		Container[] containers = DatabaseData.getContainers();
@@ -55,7 +54,7 @@ public class ContainerJourneyTest {
 		assertEquals(-1, search.findIDX("99", cJ));
 		assertEquals(-1, search.findIDX("4", emptyCJs)); 
 
-		assertEquals(cJ[1], cJ[search.findIDX("1", cJ)]); // Find from containerID
+		assertEquals(cJ[1], cJ[search.findIDX("1", cJ)]);
 		assertEquals(-1, search.findIDX("29", cJ));
 		assertEquals(-1, search.findIDX("4", emptyCJs));
 		

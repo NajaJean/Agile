@@ -69,11 +69,7 @@ public class StepDefs_ClientUserManagement {
 	    
 	    assertEquals(specificClient,specificClientContainer.getClientofContainer());
 	    assertNotEquals(randomClient, specificClientContainer.getClientofContainer());
-	    
-/*	    int specificID = specificClient.getID();
-	    int randomID = randomClient.getID();
-	    
-	    assertFalse(specificID == randomID);*/
+
 	}
 	
 }

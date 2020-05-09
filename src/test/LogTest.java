@@ -90,15 +90,12 @@ public class LogTest {
 	@Test 
 	public void testAppendAllConteinerLogs() {
 		
-		
 		L.appendAllContainerLogs(cJs);
 		
 		for (int i = 0; i < 2; i++) {
 		
-		
 			String expected1stpart = String.valueOf(cJs[i].getContaineronJourney().getContainerID()) + "\t" + 
-			  		 String.valueOf(cJs[i].getContaineronJourney().getClientofContainer());
-			  		 
+			  		 String.valueOf(cJs[i].getContaineronJourney().getClientofContainer());	  		 
 			  		 
 			String expected2ndpart = String.valueOf(cJs[i].getContaineronJourney().getContainerContent()) + "\t" + 
 			  		 String.format(Locale.ROOT,"%.2f", cJs[i].getCurrentX()) + "\t" +
@@ -108,8 +105,7 @@ public class LogTest {
 					 String.valueOf(Calendar.getSystemDate()) + "\t" +
 					 String.valueOf(cJs[i].getEndDate()) + "\t";
 			
-		
-	 				 
+			 
 			String inFile = L.readFile("Container " + String.valueOf(cJs[i].getContaineronJourney().getContainerID()));
 
 			assertTrue(inFile.contains(expected1stpart));
