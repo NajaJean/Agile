@@ -18,6 +18,8 @@ import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+import ExternalData.DatabaseData;
+import ExternalData.Logs;
 import core.*;
 
 public class Graph extends JFrame {

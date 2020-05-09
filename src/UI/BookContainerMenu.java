@@ -2,10 +2,11 @@ package UI;
 
 import core.Content;
 import core.Location;
-import core.DatabaseData;
 
 import java.awt.*;
 import javax.swing.*;
+
+import ExternalData.DatabaseData;
 
 public class BookContainerMenu extends JFrame {
 	

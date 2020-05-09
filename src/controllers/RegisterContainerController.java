@@ -4,10 +4,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
+import ExternalData.DatabaseData;
 import UI.RegisterContainerUI;
 import core.ArraySearch;
 import core.Container;
-import core.DatabaseData;
 import core.Environment;
 import core.Location;
 

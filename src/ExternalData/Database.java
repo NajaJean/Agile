@@ -1,6 +1,8 @@
-package core;
+package ExternalData;
 
 import java.sql.*;
+
+import core.NotifyObject;
 public class Database {	
 	private Connection c;
 

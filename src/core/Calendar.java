@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import ExternalData.DatabaseData;
+import ExternalData.Logs;
+
 public class Calendar {
 	
 	public static LocalDate SystemDate = LocalDate.of(2020, 4, 27);//LocalDate.now();//LocalDate.of(2020, 4, 25);

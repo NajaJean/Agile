@@ -2,12 +2,12 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
-import core.Database;
-import core.DatabaseData;
 import core.Location;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;

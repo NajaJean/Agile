@@ -1,5 +1,7 @@
 package core;
 
+import ExternalData.DatabaseData;
+
 public class Location extends Search {
     private String name;
     private double[] GPScoord = new double[2];

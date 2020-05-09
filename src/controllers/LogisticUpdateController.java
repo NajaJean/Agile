@@ -8,11 +8,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
+import ExternalData.DatabaseData;
 import UI.LogisticUpdate;
 import core.ArraySearch;
 import core.Container;
 import core.ContainerJourney;
-import core.DatabaseData;
 
 public class LogisticUpdateController {
 	Container [] Containers;

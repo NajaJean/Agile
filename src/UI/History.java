@@ -5,6 +5,8 @@ import core.*;
 import java.awt.*;
 import javax.swing.*;
 
+import ExternalData.DatabaseData;
+
 
 public class History extends JFrame {
 	

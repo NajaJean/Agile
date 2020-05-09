@@ -9,11 +9,11 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
-import core.DatabaseData;
 
 public class ClientTest {
 	

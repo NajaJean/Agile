@@ -5,12 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.Automation;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
-import core.Database;
-import core.DatabaseData;
 
 
 public class AutomationTest {
@@ -82,20 +82,11 @@ public class AutomationTest {
 	}
 	
 	@Test
-	public void testrCJs() {
-		
-		ContainerJourney test = a.rCJs();
-		assertEquals(cJs[0].getClass(), test.getClass()); 
-	}
-	
-	@Test
 	public void testData() {
 		Database data = new Database("fakeDatabase");
 		Database da = DatabaseData.getDatabase();
 		assertFalse(da.checkUser("Hans", "5432"));
-//		assertEquals("wejiw", data.updateDatabase("loe", "column", "condition"));
-//		assertEquals("wejiw", da.updateDatabase("loe", "column", "condition", "hallo"));
-//		assertEquals("sessew", data.getEmptyContainer());
+
 	}
 	
 	

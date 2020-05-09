@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Container;
-import core.DatabaseData;
 import core.Location;
 
 public class LocationTest {

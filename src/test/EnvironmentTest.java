@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Climate;
 import core.Content;
-import core.DatabaseData;
 import core.Environment;
 import core.NotifyObject;
 

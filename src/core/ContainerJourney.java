@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import ExternalData.DatabaseData;
+import ExternalData.DatabaseEntity;
+
 public class ContainerJourney extends Search implements DatabaseEntity {
 	private Location start;
 	private Location end;

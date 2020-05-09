@@ -1,4 +1,4 @@
-package core;
+package ExternalData;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
+
+import core.ArraySearch;
+import core.Client;
+import core.Container;
+import core.ContainerJourney;
+import core.Content;
+import core.Environment;
+import core.Location;
 
 public class DatabaseData {
 	private static Database d = new Database("agileProject.accdb");

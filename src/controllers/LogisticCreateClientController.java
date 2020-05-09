@@ -2,9 +2,9 @@ package controllers;
 
 import javax.swing.JOptionPane;
 
+import ExternalData.DatabaseData;
 import UI.LogisticCreateClient;
 import core.Client;
-import core.DatabaseData;
 
 public class LogisticCreateClientController {
 	private LogisticCreateClient view;

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import ExternalData.DatabaseData;
+import ExternalData.Logs;
 import UI.ClientMenu;
 import UI.ConfigureClient;
 import UI.Map;
@@ -14,8 +16,6 @@ import core.Calendar;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
-import core.DatabaseData;
-import core.Logs;
 import core.NotifyObject;
 
 public class ClientMenuController {

@@ -3,6 +3,8 @@ package core;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
+import ExternalData.DatabaseEntity;
+
 public class Client extends Search implements User, DatabaseEntity {
     private String username;
     private String password;

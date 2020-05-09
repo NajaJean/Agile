@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import ExternalData.DatabaseData;
+
 public class Automation {
 	
 	public String rName(int textLength) 

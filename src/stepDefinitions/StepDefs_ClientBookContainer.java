@@ -3,12 +3,12 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
-import core.Database;
-import core.DatabaseData;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

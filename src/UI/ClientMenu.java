@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 
+import ExternalData.DatabaseData;
 import core.Calendar;
 import core.Client;
 import core.ContainerJourney;
-import core.DatabaseData;
 
 public class ClientMenu extends JFrame {
 	

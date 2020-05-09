@@ -2,11 +2,11 @@ package controllers;
 
 import javax.swing.JOptionPane;
 
+import ExternalData.DatabaseData;
 import UI.Login;
 import UI.StartLoginPage;
 import core.Client;
 import core.ArraySearch;
-import core.DatabaseData;
 import core.LogisticCompany;
 import core.NotifyObject;
 

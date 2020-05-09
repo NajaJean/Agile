@@ -1,10 +1,10 @@
 package controllers;
 
+import ExternalData.DatabaseData;
 import UI.Login;
 import UI.LogiticFindClientByMailUI;
 import core.ArraySearch;
 import core.Client;
-import core.DatabaseData;
 
 public class LogiticFindClientByMailController {
 	private LogiticFindClientByMailUI view;

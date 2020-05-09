@@ -1,4 +1,4 @@
-package core;
+package ExternalData;
 
 
 import java.io.File;
@@ -7,7 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Random;
-import java.util.Scanner;  
+import java.util.Scanner;
+
+import core.Calendar;
+import core.Container;
+import core.ContainerJourney;
+import core.Environment;
+import core.NotifyObject;  
 
 
 public class Logs {

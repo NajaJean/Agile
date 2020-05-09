@@ -9,8 +9,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import ExternalData.DatabaseData;
 import core.Client;
-import core.DatabaseData;
 
 public class LogiticFindClientByMailUI extends JFrame {
 	java.awt.Container container = getContentPane();

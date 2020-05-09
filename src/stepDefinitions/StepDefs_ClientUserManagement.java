@@ -5,10 +5,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+import ExternalData.DatabaseData;
 import core.Client;
 import core.Container;
 import core.Content;
-import core.DatabaseData;
 import core.Environment;
 import core.Location;
 import io.cucumber.java.en.Given;

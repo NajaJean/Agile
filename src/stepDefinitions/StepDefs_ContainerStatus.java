@@ -2,11 +2,11 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.Client;
 import core.Container;
 import core.Content;
-import core.Database;
-import core.DatabaseData;
 import core.Environment;
 import core.LogisticCompany;
 import io.cucumber.java.en.Given;

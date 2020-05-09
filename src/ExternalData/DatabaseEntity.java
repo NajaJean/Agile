@@ -1,4 +1,4 @@
-package core;
+package ExternalData;
 
 public interface DatabaseEntity {
 	public abstract String databaseTable();

@@ -2,9 +2,9 @@ package stepDefinitions;
 
 import static org.junit.Assert.assertEquals;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.Client;
-import core.Database;
-import core.DatabaseData;
 import core.NotifyObject;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

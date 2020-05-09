@@ -1,5 +1,6 @@
 package core;
 
+import ExternalData.DatabaseEntity;
 
 public class Container extends Search implements DatabaseEntity {
 	private Client client;

@@ -4,7 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import ExternalData.DatabaseData;
+import ExternalData.Logs;
+
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Locale;
 
 import core.*;
@@ -17,27 +22,28 @@ public class LogTest {
 	private ContainerJourney first;
 	private ContainerJourney second;
 	private ContainerJourney[] cJs;
+	private Location[] locs;
+	    
+	    
+	    @Before
+	    public void prep() {	
+	        a = new Automation();
+	        cs = new Container[2];
+	        cs[0] = a.rContainer(); 
+	        cs[1] =    a.rContainer();
+	        
+	        L = new Logs(cs);
+	        locs = DatabaseData.getLocations();
+	        
+	        first = new ContainerJourney(locs[0], locs[1], cs[0], LocalDate.of(2022, 4, 5), LocalDate.of(2022, 6, 6));
+	        first.getContaineronJourney().setClientofContainer(a.randomClient());
+	        first.getContaineronJourney().setContainerContent(a.randomContent());
+	        second = new ContainerJourney(locs[2], locs[3], cs[1], LocalDate.of(2022, 4, 5), LocalDate.of(2022, 6, 6));
+	        second.getContaineronJourney().setClientofContainer(a.randomClient());
+	        second.getContaineronJourney().setContainerContent(a.randomContent());
+	        cJs = new ContainerJourney[]{first, second};
+	    }
 	
-	
-	@Before
-	public void prep() {
-
-		a = new Automation();
-		cs = new Container[2];
-		cs[0] = a.rContainer(); 
-		cs[1] =	a.rContainer();
-		
-		L = new Logs(cs);
-		
-		first = a.rCJs();
-		first.getContaineronJourney().setClientofContainer(a.randomClient());
-		first.getContaineronJourney().setContainerContent(a.randomContent());
-		second = a.rCJs();
-		second.getContaineronJourney().setClientofContainer(a.randomClient());
-		second.getContaineronJourney().setContainerContent(a.randomContent());
-		cJs = new ContainerJourney[]{first, second};
-	}
-		
 	
 	@Test
 	public void testCreateFile() {

@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import ExternalData.DatabaseData;
 import core.ArraySearch;
 import core.Client;
 import core.Container;
-import core.DatabaseData;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

@@ -6,12 +6,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 
+import ExternalData.Database;
+import ExternalData.DatabaseData;
 import core.Client;
 import core.Container;
 import core.ContainerJourney;
 import core.Content;
-import core.Database;
-import core.DatabaseData;
 import core.Environment;
 import core.Location;
 import core.NotifyObject;

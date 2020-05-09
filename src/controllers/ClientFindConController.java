@@ -3,13 +3,14 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import ExternalData.DatabaseData;
 import UI.ClientFindConUI;
 import UI.LogiticFindClientByMailUI;
 import core.ArraySearch;
 import core.Client;
 import core.Container;
 import core.Content;
-import core.DatabaseData;
 
 public class ClientFindConController {
 

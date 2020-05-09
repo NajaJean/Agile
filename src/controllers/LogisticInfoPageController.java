@@ -1,9 +1,9 @@
 package controllers;
 
+import ExternalData.DatabaseData;
 import UI.LogisticInfoPage;
 import core.Client;
 import core.Container;
-import core.DatabaseData;
 
 public class LogisticInfoPageController {
 	Container[] Containers;
