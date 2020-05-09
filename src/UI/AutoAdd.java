@@ -11,7 +11,7 @@ public class AutoAdd extends JFrame {
     
     JButton addClient = new JButton ("Add Random Client");
     JButton addContainer = new JButton ("Add Random Container");
-    JButton addCJ = new JButton ("Add Random Journey");
+    
     JButton done = new JButton ("Done");
     
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -38,15 +38,13 @@ public class AutoAdd extends JFrame {
     	
     	addClient.setBounds ((frameWidth/4) , 35, 200, 50);
     	addContainer.setBounds ((frameWidth/2) - (200/2), 85, 200, 50);
-    	addCJ.setBounds ((frameWidth/4) , 135, 200, 50);
-    	done.setBounds ((frameWidth/4) , 185, 200, 30);
+    	done.setBounds ((frameWidth/4) , 135, 200, 30);
     } 
  
     public void addComponentsToContainer() {
     	
     	container.add(addClient);
     	container.add(addContainer);
-        container.add(addCJ);
         container.add(done);
     }
     
@@ -56,10 +54,6 @@ public class AutoAdd extends JFrame {
     
     public JButton getaddConrainerButton() {
     	return addContainer;
-    }
-    
-    public JButton getaddCJButton() {
-    	return addCJ;
     }
     
     public JButton getDoneButton() {

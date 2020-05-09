@@ -30,7 +30,6 @@ public class ContainerTest {
 		Container.resetCount();
 		
 		cl1 = new Client("M", "1234", "Mathilde","mathildesemail@gmail.com","Anker Egelundsvej 1");
-		System.out.println(cl1.getID());
 		e1 = new Environment(5.3,1.1,0.85);
 		con1 = new Content("Banana",new Environment(5.0,1.0,0.85), 0.1);
 		double[] cphgps = {730.0, 188.0};
