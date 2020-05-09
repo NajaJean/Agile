@@ -63,8 +63,8 @@ public class DatabaseData {
 		ArrayList<Environment> Environments = new ArrayList<>();
 		for(int i = 0; i < Database.lengthTable(environments); i++) {
 			Environments.add(new Environment(Double.parseDouble(environments[i+1][2]), 
-							Double.parseDouble(environments[i+1][5]), 
-							Double.parseDouble(environments[i+1][4])));	
+							Double.parseDouble(environments[i+1][4]), 
+							Double.parseDouble(environments[i+1][5])));	
 		}
 		return Environments;
 	}
