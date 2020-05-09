@@ -80,7 +80,7 @@ public class AutomationTest {
 		Container test = a.rContainer();
 		assertEquals(containers[0].getClass(), test.getClass()); 
 	}
-	
+
 	@Test
 	public void testData() {
 		Database data = new Database("fakeDatabase");
