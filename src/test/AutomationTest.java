@@ -80,22 +80,12 @@ public class AutomationTest {
 		Container test = a.rContainer();
 		assertEquals(containers[0].getClass(), test.getClass()); 
 	}
-	
-	@Test
-	public void testrCJs() {
 		
-		ContainerJourney test = a.rCJs();
-		assertEquals(cJs[0].getClass(), test.getClass()); 
-	}
-	
 	@Test
 	public void testData() {
 		Database data = new Database("fakeDatabase");
 		Database da = DatabaseData.getDatabase();
 		assertFalse(da.checkUser("Hans", "5432"));
-//		assertEquals("wejiw", data.updateDatabase("loe", "column", "condition"));
-//		assertEquals("wejiw", da.updateDatabase("loe", "column", "condition", "hallo"));
-//		assertEquals("sessew", data.getEmptyContainer());
 	}
 	
 	

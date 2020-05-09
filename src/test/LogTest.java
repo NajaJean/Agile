@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Locale;
 
 import core.*;
@@ -17,6 +18,7 @@ public class LogTest {
 	private ContainerJourney first;
 	private ContainerJourney second;
 	private ContainerJourney[] cJs;
+	private Location[] locs;
 	
 	
 	@Before
@@ -28,11 +30,12 @@ public class LogTest {
 		cs[1] =	a.rContainer();
 		
 		L = new Logs(cs);
+		locs = DatabaseData.getLocations();
 		
-		first = a.rCJs();
+		first = new ContainerJourney(locs[0], locs[1], cs[0], LocalDate.of(2022, 4, 5), LocalDate.of(2022, 6, 6));
 		first.getContaineronJourney().setClientofContainer(a.randomClient());
 		first.getContaineronJourney().setContainerContent(a.randomContent());
-		second = a.rCJs();
+		second = new ContainerJourney(locs[2], locs[3], cs[1], LocalDate.of(2022, 4, 5), LocalDate.of(2022, 6, 6));
 		second.getContaineronJourney().setClientofContainer(a.randomClient());
 		second.getContaineronJourney().setContainerContent(a.randomContent());
 		cJs = new ContainerJourney[]{first, second};
