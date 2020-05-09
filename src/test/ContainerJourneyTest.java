@@ -65,7 +65,7 @@ public class ContainerJourneyTest {
 		
 		cJ[0].moveContainerOnJ();
 		cJ[1].moveContainerOnJ();
-		cJ[2].moveContainerOnJ();
+		cJ[9].moveContainerOnJ();
 		
 		
 	}
