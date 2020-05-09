@@ -1,19 +1,19 @@
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'1', '0.00', '0.00', '0.00'	'8', 'Zucchini', '7', '0.1'	730.00	188.00	1	2020-03-28	2020-03-28	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'12', '19.80', '0.91', '0.00'	'8', 'Zucchini', '7', '0.1'	785.83	195.61	1	2020-03-28	2020-03-29	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'12', '20.40', '0.97', '0.00'	'8', 'Zucchini', '7', '0.1'	841.67	203.22	1	2020-03-28	2020-03-30	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '15.15', '0.93', '0.00'	'8', 'Zucchini', '7', '0.1'	897.50	210.83	1	2020-03-28	2020-03-31	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '14.40', '0.92', '0.00'	'8', 'Zucchini', '7', '0.1'	953.33	218.44	1	2020-03-28	2020-04-01	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '13.80', '0.95', '0.00'	'8', 'Zucchini', '7', '0.1'	1009.17	226.06	1	2020-03-28	2020-04-02	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '15.90', '0.94', '0.00'	'8', 'Zucchini', '7', '0.1'	1065.00	233.67	1	2020-03-28	2020-04-03	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '13.80', '1.02', '0.00'	'8', 'Zucchini', '7', '0.1'	1120.83	241.28	1	2020-03-28	2020-04-04	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'14', '15.30', '1.06', '0.00'	'8', 'Zucchini', '7', '0.1'	1176.67	248.89	1	2020-03-28	2020-04-05	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '27.00', '1.10', '0.00'	'8', 'Zucchini', '7', '0.1'	1232.50	256.50	1	2020-03-28	2020-04-06	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '24.50', '0.91', '0.00'	'8', 'Zucchini', '7', '0.1'	1288.33	264.11	1	2020-03-28	2020-04-07	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '26.25', '1.09', '0.00'	'8', 'Zucchini', '7', '0.1'	1344.17	271.72	1	2020-03-28	2020-04-08	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '24.50', '1.08', '0.00'	'8', 'Zucchini', '7', '0.1'	1400.00	279.33	1	2020-03-28	2020-04-09	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '23.25', '0.98', '0.00'	'8', 'Zucchini', '7', '0.1'	1455.83	286.94	1	2020-03-28	2020-04-10	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '25.75', '1.04', '0.00'	'8', 'Zucchini', '7', '0.1'	1511.67	294.56	1	2020-03-28	2020-04-11	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '24.00', '1.03', '0.00'	'8', 'Zucchini', '7', '0.1'	1567.50	302.17	1	2020-03-28	2020-04-12	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '26.75', '1.04', '0.00'	'8', 'Zucchini', '7', '0.1'	1623.33	309.78	1	2020-03-28	2020-04-13	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '24.75', '1.05', '0.00'	'8', 'Zucchini', '7', '0.1'	1679.17	317.39	1	2020-03-28	2020-04-14	2020-04-15	
-3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'15', '27.25', '1.04', '0.00'	'8', 'Zucchini', '7', '0.1'	1735.00	325.00	1	2020-03-28	2020-04-15	2020-04-15	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'1', '0.00', '0.00', '0.00'	'8', 'Zucchini', '7', '0.22'	730.00	188.00	1	2020-03-28	2020-03-28	2020-04-15	Not OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'4', '23.25', '81.37', '0.98'	'8', 'Zucchini', '7', '0.22'	785.83	195.61	1	2020-03-28	2020-03-29	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'4', '26.00', '77.42', '0.93'	'8', 'Zucchini', '7', '0.22'	841.67	203.22	1	2020-03-28	2020-03-30	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '27.25', '75.44', '1.20'	'8', 'Zucchini', '7', '0.22'	897.50	210.83	1	2020-03-28	2020-03-31	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '27.00', '80.36', '1.05'	'8', 'Zucchini', '7', '0.22'	953.33	218.44	1	2020-03-28	2020-04-01	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '27.50', '88.56', '1.18'	'8', 'Zucchini', '7', '0.22'	1009.17	226.06	1	2020-03-28	2020-04-02	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '26.50', '78.72', '1.02'	'8', 'Zucchini', '7', '0.22'	1065.00	233.67	1	2020-03-28	2020-04-03	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '24.00', '77.08', '1.08'	'8', 'Zucchini', '7', '0.22'	1120.83	241.28	1	2020-03-28	2020-04-04	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'6', '24.00', '79.54', '1.21'	'8', 'Zucchini', '7', '0.22'	1176.67	248.89	1	2020-03-28	2020-04-05	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '26.52', '75.33', '1.04'	'8', 'Zucchini', '7', '0.22'	1232.50	256.50	1	2020-03-28	2020-04-06	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '27.56', '78.57', '0.89'	'8', 'Zucchini', '7', '0.22'	1288.33	264.11	1	2020-03-28	2020-04-07	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '27.56', '83.43', '0.86'	'8', 'Zucchini', '7', '0.22'	1344.17	271.72	1	2020-03-28	2020-04-08	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '23.66', '79.38', '0.94'	'8', 'Zucchini', '7', '0.22'	1400.00	279.33	1	2020-03-28	2020-04-09	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '26.78', '76.14', '0.91'	'8', 'Zucchini', '7', '0.22'	1455.83	286.94	1	2020-03-28	2020-04-10	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '24.44', '88.29', '0.87'	'8', 'Zucchini', '7', '0.22'	1511.67	294.56	1	2020-03-28	2020-04-11	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '28.60', '74.52', '1.01'	'8', 'Zucchini', '7', '0.22'	1567.50	302.17	1	2020-03-28	2020-04-12	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '23.92', '89.10', '1.03'	'8', 'Zucchini', '7', '0.22'	1623.33	309.78	1	2020-03-28	2020-04-13	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '28.34', '80.19', '0.98'	'8', 'Zucchini', '7', '0.22'	1679.17	317.39	1	2020-03-28	2020-04-14	2020-04-15	OK	
+3	'2', 'Steve Allen', 'stevieiscool@gmail.com', '6 Agile st', 'steve', '1234'	'7', '24.44', '73.71', '0.87'	'8', 'Zucchini', '7', '0.22'	1735.00	325.00	1	2020-03-28	2020-04-15	2020-04-15	OK	

@@ -1,19 +1,18 @@
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'5', '11.83', '79.90', '3.12'	'8', 'Zucchini', '7', '0.1'	1423.00	305.00	4	2020-03-28	2020-03-28	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '25.75', '0.94', '0.00'	'8', 'Zucchini', '7', '0.1'	1387.28	331.94	4	2020-03-28	2020-03-29	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '24.00', '1.06', '0.00'	'8', 'Zucchini', '7', '0.1'	1351.56	358.89	4	2020-03-28	2020-03-30	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '26.50', '1.09', '0.00'	'8', 'Zucchini', '7', '0.1'	1315.83	385.83	4	2020-03-28	2020-03-31	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '24.50', '1.03', '0.00'	'8', 'Zucchini', '7', '0.1'	1280.11	412.78	4	2020-03-28	2020-04-01	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '25.25', '1.09', '0.00'	'8', 'Zucchini', '7', '0.1'	1244.39	439.72	4	2020-03-28	2020-04-02	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '27.25', '0.95', '0.00'	'8', 'Zucchini', '7', '0.1'	1208.67	466.67	4	2020-03-28	2020-04-03	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '23.00', '1.06', '0.00'	'8', 'Zucchini', '7', '0.1'	1172.94	493.61	4	2020-03-28	2020-04-04	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '26.50', '0.91', '0.00'	'8', 'Zucchini', '7', '0.1'	1137.22	520.56	4	2020-03-28	2020-04-05	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'15', '24.75', '0.97', '0.00'	'8', 'Zucchini', '7', '0.1'	1101.50	547.50	4	2020-03-28	2020-04-06	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '93.00', '1.08', '0.00'	'8', 'Zucchini', '7', '0.1'	1065.78	574.44	4	2020-03-28	2020-04-07	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '99.00', '0.97', '0.00'	'8', 'Zucchini', '7', '0.1'	1030.06	601.39	4	2020-03-28	2020-04-08	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '93.00', '1.01', '0.00'	'8', 'Zucchini', '7', '0.1'	994.33	628.33	4	2020-03-28	2020-04-09	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '108.00', '0.99', '0.00'	'8', 'Zucchini', '7', '0.1'	958.61	655.28	4	2020-03-28	2020-04-10	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '96.00', '1.07', '0.00'	'8', 'Zucchini', '7', '0.1'	922.89	682.22	4	2020-03-28	2020-04-11	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'16', '92.00', '0.93', '0.00'	'8', 'Zucchini', '7', '0.1'	887.17	709.17	4	2020-03-28	2020-04-12	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'13', '32.55', '1.08', '0.00'	'8', 'Zucchini', '7', '0.1'	851.44	736.11	4	2020-03-28	2020-04-13	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'13', '33.25', '0.96', '0.00'	'8', 'Zucchini', '7', '0.1'	815.72	763.06	4	2020-03-28	2020-04-14	2020-04-15	
-4	'3', 'Alice Harris', 'alice.harris12@gmail.com', '10 Umbrella ct', 'alice', '1234'	'13', '36.75', '1.00', '0.00'	'8', 'Zucchini', '7', '0.1'	780.00	790.00	4	2020-03-28	2020-04-15	2020-04-15	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'5', '24.72', '72.54', '1.09'	'5', 'Peaches', '3', '0.25'	1423.00	305.00	4	2020-03-29	2020-03-29	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '26.26', '76.95', '0.94'	'5', 'Peaches', '3', '0.25'	1385.18	333.53	4	2020-03-29	2020-03-30	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '24.18', '76.14', '1.04'	'5', 'Peaches', '3', '0.25'	1347.35	362.06	4	2020-03-29	2020-03-31	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '27.82', '83.43', '0.99'	'5', 'Peaches', '3', '0.25'	1309.53	390.59	4	2020-03-29	2020-04-01	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '25.74', '83.43', '0.99'	'5', 'Peaches', '3', '0.25'	1271.71	419.12	4	2020-03-29	2020-04-02	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '26.26', '81.00', '1.05'	'5', 'Peaches', '3', '0.25'	1233.88	447.65	4	2020-03-29	2020-04-03	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '25.74', '85.86', '0.92'	'5', 'Peaches', '3', '0.25'	1196.06	476.18	4	2020-03-29	2020-04-04	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '23.66', '83.43', '0.95'	'5', 'Peaches', '3', '0.25'	1158.24	504.71	4	2020-03-29	2020-04-05	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'7', '24.70', '88.29', '1.01'	'5', 'Peaches', '3', '0.25'	1120.41	533.24	4	2020-03-29	2020-04-06	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '24.00', '71.89', '1.14'	'5', 'Peaches', '3', '0.25'	1082.59	561.76	4	2020-03-29	2020-04-07	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '24.72', '76.63', '1.03'	'5', 'Peaches', '3', '0.25'	1044.76	590.29	4	2020-03-29	2020-04-08	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '25.92', '79.79', '0.99'	'5', 'Peaches', '3', '0.25'	1006.94	618.82	4	2020-03-29	2020-04-09	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '24.48', '77.42', '1.02'	'5', 'Peaches', '3', '0.25'	969.12	647.35	4	2020-03-29	2020-04-10	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '25.20', '78.21', '1.08'	'5', 'Peaches', '3', '0.25'	931.29	675.88	4	2020-03-29	2020-04-11	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'8', '25.68', '79.00', '1.00'	'5', 'Peaches', '3', '0.25'	893.47	704.41	4	2020-03-29	2020-04-12	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'5', '22.32', '76.44', '1.08'	'5', 'Peaches', '3', '0.25'	855.65	732.94	4	2020-03-29	2020-04-13	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'5', '21.84', '77.22', '1.01'	'5', 'Peaches', '3', '0.25'	817.82	761.47	4	2020-03-29	2020-04-14	2020-04-15	OK	
+4	'4', 'Sally Grant', 'sally_grant@gmail.com', '203 Acorn st', 'sally', '1234'	'5', '25.20', '78.78', '1.16'	'5', 'Peaches', '3', '0.25'	780.00	790.00	4	2020-03-29	2020-04-15	2020-04-15	OK	
