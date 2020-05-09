@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import ExternalData.DatabaseData;
 import UI.LogisticUpdate;
 import core.ArraySearch;
+import core.Calendar;
 import core.Container;
 import core.ContainerJourney;
 
@@ -118,6 +119,7 @@ public class LogisticUpdateController {
 			 
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_x", Double.toString(gpsLatitude), Integer.toString(containerJourney.getJourneyID()));
 			 DatabaseData.getDatabase().updateDatabase("Journies", "Current_y", Double.toString(gpsLongitude), Integer.toString(containerJourney.getJourneyID()));			
+			 DatabaseData.getDatabase().updateDatabase("Journies", "EndDate", Calendar.getSystemDate().toString(), Integer.toString(containerJourney.getJourneyID()));			
 			 
 			 //If container has arrived
 			 //Set the container client ID and content ID to null (make it free for a new journey) and update its current location
