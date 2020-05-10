@@ -51,22 +51,43 @@ public class LogisticCompanyMenuController {
 		String maxContent = "SELECT Content_ID FROM Containers GROUP BY Content_ID"
 				+ " HAVING COUNT (Content_ID) = (SELECT MAX(mycount) FROM ("
 				+ "SELECT Content_ID, COUNT(Content_ID) mycount FROM Containers GROUP BY Content_ID))";
-		mostUsedContent = Contents[Integer.parseInt(d.queryDatabase(maxContent))-1].getName();
+		try {
+			mostUsedContent = Contents[Integer.parseInt(d.queryDatabase(maxContent))-1].getName();
+		}
+		catch(Exception e){
+			mostUsedContent = "Couldn't be calculated...";
+		}
 		
 		String maxLoc = "SELECT End FROM Journies GROUP BY End"
 				+ " HAVING COUNT (End) = (SELECT MAX(mycount) FROM ("
 				+ "SELECT End, COUNT(End) mycount FROM Journies GROUP BY End))";
-		mostVisitedLoc = Locations[Integer.parseInt(d.queryDatabase(maxLoc))-1].getLocationName();
+		try {
+			mostVisitedLoc = Locations[Integer.parseInt(d.queryDatabase(maxLoc))-1].getLocationName();
+		}
+		catch(Exception e){
+			mostVisitedLoc = "Couldn't be calculated...";
+		}
 		
 		String maxClient = "SELECT Client_ID FROM Containers GROUP BY Client_ID"
 				+ " HAVING COUNT (Client_ID) = (SELECT MAX(mycount) FROM ("
 				+ "SELECT Client_ID, COUNT(Client_ID) mycount FROM Containers GROUP BY Client_ID))";
-		busiestClient = Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getName() + " ID: " + Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getID();
+		try {
+			busiestClient = Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getName() + " ID: " + Clients[Integer.parseInt(d.queryDatabase(maxClient))-1].getID();
+		}
+		catch(Exception e){
+			busiestClient = "Couldn't be calculated...";
+		}
 		
 		String maxContainer = "SELECT Container_ID FROM Journies GROUP BY Container_ID"
 				+ " HAVING COUNT (Container_ID) = (SELECT MAX(mycount) FROM ("
 				+ "SELECT Container_ID, COUNT(Container_ID) mycount FROM Journies GROUP BY Container_ID))";
-		mostTravelledCon = d.queryDatabase(maxContainer);
+		try {
+			mostTravelledCon = d.queryDatabase(maxContainer);
+		}
+		catch(Exception e){
+			mostTravelledCon = "Couldn't be calculated...";
+		}
+		
 	}
 	
 	private void goTOmorrow() {
