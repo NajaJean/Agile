@@ -55,11 +55,17 @@ public class ClientMenuController {
 	
 	private String getStats() {
 		ContainerJourney[] ClientJournies = ContainerJourney.clientJournies(DatabaseData.getJournies(), client);
- 		int longestTravelledCon = ContainerJourney.longestJourney(ClientJournies).getJourneyID();
- 		ContainerJourney journey = ContainerJourney.longestJourney(ClientJournies);
- 		double distance = Math.round(journey.getEndLocation().euclideanDistance(journey.getCurrentLocationDoubleA()));
- 		String s = Integer.toString(longestTravelledCon) + " Distance: " + Double.toString(distance) + "km From: " + 
- 		journey.getStartLocation().getLocationName() + " - " + journey.getEndLocation().getLocationName();
+		String s;
+		try {
+			int longestTravelledCon = ContainerJourney.longestJourney(ClientJournies).getJourneyID();
+	 		ContainerJourney journey = ContainerJourney.longestJourney(ClientJournies);
+	 		double distance = Math.round(journey.getEndLocation().euclideanDistance(journey.getCurrentLocationDoubleA()));
+	 		s = Integer.toString(longestTravelledCon) + " Distance: " + Double.toString(distance) + "km From: " + 
+	 		journey.getStartLocation().getLocationName() + " - " + journey.getEndLocation().getLocationName();
+		}
+ 		catch(Exception e) {
+ 			s = "You have no journies logged - past or present";
+ 		}
  		return s;
 	}
 	
