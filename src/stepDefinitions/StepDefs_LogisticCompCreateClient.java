@@ -15,7 +15,7 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_LogisticCompCreateClient {
 	
-	Database d = new Database("agileProject.accdb");
+	Database d = DatabaseData.getDatabase();
 	Client C;
 	LogisticCompany l; 
 	Client[] Clients;

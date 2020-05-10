@@ -4,14 +4,24 @@ import java.sql.*;
 
 import core.NotifyObject;
 public class Database {	
+	
+	private static Database instance = null;
+	
 	private Connection c;
 
-	public Database(String url) {
+	private Database(String url) {
 		try{  
 			this.c = DriverManager.getConnection("jdbc:ucanaccess://"+url); 
 
 		}catch(Exception ee){
 			System.out.println(ee.getMessage());} 
+	}
+	
+	public static Database getInstance() {
+		if (instance == null) { 
+			instance = new Database("agileProject.accdb");
+			return instance;
+		} else { return instance; }
 	}
 
 	public String[][] getTable(String tableName) {

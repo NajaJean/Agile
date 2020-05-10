@@ -75,7 +75,6 @@ public class AutomationTest {
 
 	@Test
 	public void testData() {
-		Database data = new Database("fakeDatabase");
 		Database da = DatabaseData.getDatabase();
 		assertFalse(da.checkUser("Hans", "5432"));
 

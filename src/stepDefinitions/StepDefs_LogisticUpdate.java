@@ -32,7 +32,7 @@ public class StepDefs_LogisticUpdate {
 
 	ContainerJourney selectedJ;
 	
-	Database d = new Database("agileProject.accdb"); 
+	Database d = DatabaseData.getDatabase();
 	int id = 1;
 
 	Environment[] Enviros;

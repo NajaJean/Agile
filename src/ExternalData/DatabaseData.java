@@ -2,11 +2,6 @@ package ExternalData;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
-import org.apache.commons.lang.ArrayUtils;
 
 import core.ArraySearch;
 import core.Client;
@@ -17,10 +12,9 @@ import core.Environment;
 import core.Location;
 
 public class DatabaseData {
-	private static Database d = new Database("agileProject.accdb");
 	
 	public static Database getDatabase() {
-		return d;
+		return Database.getInstance();
 	}
 	
 	public static Client[] getClients() {
@@ -54,7 +48,7 @@ public class DatabaseData {
 	}
 
 	private static ArrayList<Client> initClients() {
-		String[][] clients = d.getTable("Clients");
+		String[][] clients = getDatabase().getTable("Clients");
 		Client.resetCount();
 	
 		ArrayList<Client> Clients = new ArrayList<>();
@@ -65,7 +59,7 @@ public class DatabaseData {
 	}
 	
 	private static ArrayList<Environment> initEnvironments() {
-		String[][] environments = d.getTable("Environments");
+		String[][] environments = getDatabase().getTable("Environments");
 		Environment.resetCount();
 		
 		ArrayList<Environment> Environments = new ArrayList<>();
@@ -78,7 +72,7 @@ public class DatabaseData {
 	}
 	
 	private static ArrayList<Content> initContents() {
-		String[][] contents = d.getTable("Contents");
+		String[][] contents = getDatabase().getTable("Contents");
 		Content.resetCount();
 		
 		ArraySearch search = new ArraySearch(new Environment());
@@ -96,7 +90,7 @@ public class DatabaseData {
 	}
 	
 	private static ArrayList<Container> initContainers() {
-		String[][] containers = d.getTable("Containers");
+		String[][] containers = getDatabase().getTable("Containers");
 		Container.resetCount();
 		
 		Client[] Clients = getClients();
@@ -129,7 +123,7 @@ public class DatabaseData {
 	}
 	
 	private static ArrayList<Location> initLocations() {
-		String[][] locations = d.getTable("Locations");
+		String[][] locations = getDatabase().getTable("Locations");
 		Location.resetCount();
 		
 		ArrayList<Location> Locations = new ArrayList<>();
@@ -142,7 +136,7 @@ public class DatabaseData {
 	}
 	
 	private static ArrayList<ContainerJourney> initJournies () {
-		String[][] journies = d.getTable("Journies");
+		String[][] journies = getDatabase().getTable("Journies");
 		ContainerJourney.resetCount();
 		
 		Location[] Locations = getLocations();

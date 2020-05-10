@@ -15,7 +15,7 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_ContainerStatus {
 	
-	Database d = new Database("agileProject.accdb"); 
+	Database d = DatabaseData.getDatabase();
 	Client c;
 	LogisticCompany l;
 	Container con;

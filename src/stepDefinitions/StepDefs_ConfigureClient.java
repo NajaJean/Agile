@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 public class StepDefs_ConfigureClient {
 	String[] oldClient;
 	Client[] Clients;
-	Database d = new Database("agileProject.accdb"); 
+	Database d = DatabaseData.getDatabase();
 	NotifyObject response;
 	ScenarioContext context;
 	int id = 1;

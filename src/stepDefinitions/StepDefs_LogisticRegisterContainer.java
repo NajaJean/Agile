@@ -14,7 +14,7 @@ import io.cucumber.java.en.When;
 
 public class StepDefs_LogisticRegisterContainer {
 	
-	Database d = new Database("agileProject.accdb");
+	Database d = DatabaseData.getDatabase();
 	Container C;
 	LogisticCompany l;
 	Location[] Locations;
