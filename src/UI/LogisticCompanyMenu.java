@@ -13,7 +13,7 @@ public class LogisticCompanyMenu extends JFrame {
 	JLabel contentLabel = new JLabel ("");
 	JLabel locationLabel = new JLabel ("");
 	JLabel clientLabel = new JLabel ("");
-	JLabel lbl = new JLabel(new ImageIcon("src//profileImage.jpg"));
+	JLabel lbl = new JLabel(new ImageIcon("src//profileImage.png"));
     
     JMenu containerMenu = new JMenu ("Container");
     JMenuItem update_container_statusItem = new JMenuItem ("Update container status");
@@ -68,7 +68,7 @@ public class LogisticCompanyMenu extends JFrame {
     	locationLabel.setBounds(20, 230, 400, 50);
     	clientLabel.setBounds(20, 245, 400, 50);
     	contentLabel.setBounds(20, 260, 400, 50);
-    	lbl.setBounds(20,40,600,200);
+    	lbl.setBounds(20,30,200,200);
         
         setTitle("Logistic Company");
         setVisible(true);
