@@ -28,6 +28,7 @@ public class LogisticUpdateController {
 
 	public LogisticUpdateController() {
 		cJs = DatabaseData.getJournies();
+		Containers = DatabaseData.getContainers();
 		this.view = new LogisticUpdate(cJs);
 		this.search = new ArraySearch();
 	}
