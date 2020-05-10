@@ -135,6 +135,7 @@ public class Client extends Search implements User, DatabaseEntity {
    	 
 		for (int i = 0; i < containerJourneys.length; i++) {
 			
+			if (containerJourneys[i].getContaineronJourney().getClientofContainer() == null) { continue; }
 			if ((getID() == containerJourneys[i].getContaineronJourney().getClientofContainer().getID()) && 
 					((int)ChronoUnit.DAYS.between(containerJourneys[i].getStartDate(), Calendar.getSystemDate()) >= 0) && 
 					((int)ChronoUnit.DAYS.between( Calendar.getSystemDate(), containerJourneys[i].getEndDate()) >= 0))

@@ -144,7 +144,7 @@ public class ContainerJourney extends Search implements DatabaseEntity {
 	public static ContainerJourney[] clientJournies(ContainerJourney[] Journies, Client c) {
 		ArrayList<ContainerJourney> clientContainersList = new ArrayList<ContainerJourney>();
  		for (int i = 0; i < Journies.length; i++) {
- 			
+ 			if (Journies[i].getContaineronJourney().getClientofContainer() == null) { continue; }
  			if (c.getID() == Journies[i].getContaineronJourney().getClientofContainer().getID()) {
  				clientContainersList.add(Journies[i]);
  			}
